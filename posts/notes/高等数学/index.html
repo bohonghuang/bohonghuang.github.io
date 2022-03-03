@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">高等数学 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="高等数学" />
+<meta property="og:description" content="函数 初等函数 定义 在定义域上可以用一个解析式来表示。也就是说\(\sum\limits_{i=1}^n \frac{1}{n}\)不属于初等函数" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-03T18:24:52+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="高等数学"/>
+<meta name="twitter:description" content="函数 初等函数 定义 在定义域上可以用一个解析式来表示。也就是说\(\sum\limits_{i=1}^n \frac{1}{n}\)不属于初等函数"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" /><link rel="next" href="https://bohonghuang.github.io/posts/notes/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "高等数学",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "数学","wordcount":  745 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T18:24:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">高等数学</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 745 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" class="leancloud_visitors" data-flag-title="高等数学">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#函数">函数</a>
+      <ul>
+        <li><a href="#初等函数">初等函数</a>
+          <ul>
+            <li><a href="#基本初等函数">基本初等函数</a></li>
+          </ul>
+        </li>
+        <li><a href="#极限">极限</a>
+          <ul>
+            <li><a href="#重要极限">重要极限</a></li>
+            <li><a href="#无穷小量">无穷小量</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#微分">微分</a>
+      <ul>
+        <li><a href="#微分形式不变性">微分形式不变性</a></li>
+        <li><a href="#全微分">全微分</a>
+          <ul>
+            <li><a href="#全微分形式不变性">全微分形式不变性</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#积分">积分</a>
+      <ul>
+        <li><a href="#第一换元法">第一换元法</a></li>
+        <li><a href="#第二换元法">第二换元法</a></li>
+        <li><a href="#分部积分法">分部积分法</a></li>
+      </ul>
+    </li>
+    <li><a href="#级数">级数</a>
+      <ul>
+        <li><a href="#和函数">和函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#技巧">技巧</a>
+      <ul>
+        <li><a href="#裂项">裂项</a></li>
+      </ul>
+    </li>
+    <li><a href="#杂项">杂项</a>
+      <ul>
+        <li><a href="#三角不等式">三角不等式</a></li>
+        <li><a href="#范数">范数</a>
+          <ul>
+            <li><a href="#l-p范数">L-P范数</a></li>
+            <li><a href="#frobenius-范数">Frobenius 范数</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#正态分布">正态分布</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="函数">函数</h2>
+<h3 id="初等函数">初等函数</h3>
+<ul>
+<li>定义 <br />
+在定义域上可以用一个解析式来表示。也就是说\(\sum\limits_{i=1}^n \frac{1}{n}\)不属于初等函数。</li>
+<li>性质 <br />
+初等函数、常数经过有限次四则运算依然得到初等函数。</li>
+</ul>
+<h4 id="基本初等函数">基本初等函数</h4>
+<ul>
+<li>
+<p>幂函数：\(y=x^\mu\)</p>
+</li>
+<li>
+<p>指数函数：\(y=a^x,(a&gt;0,a\neq1)\)</p>
+</li>
+<li>
+<p>对数函数</p>
+<ul>
+<li>\(y=\log_ax\)</li>
+<li>\(y=\ln x\)</li>
+</ul>
+</li>
+<li>
+<p>三角函数</p>
+<ul>
+<li>\(y=\sin x\)</li>
+<li>\(y=\cos x\)</li>
+<li>\(y=\tan x\)</li>
+<li>\(y=\cot x, (x\in\mathbb{R}, x\neq k\pi(k\in \mathbb{Z}))\)</li>
+</ul>
+</li>
+<li>
+<p>反三角函数 <br />
+定义域为\(x\in[-1,1]\)的函数：</p>
+<ul>
+<li>\(y=\arcsin x\) <br />
+反函数为\(y=\sin x,  x\in[-\frac{\pi}{2},\frac{\pi}{2}]\)</li>
+<li>\(y=\arccos x\) <br />
+反函数为\(y=\cos x, x\in[0,\pi]\)</li>
+</ul>
+<p>定义域为\(x\in(-\infty,+\infty)\)的函数：</p>
+<ul>
+<li>\(y=\arctan x\) <br />
+反函数为\(y=\tan x, x\in(\frac{\pi}{2},\frac{\pi}{2})\)</li>
+<li>\(y=\arccot x\) <br />
+反函数为\(y=\cot x, x\in(\frac{\pi}{2},\frac{\pi}{2})\)</li>
+</ul>
+</li>
+</ul>
+<h3 id="极限">极限</h3>
+<h4 id="重要极限">重要极限</h4>
+<ul>
+<li>\(\lim\limits_{x\to0}\frac{\sin x}{x}=\lim\limits_{x\to\infty}x\sin\frac{1}{x}=1\)</li>
+<li>\(\lim\limits_{x\to0}(1+x)^\frac{1}{x}=\lim\limits_{x\to\infty}(1+\frac{1}{x})^x=e\)</li>
+</ul>
+<h4 id="无穷小量">无穷小量</h4>
+<ul>
+<li>三角/反三角函数：\(\sin x\sim \arcsin x\sim\tan x\sim \arctan x\sim x\)</li>
+<li>指数/对数：\(e^x-1\sim\ln(x+1)\sim x\)</li>
+<li>其他
+<ul>
+<li>\(\sqrt{1+x}-1\sim\frac{x}{2}\)</li>
+<li>\(1-\cos x\sim\frac{x^2}{2}\)</li>
+</ul>
+</li>
+</ul>
+<h2 id="微分">微分</h2>
+<h3 id="微分形式不变性">微分形式不变性</h3>
+<ul>
+<li>法则：
+<ul>
+<li>\(\mathrm d(u\pm v)=\mathrm du\pm\mathrm \mathrm dv\)</li>
+<li>\(\mathrm d(uv)=v\mathrm du+u\mathrm dv\)</li>
+</ul>
+</li>
+</ul>
+<h3 id="全微分">全微分</h3>
+<h4 id="全微分形式不变性">全微分形式不变性</h4>
+<p>\[z=f(u,v)\Rightarrow \mathrm dz=\frac{\partial f}{\partial u}\mathrm du+\frac{\partial f}{\partial v}\mathrm dv\]</p>
+<h2 id="积分">积分</h2>
+<h3 id="第一换元法">第一换元法</h3>
+<h3 id="第二换元法">第二换元法</h3>
+<h3 id="分部积分法">分部积分法</h3>
+<p>\[\begin{aligned}
+&amp;(uv)'=u&rsquo;v+uv'\Rightarrow uv'=(uv)'-u&rsquo;v \\
+\Rightarrow &amp;\int uv'\mathrm dx=uv-\int u&rsquo;v\mathrm dx \\
+\Rightarrow &amp;\int u\mathrm dv=uv-\int v\mathrm du
+\end{aligned}\]</p>
+<h2 id="级数">级数</h2>
+<h3 id="和函数">和函数</h3>
+<table>
+<thead>
+<tr>
+<th>和函数</th>
+<th>幂级数</th>
+<th>定义域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\(\frac{1}{1-x}\)</td>
+<td>\(\sum_{n=0}^{\infty} x^{n}=1+x+x^{2}+\ldots \ldots+x^{n}\)</td>
+<td>\((-1&lt;x&lt;1)\)</td>
+</tr>
+<tr>
+<td>\(\frac{1}{1+x}\)</td>
+<td>\(\sum_{n=0}^{\infty}(-1)^{n} x^{n}=1-x+x^{2}+\ldots \ldots+(-1)^{n} x^{n}\)</td>
+<td>\((-1&lt;x&lt;1)\)</td>
+</tr>
+<tr>
+<td>\(\ln (1+x)\)</td>
+<td>\(\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{n+1}}{n+1}=x-\frac{x^{2}}{2}+\frac{x^{3}}{3}+\ldots \ldots+(-1)^{n} \frac{x^{n+1}}{n+1}\)</td>
+<td>\((-1&lt;x \leq 1)\)</td>
+</tr>
+<tr>
+<td>\(e^{x}\)</td>
+<td>\(\sum_{n=0}^{\infty} \frac{1}{n !} x^{n}=1+x+\frac{x^{2}}{2 !}+\ldots \ldots+\frac{x^{n}}{n !}\)</td>
+<td>\((-\infty&lt;x&lt;+\infty)\)</td>
+</tr>
+<tr>
+<td>\(\sin x\)</td>
+<td>\(\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n+1}}{(2 n+1) !}=x-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !} \ldots \ldots+(-1)^{n} \frac{x^{2 n+1}}{(2 n+1) !}\)</td>
+<td>\((-\infty&lt;x&lt;+\infty)\)</td>
+</tr>
+<tr>
+<td>\(\cos x\)</td>
+<td>\(\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n}}{(2 n) !}=1-\frac{x^{2}}{2}+\ldots \ldots+(-1)^{n} \frac{x^{2 n}}{(2 n) !}\)</td>
+<td>\((-\infty&lt;x&lt;+\infty)\)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="技巧">技巧</h2>
+<h3 id="裂项">裂项</h3>
+<p>\[\frac{k}{a_n\cdot b_n}=\frac{k}{b_n-a_n}(\frac{1}{a_n}-\frac{1}{b_n})\]</p>
+<h2 id="杂项">杂项</h2>
+<h3 id="三角不等式">三角不等式</h3>
+<h3 id="范数">范数</h3>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/67120415" target="_blank" rel="noopener noreffer">https://zhuanlan.zhihu.com/p/67120415</a></li>
+</ul>
+<p>范数是一种强化了的距离概念（只要满足非负、自反、<a href="#%e4%b8%89%e8%a7%92%e4%b8%8d%e7%ad%89%e5%bc%8f" rel="">三角不等式</a>就可以称之为距离），它在定义上比距离多了一条数乘的运算法则。便于理解，可以把范数当作距离来理解。</p>
+<h4 id="l-p范数">L-P范数</h4>
+<p>不是一个范数，而是不同\(P\)取值的一组范数：
+\[L_{p}=\|\mathbf{x}\|_{p}=\sqrt[p]{\sum_{i=1}^{n} x_{i}^{p}}, \mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)\]
+随着\(P\)的不同：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-30_15-56-11_v2-715ee105f46adf614ab33700f06cca23_b.jpg"/>
+</figure>
+
+<!--list-separator-->
+<ul>
+<li>
+<p>L0范数</p>
+<p>不是一个真正的范数，但可以衡量一个向量里非零元素的个数：
+\[\|\mathbf{x}\|_{0}=\sqrt[0]{\sum_{i=1}^{n} x_{i}^{0}}\]
+即：
+\[\|x\|_{0}=\#\left(i \mid x_{i} \neq 0\right)\]</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>L1范数</p>
+<p>\[\|x\|_{1}=\sum_{i=1}^{n}\left|x_{i}\right|\]</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>L2范数</p>
+<p>\[\|x\|_{2}=\sqrt{\sum_{i=1}^{n}x_{i}^2}\]</p>
+</li>
+</ul>
+<h4 id="frobenius-范数">Frobenius 范数</h4>
+<p>\[\|A\|_{F}=\sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n}\left|a_{i j}\right|^{2}}\]</p>
+<h2 id="正态分布">正态分布</h2>
+<p>\[N(\mu,\sigma^2)\]</p>
+<ul>
+<li>\(\mu\)：平均值/期望</li>
+<li>\(\sigma^2\)：方差</li>
+</ul>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" data-title="高等数学" data-hashtags="数学"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" data-hashtag="数学"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" data-title="高等数学"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" data-title="高等数学"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" data-title="高等数学"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="https://bohonghuang.github.io/posts/notes/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="next" rel="next" title="通信协议">通信协议<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>

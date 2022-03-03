@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">Org 经验分享（一） 使用 org-agenda 实现课程表 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="Org 经验分享（一） 使用 org-agenda 实现课程表" />
+<meta property="og:description" content="序言 最近学校查看近期的课程很不方便，干脆就直接用 org-mode 来录入学校的课程表，然后用 org-agenda 来进行显示和时间规划，顺便分享一下自己的一点经验。 问题 录入课程" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-03T18:23:59+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Org 经验分享（一） 使用 org-agenda 实现课程表"/>
+<meta name="twitter:description" content="序言 最近学校查看近期的课程很不方便，干脆就直接用 org-mode 来录入学校的课程表，然后用 org-agenda 来进行显示和时间规划，顺便分享一下自己的一点经验。 问题 录入课程"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Org 经验分享（一） 使用 org-agenda 实现课程表",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "org-mode, Emacs","wordcount":  1771 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8\/","datePublished": "2022-03-03T00:00:00+00:00","dateModified": "2022-03-03T18:23:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Org 经验分享（一） 使用 org-agenda 实现课程表</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1771 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" class="leancloud_visitors" data-flag-title="Org 经验分享（一） 使用 org-agenda 实现课程表">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#序言">序言</a></li>
+    <li><a href="#问题">问题</a></li>
+    <li><a href="#解决方案">解决方案</a>
+      <ul>
+        <li><a href="#自定义时间戳">自定义时间戳</a></li>
+        <li><a href="#自定义时间段显示">自定义时间段显示</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="序言">序言</h2>
+<p>最近学校查看近期的课程很不方便，干脆就直接用 <code>org-mode</code> 来录入学校的课程表，然后用 <code>org-agenda</code> 来进行显示和时间规划，顺便分享一下自己的一点经验。</p>
+<h2 id="问题">问题</h2>
+<p>录入课程表主要面临有几个问题：</p>
+<ol>
+<li>学校课程的日期安排，不是以日期的形式来安排的，而是以开学以来的周数+周几来表示的，如果录入时手动换算会比较麻烦。 <span class="org-target" id="org-target---1"></span></li>
+<li>学校课程的安排比较灵活，很多课是以周数的区间形式来安排的，比如 1~14,15,17~18周，并且有可能出现单双周，我希望能以类似的格式直接进行录入。 <span class="org-target" id="org-target---2"></span></li>
+<li>学校每天课程时间安排比较固定，比如每天的第一节课就固定是 8:00~9:35 ，重复地输入这个时间段显然是比较繁琐的。 <span class="org-target" id="org-target---3"></span></li>
+</ol>
+<h2 id="解决方案">解决方案</h2>
+<h3 id="自定义时间戳">自定义时间戳</h3>
+<p>折腾了一段时间，下面给出解决方案：首先是针对<a href="#org-target---1" rel="">第1点</a>和<a href="#org-target---2" rel="">第2点</a>，使用<a href="https://en.wikipedia.org/wiki/S-expression" target="_blank" rel="noopener noreffer">S-表达式</a>时间戳，然后在里面调用自己写的 Elisp 函数即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;cal-iso</span><span class="p">)</span>
+
+<span class="p">(</span><span class="nb">defconst</span> <span class="nv">school-term-start-date</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">6</span> <span class="mi">2021</span><span class="p">))</span> <span class="c1">;定义开学周</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">iso-week-to-date</span> <span class="p">(</span><span class="nv">week</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">)</span>
+  <span class="s">&#34;从ISO时间标准周转换为日期&#34;</span>
+  <span class="p">(</span><span class="nv">calendar-gregorian-from-absolute</span>
+   <span class="p">(</span><span class="nv">calendar-iso-to-absolute</span> <span class="p">(</span><span class="nf">list</span> <span class="nv">week</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">))))</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">iso-week-from-date</span> <span class="p">(</span><span class="nv">month</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">)</span>
+  <span class="s">&#34;从日期转换为ISO时间标准周&#34;</span>
+  <span class="p">(</span><span class="nv">calendar-iso-from-absolute</span>
+   <span class="p">(</span><span class="nv">calendar-absolute-from-gregorian</span> <span class="p">(</span><span class="nf">list</span> <span class="nv">month</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">school-week-to-date</span> <span class="p">(</span><span class="nv">week</span> <span class="nv">day</span><span class="p">)</span>
+  <span class="s">&#34;把学期开始的周数和周几转换为日期&#34;</span>
+  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">week</span> <span class="p">(</span><span class="nf">+</span> <span class="p">(</span><span class="nf">nth</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">iso-week-from-date</span> <span class="nv">school-term-start-date</span><span class="p">))</span> <span class="nv">week</span> <span class="mi">-1</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nv">iso-week-to-date</span> <span class="p">(</span><span class="nf">list</span> <span class="nv">week</span> <span class="nv">day</span> <span class="p">(</span><span class="nv">calendar-extract-year</span> <span class="nv">school-term-start-date</span><span class="p">)))))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">school-class</span> <span class="p">(</span><span class="nv">weeks</span> <span class="nv">day</span><span class="p">)</span>
+  <span class="s">&#34;输入周数和周几，并判断和org-agenda当前检索的日期是否匹配&#34;</span>
+  <span class="p">(</span><span class="nb">let</span> <span class="p">(</span><span class="nv">ret</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">setq</span> <span class="nv">ret</span>
+          <span class="p">(</span><span class="nb">or</span> <span class="nv">ret</span>
+              <span class="p">(</span><span class="nb">pcase</span> <span class="nv">weeks</span>
+                <span class="p">((</span><span class="nv">pred</span> <span class="nf">integerp</span><span class="p">)</span>
+                 <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">date1</span> <span class="p">(</span><span class="nv">school-week-to-date</span> <span class="nv">week</span> <span class="nv">day</span><span class="p">)))</span>
+                   <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">equal</span> <span class="nv">date</span> <span class="nv">date1</span><span class="p">)</span> <span class="nv">entry</span><span class="p">)))</span>
+                <span class="p">((</span><span class="nb">and</span> <span class="p">(</span><span class="nv">pred</span> <span class="nv">proper-list-p</span><span class="p">)</span> <span class="nf">list</span><span class="p">)</span>
+                 <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">week</span> <span class="nv">weeks</span> <span class="nv">ret</span><span class="p">)</span> <span class="p">(</span><span class="nb">setq</span> <span class="nv">ret</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">ret</span> <span class="p">(</span><span class="nv">school-class</span> <span class="nv">week</span> <span class="nv">day</span><span class="p">)))))</span>
+                <span class="p">(</span><span class="o">`</span><span class="p">((</span><span class="o">,</span><span class="nv">from-week</span> <span class="o">.</span> <span class="o">,</span><span class="nv">to-week</span><span class="p">)</span> <span class="o">.</span> <span class="o">,</span><span class="nv">odd-or-even</span><span class="p">)</span>
+                 <span class="p">(</span><span class="nv">school-class</span>
+                  <span class="p">(</span><span class="nv">-filter</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+                             <span class="p">(</span><span class="nf">=</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">2</span><span class="p">)</span>
+                                <span class="p">(</span><span class="nb">pcase</span> <span class="nv">odd-or-even</span> <span class="p">(</span><span class="ss">&#39;odd</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="ss">&#39;even</span> <span class="mi">0</span><span class="p">))))</span>
+                           <span class="p">(</span><span class="nv">number-sequence</span> <span class="nv">from-week</span> <span class="nv">to-week</span><span class="p">))</span>
+                  <span class="nv">day</span><span class="p">))</span>
+                <span class="p">(</span><span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nv">from-week</span> <span class="o">.</span> <span class="o">,</span><span class="nv">to-week</span><span class="p">)</span>
+                 <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">date1</span> <span class="p">(</span><span class="nv">school-week-to-date</span> <span class="nv">from-week</span> <span class="nv">day</span><span class="p">))</span>
+                        <span class="p">(</span><span class="nv">date2</span> <span class="p">(</span><span class="nv">school-week-to-date</span> <span class="nv">to-week</span> <span class="nv">day</span><span class="p">))</span>
+                        <span class="p">(</span><span class="nv">year1</span> <span class="p">(</span><span class="nv">calendar-extract-year</span> <span class="nv">date1</span><span class="p">))</span>
+                        <span class="p">(</span><span class="nv">month1</span> <span class="p">(</span><span class="nv">calendar-extract-month</span> <span class="nv">date1</span><span class="p">))</span>
+                        <span class="p">(</span><span class="nv">day1</span> <span class="p">(</span><span class="nv">calendar-extract-day</span> <span class="nv">date1</span><span class="p">))</span>
+                        <span class="p">(</span><span class="nv">year2</span> <span class="p">(</span><span class="nv">calendar-extract-year</span> <span class="nv">date2</span><span class="p">))</span>
+                        <span class="p">(</span><span class="nv">month2</span> <span class="p">(</span><span class="nv">calendar-extract-month</span> <span class="nv">date2</span><span class="p">))</span>
+                        <span class="p">(</span><span class="nv">day2</span> <span class="p">(</span><span class="nv">calendar-extract-day</span> <span class="nv">date2</span><span class="p">)))</span>
+                   <span class="p">(</span><span class="nv">org-class</span> <span class="nv">year1</span> <span class="nv">month1</span> <span class="nv">day1</span> <span class="nv">year2</span> <span class="nv">month2</span> <span class="nv">day2</span> <span class="nv">day</span><span class="p">))))))</span>
+    <span class="nv">ret</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>接着就可以在 <code>org-agenda-files</code> 中使用了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-org" data-lang="org"><span class="gh">*</span><span class="gs"> 数字电路与逻辑设计</span>
+<span class="c">:PROPERTIES:
+</span><span class="c"></span><span class="cs">:CATEGORY: 数字电路与逻辑设计 方怡冰
+</span><span class="cs"></span><span class="c">:END:</span>
+<span class="gu">**</span> 10:05-11:40 禹州406
+&lt;<span class="s">%%(school-class &#39;(((1 . 12) . even) (14 . 16)) 1)</span>&gt;
+<span class="gu">**</span> 10:05-11:40 美岭314
+&lt;<span class="s">%%(school-class &#39;(((1 . 12) . odd) (14 . 16)) 4)</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>school-class</code> 这个函数接受一个列表和整数，列表里面可以是整数或者是一个表示周范围（可以指定单双周）的二元组，第二个整数参数表明是周几，<a href="#org-target---1" rel="">第一个</a>和<a href="#org-target---2" rel="">第二个问题</a>解决。</p>
+<h3 id="自定义时间段显示">自定义时间段显示</h3>
+<p>对于<a href="#org-target---3" rel="">第三个问题</a>，也就是时间段的输入问题，我个人是使用 <code>org-mode</code> 的宏替换来解决。但是宏替换仅在导出时进行，而在 <code>Org Agenda View</code> 中是不会进行宏替换的，所以要通过修改 <code>org-agenda-get-day-entries</code> 函数，实现先对 <code>org-agenda-files</code> 的 <code>buffer</code> 进行宏替换，再从 <code>buffer</code> 中获取对应的 <code>entries</code> ，最后再撤销宏替换（这里直接使用 <code>undo</code> 来实现）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-agenda-get-day-entries</span> <span class="p">(</span><span class="nv">file</span> <span class="nv">date</span> <span class="kp">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
+  <span class="s">&#34;Does the work for </span><span class="ss">`org-diary&#39;</span><span class="s"> and </span><span class="ss">`org-agenda&#39;</span><span class="s">.
+</span><span class="s">FILE is the path to a file to be checked for entries.  DATE is date like
+</span><span class="s">the one returned by </span><span class="ss">`calendar-current-date&#39;</span><span class="s">.  ARGS are symbols indicating
+</span><span class="s">which kind of entries should be extracted.  For details about these, see
+</span><span class="s">the documentation of </span><span class="ss">`org-diary&#39;</span><span class="s">.&#34;</span>
+  <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">org-startup-folded</span> <span class="no">nil</span><span class="p">)</span>
+         <span class="p">(</span><span class="nv">org-startup-align-all-tables</span> <span class="no">nil</span><span class="p">)</span>
+         <span class="p">(</span><span class="nv">buffer</span> <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">file-exists-p</span> <span class="nv">file</span><span class="p">)</span> <span class="p">(</span><span class="nv">org-get-agenda-file-buffer</span> <span class="nv">file</span><span class="p">)</span>
+                   <span class="p">(</span><span class="ne">error</span> <span class="s">&#34;No such file %s&#34;</span> <span class="nv">file</span><span class="p">))))</span>
+    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">not</span> <span class="nv">buffer</span><span class="p">)</span>
+        <span class="c1">;; If file does not exist, signal it in diary nonetheless.</span>
+        <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;ORG-AGENDA-ERROR: No such org-file %s&#34;</span> <span class="nv">file</span><span class="p">))</span>
+      <span class="p">(</span><span class="nb">with-current-buffer</span> <span class="nv">buffer</span>
+        <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">derived-mode-p</span> <span class="ss">&#39;org-mode</span><span class="p">)</span>
+          <span class="p">(</span><span class="ne">error</span> <span class="s">&#34;Agenda file %s is not in Org mode&#34;</span> <span class="nv">file</span><span class="p">))</span>
+        <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-buffer</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">org-agenda-buffer</span> <span class="nv">buffer</span><span class="p">))</span>
+        <span class="p">(</span><span class="nb">setf</span> <span class="nv">org-agenda-current-date</span> <span class="nv">date</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">undo-boundary</span><span class="p">)</span>
+        <span class="p">(</span><span class="nv">org-macro-replace-all</span> <span class="nv">org-macro-templates</span><span class="p">)</span>
+        <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">ret</span> <span class="p">(</span><span class="nb">save-excursion</span>
+                     <span class="p">(</span><span class="nb">save-restriction</span>
+                       <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">eq</span> <span class="nv">buffer</span> <span class="nv">org-agenda-restrict</span><span class="p">)</span>
+                           <span class="p">(</span><span class="nf">narrow-to-region</span> <span class="nv">org-agenda-restrict-begin</span>
+                                             <span class="nv">org-agenda-restrict-end</span><span class="p">)</span>
+                         <span class="p">(</span><span class="nf">widen</span><span class="p">))</span>
+                       <span class="c1">;; Rationalize ARGS.  Also make sure `:deadline&#39; comes</span>
+                       <span class="c1">;; first in order to populate DEADLINES before passing it.</span>
+                       <span class="c1">;;</span>
+                       <span class="c1">;; We use `delq&#39; since `org-uniquify&#39; duplicates ARGS,</span>
+                       <span class="c1">;; guarding us from modifying `org-agenda-entry-types&#39;.</span>
+                       <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nv">org-uniquify</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">args</span> <span class="nv">org-agenda-entry-types</span><span class="p">)))</span>
+                       <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">memq</span> <span class="nb">:scheduled</span> <span class="nv">args</span><span class="p">)</span> <span class="p">(</span><span class="nf">memq</span> <span class="nb">:scheduled*</span> <span class="nv">args</span><span class="p">))</span>
+                         <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">delq</span> <span class="nb">:scheduled*</span> <span class="nv">args</span><span class="p">)))</span>
+                       <span class="p">(</span><span class="nb">cond</span>
+                        <span class="p">((</span><span class="nf">memq</span> <span class="nb">:deadline</span> <span class="nv">args</span><span class="p">)</span>
+                         <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">cons</span> <span class="nb">:deadline</span>
+                                          <span class="p">(</span><span class="nf">delq</span> <span class="nb">:deadline</span> <span class="p">(</span><span class="nf">delq</span> <span class="nb">:deadline*</span> <span class="nv">args</span><span class="p">)))))</span>
+                        <span class="p">((</span><span class="nf">memq</span> <span class="nb">:deadline*</span> <span class="nv">args</span><span class="p">)</span>
+                         <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">cons</span> <span class="nb">:deadline*</span> <span class="p">(</span><span class="nf">delq</span> <span class="nb">:deadline*</span> <span class="nv">args</span><span class="p">)))))</span>
+                       <span class="c1">;; Collect list of headlines.  Return them flattened.</span>
+                       <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">case-fold-search</span> <span class="no">nil</span><span class="p">)</span> <span class="nv">results</span> <span class="nv">deadlines</span><span class="p">)</span>
+                         <span class="p">(</span><span class="nv">org-dlet</span>
+                             <span class="p">((</span><span class="nv">date</span> <span class="nv">date</span><span class="p">))</span>
+                           <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">arg</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">apply</span> <span class="nf">#&#39;nconc</span> <span class="p">(</span><span class="nf">nreverse</span> <span class="nv">results</span><span class="p">)))</span>
+                             <span class="p">(</span><span class="nb">pcase</span> <span class="nv">arg</span>
+                               <span class="p">((</span><span class="nb">and</span> <span class="nb">:todo</span> <span class="p">(</span><span class="nv">guard</span> <span class="p">(</span><span class="nv">org-agenda-today-p</span> <span class="nv">date</span><span class="p">)))</span>
+                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-todos</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">:timestamp</span>
+                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-blocks</span><span class="p">)</span> <span class="nv">results</span><span class="p">)</span>
+                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-timestamps</span> <span class="nv">deadlines</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">:sexp</span>
+                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-sexps</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">:scheduled</span>
+                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-scheduled</span> <span class="nv">deadlines</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">:scheduled*</span>
+                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-scheduled</span> <span class="nv">deadlines</span> <span class="no">t</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">:closed</span>
+                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-progress</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">:deadline</span>
+                                <span class="p">(</span><span class="nb">setf</span> <span class="nv">deadlines</span> <span class="p">(</span><span class="nv">org-agenda-get-deadlines</span><span class="p">))</span>
+                                <span class="p">(</span><span class="nb">push</span> <span class="nv">deadlines</span> <span class="nv">results</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">:deadline*</span>
+                                <span class="p">(</span><span class="nb">setf</span> <span class="nv">deadlines</span> <span class="p">(</span><span class="nv">org-agenda-get-deadlines</span> <span class="no">t</span><span class="p">))</span>
+                                <span class="p">(</span><span class="nb">push</span> <span class="nv">deadlines</span> <span class="nv">results</span><span class="p">))))))))))</span>
+          <span class="p">(</span><span class="nv">primitive-undo</span> <span class="mi">1</span> <span class="nv">buffer-undo-list</span><span class="p">)</span>
+          <span class="nv">ret</span><span class="p">)))))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后就可以在课程表的 <code>agenda</code> 文件中定义一个 <code>MACRO</code> ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-org" data-lang="org"><span class="cs">#+MACRO</span><span class="c">: school-time (eval (concat (cdr (assoc (string-to-number $1) school-time-periods)) &#34;（&#34; (cdr (assoc (string-to-number $1) school-time-class-nums)) &#34;）&#34;))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中的 <code>school-time-class-nums</code> 和 <code>school-time-periods</code> 如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">school-time-class-nums</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="s">&#34;上午1、2节&#34;</span><span class="p">)</span>
+                                   <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="s">&#34;上午3、4节&#34;</span><span class="p">)</span>
+                                   <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="s">&#34;下午5、6节&#34;</span><span class="p">)</span>
+                                   <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="s">&#34;下午7、8节&#34;</span><span class="p">)</span>
+                                   <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="s">&#34;晚上9、10节&#34;</span><span class="p">)))</span>
+<span class="p">(</span><span class="nb">defconst</span> <span class="nv">school-time-periods</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="s">&#34;8:00-9:35&#34;</span><span class="p">)</span>
+                                <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="s">&#34;10:05-11:40&#34;</span><span class="p">)</span>
+                                <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="s">&#34;14:00-15:35&#34;</span><span class="p">)</span>
+                                <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="s">&#34;15:55-17:30&#34;</span><span class="p">)</span>
+                                <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="s">&#34;19:00-21:30&#34;</span><span class="p">)))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后就可以愉快地将时间段用宏来代替了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-org" data-lang="org"><span class="gu">**</span> {{{school-time(2)}}} 禹州406
+&lt;<span class="s">%%(school-class &#39;(((1 . 12) . even) (14 . 16)) 1)</span>&gt;
+<span class="gu">**</span> {{{school-time(2)}}} 美岭314
+&lt;<span class="s">%%(school-class &#39;(((1 . 12) . odd) (14 . 16)) 4)</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>虽然看上去字数反而变多了，但是每次输入只要进行复制粘贴后只更改一个数即可了，并且格式可以统一修改，最终效果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Thursday    3 March 2022
+  数学建模 畅航: 8:00-9:35  （上午1、2节） 章辉301
+               8:00...... ----------------
+              10:00...... ----------------
+  微机原理与接口技术 秦德兴:10:05-11:40 （上午3、4节） 美岭407
+              12:00...... ----------------
+              13:57...... now - - - - - - - - - - - - - - - - - - - - - - - - -
+  信号与系统 冯文:14:00-15:35 （下午5、6节） 禹州205
+              14:00...... ----------------
+              16:00...... ----------------
+              18:00...... ----------------
+  概率论与数理统计 王凤筵:19:00-21:30 （晚上9、10节） 建发315
+              20:00...... ----------------
+</code></pre></td></tr></table>
+</div>
+</div></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="Org 经验分享（一） 使用 org-agenda 实现课程表" data-hashtags="org-mode,Emacs"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-hashtag="org-mode"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="Org 经验分享（一） 使用 org-agenda 实现课程表"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="Org 经验分享（一） 使用 org-agenda 实现课程表"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="Org 经验分享（一） 使用 org-agenda 实现课程表"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/org-mode/">org-mode</a>,&nbsp;<a href="https://bohonghuang.github.io/tags/emacs/">Emacs</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>

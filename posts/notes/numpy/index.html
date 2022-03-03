@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">Numpy - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="Numpy" />
+<meta property="og:description" content="numpy 函数 numpy.dtype dtype 类型名称 描述 bool_ 布尔型数据类型（True 或者 False） int_ 默认的整数类型（类似于 C 语言中的 long ， int32 或 int64 ） intc 与 C 的 int 类型一样，一般是 int32 或" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/notes/numpy/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-03T18:25:03+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Numpy"/>
+<meta name="twitter:description" content="numpy 函数 numpy.dtype dtype 类型名称 描述 bool_ 布尔型数据类型（True 或者 False） int_ 默认的整数类型（类似于 C 语言中的 long ， int32 或 int64 ） intc 与 C 的 int 类型一样，一般是 int32 或"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/numpy/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/python/" /><link rel="next" href="https://bohonghuang.github.io/posts/notes/matlab/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Numpy",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/numpy\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Python, OpenCV","wordcount":  1899 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/numpy\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T18:25:03+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Numpy</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1899 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/posts/notes/numpy/" class="leancloud_visitors" data-flag-title="Numpy">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#numpy"><code>numpy</code></a>
+      <ul>
+        <li><a href="#函数">函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#dtype"><code>dtype</code></a>
+      <ul>
+        <li><a href="#方法">方法</a>
+          <ul>
+            <li><a href="#reshape"><code>reshape</code></a></li>
+            <li><a href="#flatten"><code>flatten</code></a></li>
+            <li><a href="#ravel"><code>ravel</code></a></li>
+            <li><a href="#astype"><code>astype</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#属性">属性</a></li>
+        <li><a href="#创建">创建</a>
+          <ul>
+            <li><a href="#zeroes"><code>zeroes</code></a></li>
+            <li><a href="#one"><code>one</code></a></li>
+            <li><a href="#empty"><code>empty</code></a></li>
+            <li><a href="#arange"><code>arange</code></a></li>
+            <li><a href="#zero-like"><code>zero_like</code> ：</a></li>
+            <li><a href="#linspace"><code>linspace</code> ：</a></li>
+          </ul>
+        </li>
+        <li><a href="#访问">访问</a>
+          <ul>
+            <li><a href="#dot-dot-dot"><code>...</code></a></li>
+            <li><a href="#where"><code>where</code></a></li>
+            <li><a href="#n维数组套用n个任意维度的索引数组">n维数组套用n个任意维度的索引数组</a></li>
+            <li><a href="#n维数组套用布尔值数组">n维数组套用布尔值数组</a></li>
+          </ul>
+        </li>
+        <li><a href="#打印">打印</a>
+          <ul>
+            <li><a href="#np-dot-set-printoptions--precision-none-threshold-none-edgeitems-none-linewidth-none-suppress-none-nanstr-none-infstr-none-formatter-none-sign-none-floatmode-none"><code>np.set_printoptions(precision=None, threshold=None, edgeitems=None, linewidth=None, suppress=None, nanstr=None, infstr=None, formatter=None, sign=None, floatmode=None)</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#扩展">扩展</a>
+      <ul>
+        <li><a href="#fft-快速傅里叶变换">FFT （快速傅里叶变换）</a>
+          <ul>
+            <li><a href="#函数">函数</a></li>
+          </ul>
+        </li>
+        <li><a href="#random"><code>random</code></a>
+          <ul>
+            <li><a href="#randint"><code>randint</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="numpy"><code>numpy</code></h2>
+<h3 id="函数">函数</h3>
+<p><code>numpy.dtype</code></p>
+<h2 id="dtype"><code>dtype</code></h2>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool_</code></td>
+<td>布尔型数据类型（True 或者 False）</td>
+</tr>
+<tr>
+<td><code>int_</code></td>
+<td>默认的整数类型（类似于 C 语言中的 <code>long</code> ， <code>int32</code> 或 <code>int64</code> ）</td>
+</tr>
+<tr>
+<td><code>intc</code></td>
+<td>与 C 的 <code>int</code> 类型一样，一般是 <code>int32</code> 或 <code>int64</code></td>
+</tr>
+<tr>
+<td><code>intp</code></td>
+<td>用于索引的整数类型（类似于 C 的 <code>ssize_t</code> ，一般情况下仍然是 <code>int32</code> 或 <code>int64</code> ）</td>
+</tr>
+<tr>
+<td><code>int8</code></td>
+<td>字节（-128 to 127）</td>
+</tr>
+<tr>
+<td><code>int16</code></td>
+<td>整数（-32768 to 32767）</td>
+</tr>
+<tr>
+<td><code>int32</code></td>
+<td>整数（-2147483648 to 2147483647）</td>
+</tr>
+<tr>
+<td><code>int64</code></td>
+<td>整数（-9223372036854775808 to 9223372036854775807）</td>
+</tr>
+<tr>
+<td><code>uint8</code></td>
+<td>无符号整数（0 to 255）</td>
+</tr>
+<tr>
+<td><code>uint16</code></td>
+<td>无符号整数（0 to 65535）</td>
+</tr>
+<tr>
+<td><code>uint32</code></td>
+<td>无符号整数（0 to 4294967295）</td>
+</tr>
+<tr>
+<td><code>uint64</code></td>
+<td>无符号整数（0 to 18446744073709551615）</td>
+</tr>
+<tr>
+<td><code>float_</code></td>
+<td><code>float64</code> 类型的简写</td>
+</tr>
+<tr>
+<td><code>float16</code></td>
+<td>半精度浮点数，包括：1 个符号位，5 个指数位，10 个尾数位</td>
+</tr>
+<tr>
+<td><code>float32</code></td>
+<td>单精度浮点数，包括：1 个符号位，8 个指数位，23 个尾数位</td>
+</tr>
+<tr>
+<td><code>float64</code></td>
+<td>双精度浮点数，包括：1 个符号位，11 个指数位，52 个尾数位</td>
+</tr>
+<tr>
+<td><code>complex_</code></td>
+<td><code>complex128</code> 类型的简写，即 128 位复数</td>
+</tr>
+<tr>
+<td><code>complex64</code></td>
+<td>复数，表示双 32 位浮点数（实数部分和虚数部分）</td>
+</tr>
+<tr>
+<td><code>complex128</code></td>
+<td>复数，表示双 64 位浮点数（实数部分和虚数部分）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方法">方法</h3>
+<h4 id="reshape"><code>reshape</code></h4>
+<p>在不改变元素的情况下改变数组的形状。必须确保更改前后元素的个数一致。</p>
+<ul>
+<li>
+<p>用法：
+<code>reshape(a, newshape, order)</code> ：</p>
+<ul>
+<li><code>a</code> ：输入的数组</li>
+<li><code>newshape</code> ：新的形状，用元组来表示</li>
+<li><code>order</code> ：索引顺序（只影响索引，不更改内存结构）
+<ul>
+<li><code>'C'</code> ：使用C语言的索引方式</li>
+<li><code>'F'</code> ：使用Fortran语言的索引方式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]])</span>
+<span class="k">return</span> <span class="s1">&#39;C: </span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">F: </span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;C&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;F&#39;</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>C可以看作遍历的外层是高维，内层是低维，然后由低维向高维进行填充。
+F则是相反，外层是低维，内层是高维，然后由高维向低维填充。
+Numpy不管是 <code>arr[z, y, x]</code> 或者是 <code>arr[z][y][x]</code> 的方式来访问数组，都是先高维后低维，因此用于指定大小的元组也是如此，需要注意。</p>
+<ul>
+<li><code>mgrid</code> ：用于创建n维的散点
+<ul>
+<li>
+<p>用法：
+<code>mgrid[[start1:end1:step1],[start2:end2:step2], ...]</code></p>
+<ul>
+<li><code>start</code> ：开始</li>
+<li><code>end</code> ：结束</li>
+<li><code>step</code>
+<ul>
+<li>实数：代表间隔，左闭右开</li>
+<li>复数：代表点的个数，左闭右闭</li>
+</ul>
+</li>
+<li>返回值：由numpy组成的元组，表示点对应的坐标在图中的分布情况</li>
+</ul>
+</li>
+<li>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">return</span> <span class="s1">&#39;x: </span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">y: </span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>x</code> 和 <code>y</code> 代表所有点的x坐标和y坐标在这个二维图上的分布情况。</p>
+</li>
+</ul>
+</li>
+<li><code>astype</code> ：转换数组的类型，相当于强制类型转换。</li>
+</ul>
+</li>
+</ul>
+<h4 id="flatten"><code>flatten</code></h4>
+<p>把数组展开成一维数组。</p>
+<h4 id="ravel"><code>ravel</code></h4>
+<p>类似于 <a href="#flatten" rel=""><code>flatten</code></a> ，但返回的是原来数组的视图，更加节省内存，但修改的同时会修改原数组，造成潜在的错误。</p>
+<h4 id="astype"><code>astype</code></h4>
+<p>进行类型转换。</p>
+<h3 id="属性">属性</h3>
+<ul>
+<li><code>dtype</code> ：数据类型（Data Type）</li>
+<li><code>ndim</code> ：维度</li>
+<li><code>size</code> ：元素的个数</li>
+<li><code>shape</code> ：形状（为维度个数的元组）</li>
+<li><code>T</code> ：转置</li>
+</ul>
+<h3 id="创建">创建</h3>
+<h4 id="zeroes"><code>zeroes</code></h4>
+<h4 id="one"><code>one</code></h4>
+<h4 id="empty"><code>empty</code></h4>
+<p>创建未初始化的数组（如果后面会手动对所有元素初始化，这种方法更高效）。经过实验，创建的 <code>ndarray</code> 会直接复用还未被垃圾回收的 <code>ndarray</code> 。</p>
+<h4 id="arange"><code>arange</code></h4>
+<p>相当于指定步长初始化了一个等差数列。</p>
+<ul>
+<li>
+<p>用法：
+<code>arange(start, end, step)</code> ：</p>
+<ul>
+<li><code>end</code> ：不包括在内</li>
+</ul>
+</li>
+<li>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">return</span> <span class="n">arr</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="zero-like"><code>zero_like</code> ：</h4>
+<p>产生和一个数组形状相同的全0数组。</p>
+<ul>
+<li>用法：
+<code>zeros_like(a, dtype=None, order='K', subok=True, shape=None)</code></li>
+</ul>
+<h4 id="linspace"><code>linspace</code> ：</h4>
+<p>相当于指定项数初始化了一个等差数列。</p>
+<ul>
+<li>
+<p>用法：
+<code>linspace(start, end, n)</code></p>
+<ul>
+<li><code>end</code> ：包括在内</li>
+</ul>
+</li>
+<li>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">return</span> <span class="n">arr</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="访问">访问</h3>
+<h4 id="dot-dot-dot"><code>...</code></h4>
+<p>用于在该位置上 <strong>尽可能多</strong> 地表示 <code>:</code> 。如 <code>arr[:, 0]</code> 等价于 <code>arr[:, 0, :]</code> ，而 <code>arr[..., 0]</code> 等价于 <code>arr[:, :, 0]</code> 。区别是一个y平面，一个是x平面。</p>
+<h4 id="where"><code>where</code></h4>
+<ul>
+<li>
+<p>作为判断表达式的数组版本：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-08-12_20-45-38_v2-f5f0df25ddc80010966faed978d27b0b_720w.jpg.png"/>
+</figure>
+
+</li>
+<li>
+<p>作为过滤器：</p>
+<p><img
+        class="lazyload"
+        data-src="https://bohonghuang.github.io/ox-hugo/2021-08-12_20-56-15_v2-285355f5e82530ec87094ef2d3d47007_720w.jpg.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/2021-08-12_20-56-15_v2-285355f5e82530ec87094ef2d3d47007_720w.jpg.png, https://bohonghuang.github.io/ox-hugo/2021-08-12_20-56-15_v2-285355f5e82530ec87094ef2d3d47007_720w.jpg.png 1.5x, https://bohonghuang.github.io/ox-hugo/2021-08-12_20-56-15_v2-285355f5e82530ec87094ef2d3d47007_720w.jpg.png 2x"
+        data-sizes="auto"
+        alt="/ox-hugo/2021-08-12_20-56-15_v2-285355f5e82530ec87094ef2d3d47007_720w.jpg.png"
+        title="/ox-hugo/2021-08-12_20-56-15_v2-285355f5e82530ec87094ef2d3d47007_720w.jpg.png"
+    />
+筛选出值为真的元素的下标（如果是多维的，返回的输出也是多维的）</p>
+<ul>
+<li>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">bool_arr</span> <span class="o">=</span> <span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">3</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bool_arr</span><span class="p">)</span>
+
+<span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">bool_arr</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所有的假值下标被过滤掉了。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="n维数组套用n个任意维度的索引数组">n维数组套用n个任意维度的索引数组</h4>
+<p>从已有的数组中通过索引构建任意维度的数组。输出数组的维度取决于 <code>,</code> 间数组的维度。</p>
+<ul>
+<li>示例：
+<ul>
+<li>
+<p>一维</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;input:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">output:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">arr</span><span class="p">,</span>
+    <span class="n">arr</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>就是取了原数组的[3,0]、[2,1]、[1,2]、[0,3]</p>
+</li>
+<li>
+<p>多维</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;input:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">ouput:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">arr</span><span class="p">,</span>
+    <span class="n">arr</span><span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]])</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<h4 id="n维数组套用布尔值数组">n维数组套用布尔值数组</h4>
+<ul>
+<li>示例：
+<ul>
+<li>
+<p>一维数组过滤元素这种方式会比用作过滤的 <a href="#where" rel=""><code>where</code></a> 方便得多。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;input: </span><span class="si">{}</span><span class="se">\n</span><span class="s1">output: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">arr</span><span class="p">,</span>
+    <span class="n">arr</span><span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]]</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>二维数组过滤元素</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;input:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">output:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">arr</span><span class="p">,</span>
+    <span class="n">arr</span><span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]]</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看作对两个轴的索引分别进行过滤，然后 <code>依次</code> 索引整个数组：</p>
+<ul>
+<li>y方向上，过滤的结果为[0, 2]；</li>
+<li>x方向上，过滤的结果为[1, 2]。</li>
+</ul>
+<p>结果就为 <code>arr[[0, 2], [1, 2]]</code> 。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="打印">打印</h3>
+<h4 id="np-dot-set-printoptions--precision-none-threshold-none-edgeitems-none-linewidth-none-suppress-none-nanstr-none-infstr-none-formatter-none-sign-none-floatmode-none"><code>np.set_printoptions(precision=None, threshold=None, edgeitems=None, linewidth=None, suppress=None, nanstr=None, infstr=None, formatter=None, sign=None, floatmode=None)</code></h4>
+<ul>
+<li><code>precision</code> ：打印精度（小数点后的位数）。</li>
+<li><code>threshold</code> ：超过多少个元素将中间的元素用省略号代替。</li>
+<li><code>edgeitems</code> ：超过 <code>threshold</code> 后，不使用省略号代替的边界元素个数。</li>
+<li><code>linewidth</code> ：设置每行字数的上限。</li>
+<li><code>nanstr</code> ：当矩阵元素为NAN（Not A Number）要显示的字符串。</li>
+<li><code>infstr</code> ：当矩阵元素无穷时显示的字符串。</li>
+<li><code>sign</code> ：
+<ul>
+<li><code>'+'</code> ：正数和负数都会加上符号。</li>
+<li><code>'-'</code> ：负数加上符号。</li>
+</ul>
+</li>
+<li><code>formatter</code> ：传入一个字典，为指定数据类型的数据指定函数来格式化元素。
+<ul>
+<li><code>'all'</code></li>
+<li><code>'float_kind'</code></li>
+<li><code>'int_kind'</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="扩展">扩展</h2>
+<h3 id="fft-快速傅里叶变换">FFT （快速傅里叶变换）</h3>
+<h4 id="函数">函数</h4>
+<!--list-separator-->
+<ul>
+<li>
+<p><code>fftshift</code></p>
+<p>原来傅里叶变换后的低频都集中在左上角，这个函数把它们移动至中央。</p>
+</li>
+</ul>
+<h3 id="random"><code>random</code></h3>
+<h4 id="randint"><code>randint</code></h4>
+<p>生成随机的任意维度数组。</p>
+<ul>
+<li>参数：
+<ul>
+<li><code>low</code> ：最小值</li>
+<li><code>high</code> ：最大值</li>
+<li><code>size</code> ：生成数组的维度和大小</li>
+</ul>
+</li>
+</ul>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/numpy/" data-title="Numpy" data-hashtags="Python,OpenCV"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/numpy/" data-hashtag="Python"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/numpy/" data-title="Numpy"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/numpy/" data-title="Numpy"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/numpy/" data-title="Numpy"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/python/">Python</a>,&nbsp;<a href="https://bohonghuang.github.io/tags/opencv/">OpenCV</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/notes/python/" class="prev" rel="prev" title="Python"><i class="fas fa-angle-left fa-fw"></i>Python</a>
+            <a href="https://bohonghuang.github.io/posts/notes/matlab/" class="next" rel="next" title="Matlab">Matlab<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>

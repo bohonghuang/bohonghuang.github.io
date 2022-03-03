@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">Emacs Lisp - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="Emacs Lisp" />
+<meta property="og:description" content="类型系统 没有强类型系统，在运行时检查类型。 在Elisp中， 断言类型的函数通常以 p 结尾。 求值 自求值 例如字符串、数字。 运行 把光标放在函数、宏里，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/notes/elisp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-03T18:23:01+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Emacs Lisp"/>
+<meta name="twitter:description" content="类型系统 没有强类型系统，在运行时检查类型。 在Elisp中， 断言类型的函数通常以 p 结尾。 求值 自求值 例如字符串、数字。 运行 把光标放在函数、宏里，"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/elisp/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/freertos/" /><link rel="next" href="https://bohonghuang.github.io/posts/notes/bash/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Emacs Lisp",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/elisp\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "编程语言, Emacs","wordcount":  3740 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/elisp\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T18:23:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Emacs Lisp</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3740 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/posts/notes/elisp/" class="leancloud_visitors" data-flag-title="Emacs Lisp">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#类型系统">类型系统</a>
+      <ul>
+        <li><a href="#求值">求值</a>
+          <ul>
+            <li><a href="#自求值">自求值</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#运行">运行</a></li>
+    <li><a href="#注释">注释</a></li>
+    <li><a href="#基本数据类型">基本数据类型</a>
+      <ul>
+        <li><a href="#字符串">字符串</a></li>
+        <li><a href="#字符">字符</a></li>
+        <li><a href="#数字">数字</a>
+          <ul>
+            <li><a href="#整数">整数</a></li>
+            <li><a href="#浮点数">浮点数</a></li>
+            <li><a href="#大数">大数</a></li>
+          </ul>
+        </li>
+        <li><a href="#布尔值">布尔值</a></li>
+        <li><a href="#符号">符号</a>
+          <ul>
+            <li><a href="#quote"><code>quote</code></a></li>
+            <li><a href="#310c6e"><code>'</code></a></li>
+            <li><a href="#反引号"><code>`</code> （反引号）</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#容器">容器</a>
+      <ul>
+        <li><a href="#数组-vector">数组（Vector）</a></li>
+        <li><a href="#列表-list">列表（List）</a>
+          <ul>
+            <li><a href="#mapcar"><code>mapcar</code></a></li>
+            <li><a href="#mapcan"><code>mapcan</code></a></li>
+            <li><a href="#dash-dot-el-库"><a href="https://github.com/magnars/dash.el"><code>dash.el</code></a> 库</a></li>
+            <li><a href="#remove"><code>remove</code></a></li>
+            <li><a href="#delete"><code>delete</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#二元组-pair">二元组（Pair）</a>
+          <ul>
+            <li><a href="#cons"><code>cons</code></a></li>
+            <li><a href="#car"><code>car</code></a></li>
+            <li><a href="#cdr"><code>cdr</code></a></li>
+            <li><a href="#append"><code>append</code></a></li>
+            <li><a href="#nconc"><code>nconc</code></a></li>
+            <li><a href="#reverse"><code>reverse</code></a></li>
+            <li><a href="#push"><code>push</code></a></li>
+            <li><a href="#pop"><code>pop</code></a></li>
+            <li><a href="#butlast"><code>butlast</code></a></li>
+            <li><a href="#butlast"><code>butlast</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#关联表-associative-list">关联表（Associative List）</a>
+          <ul>
+            <li><a href="#assoc"><code>assoc</code></a></li>
+            <li><a href="#rassoc"><code>rassoc</code></a></li>
+            <li><a href="#assoc-delete-all"><code>assoc-delete-all</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#运算符">运算符</a>
+      <ul>
+        <li><a href="#相等性">相等性</a></li>
+        <li><a href="#字符串">字符串</a></li>
+        <li><a href="#算术">算术</a></li>
+      </ul>
+    </li>
+    <li><a href="#流程控制">流程控制</a>
+      <ul>
+        <li><a href="#分支">分支</a>
+          <ul>
+            <li><a href="#单分支">单分支</a></li>
+            <li><a href="#多分支">多分支</a></li>
+          </ul>
+        </li>
+        <li><a href="#循环">循环</a></li>
+        <li><a href="#跳转">跳转</a></li>
+        <li><a href="#模式匹配">模式匹配</a>
+          <ul>
+            <li><a href="#pcase"><code>pcase</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#函数">函数</a>
+      <ul>
+        <li><a href="#lambda表达式">Lambda表达式</a></li>
+        <li><a href="#常用函数">常用函数</a>
+          <ul>
+            <li><a href="#save-excursion"><code>save-excursion</code></a></li>
+            <li><a href="#funcall"><code>funcall</code></a></li>
+            <li><a href="#apply"><code>apply</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#变量">变量</a>
+      <ul>
+        <li><a href="#本地变量">本地变量</a></li>
+        <li><a href="#全局变量">全局变量</a>
+          <ul>
+            <li><a href="#声明">声明</a></li>
+            <li><a href="#修改">修改</a></li>
+            <li><a href="#设置">设置</a></li>
+          </ul>
+        </li>
+        <li><a href="#动态作用域">动态作用域</a></li>
+      </ul>
+    </li>
+    <li><a href="#异常">异常</a></li>
+    <li><a href="#抽象">抽象</a>
+      <ul>
+        <li><a href="#面向对象">面向对象</a>
+          <ul>
+            <li><a href="#封装">封装</a></li>
+            <li><a href="#继承">继承</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="类型系统">类型系统</h2>
+<p>没有强类型系统，在运行时检查类型。 在Elisp中， 断言类型的函数通常以 <code>p</code> 结尾。</p>
+<h3 id="求值">求值</h3>
+<h4 id="自求值">自求值</h4>
+<p>例如字符串、数字。</p>
+<h2 id="运行">运行</h2>
+<ol>
+<li>把光标放在函数、宏里，键入 <code>M-C-x</code> 。</li>
+<li>把光标放在最后一个闭合的括号后，键入 <code>C-x C-e</code> 。</li>
+<li><code>M-:</code> 或 <code>M-x</code> <code>eval-expression</code> 。</li>
+<li><code>M-x</code> <code>eval-buffer</code> 。</li>
+<li><code>M-x</code> <code>eshell</code> 。</li>
+<li><code>M-x</code> <code>ielm</code> 。</li>
+</ol>
+<h2 id="注释">注释</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1">;  I am a comment</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="基本数据类型">基本数据类型</h2>
+<h3 id="字符串">字符串</h3>
+<p>字符串使用双引号包裹。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="s">&#34;He&#39;s said: \&#34;Emacs Rules\&#34; one time too many.&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一个字符串中一个包括多行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="s">&#34;Oh Argentina!
+</span><span class="s">Your little tin of pink meat
+</span><span class="s">Soars o&#39;er the Pampas&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="字符">字符</h3>
+<p><code>?x</code> 代表 <code>x</code> 的ASCII字符（ <code>?a</code> 代表ASCII码为97的&rsquo;a'）。涉及到Elisp语法的字符需要转义（ <code>?\(</code> 、 <code>?\)</code> 、 <code>?\\</code> ）。Unicode字符不在讨论的范畴。这些的字符在内部的表示均为ASCII码（整数），因此可以对它们进行数学运算。</p>
+<h3 id="数字">数字</h3>
+<h4 id="整数">整数</h4>
+<p>整数的精度为 29-bit 。</p>
+<ul>
+<li>十进制： <code>-32, 0, 157</code></li>
+<li>二进制（以 <code>#b</code> 为前缀）： <code>#b10010110</code></li>
+<li>八进制（以 <code>#o</code> 为前缀）： <code>#o377</code></li>
+<li>十六进制（以 <code>#x</code> 为前缀）： <code>#xDEADBEE</code></li>
+</ul>
+<h4 id="浮点数">浮点数</h4>
+<p>浮点数的精度为 64-bit 。</p>
+<ul>
+<li>一般表示： <code>-10.005</code> 、 <code>0.0</code> 、 <code>3.14159265</code></li>
+<li>科学计数法： <code>6.02e23</code> 、 <code>5e-10</code></li>
+</ul>
+<h4 id="大数">大数</h4>
+<p>使用 <code>calc</code> 库。</p>
+<h3 id="布尔值">布尔值</h3>
+<ul>
+<li>真： <code>t</code> （在逻辑运算中所有非假值均会当成真）</li>
+<li>假： <code>nil</code> 或者 <code>'()</code></li>
+</ul>
+<h3 id="符号">符号</h3>
+<h4 id="quote"><code>quote</code></h4>
+<ul>
+<li><code>(quote (a b c))</code> ：用于构建列表，和 <code>alist</code> 的区别是它把列表元素当作符号常量，不进行求值。</li>
+<li><code>(quote a)</code> ：创建一个符号常量，不进行求值。对于本来就不是自求值的对象是没有意义的。</li>
+</ul>
+<h4 id="310c6e"><code>'</code></h4>
+<p>是 <code>quote</code> 表达式的语法糖。 <code>'a</code> 与 <code>(quote a)</code> 等价。</p>
+<h4 id="反引号"><code>`</code> （反引号）</h4>
+<p>和 <a href="#310c6e" rel=""><code>'</code></a> 基本一致。但是在构建列表是，对于跟在 <code>,</code> 后面的元素会进行求值。</p>
+<h2 id="容器">容器</h2>
+<h3 id="数组-vector">数组（Vector）</h3>
+<p>使用 <code>[]</code> 来初始化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">[</span><span class="mi">-2</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="s">&#34;No&#34;</span> <span class="s">&#34;Sir&#34;</span> <span class="s">&#34;I&#34;</span> <span class="s">&#34;am&#34;</span> <span class="s">&#34;a&#34;</span> <span class="s">&#34;real&#34;</span> <span class="s">&#34;horse&#34;</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>数组可以嵌套，也可以包含不同类型的元素。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">[</span><span class="s">&#34;hi&#34;</span> <span class="mi">22</span> <span class="mi">120</span> <span class="mf">89.6</span> <span class="mi">2748</span> <span class="p">[</span><span class="mi">3</span> <span class="s">&#34;a&#34;</span><span class="p">]]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>也可以使用 <code>make-vector</code> 来创建数组。</p>
+<h3 id="列表-list">列表（List）</h3>
+<p>Elisp中大量使用链表（Linked List），因此有语法来直接创建它，但本质上还是通过函数调用来创建链表的。</p>
+<ul>
+<li>
+<p>直接声明列表的元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">quote</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或简写成</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用函数创建有规则的列表：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或简写成</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="o">`</span><span class="p">(</span><span class="mi">1</span> <span class="o">,</span><span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="mapcar"><code>mapcar</code></h4>
+<p>对 <code>sequence</code> 使用 <code>function</code> 进行映射。</p>
+<h4 id="mapcan"><code>mapcan</code></h4>
+<p>对 <code>sequence</code> 使用 <code>function</code> 进行映射，并进行 <code>flatten</code> 操作。</p>
+<h4 id="dash-dot-el-库"><a href="https://github.com/magnars/dash.el" target="_blank" rel="noopener noreffer"><code>dash.el</code></a> 库</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">-flatmap</span> <span class="p">(</span><span class="nv">fn</span> <span class="nf">list</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">pcase</span> <span class="nf">list</span>
+    <span class="p">(</span><span class="o">`</span><span class="no">nil</span> <span class="no">nil</span><span class="p">)</span>
+    <span class="p">(</span><span class="nv">_</span> <span class="p">(</span><span class="nv">-concat</span>
+        <span class="p">(</span><span class="nf">apply</span> <span class="nv">fn</span> <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nv">-first-item</span> <span class="nf">list</span><span class="p">)))</span>
+        <span class="p">(</span><span class="nv">-flatmap</span> <span class="nv">fn</span> <span class="p">(</span><span class="nf">cdr</span> <span class="nf">list</span><span class="p">))))))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="remove"><code>remove</code></h4>
+<p>返回删除元素后的新列表。</p>
+<h4 id="delete"><code>delete</code></h4>
+<p>有副作用（原地）删除一个元素。</p>
+<h3 id="二元组-pair">二元组（Pair）</h3>
+<p>列表的节点。</p>
+<h4 id="cons"><code>cons</code></h4>
+<p>创建一个二元组。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或简写成</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>创建链表：创建列表节点。 <code>(list 1 2 3)</code> 等价于 <code>(cons 1 (cons 2 (cons 3 nil)))</code> 。</p>
+</li>
+<li>
+<p>列表前面添加元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="nv">foo</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="car"><code>car</code></h4>
+<p>获取 <code>cons</code> 的前一个元素。</p>
+<h4 id="cdr"><code>cdr</code></h4>
+<p>获取 <code>cons</code> 的后一个元素。</p>
+<h4 id="append"><code>append</code></h4>
+<p>拼接多个列表，返回一个新的列表。</p>
+<h4 id="nconc"><code>nconc</code></h4>
+<p>拼接多个列表到第一个列表上，返回第一个列表。</p>
+<h4 id="reverse"><code>reverse</code></h4>
+<p>翻转列表。</p>
+<h4 id="push"><code>push</code></h4>
+<p>添加元素到传入列表上，返回这个列表。</p>
+<h4 id="pop"><code>pop</code></h4>
+<p>移除并返回列表的第一个元素。</p>
+<h4 id="butlast"><code>butlast</code></h4>
+<p>除去 <code>list</code> 除了最后 <code>n</code> 个元素，返回一个新的列表。</p>
+<h4 id="butlast"><code>butlast</code></h4>
+<p>除去 <code>list</code> 除了最后 <code>n</code> 个元素，返回 <code>list</code> 。</p>
+<h3 id="关联表-associative-list">关联表（Associative List）</h3>
+<p>就是<a href="#%e4%ba%8c%e5%85%83%e7%bb%84-pair" rel="">二元组（Pair）</a>的<a href="#%e5%88%97%e8%a1%a8-list" rel="">列表（List）</a>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="o">&#39;</span><span class="p">(</span> <span class="p">(</span><span class="nv">apple</span> <span class="o">.</span> <span class="s">&#34;red&#34;</span><span class="p">)</span>
+   <span class="p">(</span><span class="nv">banana</span> <span class="o">.</span> <span class="s">&#34;yellow&#34;</span><span class="p">)</span>
+   <span class="p">(</span><span class="nv">orange</span> <span class="o">.</span> <span class="s">&#34;orange&#34;</span><span class="p">)</span> <span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="assoc"><code>assoc</code></h4>
+<p>通过键查找键对。</p>
+<h4 id="rassoc"><code>rassoc</code></h4>
+<p>通过值查找键对。</p>
+<h4 id="assoc-delete-all"><code>assoc-delete-all</code></h4>
+<p>删除所有以 <code>key</code> 为键的元素，使用 <code>equal</code> 函数进行比较。虽然这个函数是有副作用的，但是其返回值为修改后的列表是有意义的。比如下面的代码无法达到预期的效果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">my-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;a&#34;</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)</span>
+                  <span class="p">(</span><span class="s">&#34;b&#34;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
+                  <span class="p">(</span><span class="s">&#34;c&#34;</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))))</span>
+  <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;a&#34;</span> <span class="nv">my-alist</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;b&#34;</span> <span class="nv">my-alist</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;c&#34;</span> <span class="nv">my-alist</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而是应当：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">my-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;a&#34;</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)</span>
+                  <span class="p">(</span><span class="s">&#34;b&#34;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
+                  <span class="p">(</span><span class="s">&#34;c&#34;</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))))</span>
+  <span class="p">(</span><span class="nb">setf</span> <span class="nv">my-alist</span> <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;a&#34;</span> <span class="nv">my-alist</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">setf</span> <span class="nv">my-alist</span> <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;b&#34;</span> <span class="nv">my-alist</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">setf</span> <span class="nv">my-alist</span> <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;c&#34;</span> <span class="nv">my-alist</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="运算符">运算符</h2>
+<p>运算符就像函数，进行运算的元素就像函数的参数，因此运算符都是前置的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">%</span> <span class="p">(</span><span class="nf">*</span> <span class="mh">#x15</span> <span class="p">(</span><span class="nf">+</span> <span class="mf">8.2</span> <span class="p">(</span><span class="nf">lsh</span> <span class="mi">7</span> <span class="mi">3</span><span class="p">)))</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="相等性">相等性</h3>
+<ul>
+<li>
+<p><code>=</code> ：数学上相等</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">=</span> <span class="mi">2</span> <span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>/=</code> ：数学上不相等</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">/=</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>eq</code> ：值相等（整数相等或对象的引用相同）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">eq</span> <span class="ss">&#39;foo</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>eql</code> ：浮点数相等（也可以直接使用 <code>=</code> ）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">eql</span> <span class="p">(</span><span class="nf">/</span> <span class="mf">6.28</span> <span class="mi">2</span><span class="p">)</span> <span class="mf">3.14</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>equal</code> ：结构相等（Deep Equality）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">equal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="nf">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="nf">list</span> <span class="mi">3</span> <span class="p">(</span><span class="nf">*</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">))))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="字符串">字符串</h3>
+<ul>
+<li>
+<p><code>concat</code> ：连接若干个字符串</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;foo&#34;</span> <span class="s">&#34;bar&#34;</span> <span class="s">&#34;baz&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>string=</code> ：判断相等（也可以直接使用 <code>equal</code> ）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nv">string=</span> <span class="s">&#34;foo&#34;</span> <span class="s">&#34;baz&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>substring</code> ：提取字串</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">substring</span> <span class="s">&#34;foobar&#34;</span> <span class="mi">0</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>upcase</code> ：全部变为大写</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">upcase</span> <span class="s">&#34;foobar&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="算术">算术</h3>
+<table>
+<thead>
+<tr>
+<th>C/Java/JS 运算符</th>
+<th>Emacs Lisp</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td><code>+</code></td>
+<td><code>(+ 1 2 3 4 5)</code></td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td><code>*</code></td>
+<td><code>(* 2 -1 4.2)</code></td>
+<td><code>-8.4</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td><code>/</code></td>
+<td><code>(/ 10 3)</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td><code>%</code></td>
+<td><code>(% 10 2)</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>&lt;&lt;</code></td>
+<td><code>lsh</code></td>
+<td><code>(lsh 1 5)</code></td>
+<td><code>32</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td><code>ash</code> (偏移量取负)</td>
+<td><code>(ash -32 -4)</code></td>
+<td><code>-2</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;&gt;</code></td>
+<td><code>lsh</code> (偏移量取负)</td>
+<td><code>(lsh 32 -4)</code></td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>++</code></td>
+<td><code>incf</code> (需要 <code>'cl</code> 库)</td>
+<td><code>(incf x 6)</code></td>
+<td><code>x+6</code></td>
+</tr>
+<tr>
+<td><code>? :</code> （三目运算符）</td>
+<td><code>(if test-expr then-expr else-expr)</code></td>
+<td><code>(if t 3 4)</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td><code>and</code></td>
+<td><code>(and t t t nil)</code></td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>\vert\vert</code></td>
+<td><code>or</code></td>
+<td><code>(or nil nil nil t)</code></td>
+<td><code>t</code></td>
+</tr>
+<tr>
+<td><code>!</code> (逻辑非)</td>
+<td><code>not</code></td>
+<td><code>(not 3)</code></td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>~</code> (按位取反)</td>
+<td><code>lognot</code></td>
+<td><code>(lognot #b1001)</code></td>
+<td><code>-10</code></td>
+</tr>
+<tr>
+<td><code>^</code> (按位异或)</td>
+<td><code>logxor</code></td>
+<td><code>(logxor 5 3)</code></td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>&amp;</code> (按位与)</td>
+<td><code>logand</code></td>
+<td><code>(logand 1 3)</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>\vert</code> (按位或)</td>
+<td><code>logior</code></td>
+<td><code>(logior 1 3)</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td><code>&lt;</code></td>
+<td><code>(&lt; 5 3)</code></td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td><code>&gt;</code></td>
+<td><code>(&gt; 5 3)</code></td>
+<td><code>t</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td><code>&lt;=</code></td>
+<td><code>(&lt;= 3 3)</code></td>
+<td><code>t</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td><code>&gt;=</code></td>
+<td><code>(&gt;= 5 3)</code></td>
+<td><code>t</code></td>
+</tr>
+<tr>
+<td><code>.</code> （字段访问）</td>
+<td>参考下面的 <code>setf</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>[]</code> (数组访问)</td>
+<td><code>aref/aset</code></td>
+<td><code>(aref [2 4 6] 1)</code></td>
+<td><code>4</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="流程控制">流程控制</h2>
+<h3 id="分支">分支</h3>
+<h4 id="单分支">单分支</h4>
+<ul>
+<li>
+<p>无 <code>else</code> 分支</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">&gt;=</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;hello there&#34;</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>有 <code>else</code> 分支</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">today-is-friday</span><span class="p">)</span>         <span class="c1">; test-expr</span>
+    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;yay, friday&#34;</span><span class="p">)</span>   <span class="c1">; then-expr</span>
+  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;boo, other day&#34;</span><span class="p">))</span> <span class="c1">; else-expr</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>else-if</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="ss">&#39;sunday</span>
+    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;sunday!&#34;</span><span class="p">)</span>      <span class="c1">; then-expr</span>
+  <span class="p">(</span><span class="nb">if</span> <span class="ss">&#39;saturday</span>              <span class="c1">; else-if</span>
+      <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;saturday!&#34;</span><span class="p">)</span>  <span class="c1">; next then-expr</span>
+    <span class="p">(</span><span class="nf">message</span> <span class="p">(</span><span class="s">&#34;weekday!&#34;</span><span class="p">))))</span> <span class="c1">; final else</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>无 <code>else</code> 分支（无括号的多表达式）</p>
+<ul>
+<li>
+<p><code>when</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">&gt;</span> <span class="mi">5</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">blah</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">blah-blah</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">blah</span> <span class="nv">blah</span> <span class="nv">blah</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>unless</code>
+除非条件满足，否则就执行语句。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">weekend-p</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;another day at work&#34;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">get-back-to-work</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<h4 id="多分支">多分支</h4>
+<p>Elisp并没有使用跳转表进行优化，因此多分支语句本质上还是多个单分支语句的嵌套。</p>
+<ul>
+<li>
+<p><code>cond</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">cond</span>
+ <span class="p">(</span><span class="nv">test-1</span>             <span class="c1">; branch 1</span>
+  <span class="nv">do-stuff-1</span><span class="p">)</span>
+ <span class="p">(</span><span class="nv">test-2</span>             <span class="c1">; branch 2</span>
+  <span class="nv">do-stuff-2</span><span class="p">)</span>
+ <span class="p">(</span><span class="no">t</span>                  <span class="c1">; default branch</span>
+  <span class="nv">do-default-stuff</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在条件后面可以跟任意数量的语句，不用括号包裹。并且当一个分支只有条件而没有语句时，如果该条件不为 <code>nil</code> 则进入分支直接把条件作为整个表达的值。</p>
+</li>
+<li>
+<p><code>case</code> （需要 <code>'cl</code> 库）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">case</span> <span class="mi">12</span>
+      <span class="p">(</span><span class="mi">5</span> <span class="s">&#34;five&#34;</span><span class="p">)</span>
+      <span class="p">(</span><span class="mi">1</span> <span class="s">&#34;one&#34;</span><span class="p">)</span>
+      <span class="p">(</span><span class="mi">12</span> <span class="s">&#34;twelve&#34;</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">otherwise</span>
+       <span class="s">&#34;I only know five, one and twelve.&#34;</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="循环">循环</h3>
+<ul>
+<li>
+<p><code>while</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">10</span>
+      <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nv">plusp</span> <span class="nv">x</span><span class="p">)</span>  <span class="c1">; while x is positive</span>
+  <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">)</span>  <span class="c1">; add x to total</span>
+  <span class="p">(</span><span class="nb">decf</span> <span class="nv">x</span><span class="p">))</span>       <span class="c1">; subtract 1 from x</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>loop</code> （需要 <code>'cl</code> 库）</p>
+<ul>
+<li>
+<p><code>do-while</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">loop</span> <span class="nb">do</span>
+      <span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="p">(</span><span class="nf">1+</span> <span class="nv">x</span><span class="p">))</span>
+      <span class="nb">while</span>
+      <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">x</span> <span class="mi">10</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>for</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">loop</span> <span class="nv">with</span> <span class="nv">result</span> <span class="nf">=</span> <span class="o">&#39;</span><span class="p">()</span>         <span class="c1">; one-time initialization</span>
+      <span class="nv">for</span> <span class="nv">i</span> <span class="nv">downfrom</span> <span class="mi">10</span>         <span class="c1">; count i down from 10</span>
+      <span class="nv">for</span> <span class="nv">j</span> <span class="nv">from</span> <span class="mi">0</span> <span class="nv">by</span> <span class="mi">2</span>         <span class="c1">; count j up from 0 by 2</span>
+      <span class="nb">while</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">j</span> <span class="mi">10</span><span class="p">)</span>            <span class="c1">; stop when j &gt;= 10</span>
+      <span class="nb">do</span>
+      <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">i</span> <span class="nv">j</span><span class="p">)</span> <span class="nv">result</span><span class="p">)</span>     <span class="c1">; fast-accumulate i+j</span>
+      <span class="nv">finally</span>
+      <span class="nb">return</span> <span class="p">(</span><span class="nf">nreverse</span> <span class="nv">result</span><span class="p">))</span> <span class="c1">; reverse and return result</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>等价的JavaScript代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">,</span> <span class="nx">j</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="nx">j</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>for-in</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
+      <span class="nv">collect</span> <span class="p">(</span><span class="nf">*</span> <span class="nv">i</span> <span class="nv">i</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<h3 id="跳转">跳转</h3>
+<p>执行到内层的语句时，可以通过 <code>throw</code> 跳转到外层对应的 <code>catch</code> 后面，达到循环中类似 <code>break</code> 或 <code>continue</code> 关键字的效果，并且可以跨函数跳转。</p>
+<ul>
+<li>
+<p><code>break</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">0</span> <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;break</span>
+  <span class="p">(</span><span class="nb">while</span> <span class="no">t</span>
+    <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">&gt;</span> <span class="p">(</span><span class="nb">incf</span> <span class="nv">x</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;break</span> <span class="nv">total</span><span class="p">))))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>continue</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">0</span> <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">x</span> <span class="mi">100</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;continue</span>
+    <span class="p">(</span><span class="nb">incf</span> <span class="nv">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">zerop</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">5</span><span class="p">))</span>
+        <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;continue</span> <span class="no">nil</span><span class="p">))</span>
+    <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">)))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>用于 <code>catch</code> 和 <code>throw</code> 的标识符可以自定义以作区分。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">0</span> <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;break</span>
+  <span class="p">(</span><span class="nb">while</span> <span class="no">t</span>
+    <span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;continue</span>
+      <span class="p">(</span><span class="nb">incf</span> <span class="nv">x</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">&gt;=</span> <span class="nv">x</span> <span class="mi">100</span><span class="p">)</span>
+          <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;break</span> <span class="no">nil</span><span class="p">))</span>
+      <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">zerop</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">5</span><span class="p">))</span>
+          <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;continue</span> <span class="no">nil</span><span class="p">))</span>
+      <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">))))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="模式匹配">模式匹配</h3>
+<h4 id="pcase"><code>pcase</code></h4>
+<!--list-separator-->
+<ul>
+<li>
+<p>模式</p>
+ <!--list-separator-->
+<ul>
+<li>
+<p><code>(pred function)</code></p>
+<p>把一个返回布尔值的单参数函数 <code>function</code> 作为模式守卫。进行匹配的时候，会把被匹配的对象作为参数传入 <code>function</code> ，如果返回的值为非 <code>nil</code> ，则匹配成功。</p>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p><code>(app function pattern)</code></p>
+<p>对一个单参数函数 <code>function</code> 的返回值再模式匹配。进行匹配的时候，会把被匹配的对象作为参数传入 <code>function</code> ，再把返回值和 <code>pattern</code> 进行匹配和绑定。</p>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p><code>(guard boolean-expression)</code></p>
+<p>把一个布尔表达式作为模式守卫。</p>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p><code>(let pattern expr)</code></p>
+<p>对 <code>expr</code> 进行求值，然后把结果和 <code>pattern</code> 进行匹配和绑定。</p>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p>序列模式</p>
+<p>合并多种模式进行匹配。</p>
+ <!--list-separator-->
+<ul>
+<li>
+<p><code>(and pattern1…)</code></p>
+<p>待匹配的对象必须满足多个模式才能匹配成功。</p>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p><code>(or pattern1 pattern2…)</code></p>
+<p>待匹配的对象只要满足其中一个模式即可匹配成功。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数">函数</h2>
+<p>使用 <code>defun</code> 来定义一个函数。函数参数后面跟着字符串作为函数的说明，可以用 <code>M-x</code> <code>describe-function</code> 来查看。</p>
+<ul>
+<li>
+<p>有参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">square</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+  <span class="s">&#34;Return X squared.&#34;</span>
+  <span class="p">(</span><span class="nf">*</span> <span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>无参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">hello</span> <span class="p">()</span>
+  <span class="s">&#34;Print the string </span><span class="ss">`hello&#39;</span><span class="s"> to the minibuffer.&#34;</span>
+  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;hello!&#34;</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>函数体可以有任意个表达式，以最后一个表达式作为返回值。也可以手动使用 <code>return</code> 表达式来返回。</p>
+<p>如果要定义一个可以通过 <code>M-x</code> 调用的函数，需要以 <code>(interactive)</code> 作为函数的第一个表达式。</p>
+</li>
+</ul>
+<h3 id="lambda表达式">Lambda表达式</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+  <span class="s">&#34;Return the hyperbolic cosine of X.&#34;</span>
+  <span class="p">(</span><span class="nf">*</span> <span class="mf">0.5</span> <span class="p">(</span><span class="nf">+</span> <span class="p">(</span><span class="nf">exp</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nf">exp</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">x</span><span class="p">)))))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="常用函数">常用函数</h3>
+<h4 id="save-excursion"><code>save-excursion</code></h4>
+<p>保存当前缓冲区和光标的位置，执行 <code>BODY</code> ，然后恢复缓冲区和光标。</p>
+<h4 id="funcall"><code>funcall</code></h4>
+<p>调用指定函数。多参数的情况下可以省略括号。</p>
+<h4 id="apply"><code>apply</code></h4>
+<p>调用指定函数。最后一个参数是一个列表，作为传入调用函数的参数列表。</p>
+<h2 id="变量">变量</h2>
+<h3 id="本地变量">本地变量</h3>
+<p>使用 <code>let</code> 表达式来声明本地变量。可以不指定初始值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">name1</span> <span class="nv">value1</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">name2</span> <span class="nv">value2</span><span class="p">)</span>
+      <span class="nv">name3</span>
+      <span class="nv">name4</span>
+      <span class="p">(</span><span class="nv">name5</span> <span class="nv">value5</span><span class="p">)))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果在一个 <code>let</code> 表达式里后面定义的变量需要用到前面定义的变量，需要使用 <code>let*</code> 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">1</span><span class="p">)</span>
+       <span class="p">(</span><span class="nv">y</span> <span class="nv">x</span><span class="p">)))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="全局变量">全局变量</h3>
+<h4 id="声明">声明</h4>
+<!--list-separator-->
+<ul>
+<li>
+<p>可变量</p>
+<p>使用 <code>defvar</code> 来声明一个变量。最后的字符串代表的是该变量的说明文档。第二次定义相同的变量的时候，不会进行赋值操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defvar</span> <span class="nv">i</span> <span class="mi">1</span> <span class="s">&#34;This is a variable.&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>常量</p>
+<p>使用 <code>defconst</code> 来声明一个常量。最后的字符串代表的是该常量的说明文档。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">pi</span> <span class="mf">3.14159</span> <span class="s">&#34;A gross approximation of pi.&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="修改">修改</h4>
+<p>使用 <code>setf</code> 来原地修改一个值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nf">list</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nf">nth</span> <span class="mi">0</span> <span class="nf">list</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="nf">list</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="设置">设置</h4>
+<p>使用 <code>setq</code> （“set quote”的缩写）来声明全局变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">foo</span> <span class="s">&#34;bar&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="动态作用域">动态作用域</h3>
+<p>C++有引用类型，因此可以在函数中修改函数调用方中的值。Elisp中的动态作用域也可以实现类似的功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">foo</span> <span class="p">()</span>
+  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1">; define a local (i.e., stack) variable x initialized to 6</span>
+    <span class="p">(</span><span class="nv">bar</span><span class="p">)</span>       <span class="c1">; call bar</span>
+    <span class="nv">x</span><span class="p">))</span>         <span class="c1">; return x</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">bar</span> <span class="p">()</span>
+  <span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">7</span><span class="p">))</span>   <span class="c1">; finds and modifies x in the caller&#39;s stack frame</span>
+
+<span class="p">(</span><span class="nv">foo</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="异常">异常</h2>
+<ul>
+<li>
+<p><code>condition-case</code>
+实现类似 <code>try-catch</code> 的异常处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">condition-case</span> <span class="no">nil</span>
+    <span class="p">(</span><span class="nb">progn</span>                              <span class="c1">; try</span>
+      <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>
+  <span class="p">(</span><span class="ne">error</span>                                <span class="c1">; catch</span>
+   <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;oh no!&#34;</span><span class="p">)</span>
+   <span class="p">(</span><span class="nv">do-recovery-stuff</span><span class="p">)))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>progn</code> 用于多个表达式的执行。</p>
+</li>
+<li>
+<p><code>ignore-errors</code>
+实现空 <code>catch</code> 块的异常捕获。在Emacs的启动配置文件中比较有用，可以在部分代码执行出错的情况下继续执行配置文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">ignore-errors</span>
+  <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>unwind-protect</code>
+实现类似空 <code>catch</code> 块的 <code>try-catch-finally</code> 的功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">unwind-protect</span>
+    <span class="p">(</span><span class="nb">progn</span>                              <span class="c1">; try</span>
+      <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>
+  <span class="p">(</span><span class="nv">first-finally-expr</span><span class="p">)</span>                  <span class="c1">; finally</span>
+  <span class="p">(</span><span class="nv">second-finally-expr</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>把它与 <code>condition-case</code> 进行结合，就可以实现完整的 <code>try-catch-finally</code> 的功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">unwind-protect</span>                 <span class="c1">; finally</span>
+    <span class="p">(</span><span class="nb">condition-case</span> <span class="no">nil</span>         <span class="c1">; try</span>
+        <span class="p">(</span><span class="nb">progn</span>                  <span class="c1">; {</span>
+          <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>        <span class="c1">;   body-1</span>
+          <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>  <span class="c1">;   body-2 }</span>
+      <span class="p">(</span><span class="ne">error</span>                    <span class="c1">; catch</span>
+       <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;oh no!&#34;</span><span class="p">)</span>       <span class="c1">; { catch 1</span>
+       <span class="p">(</span><span class="nv">poop-pants</span><span class="p">)))</span>           <span class="c1">;   catch 2 }</span>
+  <span class="p">(</span><span class="nv">first-finally-expr</span><span class="p">)</span>          <span class="c1">; { finally 1</span>
+  <span class="p">(</span><span class="nv">second-finally-expr</span><span class="p">))</span>        <span class="c1">;   finally 2 }</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="抽象">抽象</h2>
+<h3 id="面向对象">面向对象</h3>
+<h4 id="封装">封装</h4>
+<p>Elisp不是一门面向对象的语言，但 <code>'cl</code> 包提供了部分面向对象的功能。使用 <code>defstruct</code> 定义一个结构体。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;cl</span><span class="p">)</span>  <span class="c1">; top of file</span>
+
+<span class="p">(</span><span class="nb">defstruct</span> <span class="nv">person</span>
+  <span class="s">&#34;A person structure.&#34;</span>
+  <span class="nv">name</span>
+  <span class="p">(</span><span class="nv">age</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">height</span> <span class="mf">0.0</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用 <code>make-&lt;结构体名&gt;</code> 来创建结构体。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nv">make-person</span><span class="p">)</span>  <span class="c1">; new Person()</span>
+<span class="p">(</span><span class="nv">make-person</span> <span class="nb">:age</span> <span class="mi">39</span><span class="p">)</span>  <span class="c1">; new Person(39)</span>
+<span class="p">(</span><span class="nv">make-person</span> <span class="nb">:name</span> <span class="s">&#34;Steve&#34;</span> <span class="nb">:height</span> <span class="mf">5.83</span> <span class="nb">:age</span> <span class="mi">39</span><span class="p">)</span>  <span class="c1">; new Person(&#34;Steve&#34;, 39, 5.83)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>使用 <code>&lt;结构体名-成员变量名&gt;</code> 来访问结构体中的成员变量。使用 <code>setf</code> 来设置成员变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">e</span> <span class="p">(</span><span class="nv">make-employee</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nv">employee-name</span> <span class="nv">e</span><span class="p">)</span> <span class="s">&#34;Steve&#34;</span>
+      <span class="p">(</span><span class="nv">employee-age</span> <span class="nv">e</span><span class="p">)</span> <span class="mi">39</span>
+      <span class="p">(</span><span class="nv">employee-company</span> <span class="nv">e</span><span class="p">)</span> <span class="s">&#34;Google&#34;</span>
+      <span class="p">(</span><span class="nv">employee-title</span> <span class="nv">e</span><span class="p">)</span> <span class="s">&#34;Janitor&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="继承">继承</h4>
+<p>可以使用单继承来扩展一个结构体。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defstruct</span> <span class="p">(</span><span class="nv">employee</span>
+            <span class="p">(</span><span class="nb">:include</span> <span class="nv">person</span><span class="p">))</span>
+  <span class="s">&#34;An employee structure.&#34;</span>
+  <span class="nv">company</span>
+  <span class="p">(</span><span class="nv">level</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">title</span> <span class="s">&#34;n00b&#34;</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>defstruct</code> 宏会自动生成 <code>&lt;结构体名&gt;-p</code> 的函数用于判断一个变量是不是该结构体类型。</p>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/elisp/" data-title="Emacs Lisp" data-hashtags="编程语言,Emacs"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/elisp/" data-hashtag="编程语言"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/elisp/" data-title="Emacs Lisp"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/elisp/" data-title="Emacs Lisp"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/elisp/" data-title="Emacs Lisp"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>,&nbsp;<a href="https://bohonghuang.github.io/tags/emacs/">Emacs</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/notes/freertos/" class="prev" rel="prev" title="FreeRTOS"><i class="fas fa-angle-left fa-fw"></i>FreeRTOS</a>
+            <a href="https://bohonghuang.github.io/posts/notes/bash/" class="next" rel="next" title="Bash">Bash<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>

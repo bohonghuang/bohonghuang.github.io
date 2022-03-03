@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">电路基础 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="电路基础" />
+<meta property="og:description" content="电路元素 交流电路为什么要引入复数？复数相对于实数而言多了一个维度，一个数就可以表示更多的特性。电阻只能单一地阻碍电流，而电容和电感则可以在时" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-03T18:23:45+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="电路基础"/>
+<meta name="twitter:description" content="电路元素 交流电路为什么要引入复数？复数相对于实数而言多了一个维度，一个数就可以表示更多的特性。电阻只能单一地阻碍电流，而电容和电感则可以在时"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/%E7%AE%97%E6%B3%95/" /><link rel="next" href="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "电路基础",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "电子","wordcount":  2816 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T18:23:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">电路基础</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2816 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" class="leancloud_visitors" data-flag-title="电路基础">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#电路元素">电路元素</a>
+      <ul>
+        <li><a href="#支路">支路</a></li>
+        <li><a href="#结点">结点</a></li>
+        <li><a href="#回路">回路</a></li>
+        <li><a href="#网孔">网孔</a></li>
+      </ul>
+    </li>
+    <li><a href="#等效变换">等效变换</a>
+      <ul>
+        <li><a href="#电源等效变换">电源等效变换</a></li>
+        <li><a href="#电阻等效变换">电阻等效变换</a>
+          <ul>
+            <li><a href="#delta-y-形电阻等效变换">\(\Delta/Y\)形电阻等效变换</a></li>
+          </ul>
+        </li>
+        <li><a href="#元件省略">元件省略</a></li>
+        <li><a href="#戴维南定理">戴维南定理</a></li>
+        <li><a href="#诺顿定理">诺顿定理</a></li>
+        <li><a href="#密勒定理">密勒定理</a></li>
+      </ul>
+    </li>
+    <li><a href="#等效电阻">等效电阻</a>
+      <ul>
+        <li><a href="#输入电阻">输入电阻</a></li>
+        <li><a href="#输出电阻">输出电阻</a></li>
+      </ul>
+    </li>
+    <li><a href="#基尔霍夫定律">基尔霍夫定律</a>
+      <ul>
+        <li><a href="#基尔霍夫电压定律">基尔霍夫电压定律</a></li>
+        <li><a href="#基尔霍夫电流定律">基尔霍夫电流定律</a></li>
+      </ul>
+    </li>
+    <li><a href="#电路求解">电路求解</a>
+      <ul>
+        <li><a href="#支路电流法">支路电流法</a></li>
+        <li><a href="#结点电压法">结点电压法</a></li>
+        <li><a href="#回路电流法">回路电流法</a></li>
+        <li><a href="#网孔电流法">网孔电流法</a></li>
+      </ul>
+    </li>
+    <li><a href="#叠加定理">叠加定理</a></li>
+    <li><a href="#功率">功率</a>
+      <ul>
+        <li><a href="#有功功率">有功功率</a></li>
+        <li><a href="#无功功率">无功功率</a></li>
+        <li><a href="#功率因数">功率因数</a></li>
+        <li><a href="#复功率">复功率</a></li>
+        <li><a href="#视在功率">视在功率</a></li>
+        <li><a href="#最大功率">最大功率</a></li>
+      </ul>
+    </li>
+    <li><a href="#欧姆定律">欧姆定律</a></li>
+    <li><a href="#时间常数">时间常数</a></li>
+    <li><a href="#动态电路">动态电路</a>
+      <ul>
+        <li><a href="#阻抗">阻抗</a></li>
+        <li><a href="#导纳">导纳</a></li>
+        <li><a href="#相量图">相量图</a></li>
+        <li><a href="#三要素法">三要素法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="电路元素">电路元素</h2>
+<ul>
+<li>交流电路为什么要引入复数？复数相对于实数而言多了一个维度，一个数就可以表示更多的特性。电阻只能单一地阻碍电流，而电容和电感则可以在时间上阻碍电流，并且可以滞后或者超前，因此可以借用复数表示该特性。引入复数，可以将<a href="#%e6%88%b4%e7%bb%b4%e5%8d%97%e5%ae%9a%e7%90%86" rel="">戴维南定理</a>或<a href="#%e6%ac%a7%e5%a7%86%e5%ae%9a%e5%be%8b" rel="">欧姆定律</a>等电路基本定律应用于电容与电感，就可以不用一直带着积分或者微分，而是只要掌握复数的运算法则即可。</li>
+</ul>
+<h3 id="支路">支路</h3>
+<p>无分支的一段电路（必须有元件，不能只是导线）。</p>
+<h3 id="结点">结点</h3>
+<p>三条及以上支路的连接点（多个结点直接通过导线连接，只算一个结点）。</p>
+<h3 id="回路">回路</h3>
+<p>支路构成的闭合路径。</p>
+<h3 id="网孔">网孔</h3>
+<p>内部不含支路的回路。网孔数=支路数-（结点数-1）。</p>
+<h2 id="等效变换">等效变换</h2>
+<h3 id="电源等效变换">电源等效变换</h3>
+<p>非理想电压源和电流源之间可以等效替换，等效的电压源/电流源直接用欧姆定律算，内阻变换位置。</p>
+<ul>
+<li>变换对象：变换的源既可以是理想源，也可以是受控源。</li>
+<li>变换后源的方向：不要以电压作为参考，而是以电流为参考。替换后的源产生电流的方向应该和原来的源保持一致。</li>
+</ul>
+<h3 id="电阻等效变换">电阻等效变换</h3>
+<h4 id="delta-y-形电阻等效变换">\(\Delta/Y\)形电阻等效变换</h4>
+<ul>
+<li>\(R_Y=\frac{\text{相邻电阻乘积}}{\text{电阻之和}}\)</li>
+<li>\(R_\Delta=\frac{\text{两两乘积之和}}{\text{相对的电阻}}\)</li>
+</ul>
+<p>规律：</p>
+<ul>
+<li>总是两个除以一个</li>
+<li>分子分母总有一边是相加的 <br />
+凭感觉判断大小：对于一个角而言，△很像是并联，Y形下这个角的电阻相当于两个电阻的并联，应该是小的，因此分母要多一点</li>
+</ul>
+<h3 id="元件省略">元件省略</h3>
+<ul>
+<li>电压源和电流源/电阻并联→电压源</li>
+<li>电流源与电压源/电阻串联→电流源</li>
+</ul>
+<h3 id="戴维南定理">戴维南定理</h3>
+<p>戴维南等效电路</p>
+<ul>
+<li>求开路电压</li>
+<li>求等效电阻 <br />
+输入电阻\(\Rightarrow\)等效电阻
+<ul>
+<li>
+<p>输入电阻</p>
+<ul>
+<li>置零</li>
+<li>电压源→短路</li>
+<li>电流源→断路</li>
+<li>方法 <br /></li>
+</ul>
+<p>哪种方法能表示出的变量越多用哪个</p>
+<ul>
+<li>加压求流</li>
+<li>加流求压</li>
+</ul>
+</li>
+<li>
+<p>短路电流\(\Rightarrow\) 等效电阻</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="诺顿定理">诺顿定理</h3>
+<ul>
+<li>求短路电流</li>
+<li>求等效电阻 <br />
+输入电阻⇒ 等效电阻
+<ul>
+<li>
+<p>输入电阻</p>
+<ul>
+<li>置零</li>
+<li>电压源→短路</li>
+<li>电流源→断路</li>
+<li>方法 <br /></li>
+</ul>
+<p>哪种方法能表示出的变量越多用哪个</p>
+<ul>
+<li>加压求流</li>
+<li>加流求压</li>
+</ul>
+</li>
+<li>
+<p>开路电压\(\Rightarrow\)等效电阻</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="密勒定理">密勒定理</h3>
+<p>设有一个具有n个节点的线性电路，其中节点0为参考点。而节点1和节点2之间有一阻抗Z相接：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-26_10-50-43_203fb80e7bec54e736d17b6caa718c504fc2d5623c22.png"/>
+</figure>
+
+<p>若节点电位\(\dot U_2\)与\(\dot U_1\)的比值为常数\(\dot K\)，即\(\frac{\dot U_2}{\dot U_1}=\dot K\)，则可以把节点1和节点2间的\(Z\)等效为分别在节点1与参考节点0之间接一个阻抗\(Z_1\)和在节点2与参考节点0之间接另一个阻抗\(Z_2\)：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-26_10-58-34_faf2b2119313b07eca805f7a1f9e862397dda1442622.jpeg"/>
+</figure>
+
+<p>并且有：
+\[\begin{cases}
+Z_1&amp;=\frac{Z}{1-\dot K} \\
+Z_2&amp;=Z\cdot \frac{\dot K}{\dot K-1}=\frac{Z}{1-\frac{1}{\dot K}}
+\end{cases}\]</p>
+<h2 id="等效电阻">等效电阻</h2>
+<h3 id="输入电阻">输入电阻</h3>
+<p>如果输入信号为电压源，那么输入电阻越大越好；如果是电流源，输入电阻越小越好，输出信号恰好相反。</p>
+<ul>
+<li>置零
+<ul>
+<li>电压源→短路</li>
+<li>电流源→断路</li>
+</ul>
+</li>
+<li>方法 <br />
+哪种方法能表示出的变量越多用哪个。
+<ul>
+<li>加压求流</li>
+<li>加流求压</li>
+</ul>
+</li>
+</ul>
+<h3 id="输出电阻">输出电阻</h3>
+<h2 id="基尔霍夫定律">基尔霍夫定律</h2>
+<ul>
+<li>假定方向
+<ul>
+<li>相同
+<ul>
+<li>电流\(\Leftrightarrow\)电压 <br />
+在电阻上可通过欧姆定律互相推导
+<ul>
+<li>电流方向由高电位到低电位</li>
+<li>与实际方向（题目标注）相同</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="基尔霍夫电压定律">基尔霍夫电压定律</h3>
+<h3 id="基尔霍夫电流定律">基尔霍夫电流定律</h3>
+<h2 id="电路求解">电路求解</h2>
+<h3 id="支路电流法">支路电流法</h3>
+<ol>
+<li>选择（结点数-1）个结点列 KCL 。</li>
+<li>选择（支路数-（结点数-1））个支路列 KVL 。</li>
+<li>联立求解。</li>
+</ol>
+<h3 id="结点电压法">结点电压法</h3>
+<ol>
+<li>标注 <br />
+选择相关结点的电位假定为0，其他结点从1开始标注</li>
+<li>等效变换 <br />
+和电流源串联的电阻不要写入方程。
+<ul>
+<li>省略
+<ul>
+<li>电压源和电流源/电阻并联→电压源</li>
+<li>电流源与电压源/电阻串联→电流源</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>求电导\(G\) <br />
+<ul>
+<li>自电导\(G_{aa}\) <br />
+与结点连接电阻的倒数和</li>
+<li>互电导\(G_{ab}=G_{ba}\) <br />
+两个结点之间支路（注意不能含结点）所有电阻的倒数和再取负</li>
+</ul>
+</li>
+<li>求源流入结点电流\(i_{sn}\)
+流出为负。
+<ul>
+<li>电压源：\(i=\frac{u}{R}\) <br />
+\(R\)：与电压源串联的电阻</li>
+<li>电流源：\(i\)</li>
+</ul>
+</li>
+<li>列方程求解 <br />
+\[\left\{\begin{array}{l}
+G_{11} u_{\mathrm{n} 1}+G_{12} u_{\mathrm{n} 2}+\ldots+G_{1 \mathrm{n}} u_{\mathrm{nn}}=i_{\mathrm{Sn} 1} \\
+G_{21} u_{\mathrm{n} 1}+G_{22} u_{\mathrm{n} 2}+\ldots+G_{2 \mathrm{n}} u_{\mathrm{nn}}=i_{\mathrm{Sn} 2} \\
+\vdots \\
+G_{\mathrm{n} 1} u_{\mathrm{n} 1}+G_{\mathrm{n} 2} u_{\mathrm{n} 2}+\ldots+G_{\mathrm{nn}} u_{\mathrm{nn}}=i_{\mathrm{Snn}}
+\end{array}\right.\]
+每一行对应一个结点。</li>
+</ol>
+<h3 id="回路电流法">回路电流法</h3>
+<ol>
+<li>标注 <br />
+选择（支路数-（结点数-1））个回路指定绕行方向并从1开始标注。</li>
+<li>求电阻\(R\) <br />
+<ul>
+<li>自电阻\(R_{aa}\)：回路电阻之和</li>
+<li>互电阻\(R_{ab}=R_{ba}\) <br />
+两个回路共有的电阻之和，如果两个回路对流过电阻的假定电流方向相反要取负（对于网孔电流总是取负）</li>
+</ul>
+</li>
+<li>求源对回路产生的电压\(u_{sn}\) <br />
+与假定方向相反取负。
+<ul>
+<li>电压源：\(u\)</li>
+<li>电流源：有电流源的回路电流已知，无需列出方程。 <br />
+\[u=iR\]
+<ul>
+<li>\(R\)：与电流源并联的电阻</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>列方程求解 <br />
+\[\left\{\begin{array}{l}
+R_{11} i_{l 1}+R_{12} i_{11}+\ldots+R_{1 l} i_{l}=u_{\mathrm{S} l 1} \\
+R_{21} i_{l 1}+R_{22} i_{l 1}+\ldots+R_{2 l} i_{l l}=u_{\mathrm{S} l 2} \\
+\vdots \\
+R_{l l} i_{l 1}+R_{l 2} i_{l 1}+\ldots+R_{l l} i_{l l}=u_{\mathrm{Sll}}
+\end{array}\right.\]
+求出的电流是回路电流，要求支路电流要把所有相关回路电流带方向相加。
+<ul>
+<li>\(u_{sn}\) <br />
+回路上产生的电压升（在电压源上体现为-到+）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="网孔电流法">网孔电流法</h3>
+<h2 id="叠加定理">叠加定理</h2>
+<ol>
+<li>待求部分内
+<ul>
+<li>置零
+<ul>
+<li>电压源→短路</li>
+<li>电流源→断路</li>
+</ul>
+</li>
+<li>求解待求参数</li>
+</ul>
+</li>
+<li>待求部分外
+<ul>
+<li>置零
+<ul>
+<li>电压源→短路</li>
+<li>电流源→断路</li>
+</ul>
+</li>
+<li>求解待求参数</li>
+</ul>
+</li>
+<li>待求参数=置零待求部分内求出的参数+置零待求部分外得出的参数。</li>
+</ol>
+<h2 id="功率">功率</h2>
+<h3 id="有功功率">有功功率</h3>
+<p>\[P=UI\cos\varphi\]
+有功功率（单位\(W\)）\(\Rightarrow\)平均功率，只要在纯电阻上找，相当于把U、I画在坐标系里向量的点乘，因此纯电容和纯电感的有功功率不管U、I多大，因为它们垂直，所以都是0。</p>
+<h3 id="无功功率">无功功率</h3>
+<p>\[Q=UI\sin\varphi\]
+无功功率（单位\(\operatorname{var}\)）只要在纯电感、纯电容上找，</p>
+<h3 id="功率因数">功率因数</h3>
+<ul>
+<li>\(\cos\varphi\)
+<ul>
+<li>\(\tan\varphi=\frac{Q_\text{总}}{P_\text{总}}\)</li>
+</ul>
+</li>
+<li>\(Z=|Z|\angle{\varphi}\)</li>
+<li>\(U=ZI\)</li>
+<li>\(I=\frac{U}{Z}\)</li>
+<li>\(\varphi\) <br />
+由元件阻抗的相位确定</li>
+</ul>
+<h3 id="复功率">复功率</h3>
+<p>\[\bar S=P+jQ\]</p>
+<h3 id="视在功率">视在功率</h3>
+<p>\[S_N=\sqrt{P^2+Q^2}\]
+视在功率（单位\(\operatorname{VA}\)）</p>
+<h3 id="最大功率">最大功率</h3>
+<p>\[P_{\max}=\frac{u_\mathrm{oc}}{4R_\mathrm{eq}}\]
+将可变电阻之外的部分作戴维南/诺顿等效，当可变电阻阻值等于等效内阻时达到最大功率。</p>
+<h2 id="欧姆定律">欧姆定律</h2>
+<h2 id="时间常数">时间常数</h2>
+<h2 id="动态电路">动态电路</h2>
+<ul>
+<li>看图写正弦交流变量表达式
+<ul>
+<li>\(u=U_m\sin(\omega t+\varphi)\)</li>
+<li>\(T=\frac{2\pi}{\omega}=\frac{1}{f}\)
+<ul>
+<li>\(\omega\)：角频率</li>
+<li>\(\varphi\)：初相</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>交流量的运算 <br />
+<ul>
+<li>加减 <br />
+\[i=I_m\sin(\omega t+\varphi)\Rightarrow i=\frac{I_m}{\sqrt2}(\cos\varphi+j\cdot\sin\varphi) \\
+\Rightarrow i=a+bj\xrightarrow{运算后} i=\sqrt2\sqrt{a^2+b^2}\sin(\omega t+\arctan\frac{b}{a})\]
+<ul>
+<li>\(\omega\) <br />
+相同的情况下才能进行加减乘除，这个值往往可以从题干直接获取。</li>
+<li>\(\arctan\frac{b}{a}\) <br />
+画图来确定。</li>
+</ul>
+</li>
+<li>乘除 <br />
+变换→计算→变回来
+<ul>
+<li>变换
+<ul>
+<li>\(u=U_m\sin(\omega t+\varphi)\Leftrightarrow u=\frac{U_m}{\sqrt2}\angle{\varphi},\varphi\in[-180^{\circ},180^{\circ}]\)</li>
+<li>\(i=I_m\sin(\omega t+\varphi)\Leftrightarrow i=\frac{I_m}{\sqrt2}\angle{\varphi},\varphi\in[-180^{\circ},180^{\circ}]\)</li>
+<li>\(Z=a+bj\Rightarrow Z=\sqrt{a^2+b^2}\angle{\arctan\frac{b}{a}}\)</li>
+</ul>
+</li>
+<li>计算
+<ul>
+<li>\(\frac{x\angle{\varphi_1}}{y\angle{\varphi_2}}=\frac{x}{y}\angle{\varphi_1-\varphi_2}\)</li>
+<li>\(x\angle{\varphi_1}\cdot y\angle{\varphi_2}=xy\angle{\varphi_1+\varphi_2}\) <br /></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="阻抗">阻抗</h3>
+<p>把元件全部转换为Z，Z的并联串联关系和电阻一样。
+\[Z=\begin{cases}
+R&amp;,\text{电阻}\\
+jX_L&amp;,\text{电感}\\
+-jX_C\quad&amp;,\text{电容}
+\end{cases}\]</p>
+<ul>
+<li>\(X_L=\omega L\)</li>
+<li>\(X_C=\frac{1}{\omega C}\) <br />
+单位是F</li>
+</ul>
+<h3 id="导纳">导纳</h3>
+<p>\[Y=\frac{1}{Z}\]</p>
+<h3 id="相量图">相量图</h3>
+<p>就是画在极坐标下的射线：
+\[\rho\angle{\theta}\]</p>
+<ul>
+<li>概念
+<ul>
+<li>同相：朝向相同
+<ul>
+<li>电流流过电阻</li>
+</ul>
+</li>
+<li>反相：朝向相反</li>
+<li>超前：在另一个变量的逆时针方向
+<ul>
+<li>电流流过电感 <br />
+u比i超前90°，在一条电路上i肯定是不变的，只有u有可能超前或滞后</li>
+</ul>
+</li>
+<li>滞后：在另一个变量的顺时针方向
+<ul>
+<li>电流流过电容 <br />
+u比i滞后90°</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>规律
+<ul>
+<li>满足矢量加减法 <br />
+电路图中看出的分压关系，在相量图中表示为矢量的加减关系
+<ul>
+<li>\(\dot U=\dot U_1+\dot U_2\)
+<ul>
+<li>\(U=|\dot U|\)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="三要素法">三要素法</h3>
+<p>用于动态电路求解。</p>
+<ul>
+<li>\(u_C(t)=u_C(\infty)+\left[u_C(0_+)-u_C(\infty)\right]e^{-\frac{t-t_0}{\tau}}\) <br />
+可以求出任意时刻的电压
+<ul>
+<li>\(\tau=RC\)</li>
+<li>\(i_C=C\frac{\mathrm du_C}{\mathrm dt}\)</li>
+</ul>
+</li>
+<li>\(i_L(t)=i_L(\infty)+\left[i_L(0_+)-i_L(\infty)\right]e^{-\frac{t-t_0}{\tau}}\)
+<ul>
+<li>\(\tau=\frac{L}{R}\)</li>
+<li>\(u_L=L\frac{\mathrm di_L}{\mathrm dt}\)</li>
+</ul>
+</li>
+</ul>
+<p>上式的\(t_0,R\)为：</p>
+<ul>
+<li>\(t_0\) <br />
+开始时间（其实就是图像在水平方向的移动，左加右减）</li>
+<li>\(R\) <br />
+变化后电路中，求去掉所求电容/电感后，其两端的输入电阻
+<ul>
+<li>输入电阻</li>
+<li>置零
+<ul>
+<li>电压源→短路</li>
+<li>电流源→断路</li>
+</ul>
+</li>
+<li>方法 <br />
+哪种方法能表示出的变量越多用哪个
+<ul>
+<li>加压求流</li>
+<li>加流求压</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" data-title="电路基础" data-hashtags="电子"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" data-hashtag="电子"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" data-title="电路基础"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" data-title="电路基础"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" data-title="电路基础"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E7%94%B5%E5%AD%90/">电子</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/notes/%E7%AE%97%E6%B3%95/" class="prev" rel="prev" title="算法"><i class="fas fa-angle-left fa-fw"></i>算法</a>
+            <a href="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" class="next" rel="next" title="滤波算法">滤波算法<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>

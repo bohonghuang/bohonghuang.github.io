@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">复变函数与积分变换 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="复变函数与积分变换" />
+<meta property="og:description" content="复数 常识： 两个复数（不全为实数）不能比较大小。 表示 \(r=\sqrt{x^2&#43;y^2},\theta=\text{arg}(z),x=r\c" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-03T18:23:40+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="复变函数与积分变换"/>
+<meta name="twitter:description" content="复数 常识： 两个复数（不全为实数）不能比较大小。 表示 \(r=\sqrt{x^2&#43;y^2},\theta=\text{arg}(z),x=r\c"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86/" /><link rel="next" href="https://bohonghuang.github.io/posts/notes/vhdl/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "复变函数与积分变换",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "数学","wordcount":  9984 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T18:23:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">复变函数与积分变换</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 9984 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 20 分钟&nbsp;<span id="/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/" class="leancloud_visitors" data-flag-title="复变函数与积分变换">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#复数">复数</a>
+      <ul>
+        <li><a href="#辐角">辐角</a>
+          <ul>
+            <li><a href="#辐角主值">辐角主值</a></li>
+          </ul>
+        </li>
+        <li><a href="#方程">方程</a></li>
+      </ul>
+    </li>
+    <li><a href="#复变函数">复变函数</a>
+      <ul>
+        <li><a href="#初等函数">初等函数</a>
+          <ul>
+            <li><a href="#指数函数">指数函数</a></li>
+            <li><a href="#对数函数">对数函数</a></li>
+            <li><a href="#幂函数">幂函数</a></li>
+            <li><a href="#三角函数">三角函数</a></li>
+          </ul>
+        </li>
+        <li><a href="#导数">导数</a>
+          <ul>
+            <li><a href="#柯西-黎曼方程">柯西-黎曼方程</a></li>
+          </ul>
+        </li>
+        <li><a href="#解析">解析</a>
+          <ul>
+            <li><a href="#奇点">奇点</a></li>
+            <li><a href="#零点">零点</a></li>
+            <li><a href="#调和函数">调和函数</a></li>
+          </ul>
+        </li>
+        <li><a href="#极限">极限</a>
+          <ul>
+            <li><a href="#数列的极限">数列的极限</a></li>
+            <li><a href="#收敛">收敛</a></li>
+          </ul>
+        </li>
+        <li><a href="#级数">级数</a>
+          <ul>
+            <li><a href="#调和级数">调和级数</a></li>
+            <li><a href="#泰勒级数">泰勒级数</a></li>
+            <li><a href="#洛朗级数">洛朗级数</a></li>
+            <li><a href="#留数">留数</a></li>
+            <li><a href="#傅里叶级数">傅里叶级数</a></li>
+          </ul>
+        </li>
+        <li><a href="#积分">积分</a>
+          <ul>
+            <li><a href="#柯西-古萨基本定理">柯西-古萨基本定理</a></li>
+            <li><a href="#柯西积分公式">柯西积分公式</a></li>
+            <li><a href="#积分变换">积分变换</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="复数">复数</h2>
+<ul>
+<li>
+<p>常识：</p>
+<ol>
+<li>两个复数（不全为实数）不能比较大小。</li>
+</ol>
+</li>
+<li>
+<p>表示 <br /></p>
+<p>\(r=\sqrt{x^2+y^2},\theta=\text{arg}(z),x=r\cos\theta,y=r\sin\theta\)：</p>
+<ul>
+<li>代数表示：\(z=x+yi\) <span class="org-target" id="org-target--------"></span>
+<ul>
+<li>实部\(\text{Re}(z)=x\)</li>
+<li>虚部\(\text{Im}(z)=y\)</li>
+</ul>
+</li>
+<li>三角表示：\(z=r(\cos\theta+i\sin\theta)\) <span class="org-target" id="org-target--------"></span></li>
+<li>指数表示：\(z=re^{i\theta}\) <span class="org-target" id="org-target--------"></span></li>
+</ul>
+<p>其中三角表示和指数表示通过欧拉公式进行变换。 <span class="org-target" id="org-target-----"></span>
+对于负频率：
+\[x-yi=re^{-i\theta}=r\left( \cos\theta-i\sin\theta \right)\]
+对于一个数</p>
+<ul>
+<li>乘以\(-1\)：代表在复平面上旋转\(180^\circ\)</li>
+<li>乘以\(j\)：代表在复平面上逆时针旋转\(90^\circ\)</li>
+</ul>
+</li>
+<li>
+<p>运算 <br /></p>
+<ul>
+<li>加减：复平面上向量的叠加（首尾相连） <span class="org-target" id="org-target-------"></span> <br />
+实部与实部相加，虚部与虚部相加：
+\[\left(x_{1}+i y_{1}\right) \pm\left(x_{2}+i y_{2}\right)   \quad=\left(x_{1} \pm x_{2}\right)+i\left(y_{1} \pm y_{2}\right)\]</li>
+<li>相乘：模的扩大和辐角的相加 <span class="org-target" id="org-target------"></span> <br />
+\[\left(x_{1}+i y_{1}\right)\left(x_{2}+i y_{2}\right)=\left(x_{1} x_{2}-y_{1} y_{2}\right)+i\left(x_{2} y_{1}+x_{1} y_{2}\right)\]</li>
+<li>除法：模的缩小和辐角的相减 <span class="org-target" id="org-target------"></span> <br />
+分子分母同时乘上能让分母变成平方差形式的项，即可把分母中的虚部消去：
+\[\frac{x_{1}+i y_{1}}{x_{2}+i y_{2}}=\frac{\left(x_{1}+i y_{1}\right)\left(x_{2}-i y_{2}\right)}{\left(x_{2}+i y_{2}\right)\left(x_{2}-i y_{2}\right)}=\frac{\left(x_{1}+i y_{1}\right)\left(x_{2}-i y_{2}\right)}{x_2^2+y_2^2}\]</li>
+<li>方根：复数辐角的等分 <span class="org-target" id="org-target------"></span>
+<ul>
+<li>分步解法： <br />
+\[\omega=\sqrt[n]{x+i y}=(x+i y)^{\frac{1}{n}}\]
+<ol>
+<li>化为<a href="#org-target--------" rel="">三角表示式</a>：\(x+i y=r(\cos \theta+i \sin \theta)\)</li>
+<li>设新的复数为开方结果：设 \(\omega=\rho(\cos \varphi+i \sin \varphi)=[r(\cos \theta+i \sin \theta)]^{\frac{1}{n}}\)</li>
+<li>与原来复数的对应关系：\(\begin{cases} \rho&amp;=r^{\frac{1}{n}} \\ \varphi&amp;=\frac{\theta+2 k \pi}{n},\quad k=0,1, \ldots, n-1\end{cases} \)</li>
+</ol>
+</li>
+<li>套公式：
+\[\sqrt[n]{z}=|z|^{\frac{1}{2}}\cdot\left(\cos\frac{\theta + 2k\pi}{n} + i\sin\frac{\theta + 2k\pi}{n}\right)\]
+其中 \(\begin{cases}k=0,1,2,\dots,n-1\\theta = \text{arg}(z)\end{cases}\)。</li>
+</ul>
+</li>
+<li>模 <span class="org-target" id="org-target-----"></span> <br />
+\[|z|=\sqrt{[\operatorname{Re}(z)]^2+[\operatorname{Im}(z)]^2}\]
+<ul>
+<li>运算规律：
+<ul>
+<li>\(|z_1\cdot z_2|=|z_1|\cdot |z_2|\)</li>
+<li>\(\left|\frac{z_1}{z_2}\right|=\frac{|z_1|}{|z_2|}\)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>共轭复数 <span class="org-target" id="org-target-----"></span> <br />
+实部不变，虚部相反：\(z=x+i y, \bar{z}=x-i y\)</p>
+</li>
+</ul>
+<h3 id="辐角">辐角</h3>
+<p>\(\text{Arg}(z)=\text{arg}(z)+2k\pi,k=0,\pm 1, \pm 2, \dots\)</p>
+<ul>
+<li>运算规律（可以由<a href="#org-target--------" rel="">复数的指数表示</a>推导）：
+<ul>
+<li>\(\text{Arg}(z_1z_2)=\text{Arg}(z_1)+\text{Arg}(z_2)\)</li>
+<li>\(\text{Arg}(\frac{z_1}{z_2})=\text{Arg}(z_1)-\text{Arg}(z_2)\)</li>
+</ul>
+</li>
+</ul>
+<h4 id="辐角主值">辐角主值</h4>
+<p>辐角主值就是线段和x轴的夹角。</p>
+<ul>
+<li>求法：画出复数的坐标系，x轴代表实部，y轴代表虚部。求出<a href="#%e8%be%90%e8%a7%92%e4%b8%bb%e5%80%bc" rel="">辐角主值</a>，然后对辐角主值加减\(2k\pi\)。</li>
+<li>范围：\(\text{arg}(z)\in(-\pi,\pi]\)</li>
+</ul>
+<h3 id="方程">方程</h3>
+<ul>
+<li>直角坐标方程转换为复数形式方程
+\[\begin{cases}x=\frac{z+\bar z}{2}\\y=\frac{z-\bar z}{2i}\end{cases}\]
+代入方程后得到有关\(z,\bar z\)的方程就是答案。</li>
+<li>复数形式方程转化为直角坐标方程
+\[\begin{cases}z=x+yi\\bar z=x-yi\end{cases}\]</li>
+<li>参数方程转换为复数形式方程将\(\begin{cases}x=\dots\\y=\dots\end{cases}\)代入\(z=x+yi\)即可。</li>
+<li>复数形式方程转换为参数方程/一般形式从原方程中分离出实部与虚部，写成\(\begin{aligned}x=\text{Im}(z)\\y=\text{Re}(z)\end{aligned}\)</li>
+<li>求复数在某映射下的象把复数代入映射方程。
+<ul>
+<li>已知范围的情况
+<ol>
+<li>以<a href="#org-target--------" rel="">复数的指数表示</a>设未知数，并代入映射方程</li>
+<li>用\(\theta\)表示\(\text{arg}(w)\)</li>
+<li>\(\text{arg}(w)=\frac{\text{arg}(w)}{\theta}\cdot \text{arg}(z)\)，等号右边的范围是已知的。</li>
+</ol>
+</li>
+<li>用x、y表示的方程
+<ol>
+<li>求出映射方程的反函数（由w用z来表示，改成z用w来表示），并将\(z=x+yi\)、\(w=u+vi\)代入。</li>
+<li>将x和y都用\(u,v\)来表示，并代入原方程。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="复变函数">复变函数</h2>
+<h3 id="初等函数">初等函数</h3>
+<p>复变函数在实数域内是和实数函数是一致的，可以用这个来辅助记忆或检验。</p>
+<h4 id="指数函数">指数函数</h4>
+<p>\[\operatorname{exp}z=e^z=e^x(\cos y+i\sin y)\]
+并且\(\operatorname{exp}z\)以\(2k\pi i\)为周期，当虚部\(y\)为\(0\)时，\(z=x\)，即\(\operatorname{exp}z=e^z\)，永远达不到周期\(2k\pi i\)，也就可以看作周期不存在。那么如何证明周期存在呢？
+\[e^{z+2k\pi i}=e^z\cdot (1\cdot e^{2k\pi i})=e^z\]
+由于\(e^{2k\pi i}\)可以看作是模为\(1\)，与\(x\)轴夹角为0的复数，也就是\(1\)，因此可以证明周期存在。</p>
+<ul>
+<li>计算 <br />
+通过\(z=x+yi\)，可以把\(e^z\)化成\(e^x(\cos y+i\sin y)\)，计算加化简即可。</li>
+</ul>
+<h4 id="对数函数">对数函数</h4>
+<p>\[e^\omega=z\Rightarrow \omega=\operatorname{Ln}z\]
+其中：
+\[\begin{aligned}
+\operatorname{Ln}z&amp;=\ln\left|z\right|+i\operatorname{Arg}z\\
+\ln z&amp;=\ln\left|z\right|+i\operatorname{arg}z
+\end{aligned}\]</p>
+<h4 id="幂函数">幂函数</h4>
+<p>\[a^b=e^{\operatorname{Ln}a^b}=e^{b\operatorname{Ln}a}\]</p>
+<h4 id="三角函数">三角函数</h4>
+<p>根据<a href="#org-target-----" rel="">欧拉公式</a>：
+\[\begin{cases}\cos z+i\sin z = e^{iz} \\ \cos z-i\sin z = e^{-iz} \end{cases}\]
+即可凑出三角函数：</p>
+<ul>
+<li>正弦函数 <span class="org-target" id="org-target-----"></span> ：\(\sin z = \frac{e^{iz}-e^{-iz}}{2i}\)</li>
+<li>余弦函数 <span class="org-target" id="org-target-----"></span> ：\(\cos z=\frac{e^{iz}+e^{-iz}}{2}\)</li>
+<li>双曲正弦函数\(\operatorname{sh}y\) <span class="org-target" id="org-target-------"></span> ：\(\sin iy=\frac{e^{-y}-e^{y}}{2i}=i\operatorname{sh}y\)</li>
+<li>双曲余弦函数\(\operatorname{ch}y\) <span class="org-target" id="org-target-------"></span> ：\(\cos iy=\frac{e^{-y}+e^{y}}{2}=\operatorname{ch}y\)</li>
+</ul>
+<p>如果把\(e^{i\omega t}\)和\(e^{-i\omega t}\)看作两个方向相反的沿着时间轴旋转的螺旋线，那么它们在复平面上的和（向量和）在虚轴上的投影就被抵消了。注意：\(\left|\sin z\right|\leq 1,\left|\cos z\right|\leq 1\)不再成立。</p>
+<div class="NOTES">
+<p>正弦0出0，余弦0出1（没有虚部），正弦是奇函数，所以 i 可以像负号一样提出来，sin变成 sh</p>
+</div>
+<h3 id="导数">导数</h3>
+<p>导数的通用定义：
+\[f^{\prime}\left(z_{0}\right)=\lim _{\Delta z \to 0} \frac{f\left(z_{0}+\Delta z\right)-f\left(z_{0}\right)}{\Delta z}\]
+\(f(z)=u+iv\)在点\(z\)处可导\(\Leftrightarrow\)\(u,v\)在该点可导且满足<a href="#%e6%9f%af%e8%a5%bf-%e9%bb%8e%e6%9b%bc%e6%96%b9%e7%a8%8b" rel="">柯西-黎曼方程</a>，
+\(f^{\prime}(z)=\frac{\partial u}{\partial x}+i \frac{\partial v}{\partial x}=\frac{\partial v}{\partial y}-i \frac{\partial u}{\partial y}\)（注意这里的两个等号均可用于求导数）</p>
+<div class="NOTES">
+<p>ux正常，uy变态</p>
+</div>
+<p>注意\(z\)实际上包含了实部与虚部，而\(x,y\)用于表达实部与虚部，所以
+\(z\)中包含了两个变量，或者说一个\(z\)就可以确定\(x,y\)的值。公式的\(u,v\)就是用\(x,y\)表示的实部和虚部。</p>
+<h4 id="柯西-黎曼方程">柯西-黎曼方程</h4>
+<p>对于\(f(z)=u+iv\)：
+\[\left\{\begin{array}{l}\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y} \\ \frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}\end{array}\right.\]
+简称C-R方程，用于求复数函数的导数。</p>
+<h3 id="解析">解析</h3>
+<p>\(f(z)=u+iv\)在区域\(D\)内解析\(\Leftrightarrow\)\(u,v\)在区域\(D\)内可导且满足<a href="#%e6%9f%af%e8%a5%bf-%e9%bb%8e%e6%9b%bc%e6%96%b9%e7%a8%8b" rel="">柯西-黎曼方程</a>\(\Leftrightarrow\)\(f(z)\)在区域\(D\)内处处可导。</p>
+<ul>
+<li>与可导和连续的关系 <br />
+解析\(\Rightarrow\)可导\(\Rightarrow\)连续（仅可单向推导），即：
+<ul>
+<li>连续\(\begin{aligned}\nRightarrow\\Leftarrow\end{aligned}\)可导\(\begin{aligned}\nRightarrow\\Leftarrow\end{aligned}\)解析</li>
+<li>不连续\(\begin{aligned}\Rightarrow\\nLeftarrow\end{aligned}\)不可导\(\begin{aligned}\Rightarrow\\nLeftarrow\end{aligned}\)不解析（逆否命题）</li>
+<li>\(z\)平面上可解析\(\Leftrightarrow\)处处可导</li>
+</ul>
+</li>
+<li>判断
+<ol>
+<li>写出\(u(x, y)\)、\(v(x, y)\)</li>
+<li>代入<a href="#%e6%9f%af%e8%a5%bf-%e9%bb%8e%e6%9b%bc%e6%96%b9%e7%a8%8b" rel="">柯西-黎曼方程</a> \(\left\{\begin{array}{l}\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y} \\ \frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}\end{array}\right. \)</li>
+<li>求出可导/解析区域（解出的\(x\)和\(y\)的约束关系）。 <br />
+可导可以是点、直线、区域，而解析必须在区域上解析。</li>
+</ol>
+</li>
+</ul>
+<h4 id="奇点">奇点</h4>
+<p>\(f(z)\)不解析的点。根据在\(f(z)\)展开式中\((z-z_0)\)负幂项有不同个数，有以下情况：</p>
+<table>
+<thead>
+<tr>
+<th>在\(z_0\)点</th>
+<th><a href="#%e6%b4%9b%e6%9c%97%e7%ba%a7%e6%95%b0" rel="">洛朗级数</a>展开式中系数非\(0\)的负幂项个数/极点级数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可去奇点</td>
+<td>\(0\)</td>
+</tr>
+<tr>
+<td>\(m\)级极点 <span class="org-target" id="org-target---"></span></td>
+<td>\(m\)</td>
+</tr>
+<tr>
+<td>本性奇点</td>
+<td>\(\infty\)</td>
+</tr>
+</tbody>
+</table>
+<p>注意：</p>
+<ul>
+<li>定义是用<a href="#%e6%b4%9b%e6%9c%97%e7%ba%a7%e6%95%b0" rel="">洛朗级数</a>定义的，但是对任何一个函数都适用</li>
+<li>如果极点级数为负，这个点就不是奇点。</li>
+</ul>
+<p>奇点的可以通过零点（连续求导/分子分母分别求）来求。</p>
+<h4 id="零点">零点</h4>
+<p>即\(f(z)=0\)的点。</p>
+<ul>
+<li>\(m\)级零点：\(\begin{cases}f^{(m)}(z_0)&amp;\neq 0 \\ f^{(n)}(z_0)&amp;=0,0\leq\forall n&lt;m\end{cases}\) <br />
+当\(m=1\)时，即一级零点就可以当作普通的函数零点。确定是几级零点的时候，就对\(f(z)\)进行连续求导，直到导数不为\(0\)为止，求导次数（包括导数不为\(0\)的那次）就是零点的级数。
+<ul>
+<li>
+<p>零点和极点的关系：个数互为相反数</p>
+<ul>
+<li>\(z_0\)是\(f(z)\)的\(m\)级零点\(\Leftrightarrow\)\(z_0\)是\(\frac{1}{f(z)}\)的\(m\)级极点</li>
+<li>\(z_0\)是\(f(z)\)的\(m\)级零点，并且是\(g(z)\)的\(n\)级零点\(\Rightarrow\)\(z_0\)是\(\frac{g(z)}{f(z)}\)的\(n-m\)级零点\(\Rightarrow\)\(z_0\)是\(\frac{g(z)}{f(z)}\)的\(m-n\)级极点</li>
+</ul>
+<p>也就是说，零点和极点呈倒数关系，负级的极点就是正级的零点，正级的极点就是负级的零点。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="调和函数">调和函数</h4>
+<p>函数\(\varphi(x, y)\)在区域\(D\)上满足\(\frac{\partial^{2} \varphi}{\partial x^{2}}+\frac{\partial^{2} \varphi}{\partial y^{2}}=0\)，则\(\varphi(x,y)\)为区域\(D\)的调和函数。</p>
+<!--list-separator-->
+<ul>
+<li>
+<p>共轭调和函数</p>
+<p>任意<a href="#%e8%a7%a3%e6%9e%90" rel="">解析函数</a>\(f(z)=u+i v\)，均满足\(\left\{\begin{array}{l}\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}=0 \\ \frac{\partial^{2} v}{\partial x^{2}}+\frac{\partial^{2} v}{\partial y^{2}}=0\end{array}\right.\)。也就是从一个解析函数中可以得到两个调和函数，并且虚部\(v\)称为实部\(u\)的共轭调和函数（顺序不可颠倒）。</p>
+<ul>
+<li>通过两个共轭调和函数求出对应的解析函数：假设题目中\(u\)是已知的：
+<ol>
+<li>由 \(\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}\) 求出 \(v=\int\frac{\partial u}{\partial x}\mathrm dy=v+C(x)\) <br />
+由于要求的解析函数肯定满足<a href="#%e6%9f%af%e8%a5%bf-%e9%bb%8e%e6%9b%bc%e6%96%b9%e7%a8%8b" rel="">柯西-黎曼方程</a>，因此可以通过联立<a href="#%e6%9f%af%e8%a5%bf-%e9%bb%8e%e6%9b%bc%e6%96%b9%e7%a8%8b" rel="">柯西-黎曼方程</a>求解出另一个函数。注意，通过\(v(x,y)\)的偏导数求不定积分，后面应该加上另外一个变量的常函数，而不是常数。</li>
+<li>由 \(\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}\) 求出 \(C^\prime(x)\)（这里的\(v\)（包含）用的就是上一步求出来的）</li>
+<li>对\(C^\prime\)积分，求出含常数项\(C_1\)的\(C(x)\)，再求出 \(v\)，进而求出\(f(z)\)</li>
+<li>将已知的\(x,y,f(z)\)的值代入，解出\(C_1\)</li>
+<li>把 \(x=z,y=0\) 代入 \(f=u+iv\)，得到最终结果 <br />
+由于\(z=x+yi\)，直接令\(x=z,y=0\)即可得到最后只含有\(z\)的式子。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="极限">极限</h3>
+<h4 id="数列的极限">数列的极限</h4>
+<p>复数列收敛等价于实部收敛，虚部也收敛：复数列\(\left\{ \alpha_n=a_n+ib_n \right\}\)收敛\(\Leftrightarrow\) \(\lim\limits_{n\to\infty}a_n=a,\lim\limits_{n\to\infty}b_n=b\Leftrightarrow \lim\limits_{n\to\infty}\alpha_n=a+ib\)</p>
+<h4 id="收敛">收敛</h4>
+<ul>
+<li>
+<p>类型</p>
+<ul>
+<li>
+<p>绝对收敛 <span class="org-target" id="org-target-----"></span> <br />
+\(\sum\limits_{n=1}^\infty\left| a_n \right|\) 收敛，且\(\sum\limits_{n=1}^\infty a_n\)收敛。</p>
+</li>
+<li>
+<p>条件收敛 <span class="org-target" id="org-target-----"></span> <br />
+\(\sum\limits_{n=1}^\infty \left| a_n \right|\) 不收敛，但\(\sum\limits_{n=1}^\infty a_n\)收敛，则\(\sum\limits_{n=1}^\infty a_n\)条件收敛。</p>
+<div class="NOTES">
+<p>绝对值不收敛，就是非绝对收敛，就是条件收敛，由于\(\rho\)是用绝对值来判断的，因此无法判断条件收敛和发散</p>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p>判断 <br />
+对于 \(\sum\limits_{n=0}^\infty a_n\)：</p>
+<ul>
+<li>比值法判断敛散性 <br />
+\[\rho=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|\]</li>
+<li>根值法判断敛散性 <br />
+\[\rho=\lim_{n\to\infty}\sqrt[n]{\left|a_n\right|}\]</li>
+</ul>
+<p>对于以上方法求出的\(\rho\)：</p>
+<ul>
+<li>\(\rho&lt;1\)：收敛</li>
+<li>\(\rho&gt;1\)：发散/条件收敛</li>
+<li>\(R=\frac{1}{\rho}\)：收敛半径 <span class="org-target" id="org-target-----"></span>
+<ul>
+<li>\(|z|&lt;R\)：收敛域（绝对值符号代表模长） <span class="org-target" id="org-target----"></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>结论</p>
+<ul>
+<li><a href="#%e8%b0%83%e5%92%8c%e7%ba%a7%e6%95%b0" rel="">调和级数</a>\(\sum\limits_{n=1}^\infty \frac{1}{n}\)是发散的。</li>
+<li>若\(\sum\limits_{n=1}^\infty a_nz^n\)在\(z_0\)发散，则\(|z|&gt;|z_0|\)处发散</li>
+<li>若\(\sum\limits_{n=1}^\infty a_nz^n\)在\(z_0\)收敛，则\(|z|&lt;|z_0|\)处绝对收敛</li>
+</ul>
+<div class="NOTES">
+<p>\(z\)是一个变量，如等于\(2\)时相当于\(a_12^1+a_22^2+a_32^3+\dots+a_n2^n\)</p>
+</div>
+</li>
+</ul>
+<h3 id="级数">级数</h3>
+<h4 id="调和级数">调和级数</h4>
+<p>\[\sum\limits_{n=1}^\infty \frac{1}{n}\]</p>
+<h4 id="泰勒级数">泰勒级数</h4>
+<!--list-separator-->
+<ul>
+<li>
+<p>幂级数</p>
+<table>
+<thead>
+<tr>
+<th>和函数</th>
+<th>幂级数展开式/泰勒展开式</th>
+<th>收敛域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\(\frac{1}{1-z}\)</td>
+<td>\(\sum\limits_{n=0}^{\infty} z^{n}=1+z+z^{2}+\ldots \ldots+z^{n}\)</td>
+<td>\(\vert z\vert &lt;1\)</td>
+</tr>
+<tr>
+<td>\(\frac{1}{1+z}\)</td>
+<td>\(\sum\limits_{n=0}^{\infty}(-1)^{n} z^{n}=1-z+z^{2}+\ldots \ldots+(-1)^{n} z^{n}\)</td>
+<td>\(\vert z\vert &lt;1\)</td>
+</tr>
+<tr>
+<td>\(e^{z}\)</td>
+<td>\(\sum\limits_{n=0}^{\infty} \frac{1}{n !} z^{n}=1+z+\frac{z^{2}}{2 !}+\ldots \ldots+\frac{z^{n}}{n !}\)</td>
+<td>\(0&lt;\vert z\vert &lt;+\infty\)</td>
+</tr>
+<tr>
+<td>\(\sin z\)</td>
+<td>\(\sum\limits_{n=0}^{\infty}(-1)^{n} \frac{z^{2 n+1}}{(2 n+1) !}=z-\frac{z^{3}}{3 !}+\frac{z^{5}}{5 !} \ldots \ldots+(-1)^{n} \frac{z^{2 n+1}}{(2 n+1) !}\)</td>
+<td>\(0&lt;\vert z\vert &lt;+\infty\)</td>
+</tr>
+<tr>
+<td>\(\cos z\)</td>
+<td>\(\sum\limits_{n=0}^{\infty}(-1)^{n} \frac{z^{2 n}}{(2 n) !}=1-\frac{z^{2}}{2}+\ldots \ldots+(-1)^{n} \frac{z^{2 n}}{(2 n) !}\)</td>
+<td>\(0&lt;\vert z\vert &lt;+\infty\)</td>
+</tr>
+</tbody>
+</table>
+<p>注意，\(n\)都是从\(0\)开始的。收敛域的意义就是在某个条件下，展开式收敛并且等于和函数。在 \(z=a\) 处展开为幂级数，就是展开为 \((z-a)^n\) 形式。</p>
+ <div class="NOTES">
+<ul>
+<li>\(z\)的负号守恒（要么在前，要么在后）</li>
+<li>第二个式子就是把\(-z\)代入第一个式子</li>
+<li>收敛域为无穷时必须有分母牵制</li>
+<li>有\(-1\)才有奇偶数之分
+<ul>
+<li>正弦是奇函数，也是奇数\(2n+1\)</li>
+<li>余弦是偶函数，也是偶数\(2n\)</li>
+</ul>
+</li>
+</ul>
+ </div>
+</li>
+</ul>
+<h4 id="洛朗级数">洛朗级数</h4>
+<p>可以看作是泰勒级数的推广。对于泰勒级数，幂的次数都是大于或等于0的，方法同<a href="#%e5%b9%82%e7%ba%a7%e6%95%b0" rel="">幂级数</a>，下限为\(n=-\infty\)。</p>
+<h4 id="留数">留数</h4>
+<p>若\(f(z)=\sum\limits_{n=-\infty}^{+\infty}c_n(z-z_0)^n\)，则\(\operatorname{Res}\left[ f(z),z_0 \right]=c_{-1}\)，也就是\((z-z_0)\)展开式中\((z-z_0)^{-1}\)项的系数。如果展开式不含\((z-z_0)^{-1}\)，则留数为\(0\)（如\(\operatorname{Res}[\cos z, 0]=0\)）</p>
+<ul>
+<li>
+<p>性质 <br />
+\[\sum_{i=1}^n\operatorname{Res}\left[ f(z),z_i \right]=0\]
+其中\(z_i\)为所有奇点并且包括无穷点。</p>
+</li>
+<li>
+<p>规则 <br />
+很多函数没法轻松地使用洛朗级数展开，就有如下求留数的规则：</p>
+<ul>
+<li>
+<p>规则1 <br /></p>
+<p>若\(z_0\)为\(f(z)\)的一级<a href="#org-target---" rel="">极点</a>，则：
+\[\operatorname{Res}\left[ f(z),z \right]=\lim_{z\to z_0}(z-z_0)f(z)\]</p>
+<div class="NOTES">
+<p>很好理解，要求\(c_{-1}(z-z_0)^{-1}\)中的\(c_{-1}\)，只要把\(f(z)\)乘上\((z-z_0)\)，函数在\(z_0\)的值就是\(c_{-1}\)，为了防止函数里的项无意义，所以求极限。</p>
+</div>
+</li>
+<li>
+<p>规则2 <br /></p>
+<p>\(z_0\)为\(f(z)\)的\(m\)级极点，则：
+\[\operatorname{Res}[f(z),z_0]=\frac{1}{(m-1)!}\lim_{z\to z_0}\frac{\mathrm{d}^{m-1}\left[ (z-z_0)^m f(z) \right]}{\mathrm{d}z^{m-1}} \]</p>
+<div class="NOTES">
+<p>和规则1的理解方式一样，由于是\(m\)级极点，说明说\((z-z_0)^m\)前面的点都是不解析的，
+\((z-z_0)^mf(z)=\dots+c_{-m}+c_{-m+1}(z-z_0)+\dots+c_{-1}(z-z_0)^{m-1}\)，对\((z-z_0)\)求\(m-1\)阶导得到\(\dots+(m-1)!\cdot c_{-1}+\dots\)，最后除以\((m-1)!\)得到\(c_1\)。</p>
+</div>
+</li>
+<li>
+<p>规则3 <br /></p>
+<p>若\(f(z)=\frac{P(z)}{Q(z)}\)，\(z_0\)是\(f(z)\)的一级极点，则：
+\[\operatorname{Res}[f(z),z_0]=\frac{P(z)}{Q^\prime(z_0)}\]
+有些函数用奇点代入规则1或规则2出现极限不存在（往往是分母不是\((z-z_0)^n\)这种形式），可以用规则3，感觉有点像洛必达法则。</p>
+</li>
+<li>
+<p>规则4 <br /></p>
+<p>\[\operatorname{Res}[f(z),\infty]=-\operatorname{Res}\left[f\left( \frac{1}{z} \right) \cdot \frac{1}{z^2},0\right]\]</p>
+<div class="NOTES">
+<p>相当于将规则2的\(z\)用\(\frac{1}{z}\)代换，原函数乘上\(\frac{\mathrm{d}\frac{1}{z}}{\mathrm{d}z}=-\frac{1}{z^2}\)。</p>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p>求积分 <br /></p>
+<p>留数可用于求积分，对于\(z_k\)是在\(c\)内部的奇点：
+\[\oint_c f(z)\mathrm{d}z=2\pi i\sum\limits_{k=1}^n\operatorname{Res}\left[ f(z),z_k \right]\]
+对于\(z_i\)是在\(c\)外部的奇点：
+\[\oint_c f(z)\mathrm{d}z=-2\pi i\sum\limits_{k=1}^n\operatorname{Res}\left[ f(z),z_i \right]\]
+\(f(z)\)的在\(c\)上的积分，就是求\(f(z)\)在\(c\)内部所有奇点的留数之和。用留数求积分可以推导出<a href="#%e9%ab%98%e9%98%b6%e5%af%bc%e6%95%b0%e5%85%ac%e5%bc%8f" rel="">高阶导数公式</a>，因为只要\((z-z_0)^n\)在分母上，那么\(z_0\)必为\(n\)级奇点，根据规则2，即可推出<a href="#%e9%ab%98%e9%98%b6%e5%af%bc%e6%95%b0%e5%85%ac%e5%bc%8f" rel="">高阶导数公式</a>。</p>
+<div class="NOTES">
+<p>由于是奇点，所以有虚数单位\(i\)，是环路积分，所以有\(2\pi\)。</p>
+</div>
+<p>对于以下几种用实数无法求出的积分，可以用留数来求：</p>
+<ol>
+<li>
+<p>对于三角函数的积分 <br />
+\[\int_{0}^{2 \pi} R(\cos \theta, \sin \theta) d \theta, \quad d \theta=\frac{d z}{i z}\]
+令\(\left\{\begin{array}{l}\sin \theta=\frac{z-z^{-1}}{2 i} \\ \cos \theta=\frac{z+z^{-1}}{2}\end{array} \Rightarrow \oint_{|z|=1} f(z) d z\right.\) <br />
+就是把三角函数用上面的含\(z\)表达式代换，对\(\mathrm{d}\theta\)也进行代换，然后把积分号换成环路积分。变成环路积分就可以用留数来求了。</p>
+<div class="NOTES">
+<p>其实就是<a href="#%e4%b8%89%e8%a7%92%e5%87%bd%e6%95%b0" rel="">三角函数</a>的变式（\(e^{\pm iz}\rightarrow (z=e^{iz})^{\pm 1}\)），少了的\(iz\)要在\(\mathrm{d}\theta\)上补回来。</p>
+</div>
+</li>
+<li>
+<p>无穷积分（分上下限为正负无穷） <br />
+\[\int_{-\infty}^{+\infty} R(x) d x=2 \pi i \sum \operatorname{Res}\left[R(z), z_{k}\right]\]
+其中\(z_{k}\) 为\(R(z)\)在上半平面内的奇点。</p>
+</li>
+<li>
+<p>含\(e^{aix}\)的无穷积分、三角函数积分 <br />
+\[\begin{aligned}
+&amp;\int_{-\infty}^{+ \infty} R(x) e^{a i x} d x \\
+=&amp;2 \pi i \sum \operatorname{Res}\left[R(z) e^{a i z}, z_{k}\right] \\
+=&amp;\int_{-\infty}^{+ \infty} R(x) \cos a x d x+i \int_{-\infty}^{+ \infty} R(x) \sin a x d x
+\end{aligned}\]
+可以看作就是方法2的推广（\(a=0\)代入）。最后一个等号是把\(e^{aix}\)看作<a href="#org-target--------" rel="">复数的指数表示</a>，然后化为<a href="#org-target--------" rel="">复数的三角表示</a>，这两个项可以单独出现在题目中的，如果单独出现，也可以向前变换成<a href="#org-target--------" rel="">复数的指数表示</a>。</p>
+<div class="NOTES">
+<p>与留数求积分的特例：</p>
+<ul>
+<li>环路积分变成反常积分</li>
+<li>\(f(x)\)变成\(R(x)e^{aix}\)</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="傅里叶级数">傅里叶级数</h4>
+<p>\[f(t)=\dots+c_{-2}e^{-2 it}+c_{-1}e^{- it}+c_0+c_1e^{ it}+c_2e^{2 it}+\dots=\sum_{\omega=-\infty}^{+\infty}c_\omega e^{\omega it}\]
+其中\(f(t)\)是一个复函数，对于给定的\(t\)，都能得到复平面上的点，这些点可以看作是无穷个特定模长、初相、角速度的旋转向量的叠加。负常数\(c_\omega=k\cdot e^{\varphi i}\)，可以用来确定初相\(\varphi\)和模长\(k\)（<a href="#org-target--------" rel="">复数的指数表示</a>的相乘表示在复数辐角的相加）。</p>
+<h3 id="积分">积分</h3>
+<h4 id="柯西-古萨基本定理">柯西-古萨基本定理</h4>
+<p>如果\(f(z)\)在曲线\(c\)围成的区域内处处解析（没有<a href="#%e5%a5%87%e7%82%b9" rel="">奇点</a>），则：
+\[\oint_cf(z)\mathrm{d}z=0\]
+又叫柯西积分定理。</p>
+<h4 id="柯西积分公式">柯西积分公式</h4>
+<p>若\(f(z)\)在曲线\(c\)内部解析，\(z_0\)在\(c\)内部，则：
+\[f(z_0)=\frac{1}{2\pi i}\oint_c \frac{f(z)}{z-z_0}\mathrm{d}z\]
+如果<a href="#%e6%9f%af%e8%a5%bf-%e5%8f%a4%e8%90%a8%e5%9f%ba%e6%9c%ac%e5%ae%9a%e7%90%86" rel="">柯西积分定理</a>的条件不满足（分母为\(0\)导致不解析，但是对于分子解析），可以使用柯西积分公式计算，进行变换得：
+\[\oint_c \frac{f(z)}{z-z_0}\mathrm{d}z=2\pi i f(z_0)\]
+让积分号内部的式子与要积分的式子相同，即可凑出\(f(z)\)和\(z_0\)，那么等式右边就是个确定的值，即可求出积分。</p>
+<div class="NOTES">
+<p>可以得到，分母在\(z_0\)处为\(0\)，而\(f(z)\)在\(z_0\)处不为\(0\)，因此右边就用\(f(z_0)\)来算，\(\frac{f(z)}{z-z_0}\)这个“解析函数”是虚的，因此要乘上\(i\)，去心邻域是圆的，因此要乘上\(2\pi\)。</p>
+</div>
+<!--list-separator-->
+<ul>
+<li>
+<p>高阶导数公式</p>
+<p>若\(f(z)\)在曲线\(c\)内部<a href="#%e8%a7%a3%e6%9e%90" rel="">解析</a>，\(z_0\)在\(c\)内部，则：
+\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint \frac{f(z)}{(z-z_0)^{n+1}}\mathrm{d}z\]
+作变换可用于求分母为\(n\)次方的环路积分：
+\[\oint \frac{f(z)}{(z-z_0)^{n}}\mathrm{d}z=\frac{2\pi i}{(n-1)!}\cdot f^{(n-1)}(z_0)\]
+可以看作是<a href="#%e6%9f%af%e8%a5%bf%e7%a7%af%e5%88%86%e5%85%ac%e5%bc%8f" rel="">柯西积分公式</a>的推广。</p>
+ <div class="NOTES">
+<p>从<a href="#%e6%9f%af%e8%a5%bf%e7%a7%af%e5%88%86%e5%85%ac%e5%bc%8f" rel="">柯西积分公式</a>推导过来记，当\(n=0\)时，\(0! = 1\)，就是柯西积分公式。或者从留数求积分的方法来推出。</p>
+ </div>
+</li>
+</ul>
+<h4 id="积分变换">积分变换</h4>
+<!--list-separator-->
+<ul>
+<li>
+<p>小波变换</p>
+<p><a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e5%8f%98%e6%8d%a2" rel="">傅里叶变换</a>无法很好的分析不平稳的信号（频率随着时间变化的信号），即缺乏频率在时间上的信息（什么时候出现什么样的频率）：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-21-21_def600cea95fa10e3872e88dc8059d6c_b.jpg"/>
+</figure>
+
+<p>而小波变换更换了<a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e5%8f%98%e6%8d%a2" rel="">傅里叶变换</a>的无限长三角函数（\(e^{j\omega t}\)）的作为基，换成了幅值随时间衰减的小波（\(\psi\left(\frac{t-\tau}{a}\right)\)）作为基：
+\[W T(a, \tau)=\frac{1}{\sqrt{a}} \int_{-\infty}^{\infty} f(t) * \psi\left(\frac{t-\tau}{a}\right) \mathrm{d} t\]</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-35-16_c4aa4c1cc6fdc1feb47be1001fa67301_b.jpg"/>
+</figure>
+
+<p>不同于变量只有频率的<a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e5%8f%98%e6%8d%a2" rel="">傅里叶变换</a>，小波变换有两个变量：</p>
+<ul>
+<li>尺度（scale）\(a\)：控制小波函数在时间轴方向上的伸缩，对应于频率（反比）。</li>
+<li>平移量（translation）\(\tau\)：控制小波函数的平移，对应于时刻。</li>
+</ul>
+<p>因此小波变换让除突变处的小波系数为\(0\)，即可克服<a href="#%e5%90%89%e5%b8%83%e6%96%af%e7%8e%b0%e8%b1%a1" rel="">吉布斯现象</a>：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-41-01_d03e5344001f6fb2dc10be4a7bd2af92_b.jpg"/>
+</figure>
+
+<p>不同于<a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e5%8f%98%e6%8d%a2" rel="">傅里叶变换</a>得到频谱，<a href="#%e5%b0%8f%e6%b3%a2%e5%8f%98%e6%8d%a2" rel="">小波变换</a>得到时频谱。</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>傅里叶变换</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-08-13_13-45-48_Fourier_series_and_transform.gif"/>
+</figure>
+
+<p>傅里叶变换\(\mathcal{F}\)，实现时域到频域的变换：
+\[F(\omega)=\int_{-\infty}^{+ \infty} f(t) e^{-j \omega t} \mathrm{d} t=\mathcal{F}[f(t)]\]</p>
+<ul>
+<li>
+<p>\(F(\omega)\)：傅里叶级数展开式中，频率\(\omega\)的项对应的系数。</p>
+</li>
+<li>
+<p>\(f(t)e^{-j\omega t}\)：即\(\frac{f(t)}{e^{j\omega t}}\) <br />
+很好地体现出了\(F(\omega)\)作为系数意义 —— 信号变量（复平面上的图形）与三角函数（复平面上转动的点）的相关性：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-29-36_8fbc3a5f07a5ab0f0a90b65bc621ae21_b.jpg"/>
+</figure>
+
+<ul>
+<li>\(e^{j\omega t}=\left( i\sin\omega t+\cos\omega t\right)\) <br />
+表示时间为\(t\)时，复平面上的一个点。</li>
+</ul>
+</li>
+<li>
+<p>\(\int_{-\infty}^{+\infty}\)：所有的函数值，都对某个频率\(\omega\)作出贡献。</p>
+</li>
+</ul>
+<p>傅里叶变换与傅里叶级数有以下区别：</p>
+<ol>
+<li>傅立叶级数对应的是周期信号，而傅立叶变换则对应的是一个时间连续可积信号（不一定是周期信号）。</li>
+<li>傅立叶级数要求信号在一个周期内能量有限，而后者则要求在整个区间能量有限。</li>
+<li>傅立叶级数的对应\(\omega\)是离散的，而傅立叶变换则对应\(\omega\)是连续的。</li>
+</ol>
+<p>傅里叶逆变换\(\mathcal{F}^{-1}\)：
+\[f(t)=\frac{1}{2 \pi} \int_{-\infty}^{+ \infty} F(\omega) e^{j \omega t} d t=\mathcal{F}^{-1}[F(\omega)]\]
+傅立叶变换和逆变换中的变量分别是\(\omega\)和\(t\)，积分变量分别是\(t\)和\(\omega\)。复数中的虚数单位\(i\)在积分中写成\(j\)。</p>
+<ul>
+<li>
+<p>变换对 <br />
+常见的傅里叶变换对：</p>
+<ul>
+<li>指数函数
+<ul>
+<li>\(e^{-\beta t}(t \geq 0, \beta&gt;0) \stackrel{\mathcal{F}}{\longrightarrow} \frac{1}{\beta+j \omega}\)（即\(e\)的次数为实数）</li>
+<li>\(e^{-j \omega_0 t} \stackrel{\mathcal{F}}{\longrightarrow} 2 \pi \delta(\omega+\omega_0)\)（即\(e\)的次数为纯虚数）
+<ul>
+<li>\(1 \stackrel{\mathcal{F}}{\longrightarrow} 2 \pi \delta(\omega)\)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>单位脉冲函数
+<ul>
+<li>\(\delta(t+t_0) \stackrel{\mathcal{F}}{\longrightarrow} e^{-j \omega t_0}\)
+<ul>
+<li>\(\delta(t) \stackrel{\mathcal{F}}{\longrightarrow} 1\)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>\(E(|t| \leq \tau) \stackrel{\mathcal{F}}{\longrightarrow} \frac{2 E}{\omega} \sin \tau \omega\) <br />
+其中\(E\)在\(\left| t \right|\leq \tau\)时值为\(E\)，否则为\(0\)。</li>
+<li>三角函数
+<ul>
+<li>\(\sin \omega_{0} t \stackrel{\mathcal{F}}{\longrightarrow} j \pi\left[\delta\left(\omega+\omega_{0}\right)-\delta\left(\omega-\omega_{0}\right)\right]\)</li>
+<li>\(\cos \omega_{0} t \stackrel{\mathcal{F}}{\longrightarrow} \pi\left[\delta\left(\omega+\omega_{0}\right)+\delta\left(\omega-\omega_{0}\right)\right]\)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>性质 <br /></p>
+<p>由于傅立叶变换要求函数与\(e^{-j\omega t}\)相乘的积分，如果函数不干净，就不好进行积分，或者可以直接用变换对，但是函数不干净，这时可以利用性质把函数弄干净。</p>
+<ol>
+<li>平移（重点）
+<ul>
+<li>\(\mathcal{F}\left[f\left(t+t_{0}\right)\right]=e^{j \omega t_{0}} \mathcal{F}[f(t)]\) <br />
+频率为\(\omega\)分量（<a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e7%ba%a7%e6%95%b0" rel="">傅里叶级数</a>中的项）的平移体现在对应频率项的相移上。最简单的例子就是正弦函数，其平移可以直接表示成相移。</li>
+<li>\(\mathcal{F}\left[e^{j \omega_{0} t} f(t)\right]=F\left(\omega-\omega_{0}\right)\)（与\(e^{j \omega_{0} t}\)相乘） <br />
+\(e^{j\omega_0 t}\)看作是复平面上绕坐标原点旋转的复数，模长为\(1\)，可以看作就是个旋转的单位向量。乘上它后，\(f(t)\)中所有分量的频率都会增加\(\omega\)，体现为频域上的平移（左加右减）。</li>
+</ul>
+</li>
+<li>求导
+<ul>
+<li>\(\mathcal{F}\left[f^{\prime}(t)\right]=j \omega \mathcal{F}[f(t)]\) <br />
+对函数求导后，频率\(\omega\)的分量的项相移\(90^\circ\)，并且模长变为\(\omega\)倍。最简单的例子就是正弦函数：
+\[(\sin\omega t)^\prime=\omega\sin(\omega t+\frac{\pi}{2})=\omega\cos\omega t\]</li>
+<li>\(\mathcal{F}[t f(t)]=-\frac{d}{d \omega} \mathcal{F}[f(t)]=-F^{\prime}(\omega)\)（与\(t\)相乘）</li>
+</ul>
+</li>
+<li>变上限积分 <br />
+\[\mathcal{F}\left[\int_{-\infty}^{t} f(t) d t\right]=\frac{1}{j \omega} \mathcal{F}[f(t)]\] <br />
+对函数积分后，频率\(\omega\)的分量的项相移\(-90^\circ\)，并且模长变为\(\frac{1}{\omega}\)倍。最简单的例子就是正弦函数：
+\(\int\sin\omega t\mathrm{d}t=\frac{1}{\omega}\sin(t-\frac{\pi}{2})\)</li>
+<li>比例 <br />
+\[\mathcal{F}[f(a t)]=\frac{1}{|a|} F\left(\frac{\omega}{a}\right)\]
+缩放时间轴肯定会影响到频率，由于频率可以是负的（就是旋转方向逆时针和顺时针的区别），频率\(\omega\)的分量的项对应到就是变换后频率为\(\frac{\omega}{a}\)的项，并且模长缩小\(\left| a \right|\)倍。</li>
+<li>卷积 <br />
+\[\mathcal{F}[f(t) * g(t)]=\mathcal{F}[f(t)] \cdot \mathcal{F}[g(t)]\]
+其中\( * \)表示卷积。</li>
+</ol>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p>单位脉冲函数</p>
+<p>又叫\(\delta\)函数、冲激函数、狄拉克函数，定义为：
+\[\delta(t)=\begin{cases}
++\infty &amp; t=0 \\
+0 &amp; t\neq 0
+\end{cases}\]
+像一道闪电，在一瞬间，释放巨大的能量（其实也就1个单位，只是它可以和其他函数乘在一起，用于表示瞬间的值）。有以下性质：</p>
+<ol>
+<li>
+<p>负无穷到正无穷的积分为\(1\) <br />
+\[\int_{-\infty}^{+\infty} \delta(t) d t=1\]</p>
+</li>
+<li>
+<p>任何一个函数在\(t\)乘上\(\delta(t-t_0)\)等于在\(t_0\)处乘上\(\delta(t-t_0)\) <br />
+\[f(t) \delta\left(t-t_{0}\right)=f\left(t_{0}\right) \delta\left(t-t_{0}\right)\]</p>
+<div class="NOTES">
+<p>根据定义，除非\(t=t_0\)否则等式两边永远是\(0\)。</p>
+</div>
+</li>
+<li>
+<p>任何一个函数乘上\(\delta(t-t_0)\)从负无穷到正无穷的积分，等于这个函数在\(t_0\)处的值 <br />
+\[\int_{-\infty}^{+\infty} f(t) \delta\left(t-t_{0}\right) d t=f\left(t_{0}\right)\]
+可以看作是性质1的推广。</p>
+</li>
+</ol>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p>单位阶跃函数</p>
+<p>\[u(t)=\begin{cases}1, &amp;t&gt;0 \\0, &amp;t\leq 0\end{cases}\]</p>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p>吉布斯现象</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-19-01_v2-7cd6d24f553079a8aaebf5b4b8b56ac4_720w.jpg.png"/>
+</figure>
+
+<p>吉布斯现象（又叫吉布斯效应），将具有不连续点的周期函数（如矩形脉冲）进行傅立叶级数展开后，选取有限项进行合成。当选取的项数越多，在所合成的波形中出现的峰起越靠近原信号的不连续点。当选取的项数很大时，该峰起值趋于一个常数，大约等于总跳变值的9%。</p>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p>短时傅里叶变换</p>
+<p>简称 SFT 。把整个时域过程分解成无数个等长的小过程，每个小过程近似平稳，再傅里叶变换，就知道在哪个时间点上出现了什么频率，一定程度上解决了<a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e5%8f%98%e6%8d%a2" rel="">傅里叶变换</a>分析不平稳信号的问题：</p>
+<ul>
+<li>窗口太窄：窗内的信号太短，会导致频率分析不够精准，频率分辨率差。</li>
+<li>窗口太宽：时域上又不够精细，时间分辨率低。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>拉普拉斯变换</p>
+<p>将傅里叶变换中的\(f(t)\)乘上一个\(e^{-\sigma t}\)：
+\[\mathcal{F}[f(t)e^{-\sigma}]=\int_{-\infty}^{+ \infty} f(t) e^{-(\sigma+j \omega) t} \mathrm{d} t\]
+新的函数\(f(t)e^{-\sigma}\)将容易收敛：
+\[\lim_{t\to\infty}f(t)e^{-\sigma t}=0(\sigma&gt;\sigma_0)\]
+更容易满足对于傅里叶变换要求的绝对可积性，定义\(s=\sigma+j\omega\)，得到拉普拉斯变换：
+\[F(s)=\mathcal{L}[f(t)]=\int_{0}^{+\infty} f(t) e^{-s t} d t\]</p>
+<ul>
+<li>\(\sigma\)：变换核函数</li>
+</ul>
+<p>与傅里叶变换的的区别与联系：</p>
+<ul>
+<li>拉普拉斯变换，将原函数从时间维度，映射为复平面\(s=\sigma+j\omega\)。</li>
+<li>傅立叶变换是拉普拉斯变换的特例，也即变换核函数\(\sigma=0\)时，拉普拉斯变换就变成傅立叶变换了。相当于只取虚部，实部为0。</li>
+<li>傅立叶变换是从原维度变换为频率维度，对于信号处理而言相当于将时域信号变换为频域进行分析，为信号处理提供了强大的数学理论基础及工具。</li>
+<li>拉普拉斯变换，将原维度变换为复频域，在电子电路分析以及控制理论中，为建立系统的数学描述提供了强大的数学理论基础，</li>
+</ul>
+<p>拉普拉斯逆变换：
+\[f(t)=\mathcal{L}^{-1}[F(s)]\]</p>
+<ul>
+<li>变换对 <br />
+常见拉普拉斯变换对：
+<ul>
+<li>\(u(t)\xrightarrow{\mathcal{L}}\frac{1}{s}\)</li>
+<li>\(\delta(t)\xrightarrow{\mathcal{L}}1\)</li>
+<li>\(e^{a t} \stackrel{\mathcal{L}}{\longrightarrow} \frac{1}{s-a}\)</li>
+<li>\(t^{n},(n&gt;-1) \stackrel{\mathcal{L}}{\longrightarrow} \frac{n !}{s^{n+1}}\)</li>
+<li>\(1\stackrel{\mathcal{L}}{\longrightarrow} \frac{1}{s}\) （上面两个的特例）</li>
+<li>\(\sin a t \stackrel{\mathcal{L}}{\longrightarrow} \frac{a}{s^{2}+a^{2}}\)</li>
+<li>\(\cos a t \stackrel{\mathcal{L}}{\longrightarrow} \frac{s}{s^{2}+a^{2}}\)</li>
+</ul>
+</li>
+<li>性质
+<ol>
+<li>平移（重点）
+<ul>
+<li>\(\mathcal{L}[f(t+a)]=e^{a s} F(s)\)</li>
+<li>\(\mathcal{L}\left[e^{a t} f(t)\right]=F(s-a)\)（与\(e^{at}\)相乘）</li>
+</ul>
+</li>
+<li>求导（重点）
+<ul>
+<li>\(\mathcal{L}\left[f^{\prime}(t)\right]=s F(s)-f(0)\) （一阶导）</li>
+<li>\(\mathcal{L}\left[f^{\prime \prime}(t)\right]=s^{2} F(s)-s f(0)-f^{\prime}(0)\)（二阶导） <br />
+可以直接从一阶导推出。</li>
+</ul>
+</li>
+<li>积分
+<ul>
+<li>\(\mathcal{L}\left[\int_{0}^{t} f(t) d t\right]=\frac{1}{s} F(s)\)</li>
+<li>\(\mathcal{L}\left[\frac{1}{t} f(t)\right]=\int_{s}^{+\infty} F(s) d s\)（相除）</li>
+</ul>
+</li>
+<li>相乘 <br />
+\[\mathcal{L}[t f(t)]=-F^{\prime}(s)\]</li>
+<li>卷积 <br />
+\[\mathcal{L}[f(t) * g(t)]=\mathcal{L}[f(t)] \cdot \mathcal{L}[g(t)]\]</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/" data-title="复变函数与积分变换" data-hashtags="数学"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/" data-hashtag="数学"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/" data-title="复变函数与积分变换"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/" data-title="复变函数与积分变换"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/" data-title="复变函数与积分变换"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/notes/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86/" class="prev" rel="prev" title="大学物理"><i class="fas fa-angle-left fa-fw"></i>大学物理</a>
+            <a href="https://bohonghuang.github.io/posts/notes/vhdl/" class="next" rel="next" title="VHDL">VHDL<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>

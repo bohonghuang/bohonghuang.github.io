@@ -1,0 +1,2538 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">数字电路与逻辑设计 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="数字电路与逻辑设计" />
+<meta property="og:description" content="数字逻辑 机器码 原码 使用最高位来表示正负，剩下的位用于表示绝对值。 反码 使用最高位来表示正负，但在表示负数时，其余位在原码的基础上取反。 补码 使用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-03T18:43:13+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数字电路与逻辑设计"/>
+<meta name="twitter:description" content="数字逻辑 机器码 原码 使用最高位来表示正负，剩下的位用于表示绝对值。 反码 使用最高位来表示正负，但在表示负数时，其余位在原码的基础上取反。 补码 使用"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/bash/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "数字电路与逻辑设计",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "数字电路","wordcount":  13500 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1\/","datePublished": "2022-03-03T00:00:00+00:00","dateModified": "2022-03-03T18:43:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">数字电路与逻辑设计</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 13500 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 27 分钟&nbsp;<span id="/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" class="leancloud_visitors" data-flag-title="数字电路与逻辑设计">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#数字逻辑">数字逻辑</a>
+      <ul>
+        <li><a href="#机器码">机器码</a>
+          <ul>
+            <li><a href="#原码">原码</a></li>
+            <li><a href="#反码">反码</a></li>
+            <li><a href="#补码">补码</a></li>
+          </ul>
+        </li>
+        <li><a href="#真值表">真值表</a></li>
+        <li><a href="#逻辑运算">逻辑运算</a>
+          <ul>
+            <li><a href="#与">与</a></li>
+            <li><a href="#或">或</a></li>
+            <li><a href="#非">非</a></li>
+            <li><a href="#同或">同或</a></li>
+            <li><a href="#异或">异或</a></li>
+          </ul>
+        </li>
+        <li><a href="#逻辑表达式">逻辑表达式</a>
+          <ul>
+            <li><a href="#与或式">与或式</a></li>
+            <li><a href="#或与式">或与式</a></li>
+            <li><a href="#与非-与非式">与非-与非式</a></li>
+            <li><a href="#或非-或非式">或非-或非式</a></li>
+          </ul>
+        </li>
+        <li><a href="#逻辑函数">逻辑函数</a>
+          <ul>
+            <li><a href="#逻辑函数展开式">逻辑函数展开式</a></li>
+            <li><a href="#不完全确定的逻辑函数">不完全确定的逻辑函数</a></li>
+          </ul>
+        </li>
+        <li><a href="#卡诺图">卡诺图</a></li>
+        <li><a href="#数字编码">数字编码</a>
+          <ul>
+            <li><a href="#伪码">伪码</a></li>
+            <li><a href="#bcd码">BCD码</a></li>
+            <li><a href="#格雷码">格雷码</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#数字电路">数字电路</a>
+      <ul>
+        <li><a href="#竞争与冒险">竞争与冒险</a></li>
+        <li><a href="#组合逻辑电路">组合逻辑电路</a>
+          <ul>
+            <li><a href="#门电路">门电路</a></li>
+            <li><a href="#数据选择器">数据选择器</a></li>
+            <li><a href="#数值比较器">数值比较器</a></li>
+            <li><a href="#编码器">编码器</a></li>
+            <li><a href="#译码器">译码器</a></li>
+            <li><a href="#加法器">加法器</a></li>
+          </ul>
+        </li>
+        <li><a href="#时序逻辑电路">时序逻辑电路</a>
+          <ul>
+            <li><a href="#移位寄存器">移位寄存器</a></li>
+            <li><a href="#计数器">计数器</a></li>
+            <li><a href="#锁存器">锁存器</a></li>
+            <li><a href="#触发器">触发器</a></li>
+          </ul>
+        </li>
+        <li><a href="#模数混合电路">模数混合电路</a>
+          <ul>
+            <li><a href="#定时器">定时器</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#杂项">杂项</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="数字逻辑">数字逻辑</h2>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/1474810240162883201.png"/>
+</figure>
+
+<h3 id="机器码">机器码</h3>
+<h4 id="原码">原码</h4>
+<p>使用最高位来表示正负，剩下的位用于表示绝对值。</p>
+<h4 id="反码">反码</h4>
+<p>使用最高位来表示正负，但在表示负数时，其余位在原码的基础上取反。</p>
+<h4 id="补码">补码</h4>
+<p>使用最高位来表示正负，但在表示负数时，其余位在反码的基础上加1。
+<del>也就是说补码在进行取相反数时没有<a href="#%e5%8e%9f%e7%a0%81" rel="">原码</a>和<a href="#%e5%8f%8d%e7%a0%81" rel="">反码</a>那么方便了，需要先判断最高为是否为0（是否为负数），如果为1的话，则需要令最高位为0，并且其余位减去1再取反。如果为0的话，则需要令最高位为0，其余位取反再加上1。</del>
+补码的取相反数就是把最高位取反，然后有两种做法都可以：</p>
+<ol>
+<li>
+<p>其余位减去1再取反</p>
+</li>
+<li>
+<p>其余位取反后加上1</p>
+</li>
+<li>
+<p>例 <br />
+<code>0000</code> 取相反数的过程为： <code>0000</code> -&gt; <code>1000</code> -&gt; <code>1111</code> -&gt; <code>0000</code> 。</p>
+</li>
+</ol>
+<h3 id="真值表">真值表</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="k">implicit</span> <span class="k">class</span> <span class="nc">boolOps</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="o">+(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="o">||</span> <span class="n">b</span>
+  <span class="k">def</span> <span class="o">*(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="o">&amp;&amp;</span> <span class="n">b</span>
+  <span class="k">def</span> <span class="n">unary_-</span> <span class="k">=</span> <span class="o">!</span><span class="n">a</span>
+<span class="o">}</span>
+
+<span class="nd">@main</span>
+<span class="k">def</span> <span class="n">main</span><span class="o">()</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">rec</span><span class="o">(</span><span class="n">vec</span><span class="k">:</span> <span class="kt">Vector</span><span class="o">[</span><span class="kt">Boolean</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">.</span><span class="n">empty</span><span class="o">,</span> <span class="n">i</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">rec</span><span class="o">(</span><span class="n">vec</span> <span class="k">:</span><span class="kt">+</span> <span class="kt">false</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="n">rec</span><span class="o">(</span><span class="n">vec</span> <span class="k">:</span><span class="kt">+</span> <span class="kt">true</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="n">vec</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Vector</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">)</span> <span class="k">=&gt;</span>
+      <span class="k">val</span> <span class="n">res</span> <span class="k">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="o">-</span><span class="n">b</span>
+      <span class="k">def</span> <span class="n">booleanToNumString</span><span class="o">(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="k">=</span> <span class="n">b</span> <span class="k">match</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="kc">true</span> <span class="k">=&gt;</span> <span class="s">&#34;1&#34;</span>
+        <span class="k">case</span> <span class="kc">false</span> <span class="k">=&gt;</span> <span class="s">&#34;0&#34;</span>
+      <span class="o">}</span>
+      <span class="n">println</span><span class="o">(</span><span class="s">s&#34;</span><span class="si">${</span><span class="n">vec</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">booleanToNumString</span><span class="o">).</span><span class="n">mkString</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)</span><span class="si">}</span><span class="s"> </span><span class="si">${</span><span class="n">booleanToNumString</span><span class="o">(</span><span class="n">res</span><span class="o">)</span><span class="si">}</span><span class="s">&#34;</span><span class="o">)</span>
+  <span class="o">}</span>
+  <span class="n">rec</span><span class="o">()</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="逻辑运算">逻辑运算</h3>
+<table>
+<thead>
+<tr>
+<th>运算规律</th>
+<th>公式（与）</th>
+<th>公式（或）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-1律</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>自等律</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>重叠律</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>互补律</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>交换律</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>结合律</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>分配律</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>还原律</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="org-target" id="org-target----"></span>反演律</td>
+<td>\(\overline{AB}=\overline A+\overline B\)</td>
+<td>\(\overline{A+B}=\overline A\cdot\overline B\)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="与">与</h4>
+<p>用 \(\times\) 或 \(\cdot\) 表示。</p>
+<h4 id="或">或</h4>
+<p>用 \(+\) 表示。</p>
+<h4 id="非">非</h4>
+<p>用 \(\overline{\boxed{}}\) 表示。</p>
+<h4 id="同或">同或</h4>
+<p>用 \(\textcircled{$\cdot$}\) 表示。</p>
+<h4 id="异或">异或</h4>
+<p>用 \(\textcircled+\) 表示。异或可用于可控的取反：</p>
+<ul>
+<li>\(a\textcircled+1=\bar a\)</li>
+<li>\(a\textcircled+0=a\)</li>
+</ul>
+<h3 id="逻辑表达式">逻辑表达式</h3>
+<h4 id="与或式">与或式</h4>
+<p>\[F=AB+CD\]</p>
+<h4 id="或与式">或与式</h4>
+<p>\[F=(A+C)(A+D)(B+C)(B+D)\]</p>
+<h4 id="与非-与非式">与非-与非式</h4>
+<p>\[F=\overline{\overline{AB}\cdot\overline{CD}}\]</p>
+<h4 id="或非-或非式">或非-或非式</h4>
+<p>\[F=\overline{\overline{A+C}+\overline{A+D}+\overline{B+C}+\overline{B+D}}\]</p>
+<h3 id="逻辑函数">逻辑函数</h3>
+<p>注意：一个逻辑函数只能表示多个逻辑（输入）和一个逻辑（输出）的关系，如果要表示多个逻辑与多个逻辑的关系，对于每一个输出逻辑，都需要列一个逻辑表达式。</p>
+<h4 id="逻辑函数展开式">逻辑函数展开式</h4>
+<!--list-separator-->
+<ul>
+<li>
+<p>最小项表达式</p>
+<p>\[\begin{aligned}
+&amp;f(A, B, C) \\
+=&amp;A \cdot f(1, B, C)+\bar{A} \cdot f(0, B, C) \\
+=&amp;A B f(1,1, C)+A \bar{B} f(1,0, C)+\bar{A} B f(0.1, C)+\bar{A} \bar{B} f(0.0, C) \\
+=&amp;A B C f(1,1,1)+A B \bar{C} f(1,1,0)+A \bar{B} C f(1,0,1)+A \bar{B} \bar{C} f(1,0,0) \\
+&amp;+\bar{A} B C f(0.1,1)+\bar{A} B \bar{C} f(0.1,0)+\bar{A} \bar{B} C f(0,0.1)+\bar{A} \bar{B} \bar{C} f(0,0,0)
+\end{aligned}\]
+其中 \(f(\dots)\) 代表对于一组输入的输出情况。对于为0的输入要取反，是为了确保整个项是有意义的。像这样把每一项都写出来的叫做标准与或式（最小项表达式）。只留下有意义的项（舍去已知为0的项），得到与或式：
+\[\begin{aligned}
+L 1&amp;=\bar{A} \bar{B} \bar{C} \cdot 0+\bar{A} \bar{B} C \cdot 0+\bar{A} B \bar{C} \cdot 0+\bar{A} B C \cdot 1+A \bar{B} \bar{C} \cdot 0+A \bar{B} C \cdot 1+A B \bar{C} \cdot 1+A B C \cdot 1 \\
+&amp;=\bar{A} B C+A \bar{B} C+A B \bar{C}+A B C\\
+&amp;=\mathrm{m}_{3}+m_{5}+m_{6}+m_{7}=\sum m(3,5,6,7)
+\end{aligned}\]
+其中\(m\)代表最小项的意思。</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>最大项表达式</p>
+<p>用于表示负逻辑，基本就是<a href="#%e6%9c%80%e5%b0%8f%e9%a1%b9%e8%a1%a8%e8%be%be%e5%bc%8f" rel="">最小项表达式</a>的对偶（\(\cdot\)与\(+\)互换），标准或与式（最大项表达式）的定义也可以参考<a href="#%e6%9c%80%e5%b0%8f%e9%a1%b9%e8%a1%a8%e8%be%be%e5%bc%8f" rel="">最小项表达式</a>。：
+\[\begin{aligned}
+L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C+\mathrm{f}(0,1,0))
+\cdot A+\bar{B}+\bar{C}+\mathrm{f}(0,1,1)) \cdot(\bar{A}+B+C+\mathrm{f}(1,0,0)) \cdot(\bar{A}+B+\bar{C}+\mathrm{f}(1,0,1))
+\cdot(\bar{A}+\bar{B}+C+\mathrm{f}(1,1,0)) \cdot(\bar{A}+\bar{B}+\bar{C}+\mathrm{f}(1,1,1))\\
+&amp;=(A+B+C+0) \cdot(A+B+\bar{C}+0) \cdot(A+\bar{B}+C+0) \cdot A+\bar{B}+\bar{C}+1)
+\cdot(\bar{A}+B+C+0) \cdot(\bar{A}+B+\bar{C}+1) \cdot(\bar{A}+\bar{B}+C+1) \cdot(\bar{A}+\bar{B}+\bar{C}+1)\\
+&amp;=(A+B+C) \cdot(A+B+\bar{C}) \cdot(A+\bar{B}+C) \cdot(\bar{A}+B+C)\\
+&amp;=M_{0} \cdot M_{1} \cdot M_{2} \cdot M_{4}=\prod M(0,1,2,4)
+\end{aligned}\]
+其中\(M\)代表最大项的意思。</p>
+</li>
+</ul>
+<h4 id="不完全确定的逻辑函数">不完全确定的逻辑函数</h4>
+<p>有时候对于可能的输入的数量小于其对于二进制可表示的数量时，多出来的输入就是不需要考虑的。比如<a href="#bcd%e7%a0%81" rel="">BCD码</a>的处理电路就存在6个不可能的输入（伪码），如果真的产生了这些输入，输出值可以不一定是假，而是可以任意，这样可以简化电路。对于不可能的输入，可以在<a href="#%e5%8d%a1%e8%af%ba%e5%9b%be" rel="">卡诺图</a>中用“d”来表示，在画圈时既可以当作”1“，又可以当作”0“，目的是让圈画得更大更多：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-09-16_15-33-00_screenshot.png"/>
+</figure>
+
+<p>注意：”d“不能单独成圈，一个圈中至少要有1个”1“。</p>
+<p>最小项表达式可以写成这样：
+\[F(A, B, C, D)=\sum m(0, 3, 5, 6, 9)+\sum d(10, 11, 12, 13, 14, 15)\]</p>
+<h3 id="卡诺图">卡诺图</h3>
+<p>是一个表格。在列举逻辑的时候，表格的轴作为输入，表格填写的内容是输出。条件可能不止两个，导致表格的两个轴放不下，这时候要把输入分成两组，用<a href="#%e6%a0%bc%e9%9b%b7%e7%a0%81" rel="">格雷码</a>来穷举每一组输入的所有可能。观察表格中1的特性：画圈时，里面的元素只能是偶数个，可以重叠。如果对“1”画圈，则得到与或式，对“0”画圈，得到或与式。</p>
+<ul>
+<li>存在多个”对称“的”1“：使用与或式转化为与非门来表示。卡诺图在转换为与非式的时候，观察表格中所有1的输入组合，把它们组合内部相乘（因为一个组合中有一个输入为0就导致整个组合为0，所以对于为0的输入要取反），组合与组合之间相加。由于卡诺图使用了<a href="#%e6%a0%bc%e9%9b%b7%e7%a0%81" rel="">格雷码</a>，可以观察如果有1是连续的，说明肯定有输入不影响最终的输出，在写式子的时候就可以直接把这个输入省略掉，就可以避免后续的化简。从图上可以最直观地去看圈起来的两个项，然后找输入的差别，把发生变化的去掉。注意：只能画含有\(2^n\)个元素的圈。
+<ul>
+<li>
+<p>找对称：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/1869248955071427071.png"/>
+</figure>
+
+<p>以下两种相邻的必定对称：</p>
+<ul>
+<li>位置上相邻</li>
+<li>边缘扩展相邻：假设有这张卡诺图的上下左右都是这张卡诺图，看边缘上是否存在跨边缘的相邻”1“。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>存在多个相间的相同输出：往往和1或0个数的奇偶性有关。和奇偶性有关要想到异或运算。</li>
+</ul>
+<h3 id="数字编码">数字编码</h3>
+<h4 id="伪码">伪码</h4>
+<p>未使用的编码。</p>
+<h4 id="bcd码">BCD码</h4>
+<p>用二进制表示十进制的 <strong>每一位</strong> 数。</p>
+<!--list-separator-->
+<ul>
+<li>
+<p>8421码</p>
+<p>就相当于直接把0~9的数转换为二进制数，后面的6个数不用。8421码在进行加法运算时可以直接使用二进制加法，若结果落在伪码中说明运算后十进制没有进位，因此落在伪码中时需要手动加上6（有6个伪码），得到结果。若在16进制下出现进位，则也需要加上6。</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>5421码</p>
+<p>最高位代表5，当数字大于5是最高位必须为1。好处是低3位有规律，可以复用功能。</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>2421码</p>
+<p>从5开始，比原二进制多6，因此出现伪码时候需要加上6。由于是中间有6个数不用，一旦十六进制下发生进位一定意味着十进制下也发生进位。相加的结果肯定不可能出现在伪码区之后，只可能在伪码区中或在伪码区之前。如果是把十进制在十六进制中进行相加，必须保证在相加的过程中，最多只有6的余量。如果进位且出现在伪码区中，一定是两个在伪码区之后的2421码相加，已经多出12了，因此需要减6跳出伪码区。</p>
+<ul>
+<li>口诀 <br />
+有进位有伪码减6；无进位有伪码加6。</li>
+</ul>
+</li>
+</ul>
+<h4 id="格雷码">格雷码</h4>
+<p>门电路的运作和通过电子和空穴的运动产生的，门的跳变不可能同时发生。因此会产生<a href="#%e7%ab%9e%e4%ba%89%e4%b8%8e%e5%86%92%e9%99%a9" rel="">竞争与冒险</a>（产生了不应该有的干扰信号）。格雷码相邻的数字二进制只有一位跳变。通过n-1位的格雷码，通过逆序，就能得出n位格雷码。手写的时候可以这么写：</p>
+<ul>
+<li>
+<p>对于个位： <code>0110 0110 0110 ...</code></p>
+</li>
+<li>
+<p>对于十位： <code>00111100 00111100 ...</code></p>
+</li>
+<li>
+<p>对于百位： <code>000111111000 000111111000 ...</code></p>
+</li>
+<li>
+<p>生成：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="nd">@main</span>
+<span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">grayCodes</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">n</span><span class="o">)</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]]</span> <span class="k">=</span> <span class="n">i</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="nc">Nil</span> <span class="k">:</span><span class="kt">:</span> <span class="kt">Nil</span>
+    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">grayCodes</span><span class="o">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="mi">0</span> <span class="k">:</span><span class="kt">:</span> <span class="k">_</span><span class="o">)</span> <span class="k">:</span><span class="kt">::</span> <span class="kt">grayCodes</span><span class="o">(</span><span class="kt">i</span> <span class="kt">-</span> <span class="err">1</span><span class="o">)</span><span class="kt">.reverse.map</span><span class="o">(</span><span class="err">1</span> <span class="kt">::</span> <span class="k">_</span><span class="o">)</span>
+  <span class="o">}</span>
+  <span class="n">println</span><span class="o">(</span><span class="n">grayCodes</span><span class="o">().</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">mkString</span><span class="o">).</span><span class="n">mkString</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">))</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">gray-codes</span> <span class="p">(</span><span class="nv">n</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">pcase</span> <span class="nv">n</span>
+    <span class="p">(</span><span class="o">`</span><span class="mi">0</span> <span class="o">&#39;</span><span class="p">(()))</span>
+    <span class="p">(</span><span class="nv">n</span> <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">codes</span> <span class="p">(</span><span class="nv">gray-codes</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">n</span> <span class="mi">1</span><span class="p">))))</span>
+         <span class="p">(</span><span class="nv">-concat</span> <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">0</span> <span class="nv">it</span><span class="p">)</span> <span class="nv">codes</span><span class="p">)</span>
+                  <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="nv">it</span><span class="p">)</span> <span class="p">(</span><span class="nf">reverse</span> <span class="nv">codes</span><span class="p">)))))))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">binary-codes</span> <span class="p">(</span><span class="nv">n</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">pcase</span> <span class="nv">n</span>
+    <span class="p">(</span><span class="o">`</span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nv">_</span> <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">codes</span> <span class="p">(</span><span class="nv">binary-codes</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">n</span> <span class="mi">1</span><span class="p">))))</span>
+         <span class="p">(</span><span class="nv">-concat</span> <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">0</span> <span class="nv">it</span><span class="p">)</span> <span class="nv">codes</span><span class="p">)</span>
+                  <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="nv">it</span><span class="p">)</span> <span class="nv">codes</span><span class="p">))))))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">binary-codes-to-strings</span> <span class="p">(</span><span class="nv">codes</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">-map</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">code</span><span class="p">)</span>
+          <span class="p">(</span><span class="nv">-reduce</span> <span class="nf">#&#39;concat</span> <span class="p">(</span><span class="nv">-map</span> <span class="nf">#&#39;number-to-string</span> <span class="nv">code</span><span class="p">)))</span>
+        <span class="nv">codes</span><span class="p">))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">gray-code-strings-with-decimal</span> <span class="p">(</span><span class="nv">n</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%s%4s&#34;</span> <span class="nv">it</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;(%d)&#34;</span> <span class="p">(</span><span class="nf">string-to-number</span> <span class="nv">it</span> <span class="mi">2</span><span class="p">)))</span>
+         <span class="p">(</span><span class="nv">binary-codes-to-strings</span> <span class="p">(</span><span class="nv">gray-codes</span> <span class="nv">n</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">gray-code-table</span> <span class="p">(</span><span class="nv">rows</span> <span class="nv">columns</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">-map-indexed</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">index</span> <span class="nv">row-str</span><span class="p">)</span>
+                  <span class="p">(</span><span class="nf">cons</span> <span class="nv">row-str</span> <span class="p">(</span><span class="nb">pcase</span> <span class="nv">index</span>
+                                  <span class="p">(</span><span class="o">`</span><span class="mi">0</span> <span class="p">(</span><span class="nv">gray-code-strings-with-decimal</span> <span class="nv">columns</span><span class="p">))</span>
+                                  <span class="p">(</span><span class="nv">i</span> <span class="p">(</span><span class="nv">-repeat</span> <span class="nv">columns</span> <span class="s">&#34;&#34;</span><span class="p">)))))</span>
+                <span class="p">(</span><span class="nf">cons</span> <span class="s">&#34;&#34;</span> <span class="p">(</span><span class="nv">gray-code-strings-with-decimal</span> <span class="nv">rows</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="nv">gray-code-table</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>余3格雷码</p>
+<p>前面3组格雷码和后面3组格雷码进行丢弃。</p>
+<ul>
+<li>与自然二进制码的相互转换
+<ul>
+<li>自然二进制码转格雷码
+\[G_n=B_n, G_i=B_{i+1}\textcircled+ B_i\]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数字电路">数字电路</h2>
+<ul>
+<li>规模 <br />
+<table>
+<thead>
+<tr>
+<th>规模</th>
+<th>等效门数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSI（小规模）</td>
+<td>\(&lt;10\)</td>
+</tr>
+<tr>
+<td>MSI（中规模）</td>
+<td>\(&lt;100\)</td>
+</tr>
+<tr>
+<td>LSI</td>
+<td>\(&lt;10^4\)</td>
+</tr>
+<tr>
+<td>VLSI（超大规模）</td>
+<td>\(&gt;10^4\)</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="竞争与冒险">竞争与冒险</h3>
+<table>
+<thead>
+<tr>
+<th>冒险类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>静态冒险</td>
+<td>输出本不该产生变化却产生了变化</td>
+</tr>
+<tr>
+<td>动态冒险</td>
+<td>输出本该产生变化却产生了多余的变化</td>
+</tr>
+<tr>
+<td>逻辑冒险</td>
+<td>由一个输入端引起的冒险</td>
+</tr>
+<tr>
+<td>功能冒险</td>
+<td>由多个输入端引起的冒险</td>
+</tr>
+</tbody>
+</table>
+<p>从卡诺图理解冒险的类型：卡诺图用的是格雷码，门的跳变不可能同时发生，因此从一个逻辑到另一个逻辑会沿着卡诺图的正交方向从多条路径到达另一个逻辑，如果跳变前后的逻辑是相邻的就是逻辑冒险，否则为功能冒险。如果跳变前后逻辑是相同的就为静态冒险，否则为动态冒险。静态逻辑冒险的消除：产生静态逻辑冒险的本质是我想保持一个电平而去改变其他电平，但由于我的输入信号到不同门中产生了不同时间的跳变，导致这个电平无法保持住。解决办法是让这个输出取决于更多的信号，这样当我一个输入信号改变时，这个电平依然能保持住。新加入的信号一定不能影响输出的逻辑。画卡诺图的时候，只要相邻的相同元素均可画圈，如果要求圈越少越好，圈最少的时候可能会产生“缝隙”，也就是两个圈有相邻元素但不重叠的情况，这时候应该补圈使得相邻的元素都在一个圈内，消除缝隙，即可消除静态逻辑冒险。</p>
+<h3 id="组合逻辑电路">组合逻辑电路</h3>
+<p>输出仅取决于当前的输入。所有芯片的使能端为低电平有效。</p>
+<h4 id="门电路">门电路</h4>
+<p>一般使用与非门和或非门，降低电路的复杂程度。因此往往要对得到的逻辑表达式取两次反，然后通过<a href="#org-target----" rel="">反演律</a>来变换内层的取反，最后使用转换成非门电路。如果逻辑表达式中，一个门的输入有很多，则需要再用一次反演律来拆成3个输入以下的门。</p>
+<ul>
+<li>芯片复用技巧：<br />
+一个芯片往往不止一个输入，如果可以高效地利用一个芯片就可以减少芯片的数量。
+<ol>
+<li>一个非可以用一个两个输入端同时连接一个输入的与非门来代替。</li>
+<li>一个或可以用或非门加上一个非实现。</li>
+</ol>
+</li>
+<li>参数
+<ul>
+<li>电压传输特性
+<ul>
+<li>最大低电平输出\(V_\mathrm{OL(\max)}\)</li>
+<li>最小高电平输出\(V_\mathrm{OH(\min)}\)</li>
+<li>最大低电平输入\(V_\mathrm{IL(\max)}\)</li>
+<li>最小高电平输入\(V_\mathrm{IH(\min)}\)</li>
+<li>噪声容限\(V_\mathrm{NH}\)</li>
+<li>扇出系数：门电路带同类门的个数：LSTTL为个位数</li>
+</ul>
+</li>
+<li>输入特性
+<ul>
+<li>输入低电平电流\(I_\mathrm{IL}\)</li>
+<li>输入高电平电流\(I_\mathrm{IH}\)</li>
+<li>\(R_\mathrm{ON}\)</li>
+<li>\(R_\mathrm{OFF}\)</li>
+</ul>
+</li>
+<li>输出特性
+<ul>
+<li>\(t_\mathrm{PD}\)：平均延时</li>
+<li>\(P_\mathrm{D}\)：动态功率</li>
+</ul>
+</li>
+<li>转折电压\(V_T\)</li>
+<li>噪声容限：感觉像是多个相同芯片进行级联的时候，对噪声的容忍限度。 <br />
+例如：高电平噪声容限=高电平输出-最小高电平输入，也就是输出高电平波动在噪声容限内，不会对下一级的输出产生影响。</li>
+</ul>
+</li>
+<li>芯片 <br />
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>逻辑门</th>
+<th>输入端口数</th>
+<th>路数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>74LS00</td>
+<td><a href="#org-target----" rel="">与非门</a></td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>74LS02</td>
+<td><a href="#org-target----" rel="">或非门</a></td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>74LS04</td>
+<td><a href="#org-target---" rel="">非门</a></td>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr>
+<td>74LS08</td>
+<td><a href="#org-target---" rel="">与门</a></td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>74LS10</td>
+<td><a href="#org-target----" rel="">与非门</a></td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>74LS11</td>
+<td><a href="#org-target---" rel="">与门</a></td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>74LS27</td>
+<td><a href="#org-target----" rel="">或非门</a></td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>74LS30</td>
+<td><a href="#org-target----" rel="">与非门</a></td>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td>74LS32</td>
+<td><a href="#org-target---" rel="">或门</a></td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>74LS86</td>
+<td><a href="#org-target----" rel="">异或门</a></td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>74LS135</td>
+<td><a href="#org-target----" rel="">异或门</a></td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>74LS260</td>
+<td><a href="#org-target----" rel="">或非门</a></td>
+<td>5</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>类型
+<ul>
+<li>非门 <span class="org-target" id="org-target---"></span></li>
+<li>与门 <span class="org-target" id="org-target---"></span></li>
+<li>或门 <span class="org-target" id="org-target---"></span></li>
+<li>异或门 <span class="org-target" id="org-target----"></span></li>
+<li>同或门 <span class="org-target" id="org-target----"></span></li>
+<li>与非门 <span class="org-target" id="org-target----"></span> <br />
+用 \(\&amp;\) 表示。由于是非门，门的输出还有一个圈（斜杠）。圈（斜杠）是低电平有效，也就是正逻辑下两个高电平输出低电平。</li>
+<li>或非门 <span class="org-target" id="org-target----"></span> <br />
+用 \(\geq 1\) 表示。由于是非门，门的输出还有一个圈（斜杠）。</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>TTL门电路</p>
+<ul>
+<li>特点
+<ul>
+<li>悬空相当于高电平</li>
+<li>输出端接的电阻大于1kΩ，低电平可能无法传到下一级</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>CMOS门电路</p>
+ <!--list-separator-->
+<ul>
+<li>
+<p>OD门</p>
+<ul>
+<li>
+<p>线与 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-05_15-43-37_xy.png"/>
+</figure>
+
+<p>OD门的输出是灌电流的，可以使用导线相连来表示与非门。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据选择器">数据选择器</h4>
+<p>相当于多路开关，输出的个数少于输入，因此有地址选择端用于决定每一路输出取决于哪一路输入。有的芯片可以通过模拟信号，有的芯片只能通过数字信号。只要给数据选择器的一路输入接上高低电平信号，这路就可以用来表示一个真值表或卡诺图。当输入逻辑的数目超过数据选择器地址选端的数目时，可以通过卡诺图的降维，来使用一个数据选择器处理超过其地址选择端数量的逻辑。</p>
+<ul>
+<li>
+<p>卡诺图降维 <br />
+卡诺图的压缩，可以把卡诺图两个两个为一组画圈，如：</p>
+<!-- This HTML table template is generated by emacs/table.el -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;S1&nbsp;S0&nbsp;\&nbsp;S3&nbsp;S2&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;00&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;01&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;11&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;10&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;
+    </td>
+  </tr>
+</table>
+<p>假如上下两个为一组：</p>
+<!-- This HTML table template is generated by emacs/table.el -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;S1&nbsp;S0&nbsp;\&nbsp;S3&nbsp;S2&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;00&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;01&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;11&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;10&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td rowspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;0&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td rowspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;S0&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td rowspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;0&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td rowspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;1&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td rowspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;0&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td rowspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;1&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td rowspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;0&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td rowspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;<br />
+      !S0&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+<p>就可以把 <code>S0</code> 去掉：</p>
+<!-- This HTML table template is generated by emacs/table.el -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;S1&nbsp;\&nbsp;S3&nbsp;S2&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;00&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;01&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;11&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;10&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;S0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;1&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;!S0&nbsp;
+    </td>
+  </tr>
+</table>
+<p>于是把 <code>S0</code> 作为这个数据选择器的输入（非地址选端）即可。</p>
+</li>
+<li>
+<p>芯片</p>
+<ul>
+<li>
+<p><code>74xx151</code> <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_04-24-25_74hc151.pdf&gt;</p>
+<p>八选一数据选择器。 <code>X1~X8</code> 为8个输入端，当使能端 <code>E</code> （低电平有效）有效时，通过 <code>A~C</code> 输入三位二进制进行选择，输出 <code>Y</code> 。</p>
+</li>
+<li>
+<p><code>74xx153</code> <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_04-26-29_74hc153.pdf&gt;</p>
+<p>双路四选一数据选择器。</p>
+<p>八选一数据选择器。 <code>1X1~1X4</code> 和 <code>2X1~2X4</code> 分别为2个通道的4个输入端，通过 <code>A~B</code> 输入二位二进制进行选择，输出 <code>Y</code> 。</p>
+</li>
+<li>
+<p><code>74xx157</code> <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_04-30-04_74hc157.pdf&gt;</p>
+<p>四路二选一数据选择器。 <code>1A/1B</code> 、 <code>2A/2B</code> 、 <code>3A/3B</code> 、 <code>4A/4B</code> 分别为4路输入端，通过 <code>A/B</code> 引脚进行选择。</p>
+</li>
+<li>
+<p><code>74xx4051</code> <br />
+可以输出模拟信号。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="数值比较器">数值比较器</h4>
+<p>比较两组输入的二进制数的大小，对于3种情况可能有不同的输出。</p>
+<ul>
+<li>级联 <br />
+数值比较器也可以进行级联，比如一块芯片负责比较两组二进制的高4位，只有在前一级芯片输出相等的时候，下一块芯片才会进行进行低位的比较，否则直接输出上一块芯片的比较结果。</li>
+<li>芯片
+<ul>
+<li>
+<p><code>74xx85</code> ：4位二进制数值比较器 <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_06-36-45_74hc85.pdf&gt;</p>
+<p><code>A&gt;B</code> 、 <code>A=B</code> 、 <code>A&lt;B</code> 用于级联。当于 <code>A&gt;B</code> 或 <code>A&lt;B</code> 有效时，直接输出 <code>QA&gt;B</code> 或 <code>QA&lt;B</code> 有效。当 <code>A=B</code> 有效时，通过 <code>A0~A3</code> 和 <code>B0~B3</code> 输入两个4位二进制数进行比较：</p>
+<ul>
+<li><code>A</code> 大于 <code>B</code> 时 <code>QA&gt;B</code> 有效</li>
+<li><code>A</code> 小于 <code>B</code> 时 <code>QA&lt;B</code> 有效</li>
+<li><code>A</code> 等于 <code>B</code> 时 <code>QA=B</code> 有效</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="编码器">编码器</h4>
+<p>把非二进制输入编码成二进制。</p>
+<ul>
+<li>代码描述
+<ul>
+<li>
+<p>基本 <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">entity</span> <span class="nc">common_encoder</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">CLK</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic</span><span class="p">;</span>   <span class="c1">-- 输入信号</span>
+        <span class="n">F2</span><span class="p">,</span> <span class="n">F1</span><span class="p">,</span> <span class="n">F0</span>            <span class="o">:</span> <span class="k">out</span> <span class="kt">std_logic</span><span class="p">);</span>  <span class="c1">-- 输出信号</span>
+<span class="k">end</span> <span class="nc">common_encoder</span><span class="p">;</span>
+
+<span class="k">architecture</span> <span class="nc">abc</span> <span class="k">of</span> <span class="nc">common_encoder</span> <span class="k">is</span>   <span class="c1">-- 定义一个结构，一个实体可能有多个结构</span>
+  <span class="k">signal</span> <span class="n">INA</span> <span class="o">:</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">5</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">begin</span>
+  <span class="n">INA</span> <span class="o">&lt;=</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span> <span class="o">&amp;</span> <span class="n">C</span> <span class="o">&amp;</span> <span class="n">D</span> <span class="o">&amp;</span> <span class="n">E</span> <span class="o">&amp;</span> <span class="n">F</span><span class="p">;</span>         <span class="c1">-- 也就是 5 &amp; 4 &amp; 3 &amp; 2 &amp; 1 &amp; 0</span>
+  <span class="k">process</span><span class="p">(</span><span class="n">INA</span><span class="p">,</span> <span class="n">CLK</span><span class="p">)</span>
+  <span class="k">begin</span>
+    <span class="k">if</span> <span class="n">CLK</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">CLK</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span> <span class="k">then</span>     <span class="c1">-- event 代表跳变</span>
+      <span class="k">case</span> <span class="n">INA</span> <span class="k">is</span>
+        <span class="k">when</span> <span class="s">&#34;111110&#34;</span> <span class="o">=&gt;</span> <span class="n">F2</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F1</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F0</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
+        <span class="k">when</span> <span class="s">&#34;111101&#34;</span> <span class="o">=&gt;</span> <span class="n">F2</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F1</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F0</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
+        <span class="c1">-- ...</span>
+        <span class="k">when</span> <span class="k">others</span>   <span class="o">=&gt;</span> <span class="n">F2</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">F1</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">F0</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>  <span class="c1">-- 表示输入无效时，输出也无效（必需）</span>
+      <span class="k">end</span> <span class="k">case</span><span class="p">;</span>
+    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="k">end</span> <span class="nc">abc</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>优先编码器</p>
+<ul>
+<li>级联 <br />
+有时候一个芯片的引脚可能不够用，或者一个芯片不能满足指定的编码要求，这时可以用多个支持级联的芯片进行级联。一般数字电路不希望在输入不同的情况下得到相同的输出，也就是要能够从输出来判断输入的状态。因此编码器的输出不止可以有编码的输出，还可以多加若干输出用于判断是否使能，或者输入是否错误等。在级联中，这些”多余“的引脚十分重要，因为下一级的芯片要在上一级输入无效的情况下，才进行使能，这是上一级传给下一级的额外信息。如果上一级不使能，下面的所有级都不会使能。当所有级的芯片已经正确地处理了自己负责的逻辑后，把可能还需要把芯片之间的输出取或（如果是低电平低电平有效则要取与，因为正逻辑的与，就是负逻辑的或），得到最终的输出。</li>
+<li>芯片
+<ul>
+<li>
+<p><code>74xx147</code> <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_04-41-43_74hc147.pdf&gt;</p>
+<p>10位（ <code>0000000001~1000000000</code> ）转4位BCD码优先编码器， <code>EI</code> 作为使能端，所有引脚低电平有效。</p>
+</li>
+<li>
+<p><code>74xx148</code> <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_04-51-03_74hc148.pdf&gt;</p>
+<p>可级联的8位（ <code>00000001~10000000</code> ）转3位BCD码优先编码器，所有引脚低电平有效。要根据每种BCD码自身的特点来设计电路。假设要把10个按键输入进行4位BCD编码。这个芯片只有8个输入端，因此要进行级联。</p>
+<ul>
+<li><code>EI</code> 引脚 <br />
+使能引脚。</li>
+<li><code>EO</code> 引脚 <br />
+只有在使能且未能够进行编码（输入全为 <code>0</code> 不算进行编码）的情况下，才会输出0。这样当自身无法进行编码时，才会使能下一级。注意和 <code>GS</code> 引脚并不是单纯的相反逻辑，因为它们要输出0都有一个条件，就是这一级被使能。</li>
+<li><code>GS</code> 引脚 <br />
+只有在使能且进行编码后，才会输出0（这块芯片是低电平有效）。因此可以通过改变使用的输入端口，直接让芯片负责后3位的编码，然后 <code>GS</code> 引脚来确定BCD码的最高位。
+<ul>
+<li><a href="#5421%e7%a0%81" rel="">5421码</a> <br />
+是最简单的，因为它的低3位有规律。直接让一个芯片负责最高位为0的4个数，GS确定最高位输出，下一级负责最高位为1的4个数，两个芯片可以使用相同的引脚来处理输入，最后两级的输出用与非门合并。</li>
+<li><a href="#2421%e7%a0%81" rel="">2421码</a> <br />
+超过5后，最高位变成1，低3位从 <code>011</code> 开始往上加。因此只要让第一个芯片编码从 <code>0000</code> 开始编码，
+<code>GS</code> 确定最高位输出，下一级从 <code>0011</code> 开始编码（稍微改下输入的引脚即可），最后的两级输出用与非门合并。</li>
+<li><a href="#8421%e7%a0%81" rel="">8421码</a> <br />
+第一个芯片可以负责从 <code>0000</code> 编码到 <code>0111</code> ，GS确定最高位输出，第二个芯片从 <code>0000</code> 编码到 <code>0001</code> ，最后的两级输出用与非门合并。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p>优先权</p>
+<p>一个条件拥有更少的约束，优先权越高。</p>
+<ul>
+<li>
+<p>例：</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>1</td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>X</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>相当于C语言的程序：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="k">if</span><span class="p">(</span><span class="n">PIN_4</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// XXX1
+</span><span class="c1"></span> <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">PIN_3</span><span class="p">)</span> <span class="p">{</span>            <span class="cm">/* 此时的PIN4一定为0 */</span>
+  <span class="c1">// XX10
+</span><span class="c1"></span> <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">PIN_2</span><span class="p">)</span> <span class="p">{</span>            <span class="cm">/* 此时的PIN3和PIN4一定为0 */</span>
+  <span class="c1">// X100
+</span><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">PIN_1</span><span class="p">)</span> <span class="p">{</span>            <span class="cm">/* 此时的PIN2、PIN3、PIN4一定为0 */</span>
+  <span class="c1">// 1000
+</span><span class="c1"></span> <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>条件越宽松，优先权越高。这里的4号引脚的优先权最高。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">entity</span> <span class="nc">priority_encoder_2421</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span><span class="n">clk</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic</span><span class="p">;</span>
+        <span class="n">I</span>   <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">9</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="n">F</span>   <span class="o">:</span> <span class="k">out</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">));</span>
+<span class="k">end</span> <span class="nc">priority_encoder_2421</span><span class="p">;</span>
+
+<span class="k">architecture</span> <span class="nc">abc</span> <span class="k">of</span> <span class="nc">priority_encoder_2421</span> <span class="k">is</span>
+<span class="k">begin</span>
+  <span class="k">process</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+  <span class="k">begin</span>
+    <span class="k">if</span> <span class="n">clk</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">clk</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span> <span class="k">then</span>
+      <span class="k">if</span> <span class="n">I</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span>    <span class="o">&lt;=</span> <span class="s">&#34;0000&#34;</span><span class="p">;</span>
+      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0001&#34;</span><span class="p">;</span>
+      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0010&#34;</span><span class="p">;</span>
+      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0011&#34;</span><span class="p">;</span>
+      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0100&#34;</span><span class="p">;</span>
+      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1011&#34;</span><span class="p">;</span>
+      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1100&#34;</span><span class="p">;</span>
+      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1101&#34;</span><span class="p">;</span>
+      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1110&#34;</span><span class="p">;</span>
+      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1111&#34;</span><span class="p">;</span>
+      <span class="k">else</span> <span class="n">F</span>                  <span class="o">&lt;=</span> <span class="s">&#34;ZZZZ&#34;</span><span class="p">;</span>
+      <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="k">end</span> <span class="nc">abc</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="译码器">译码器</h4>
+<ul>
+<li>
+<p>级联 <br />
+以 <code>74xx138</code> 为例：</p>
+<!-- This HTML table template is generated by emacs/table.el -->
+<table border="1">
+  <tr>
+    <td colspan="5" align="left" valign="top">
+      &nbsp;输入的5位二进制数&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;输出24个译码结果&nbsp;
+    </td>
+    <td colspan="9" align="left" valign="top">
+      &nbsp;3片74HC138的使能端&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;E&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;D&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;C&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;B&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;A&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y23\~Y0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;E11&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;E21&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;E31&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;E12&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;E22&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;E23&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;E31&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;E32&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;E33&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0&nbsp;
+    </td>
+    <td colspan="3" rowspan="3" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;000~111&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y7\~Y0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;0&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;1&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y15\~Y8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;1&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;1&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y23\~Y16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;X&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;0&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan="6" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;VDD&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;E&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;D&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;D&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;E&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;E&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;E&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;D&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;D&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+<p>从上表可以看出为什么该芯片要有3个使能端了，其目的是使得级联设计更加灵活。因为一个芯片只有3个使能端 <strong>均</strong> 为指定电平，才会使能，多个使能端就提供了更多的组合。表中的设计就是让最高的两位 <code>E</code> 和 <code>D</code> 来确定三个芯片的使能。用该芯片可以方便地实现<a href="#%e6%9c%80%e5%b0%8f%e9%a1%b9%e8%a1%a8%e8%be%be%e5%bc%8f" rel="">最小项表达式</a>，也就是说以后从除了可以从卡诺图转化为逻辑门电路，还可以直接把与或式，用多个 <code>74HC138</code> 进行级联，最后对它们的输出进行或运算（由于 <code>74HC138</code> 的输出是低电平有效，因此要用与门），最后得到 <strong>一个</strong> 输出。这样的译码器还和微机原理中内存的寻址有关。</p>
+</li>
+<li>
+<p>芯片</p>
+<ul>
+<li>
+<p><code>74xx138</code> <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_04-51-35_74hc138.pdf&gt;</p>
+<p>3个使能端 <code>E1~E3</code> （ <code>E2</code> 和 <code>E3</code> 为低电平有效）均有效时才使能译码器。
+3个输入端 <code>A0~A2</code> 为高电平有效，8个输出端为低电平有效。</p>
+</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>数码管显示译码器</p>
+<ul>
+<li>芯片
+<ul>
+<li><code>74xx47</code></li>
+<li><code>74xx48</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="加法器">加法器</h4>
+<ul>
+<li>减法 <br />
+使用加法器完成减法操作，利用<a href="#%e8%a1%a5%e7%a0%81" rel="">补码</a>。补码统一了二进制下正负数的加减法，因此利用加法器进行正数减法时，可以先把减数使用补码取负，也就是把最高位变成1，其余位取反后再加上1。如果发生了进位，减法的结果为正数，如果未发生进位，则为补码形式的负数，这时候需要把结果的补码转换为原码，也就是取反后加上1。（可以这么记，出现进位，说明减数取反后是个较大的数，那么它取反前是个较小的数，减去较小的数应该得到正数）
+<ul>
+<li>要点
+<ol>
+<li>作为被减数输入到加法器的取反加1的操作：
+<ul>
+<li>取反：使用异或门来进行可控的取反</li>
+<li>加1：加法器的进位输入</li>
+</ul>
+</li>
+<li>减法后没有进位还要进行一次取反加1，则需要再来一个加法器和异或门。</li>
+<li>最后的进位输出应该和减法器的进位输出一致。</li>
+</ol>
+</li>
+<li>例 <br />
+<ul>
+<li>2421码加法器
+<ul>
+<li>要点
+<ol>
+<li>找两个二进制数的逻辑关系 <br />
+比如6和-6，对应的二进制分别为 <code>0110</code> 和 <code>1010</code> ，-6可以看作 <code>0110</code> 取反加1。因此可以让得到加6的逻辑负责最低位和最高位，减6的逻辑负责中间两位和加法器的进位输入。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>芯片
+<ul>
+<li>
+<p><code>74LS83</code></p>
+</li>
+<li>
+<p><code>74HC283</code> <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_05-00-21_74hc283.pdf&gt;</p>
+<p><code>A0~A3</code> 和 <code>B0~B3</code> 分别输入两个4位二进制数，当加减控制端 <code>C0</code> 有效时为加法，无效时为减法，输出到 <code>S0~S3</code> 。加法发生进位或减法未发生退位时， <code>C1</code> 有效。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="时序逻辑电路">时序逻辑电路</h3>
+<p>输出取决于当前和之前的输入。结构上的特征是有反馈信号。</p>
+<ul>
+<li>类型
+<ul>
+<li>米里型：输出取决于状态的转移（与输入有关）</li>
+<li>摩尔型：输出取决于当前状态</li>
+</ul>
+</li>
+<li>自启动 <br />
+卡诺图的画圈是用于化简的，有多种方法，且任意项（也就是没有包含在状态表里的输入）可以不包含在圈内。任意项的包含与否决定着电路是否能自启动。</li>
+</ul>
+<h4 id="移位寄存器">移位寄存器</h4>
+<ul>
+<li>工作方式
+<ul>
+<li>串入串出：相当于时钟上的分割</li>
+<li>串入并出</li>
+<li>并入串出</li>
+<li>并入并出</li>
+</ul>
+</li>
+<li>芯片
+<ul>
+<li>
+<p><code>74xx164</code> ：8位串入并出移位寄存寄存器，异步清零 <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_05-08-47_74hc164.pdf&gt;</p>
+<p>2个输入通过自带的1个与门输入，在时钟上跳变时，从最高位（第7位移入），异步清零（低电平有效）。</p>
+</li>
+<li>
+<p><code>74xx194</code> ：双向通用移位寄存器，同步预置、异步清零 <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_05-12-48_74hc194.pdf&gt;</p>
+<p><code>D0~D3</code> 负责当 <code>S0</code> 和 <code>S1</code> 均有效时的异步预置输入。 <code>S1</code> 控制时钟上跳变时将 <code>SL</code> 作为输入进行左移，
+<code>S0</code> 控制时钟上跳变时将 <code>SR</code> 作为输入进行左移， <code>MR</code> （低电平有效）负责异步清零。</p>
+</li>
+<li>
+<p><code>74xx195</code> ：并行存取移位寄存器 <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_05-19-53_74hc195.pdf&gt;</p>
+</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>反馈移位寄存器</p>
+<p>在移位寄存器向右移位一位以后，左边就会空出一位，这时如果采用一个反馈函数，以寄存器中已有的某些序列作为反馈函数的输入，在函数中经过一定的运算后，将反馈函数输出的结果填充到移位寄存器的最左端，那么这样的移位寄存器就会有源源不断的输出。这样的，拥有反馈函数的移位寄存器称为反馈移位寄存器（Feedback Shift Register，FSR）。</p>
+ <!--list-separator-->
+<ul>
+<li>
+<p>线性反馈移位寄存器</p>
+<p>线性反馈移位寄存器（LFSR）的反馈函数就是简单地对移位寄存器中的某些位进行异或，并将异或的结果填充到其最左端，如图所示。对于移位寄存器中的每一位数据，可以参与异或，也可以不参与异或。其中：</p>
+<ul>
+<li>抽头：参与异或的位</li>
+<li>级数：移位寄存器的长度</li>
+<li>状态：当前移位寄存器中的序列。 <br />
+一个线性反馈移位寄存器最多只能遍历\(2^n-1\)个状态（排除移位寄存器中全为0的情况）。</li>
+<li>特征多项式 <br />
+\[b_{n+1}=c_1b_1\textcircled+ c_2b_2\textcircled+ \cdots \textcircled+ c_nb_n\]
+其中（\(c_n\)用于表示该位是否参与异或），对应的特征多项式为：
+\[f(x)=c_nx^n+c_{n-1}+\cdots +c_2x^2+c_1x^1+1\]</li>
+<li>M序列：周期为\(2^n-1\)（\(n\)为级数）的线性反馈移位寄存器产生的序列。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="计数器">计数器</h4>
+<ul>
+<li>预置
+<ul>
+<li>异步预置 <br />
+异步预置导致两个数占用同一个周期的问题，因此清零必须在下一个（刚好溢出）周期进行。</li>
+</ul>
+</li>
+<li>芯片
+<ul>
+<li>
+<p><code>74xx169</code> ：4位可逆同步计数器（16进制），同步预置 <br />
+<code>DA~DD</code> 负责数据当 <code>LD</code> （低电平有效）有效时的同步预置输入（ <code>D</code> 为最高位）， <code>QA~QD</code> 负责数据输出。有两个使能端 <code>ENP</code> 和 <code>ENT</code> （均为低电平有效），均有效时才会在时钟上跳变时进行计数，具有加减控制端 <code>U/D</code> ，有效时进行加法，无效时进行减法。当加法即将进位（ <code>1111</code> ）或减法即将退位（ <code>0000</code> ）时， <code>RCO</code> （低电平有效）有效 。注意，只有预置功能，没有清零功能。</p>
+</li>
+<li>
+<p><code>74xx192</code> ：BCD同步可逆计数器（10进制），异步预置 <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_05-32-35_74hc192.pdf&gt;</p>
+<p><code>CPU</code> 负责加计数的时钟信号， <code>CPD</code> 负责减计数的时钟信号，均为上跳变触发。 <code>MR</code> 用于异步清零。
+<code>D0~D3</code> 负责当 <code>PL</code> （低电平有效）有效时的异步预置。 <code>TCU</code> 和 <code>TCD</code> 用于进位输出，平时为高，在即将进位（ <code>1001</code> ）或即将退位（ <code>0000</code> ）时，随时钟信号变化，用于级联时，上跳变就意味着下一级的进位或退位。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="锁存器">锁存器</h4>
+<p>使能端有效时，输出等于输入，否则保持之前的输出。</p>
+<!--list-separator-->
+<ul>
+<li>
+<p>D锁存器</p>
+<ul>
+<li>芯片
+<ul>
+<li>
+<p><code>74xx373</code> <span class="org-target" id="org-target--74xx373-"></span> ：8通道D锁存器 <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_05-49-46_74hc373.pdf&gt;</p>
+<p><code>Q0~Q7</code> 用于输出。 <code>LE</code> 是锁存器的使能端，有效时从 <code>D0~D7</code> 写入锁存器，无效时进行所存。
+<code>OE</code> （低电平有效）用于输出使能，无效时输出为高阻。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="触发器">触发器</h4>
+<!--list-separator-->
+<ul>
+<li>
+<p>RS触发器</p>
+<p>当 S 为 1 时，置 1 ；当 R 为 1 时清零，因此 R 和 S 最多只能有 1 个等于 1 。也就是：</p>
+<table>
+<thead>
+<tr>
+<th>S</th>
+<th>R</th>
+<th>Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>不变</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>不允许</td>
+</tr>
+</tbody>
+</table>
+<p>\[RS=0\Rightarrow Q^{n+1}=S+\overline{R}Q^n\]</p>
+<ul>
+<li>
+<p>或非门实现 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-29_11-08-18_image.png"/>
+</figure>
+
+</li>
+<li>
+<p>与非门实现 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-29_11-08-39_image.png"/>
+</figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>D触发器</p>
+<p>RS触发器有如下缺点，设置一个值需要两个输入同时参与，并且具有非法输入。而D触发器更像一个锁存器，一个输入用于使能写入，一个输入用于设置写入的值。当写入没有被使能时，无论写入的值如何变化，储存的值都不会发生改变。</p>
+<p>\[Q^{n+1}=D\]</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-29_11-15-41_image.png"/>
+</figure>
+
+<p><code>EN</code> 决定是否输入为 <code>00</code> ，D的值决定RS触发器的输入为 <code>10</code> 还是 <code>01</code> 。</p>
+<ul>
+<li>芯片
+<ul>
+<li>
+<p><code>74xx374</code> <span class="org-target" id="org-target--74xx374-"></span>：8通道D触发器 <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_05-56-42_74hc374.pdf&gt;</p>
+<p>除了将使能端替换为上跳变触发的时钟输入端外，其余的与 <a href="#org-target--74xx373-" rel=""><code>74xx373</code></a> 一样。</p>
+</li>
+<li>
+<p><code>74XX74</code> ：带置位复位正触发的双D触发器 <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_05-59-26_74hc74.pdf&gt;</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-29_11-32-27_image.svg"/>
+</figure>
+
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-29_11-34-42_image.svg"/>
+</figure>
+
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-29_11-34-56_image.svg"/>
+</figure>
+
+<p>与 <a href="#org-target--74xx374-" rel=""><code>74xx374</code></a> 不同的是，它既可以作为D触发器使用，又可以作为<a href="#rs%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS触发器</a>使用或者置位。作为D触发器用时， <code>R</code> 和 <code>S</code> 端应当使触发器保持不变（由于是低电平有效，因此应当为高电平）。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>JK触发器</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-01_13-00-32_jk.png"/>
+</figure>
+
+<p>既可以直接设置触发器的值，又可以在不知道里面值的情况下对值进行翻转。</p>
+<table>
+<thead>
+<tr>
+<th>JK</th>
+<th>\(Q^{n+1}\)</th>
+<th>\(\overline{Q^{n+1}}\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>\(Q^n\)</td>
+<td>\(\overline{Q^n}\)</td>
+</tr>
+<tr>
+<td>01</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>\(\overline{Q^n}\)</td>
+<td>\(Q^n\)</td>
+</tr>
+</tbody>
+</table>
+<p>方程为：
+\[Q^{n+1}=J\overline{Q^n}+\overline{K}Q^n\]
+只要JK为1，就会不停地翻转。</p>
+<ul>
+<li>
+<p>电路设计 <br />
+一个逻辑总是可以写成<a href="#%e4%b8%8e%e6%88%96%e5%bc%8f" rel="">与或式</a>，因此至少可以用一个JK触发器来表示。首先要画卡诺图，对于每个下一个状态，都要画一张卡诺图。</p>
+<ul>
+<li>技巧 <br />
+在状态表里横着看，从前一个状态确定这一行在很多张卡诺图的位置，然后根据下一个输出结果依次填写到多张卡诺图中。</li>
+</ul>
+<p>由于一定要写成\(Q^{n+1}=J\overline{Q^n}+\overline{K}Q^n\)，因此要在一个输出（如\(Q_2^{n+1}\)）卡诺图中，分成两半：</p>
+<ul>
+<li>找到对应输入\(Q_2^n\)为1的输入组合，也就是公式中的\(Q^n\)</li>
+<li>找到对应输入为0的输入，也就是公式中的\(\overline{Q^n}\)，剩下的\(J,K\)对应的就是其他引脚的输入。由于JK触发器是<a href="#%e4%b8%8e%e6%88%96%e5%bc%8f" rel="">与或式</a>，可以不管0的格子。</li>
+</ul>
+</li>
+<li>
+<p>芯片</p>
+<ul>
+<li>
+<p><code>74xx112</code> ：双负沿JK触发器 <br /></p>
+<p>&lt;/ox-hugo/2022-01-06_06-02-40_74hc112.pdf&gt;</p>
+<p>既可以作为D触发器使用，又可以作为<a href="#rs%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS触发器</a>使用或者置位。作为JK触发器用时，
+<code>R</code> 和 <code>S</code> 端应当使触发器保持不变（由于是低电平有效，因此应当为高电平）。</p>
+</li>
+</ul>
+</li>
+</ul>
+ <!--list-separator-->
+<ul>
+<li>
+<p>主从JK触发器</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-01_13-03-55_jk.png"/>
+</figure>
+
+<p><a href="#jk%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">JK触发器</a>的输入直接影响输出而输出又直接影响输入，导致可能不停翻转。解决办法是使用两个JK触发器（其实是1个<a href="#jk%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">JK触发器</a>和1个带使能端的RS触发器），主从触发器只能轮流使能，反馈从从触发器引回到主触发器：</p>
+<ul>
+<li>主触发器使能（ <code>CP</code> 为 <code>1</code> ）：接受 <code>JK</code> 的变化，改变主触发器的值。 <br />
+由于两个输出是互斥的，因此主触发器中<a href="#rs%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS触发器</a>的输入要么为 <code>00</code> （对\(\overline S\)和\(\overline R\)取反），要么为\(\overline Q\)和\(Q\)，也就是不变或者翻转。由于输出是一直不变的，因此如果翻转，最多只能翻转一次。</li>
+<li>从触发器使能（ <code>CP</code> 为 <code>0</code> ）：把主触发器的值直接给输出。</li>
+</ul>
+<p>因此，只有在CP从1变成0时，输出才会变化。当CP等于1期间，如果JK发生翻转，由于从触发器反馈给主触发器的电平不变，会以第一次翻转为准，而不是CP从1变0那一瞬间的电平。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="模数混合电路">模数混合电路</h3>
+<h4 id="定时器">定时器</h4>
+<!--list-separator-->
+<ul>
+<li>
+<p><code>NE555</code></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-29_16-12-26_datasheet.svg"/>
+</figure>
+
+<table>
+<thead>
+<tr>
+<th>清零端 <code>R</code></th>
+<th>高触发端 <code>THR</code></th>
+<th>低触发端 <code>TR</code></th>
+<th>输出 <code>Q</code></th>
+<th>放电管 <code>DIS</code></th>
+<th>触发器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>RESET</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>保持上一状态</td>
+<td>保持上一状态</td>
+<td>保持上一状态</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>保持上一状态</td>
+<td>保持上一状态</td>
+<td>保持上一状态</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>SET</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>RESET</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1脚：外接电源负端 <code>VSS</code> <br />
+一般情况下接地。</li>
+<li>8脚：外接电源 <code>VCC</code> <br />
+双极型时基电路 <code>VCC</code> 的范围是\(4.5\sim 16\text{V}\)，CMOS型时基电路VCC的范围为\(3\sim 18\text{V}\)。一般用\(5\text{V}\)。</li>
+<li>3脚：输出端 <code>Q</code></li>
+<li>2脚：低触发端 <code>TR</code> <br />
+只接受低电平（\(0\sim \frac{V_\mathrm{CC}}{3}\)）。</li>
+<li>6脚：高触发端 <code>THR</code> <br />
+只接受高电平（\(\frac{2V_\mathrm{CC}}{3}\sim V_\mathrm{CC}\)）。</li>
+<li>4脚：直接清零端 <code>R</code> <br />
+当此端接低电平，则时基电路不工作，此时不论 <code>TR</code> 、 <code>THR</code> 处于何电平，时基电路输出为低电平，该端不用时应接高电平。</li>
+<li>5脚：控制电压端 <code>CV</code> <br />
+若此端外接电压，则可改变内部两个比较器的基准电压，当该端不用时，应将该端串入一只\(0.01\mu\text{F}\)电容接地，以防引入干扰。</li>
+<li>7脚：放电端 <code>DIS</code> <br />
+该端与放电管集电极相连，用做定时器时电容的放电。该引脚与3脚 <code>Q</code> 输出同步，输出电平一致，但不输出电流，只能灌电流了，所以被称为称为虚高。</li>
+</ul>
+</li>
+</ul>
+<h2 id="杂项">杂项</h2>
+<ul>
+<li>
+<p>线与：OD门的输出是灌电流的，可以使用导线相连来表示逻辑与</p>
+</li>
+<li>
+<p>噪声容限：感觉像是多个相同芯片进行级联的时候，对噪声的容忍限度。高电平噪声容限=高电平输出-最小高电平输入，也就是输出高电平波动在噪声容限内，不会对下一级的输出产生影响。</p>
+</li>
+<li>
+<p>LSTTL门电路</p>
+<ul>
+<li>悬空相当于高电平</li>
+<li>输出端接的电阻大于1kΩ，低电平可能无法传到下一级</li>
+</ul>
+</li>
+<li>
+<p>门电路参数</p>
+<ul>
+<li>电压传输特性
+<ul>
+<li>最大低电平输出\(V_\mathrm{OL(\max)}\)</li>
+<li>最小高电平输出\(V_\mathrm{OH(\min)}\)</li>
+<li>最大低电平输入\(V_\mathrm{IL(\max)}\)</li>
+<li>最小高电平输入\(V_\mathrm{IH(\min)}\)</li>
+<li>噪声容限\(V_\mathrm{NH}\)</li>
+<li>扇出系数：门电路带同类门的个数：LSTTL为个位数</li>
+</ul>
+</li>
+<li>输入特性
+<ul>
+<li>输入低电平电流\(I_\mathrm{IL}\)</li>
+<li>输入高电平电流\(I_\mathrm{IH}\)</li>
+<li>\(R_\mathrm{ON}\)</li>
+<li>\(R_\mathrm{OFF}\)</li>
+</ul>
+</li>
+<li>输出特性
+<ul>
+<li>\(t_\mathrm{PD}\)：平均延时</li>
+<li>\(P_\mathrm{D}\)：动态功率</li>
+</ul>
+</li>
+<li>转折电压\(V_T\)</li>
+</ul>
+</li>
+<li>
+<p>集电极开路：类似漏极开路</p>
+</li>
+<li>
+<p>竞争与冒险</p>
+<ul>
+<li>静态冒险：输出本不该产生变化却产生了变化</li>
+<li>动态冒险：输出本该产生变化却产生了多余的变化</li>
+<li>逻辑冒险：由一个输入端引起的冒险</li>
+<li>功能冒险：由多个输入端引起的冒险</li>
+</ul>
+<p>从卡诺图理解冒险的类型：卡诺图用的是格雷码，门的跳变不可能同时发生，因此从一个逻辑到另一个逻辑会沿着卡诺图的正交方向从多条路径到达另一个逻辑，如果跳变前后的逻辑是相邻的就是逻辑冒险，否则为功能冒险。如果跳变前后逻辑是相同的就为静态冒险，否则为动态冒险。静态逻辑冒险的消除：产生静态逻辑冒险的本质是我想保持一个电平而去改变其他电平，但由于我的输入信号到不同门中产生了不同时间的跳变，导致这个电平无法保持住。解决办法是让这个输出取决于更多的信号，这样当我一个输入信号改变时，这个电平依然能保持住。新加入的信号一定不能影响输出的逻辑。画卡诺图的时候，只要相邻的相同元素均可画圈，如果要求圈越少越好，圈最少的时候可能会产生“缝隙”，也就是两个圈有相邻元素但不重叠的情况，这时候应该补圈使得相邻的元素都在一个圈内，消除缝隙，即可消除静态逻辑冒险。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_100525.mp4#0:21:23" rel="">0:21:23</a> 时序电路 <br />
+逻辑电路：</p>
+<ul>
+<li>组合逻辑电路 <br />
+输出仅取决于当前的输入</li>
+<li>时序逻辑电路 <br />
+输入还和以前的输入有关</li>
+</ul>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_100525.mp4#0:26:15" rel="">0:26:15</a> 结构上的特征：有反馈</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_100525.mp4#0:26:54" rel="">0:26:54</a> 描述上的特征：增加了一组参数 —— 状态</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_100525.mp4#0:41:23" rel="">0:41:23</a> 最基本的时序电路：触发器</p>
+<ul>
+<li><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_105505.mp4#0:02:31" rel="">0:02:31</a> \(Q^{n+1}=f \left(Q^n,X\right)\)：即当前输出取决于之前的输入和当前的输入。</li>
+<li><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_105505.mp4#0:03:49" rel="">0:03:49</a> 特征方程：触发器的逻辑关系</li>
+<li><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_105505.mp4#0:08:50" rel="">0:08:50</a> 触发器的类型
+<ul>
+<li>电位型：只要输入信号变化，触发器就可能产生变化</li>
+<li>钟控型：时钟控制下才会随输入变化的触发器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_105505.mp4#0:13:55" rel="">0:13:55</a> 基本RS触发器</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_105505.mp4#0:19:54" rel="">0:19:54</a> 时序电路的真值表：迭代找到\(Q^{n+1}\)与\(Q^n\)的关系。先写方程，再列真值表。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_105505.mp4#0:34:52" rel="">0:34:52</a> 抢答器</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211021_105505.mp4#0:38:28" rel="">0:38:28</a> 与非门触发器。电子移动比空穴快。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211025_105015.mp4#0:16:49" rel="">0:16:49</a> 数码管的同时显示（动态显示）：把数码管的公共端作为片选端，快速扫描。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211025_105015.mp4#0:18:10" rel="">0:18:10</a> 抢答器程序。使用 <code>if</code> 表达记忆功能，在考虑的情况外时，输出保持不变。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211025_105015.mp4#0:33:25" rel="">0:33:25</a> 3位二进制可以编码8个数，但是需要排除一个数，作为无人抢答的状态。并且这个状态必须为 <code>000</code> ，因为输出要用一个或门判断或门判断有没有输出，来使能编码器。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211025_105015.mp4#0:37:55" rel="">0:37:55</a> 门电路延迟的影响</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211025_105015.mp4#0:45:43" rel="">0:45:43</a> 去除抖动</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_100504.mp4#0:17:35" rel="">0:17:35</a> D触发器：只能输入01或10的带使能端的RS触发器 <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">entity</span> <span class="nc">dlatch</span> <span class="k">is</span>
+  <span class="k">port</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">en</span> <span class="o">:</span> <span class="k">in</span>     <span class="kt">std_logic</span><span class="p">;</span>
+       <span class="n">q</span><span class="p">,</span> <span class="n">qb</span> <span class="o">:</span> <span class="k">buffer</span> <span class="kt">std_logic</span><span class="p">);</span>
+<span class="k">end</span> <span class="nc">dlatch</span><span class="p">;</span>
+<span class="k">architecture</span> <span class="nc">behav</span> <span class="k">of</span> <span class="nc">dlatch</span> <span class="k">is</span>
+<span class="k">begin</span>
+  <span class="k">process</span><span class="p">(</span><span class="n">en</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+  <span class="k">begin</span>
+    <span class="k">if</span> <span class="n">en</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span> <span class="k">then</span>
+      <span class="n">q</span> <span class="o">&lt;=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+    <span class="n">qb</span> <span class="o">&lt;=</span> <span class="k">not</span> <span class="n">q</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="k">end</span> <span class="nc">behav</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>或</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">entity</span> <span class="nc">dlatch</span> <span class="k">is</span>
+  <span class="k">port</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">en</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic</span><span class="p">;</span>
+       <span class="n">q</span><span class="p">,</span> <span class="n">qb</span> <span class="o">:</span> <span class="k">out</span> <span class="kt">std_logic</span><span class="p">);</span>
+<span class="k">end</span> <span class="nc">dlatch</span><span class="p">;</span>
+<span class="k">architecture</span> <span class="nc">behav</span> <span class="k">of</span> <span class="nc">dlatch</span> <span class="k">is</span>
+<span class="k">begin</span>
+  <span class="k">process</span><span class="p">(</span><span class="n">en</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+  <span class="k">begin</span>
+    <span class="k">if</span> <span class="n">en</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span> <span class="k">then</span>
+      <span class="n">q</span> <span class="o">&lt;=</span> <span class="n">d</span><span class="p">;</span>
+      <span class="n">qb</span> <span class="o">&lt;=</span> <span class="k">not</span> <span class="n">d</span><span class="p">;</span>
+    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="k">end</span> <span class="nc">behav</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_100504.mp4#0:20:31" rel="">0:20:31</a> 锁存器：带使能端的RS触发器</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_100504.mp4#0:22:49" rel="">0:22:49</a> 三态门：高、低、高阻</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_100504.mp4#0:26:06" rel="">0:26:06</a> 74LS373 <br />
+LS 三极管
+8个D触发器组成属于锁存器，只要使能端为1即传输数据一般用于输入（不稳定的信号）</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_100504.mp4#0:28:01" rel="">0:28:01</a> 74LS374 <br />
+属于触发器，只有时钟上跳变（在引脚图表现为有个箭头，如果还有个圈则代表下跳）才传输数据一般用于输出（稳定的信号）</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_105505.mp4#0:01:03" rel="">0:01:03</a> 时钟控制集成触发器</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_105505.mp4#0:01:27" rel="">0:01:27</a> JK触发器
+\[Q^{n+1}=J\overline{Q^n}+\overline{K}Q^n\]</p>
+<p>双1一直在翻转</p>
+<table>
+<thead>
+<tr>
+<th>JK</th>
+<th>\(Q^{n+1}\)</th>
+<th>\(\overline{Q^{n+1}}\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>\(Q^n\)</td>
+<td>\(\overline{Q^n}\)</td>
+</tr>
+<tr>
+<td>01</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>\(\overline{Q^n}\)</td>
+<td>\(Q^n\)</td>
+</tr>
+</tbody>
+</table>
+<p>CP为0时保持不变优点：消除了不允许出现的输入组合缺点：一直在翻转</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_105505.mp4#0:13:45" rel="">0:13:45</a> 主从JK触发器相当于两个JK触发器，主从触发器轮流使能，只有在CP从1变成0时，输出才会变化。当CP等于1期间，如果JK发生翻转，由于从触发器反馈给主触发器的电平不变，会以第一次翻转为准，而不是CP从1变0那一瞬间的电平。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_105505.mp4#0:41:28" rel="">0:41:28</a> 置1清零输入端 <br />
+这样触发器可以直接作为RS触发器使用，来直接设置触发器的值。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211028_105505.mp4#0:43:07" rel="">0:43:07</a> 74LS112</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211101_105513.mp4#0:01:18" rel="">0:01:18</a> 时序电路的分析与描述</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211101_105513.mp4#0:27:30" rel="">0:27:30</a> 投币机</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211101_105513.mp4#0:39:56" rel="">0:39:56</a> 寄存器</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211101_105513.mp4#0:42:34" rel="">0:42:34</a> 例6-1</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211104_100505.mp4#0:05:32" rel="">0:05:32</a> 继 <br />
+使用状态表来确定状态转移分析要点：每级的输出都是最终的输出悬空默认输入1，输入双1时，时钟线上跳时会翻转电平，也就是最低位会一直翻转当最低位为1时，时钟线再次跳变才会导致第2位翻转当低2位同时为1时，时钟线再次跳变才会导致第3位翻转</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211104_100505.mp4#0:15:18" rel="">0:15:18</a> 计数器的模：就是计数器一次溢出到下一次溢出的长度</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211104_100505.mp4#0:17:46" rel="">0:17:46</a> 自启动问题 <br />
+会不会从开机状态从伪码区恢复到非伪码区。计数器是可自启动的电路。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211104_100505.mp4#0:20:18" rel="">0:20:18</a> 状态转移图 <br />
+可自启动电路在状态转移图上体现为是闭环的。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211104_100505.mp4#0:22:10" rel="">0:22:10</a> 例6-2</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211104_100505.mp4#0:33:19" rel="">0:33:19</a> 设计电路 <br />
+画卡诺图，对于每个下一个状态，都要画一张卡诺图。技巧，在状态表里横着看，从前一个状态确定这一行在很多张卡诺图的位置，然后根据下一个输出结果依次填写到多张卡诺图中。由于一定要写成\(Q^{n+1}=J\overline{Q^n}+\overline{K}Q^n\)，因此要在一个输出（如\(Q_2^{n+1}\)）卡诺图中，分成两半，找到对应输入\(Q_2^n\)为1的输入组合，也就是公式中的\(Q^n\)，找到对应输入为0的输入，也就是公式中的\(\overline{Q^n}\)，剩下的\(J,K\)对应的就是其他引脚的输入。由于JK触发器是与或式，可以不管0的格子。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211104_105504.mp4#0:00:33" rel="">0:00:33</a> 设计电路的自启动问题 <br />
+卡诺图的画圈是用于化简的，有多种方法，且任意项（也就是没有包含在状态表里的输入）可以不包含在圈内。任意项的包含与否决定着电路是否能自启动。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211104_105504.mp4#0:07:49" rel="">0:07:49</a> 8421码计数器</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211104_105504.mp4#0:15:06" rel="">0:15:06</a> 8421码VHDL <br />
+所有触发器用同一个时钟是同步电路。
+TODO: 复位的过程</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211108_100514.mp4#0:15:01" rel="">0:15:01</a> 实验七 <br />
+信号定义为数据时不会体现在电路里</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211108_100514.mp4#0:34:22" rel="">0:34:22</a> 序列信号</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211108_105514.mp4#0:04:16" rel="">0:04:16</a> <br />
+mini型：输出取决于状态的转移（与输入有关）摩尔型：输出取决于当前状态</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211108_105514.mp4#0:12:56" rel="">0:12:56</a> 尽可能保留已有输入（KMP算法）</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211108_105514.mp4#0:39:49" rel="">0:39:49</a> 移位寄存器 74LS194</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211111_101656.mp4#0:11:50" rel="">0:11:50</a> 让移位寄存器自己产生规律序列信号</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211111_101656.mp4#0:25:55" rel="">0:25:55</a> 投币机</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211111_105521.mp4#0:00:44" rel="">0:00:44</a> 投币机卡诺图</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211111_105521.mp4#0:20:27" rel="">0:20:27</a> mini型的好处 <br />
+开机所处的状态不会影响输出</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211111_105521.mp4#0:28:38" rel="">0:28:38</a> 解决问题 <br />
+为信号的上升沿和下降沿分别添加状态</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211115_100509.mp4#0:00:06" rel="">0:00:06</a> 实验七</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211115_100509.mp4#0:05:07" rel="">0:05:07</a> 投币机卡诺图继续</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211115_100509.mp4#0:22:30" rel="">0:22:30</a> VHDL状态机模板（就是正常C语言的写法） <br />
+自定义枚举类型使用if else避免暴力列表以下两种写法等效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="n">rising_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>                       <span class="c1">--写法 1</span>
+<span class="n">clk</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">clk</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>                <span class="c1">--写法 2</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211115_100509.mp4#0:40:52" rel="">0:40:52</a> 中规模集成计数器 <br />
+异步预置导致两个数占用同一个周期的问题，因此清零必须在下一个（刚好溢出）周期进行。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211115_105504.mp4#0:20:10" rel="">0:20:10</a> 74ls192的VHDL <br />
+进位后为0时，进位保持低电平</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211115_105504.mp4#0:31:13" rel="">0:31:13</a> 74ls192的级联</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211118_100503.mp4#0:04:12" rel="">0:04:12</a> 74ls192 万年历</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211118_100503.mp4#0:14:55" rel="">0:14:55</a> 万年历卡诺图 <br />
+因为判断可以有优先级，任意项可以简化电路。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211118_100503.mp4#0:35:24" rel="">0:35:24</a> 数据选择器表达与或式 <br />
+使用Q1作为选择端</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211118_105505.mp4#0:00:04" rel="">0:00:04</a> 数据选择器设计逻辑表达式 <br />
+提取公共项</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211118_105505.mp4#0:07:38" rel="">0:07:38</a> 巧用使能端</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211118_105505.mp4#0:12:10" rel="">0:12:10</a> 复杂逻辑表达式转换为多级电路设计</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211118_105505.mp4#0:27:20" rel="">0:27:20</a> 功能复用</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211118_105505.mp4#0:30:13" rel="">0:30:13</a> 移位代替乘法</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211118_105505.mp4#0:40:04" rel="">0:40:04</a> 只需要考虑最低位</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211122_100509.mp4#0:06:32" rel="">0:06:32</a> 子条件的判断结果拼在一起，再列真值表，画卡诺图，得到最终输出的逻辑表达式</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211122_100509.mp4#0:35:46" rel="">0:35:46</a> 实验十</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211122_100509.mp4#0:41:26" rel="">0:41:26</a> 考题1</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211122_100509.mp4#0:43:23" rel="">0:43:23</a> 考题2 ?</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211122_105503.mp4#0:00:12" rel="">0:00:12</a> 74ls169</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211122_105503.mp4#0:08:57" rel="">0:08:57</a> 同步预置实现分频器</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211122_105503.mp4#0:11:52" rel="">0:11:52</a> 考题</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211122_105503.mp4#0:39:42" rel="">0:39:42</a> 74ls169 VHDL描述</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211206_100508.mp4#0:01:58" rel="">0:01:58</a> 考题1：模=60的加一计数器（实物图）</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211206_100508.mp4#0:03:36" rel="">0:03:36</a> 考题2：数字信号的发送与输出</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211206_100508.mp4#0:41:11" rel="">0:41:11</a> 移位寄存器 <br />
+使用D触发器：功能：</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211206_105512.mp4#0:02:29" rel="">0:02:29</a> 移位寄存器VHDL描述 <br /></p>
+<ul>
+<li>左/右移</li>
+<li>循环</li>
+<li>算术移动</li>
+</ul>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211206_105512.mp4#0:23:42" rel="">0:23:42</a> 环形计数器</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211206_105512.mp4#0:23:54" rel="">0:23:54</a> 序列信号发生器？</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211206_105512.mp4#0:26:50" rel="">0:26:50</a> 透题</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211206_105512.mp4#0:33:53" rel="">0:33:53</a> 仿真考法</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211206_105512.mp4#0:38:17" rel="">0:38:17</a> 74ls169 74ls153设计2 <br />
+序列生成的思路：先用计数器生成不同的二进制，输入到选择器的数据选择端进行转换。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211209_100511.mp4#0:00:39" rel="">0:00:39</a> 实验14</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211213_100514.mp4#0:00:04" rel="">0:00:04</a> 中规模移位寄存器 <br />
+小规模：JK触发器、D触发器中规模：传统芯片</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211213_100514.mp4#0:06:04" rel="">0:06:04</a> 工作方式串入串出和串入并出是所有移位寄存器都有的</p>
+<ul>
+<li>串入串出：相当于时钟上的分割</li>
+<li>串入并出</li>
+<li>并入串出</li>
+<li>并入并出</li>
+</ul>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211213_100514.mp4#0:10:26" rel="">0:10:26</a> 74ls194 <br />
+异步清零</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211213_100514.mp4#0:16:30" rel="">0:16:30</a> M=255 的序列</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211213_100514.mp4#0:36:24" rel="">0:36:24</a> 74ls195</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211213_100514.mp4#0:39:31" rel="">0:39:31</a> 串并转换 74ls164 <br />
+有的芯片只能左移或者只能右移。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211213_105506.mp4#0:01:16" rel="">0:01:16</a> 74ls374 （触发器型）<br />
+D触发器，在数据全部移入后才进行输出
+74ls169计数器，实现每8个时钟刷新一次数据。</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211213_105506.mp4#0:17:13" rel="">0:17:13</a> 74ls373 （锁存器型）<br />
+用电平使能而不是跳变使能，可以在当前8个周期输出</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211213_105506.mp4#0:25:44" rel="">0:25:44</a> 并入串出 74ls166 、74ls195（4位）</p>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/run/media/coco24/Data/%e8%a7%86%e9%a2%91/%e6%95%b0%e7%94%b5/20211209_105507.mp4#0:23:11" rel="">0:23:11</a> 伪随机序列 <br />
+M代表移位寄存器的模环形和扭环形</p>
+</li>
+</ul>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" data-title="数字电路与逻辑设计" data-hashtags="数字电路"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" data-hashtag="数字电路"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" data-title="数字电路与逻辑设计"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" data-title="数字电路与逻辑设计"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" data-title="数字电路与逻辑设计"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/notes/bash/" class="prev" rel="prev" title="Bash"><i class="fas fa-angle-left fa-fw"></i>Bash</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>

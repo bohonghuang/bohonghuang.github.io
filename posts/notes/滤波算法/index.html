@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">滤波算法 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="滤波算法" />
+<meta property="og:description" content="限幅滤波法（判断滤波法） 设置一个阈值，当一次数据与上次数据的偏差小于这个阈值时才算入测量的数据，否则使用上一次测量的数据。 优点 避免偶然因素引" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-03T18:23:29+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="滤波算法"/>
+<meta name="twitter:description" content="限幅滤波法（判断滤波法） 设置一个阈值，当一次数据与上次数据的偏差小于这个阈值时才算入测量的数据，否则使用上一次测量的数据。 优点 避免偶然因素引"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" /><link rel="next" href="https://bohonghuang.github.io/posts/notes/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "滤波算法",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "嵌入式","wordcount":  1909 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T18:23:29+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">滤波算法</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1909 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" class="leancloud_visitors" data-flag-title="滤波算法">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#限幅滤波法-判断滤波法">限幅滤波法（判断滤波法）</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#中位值滤波法">中位值滤波法</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#算术平均滤波法">算术平均滤波法</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#递推平均滤波法-滑动平均滤波法">递推平均滤波法（滑动平均滤波法）</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#中位值平均滤波法-防脉冲干扰平均滤波法">中位值平均滤波法（防脉冲干扰平均滤波法）</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#限幅平均滤波法">限幅平均滤波法</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#一阶滞后滤波法">一阶滞后滤波法</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#加权递推平均滤波法">加权递推平均滤波法</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#消抖滤波法">消抖滤波法</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#限幅消抖滤波法">限幅消抖滤波法</a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#卡尔曼滤波">卡尔曼滤波</a>
+      <ul>
+        <li><a href="#例子-速度与位置的关系">例子 - 速度与位置的关系</a></li>
+        <li><a href="#应用-传感器读数的噪声">应用 - 传感器读数的噪声</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="限幅滤波法-判断滤波法">限幅滤波法（判断滤波法）</h2>
+<p>设置一个阈值，当一次数据与上次数据的偏差小于这个阈值时才算入测量的数据，否则使用上一次测量的数据。</p>
+<h3 id="优点">优点</h3>
+<p>避免偶然因素引起的干扰。</p>
+<h3 id="缺点">缺点</h3>
+<ol>
+<li>无法克服周期性的干扰。</li>
+<li>平滑度差。</li>
+</ol>
+<h2 id="中位值滤波法">中位值滤波法</h2>
+<p>连续采样N次，取中位数作为本次测量结果。</p>
+<h3 id="优点">优点</h3>
+<ol>
+<li>能有效克服因偶然因素引起的波动干扰。</li>
+<li>对温度、液位等 <strong>变化缓慢的被测参数</strong> 有良好的滤波效果。</li>
+</ol>
+<h3 id="缺点">缺点</h3>
+<p>不适合用于流量、速度等快速变化的参数。</p>
+<h2 id="算术平均滤波法">算术平均滤波法</h2>
+<p>连续采样N次，取平均数作为本次测量结果。</p>
+<h3 id="优点">优点</h3>
+<p>适合用于随机干扰信号的滤波。</p>
+<h3 id="缺点">缺点</h3>
+<p>测量速度慢。</p>
+<h2 id="递推平均滤波法-滑动平均滤波法">递推平均滤波法（滑动平均滤波法）</h2>
+<p>维护一个采样数据的队列，取队列中的平均值。</p>
+<h3 id="优点">优点</h3>
+<ol>
+<li>能比较好地抑制周期性干扰。</li>
+<li>平滑度高。</li>
+</ol>
+<h3 id="缺点">缺点</h3>
+<p>灵敏度低，不好抑制偶然的脉冲性干扰</p>
+<h2 id="中位值平均滤波法-防脉冲干扰平均滤波法">中位值平均滤波法（防脉冲干扰平均滤波法）</h2>
+<p>连续采样N次，取消最大值和最小值后，剩下的数据求平均作为测量结果。</p>
+<h3 id="优点">优点</h3>
+<h3 id="缺点">缺点</h3>
+<h2 id="限幅平均滤波法">限幅平均滤波法</h2>
+<p>把所有测量数据先进行限幅滤波，再进行递推平均滤波。</p>
+<h3 id="优点">优点</h3>
+<h3 id="缺点">缺点</h3>
+<h2 id="一阶滞后滤波法">一阶滞后滤波法</h2>
+<p>取\(k\in[0,1]\)，设采样值为\(a_n\)，测量结果\(f(n)=k\cdot a_n+(1-k)f(n-1)\)。</p>
+<h3 id="优点">优点</h3>
+<ol>
+<li>能比较好地抑制周期性干扰。</li>
+<li>适用于波动频率高的场合。</li>
+</ol>
+<h3 id="缺点">缺点</h3>
+<ol>
+<li>相位滞后，灵敏度低。</li>
+<li>无法消除频率高于采样频率\(\frac{1}{2}\)的信号。</li>
+</ol>
+<h2 id="加权递推平均滤波法">加权递推平均滤波法</h2>
+<p>在递推平均的基础上，对不同的数据采用不同的权，越早的数据权越小。</p>
+<h3 id="优点">优点</h3>
+<p>适用于有较大纯滞后时间常数的对象，和采样周期较短的系统。</p>
+<h3 id="缺点">缺点</h3>
+<ol>
+<li>不适用于对于纯滞后时间常数较小、采样周期较长、变化缓慢的信号。</li>
+<li>灵敏度低。</li>
+</ol>
+<h2 id="消抖滤波法">消抖滤波法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">counter_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">last_x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">last_x</span><span class="p">:</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="p">(</span><span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">counter_size</span>
+    <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="n">x</span>
+      <span class="n">last_x</span> <span class="o">=</span> <span class="n">x</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="优点">优点</h3>
+<p>对于变化缓慢的被测参数有较好的滤波效果。</p>
+<h3 id="缺点">缺点</h3>
+<ol>
+<li>不适用于快速变化的参数。</li>
+<li>计数器溢出的那一刻可能将干扰值作为有效值输入。</li>
+</ol>
+<h2 id="限幅消抖滤波法">限幅消抖滤波法</h2>
+<p>先使用限幅滤波，再使消抖滤波。</p>
+<h3 id="优点">优点</h3>
+<h3 id="缺点">缺点</h3>
+<h2 id="卡尔曼滤波">卡尔曼滤波</h2>
+<p>目标：从获取的多个不精确的数据中尽可能地获得有用信息。</p>
+<h3 id="例子-速度与位置的关系">例子 - 速度与位置的关系</h3>
+<ul>
+<li>基本量
+<ul>
+<li>\(\hat{\mathbf x_k}=\begin{bmatrix}p_k\\v_k\end{bmatrix}=\begin{bmatrix}\text{position}\\text{velocity}\end{bmatrix}\)
+在k时刻物体的位置和速度组成的向量
+<ul>
+<li>变化
+<ul>
+<li>基本变化
+<ul>
+<li>
+<p>\(\begin{array}{rlr}p_{k} &amp; = p_{k-1}+&amp; \Delta t v_{k-1} \\v_{k} &amp; = &amp;v_{k-1}\end{array}\Rightarrow\begin{aligned} \hat{\mathbf{x}}_{k} &amp;=\left[\begin{array}{cc} 1 &amp; \Delta t \\ 0 &amp; 1 \end{array}\right] \hat{\mathbf{x}}_{k-1} \\ &amp;=\mathbf{F}_{k} \hat{\mathbf{x}}_{k-1} \end{aligned}\) <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-08-56_8170a6981244e9aa2f60d093e0d20a4e_720w.jpg"/>
+</figure>
+
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-09-20_5810ceee40fd2cf52478551e156ec773_720w.jpg"/>
+</figure>
+
+</li>
+</ul>
+</li>
+<li>外部影响
+<ul>
+<li>
+<p>\(\begin{aligned} p_{k} &amp; = p_{k-1}+\Delta t v_{k-1}+\frac{1}{2} a \Delta t^{2} \\ v_{k} &amp;=\quad v_{k-1}+a \Delta t \end{aligned}\Rightarrow \begin{aligned} \hat{\mathbf{x}}_{k} &amp;=\mathbf{F}_{k} \hat{\mathbf{x}}_{k-1}+\left[\begin{array}{c} \frac{\Delta t^{2}}{2} \\ \Delta t \end{array}\right] a \\ &amp;=\mathbf{F}_{k} \hat{\mathbf{x}}_{k-1}+\mathbf{B}_{k} \overrightarrow{\mathbf{u}}_{k} \end{aligned}\)</p>
+<ul>
+<li>\(a\)：已知加速度假设已经知道外部因素（比如风力、物体本身的动力）改变了物体的加速度</li>
+<li>\(B_k\)：控制矩阵</li>
+<li>\(\vec u_k\)：控制向量</li>
+</ul>
+<p><strong>最佳的状态预测</strong> 是基于 <strong>直接由上一个状态得到预测</strong> 和 <strong>已知的外部影响</strong> 得到的预测</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>\(\mathbf P_k=\begin{bmatrix}\Sigma_{pp}&amp;\Sigma_{pv}\\Sigma_{vp}&amp;\Sigma_{vv}\end{bmatrix}\)
+速度和位置的<a href="https://bohonghuang.github.io/posts/notes/%E7%BB%9F%E8%AE%A1%E5%AD%A6/#协方差矩阵" rel="">协方差矩阵</a>
+<ul>
+<li>元素
+<ul>
+<li>\(\Sigma\)：什么和什么的协方差
+<ul>
+<li>\(p\): 位置</li>
+<li>\(v\): 速度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>变化
+<ul>
+<li>基本变化
+<ul>
+<li>\(\begin{aligned} \hat{\mathbf{x}}_{k} &amp;=\mathbf{F}_{k} \hat{\mathbf{x}}_{k-1} \\ \mathbf{P}_{k} &amp;=\mathbf{F}_{\mathbf{k}} \mathbf{P}_{k-1} \mathbf{F}_{k}^{T} \end{aligned}\Leftarrow \begin{aligned} \operatorname{Cov}(x) &amp;=\Sigma \\ \operatorname{Cov}(\mathbf{A} x) &amp;=\mathbf{A} \Sigma \mathbf{A}^{T} \end{aligned} \)</li>
+</ul>
+</li>
+<li>外部影响
+<ul>
+<li>
+<p>\(\begin{aligned} \hat{\mathbf{x}}_{k} &amp;=\mathbf{F}_{k} \hat{\mathbf{x}}_{k-1}+\mathbf{B}_{k} \overrightarrow{\mathbf{u}_{k}} \\ \mathbf{P}_{k} &amp;=\mathbf{F}_{\mathbf{k}} \mathbf{P}_{k-1} \mathbf{F}_{k}^{T}+\mathbf{Q}_{k} \end{aligned}\)</p>
+<ul>
+<li>
+<p>\(Q_k\)：表示方差为\(Q_k\)的高斯噪声，作为不确定性因素把上一个分布用于预测的每一个点都移动到预测后符合方差为\(Q_K\)的高斯分布里：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-07-28_1736dbc6bac349f1fd86de3c9e2cc76f_720w.jpg"/>
+</figure>
+
+<p>产生一个新的高斯分布：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-07-52_63b04b1e1330df6d2248f9272618ba8b_720w.jpg"/>
+</figure>
+
+</li>
+</ul>
+<p><strong>新的不确定性</strong> 是基于 <strong>由上一个状态得到的不确定性</strong> 和 <strong>外部环境的不确定性</strong> 得到的预测</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="应用-传感器读数的噪声">应用 - 传感器读数的噪声</h3>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-02-08_954bea3147c72502022920b95819621b_720w.jpg"/>
+</figure>
+
+<p>在一个时间点，有两种 <strong>独立</strong> 的方式获得测量数据的分布：</p>
+<ol>
+<li>
+<p>推测 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-02-59_b7e5edbd408b664a2ec07e95d0794227_720w.jpg"/>
+</figure>
+
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-03-33_e014690db550baa5baaf62d1d6c21e55_720w.jpg"/>
+</figure>
+
+<ul>
+<li>\(\begin{aligned} \vec{\mu}_{\text {expected }} &amp;=\mathbf{H}_{k} \hat{\mathbf{x}}_{k} \\ \mathbf{\Sigma}_{\text {expected }} &amp;=\mathbf{H}_{k} \mathbf{P}_{k} \mathbf{H}_{k}^{T} \end{aligned}\)
+<ul>
+<li>\(\mu\)：读数均值</li>
+<li>\(\mathbf\Sigma\)：协方差矩阵</li>
+<li>\(\hat{\mathbf x_b}\)： 推测的状态值</li>
+<li>\(\mathbf H_k\)：传感器建模矩阵（传感器测量范围和单位的可能和主机所使用的不一致，所以需要一个矩阵把当前主机的状态值变换为传感器读取的值）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>观测 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-04-05_8f86b40e297d206f439c2c3653357c77_720w.jpg"/>
+</figure>
+
+<ul>
+<li>
+<p>\(\bar z_k\)：读数的平均值</p>
+</li>
+<li>
+<p>\(R_k\)：读数的方差</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-05-13_aaa22652895229c41402d46df09359b9_720w.jpg"/>
+</figure>
+
+<p>如果有两个相互独立的获取系统状态的方式，并且得到两者都准确的概率值，只需要将两者相乘</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-05-42_5872b13eb9fc87370a8decd02cdf0012_720w.jpg"/>
+</figure>
+
+<p>相乘后得到新的均值和协方差</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-06-38_3c5dcbb045192ae881e94e732d29eadc_720w.jpg"/>
+</figure>
+
+<p>使用高斯乘法得到新的分布
+\[\mathcal{N}\left(x, \mu_{0}, \sigma_{0}\right) \cdot \mathcal{N}\left(x, \mu_{1}, \sigma_{1}\right) \stackrel{?}{ = } \mathcal{N}\left(x, \mu^{\prime}, \sigma^{\prime}\right)\]
+其中
+\[\mathcal{N}(x, \mu, \sigma)=\frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x-\mu)^{2}}{2 \sigma^{2}}}\]
+相乘后的结果
+\[\begin{aligned}</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>μ<sup>′</sup> &amp;=μ<sub>0</sub>+\frac{σ<sub>0</sub><sup>2</sup>\left(μ<sub>1</sub>-μ<sub>0</sub>\right)}{σ<sub>0</sub><sup>2</sup>+σ<sub>1</sub><sup>2</sup>} <br />
+σ<sup>′ 2</sup> &amp;=σ<sub>0</sub><sup>2</sup>-\frac{σ<sub>0</sub><sup>4</sup>}{σ<sub>0</sub><sup>2</sup>+σ<sub>1</sub><sup>2</sup>}
+\end{aligned}\]
+提取\(\mu^\prime\)和\({\sigma^\prime}^2\)的公共部分\(\mathbf k\)
+\[\begin{aligned}
+\mathbf{k} &amp;=\frac{\sigma_{0}^{2}}{\sigma_{0}^{2}+\sigma_{1}^{2}} \\
+\mu^{\prime} &amp;=\mu_{0}+\mathbf{k}\left(\mu_{1}-\mu_{0}\right) \\
+\sigma^{\prime 2} &amp;=\sigma_{0}^{2}-\mathbf{k} \sigma_{0}^{2}
+\end{aligned}\]
+上述过程针对的是一维高斯分布的相乘，推广到多维，将上述式子表示为矩阵和向量的形式
+\[\begin{aligned}
+\mathbf{K}&amp;=\Sigma_{0}\left(\Sigma_{0}+\Sigma_{1}\right)^{-1} \\
+\vec{\mu}^{\prime}&amp;=\overrightarrow{\mu_{0}}+\mathbf{K}\left(\overrightarrow{\mu_{1}}-\overrightarrow{\mu_{0}}\right) \\
+\Sigma^{\prime}&amp;=\Sigma_{0}-\mathbf{K} \Sigma_{0}
+\end{aligned}\]
+其中\(K\)被称为卡尔曼增益将\(\left(\mu_{0}, \Sigma_{0}\right)=\left(\mathbf{H}_{k} \hat{\mathbf{x}}_{k}, \mathbf{H}_{k} \mathbf{P}_{k} \mathbf{H}_{k}^{T}\right)\)和\(\left(\mu_{1}, \Sigma_{1}\right)=\left(\mathbf{z}_{k}^{\prime}, \mathbf{R}_{k}\right)\)代入上述式子可得
+\[\begin{aligned}
+\mathbf{K}&amp;=\mathbf{H}_{k} \mathbf{P}_{k} \mathbf{H}_{k}^{T}\left(\mathbf{H}_{k} \mathbf{P}_{k} \mathbf{H}_{k}^{T}+\mathbf{R}_{k}\right)^{-1}\\
+\mathbf{H}_{k} \hat{\mathbf{x}}_{k}^{\prime} &amp;=\mathbf{H}_{k} \hat{\mathbf{x}}_{k}+\mathbf{K}\left(\overrightarrow{\mathbf{z}_{k}}-\mathbf{H}_{k} \hat{\mathbf{x}}_{k}\right) \\
+\mathbf{H}_{k} \mathbf{P}_{k}^{\prime} \mathbf{H}_{k}^{T} &amp;=\mathbf{H}_{k} \mathbf{P}_{k} \mathbf{H}_{k}^{T}-\mathbf{K H}_{k} \mathbf{P}_{k} \mathbf{H}_{k}^{T}
+\end{aligned}\]
+移项化简得
+\[\begin{aligned}
+\mathbf{K}^{\prime}&amp;=\mathbf{P}_{k} \mathbf{H}_{k}^{T}\left(\mathbf{H}_{k} \mathbf{P}_{k} \mathbf{H}_{k}^{T}+\mathbf{R}_{k}\right)^{-1}\\
+\hat{\mathbf{x}}_{k}^{\prime} &amp;=\hat{\mathbf{x}}_{k}+\mathbf{K}^{\prime}\left(\overrightarrow{\mathbf{z}_{k}}-\mathbf{H}_{k} \hat{\mathbf{x}}_{k}\right) \\
+\mathbf{P}_{k}^{\prime} &amp;=\mathbf{P}_{k}-\mathbf{K}^{\prime} \mathbf{H}_{k} \mathbf{P}_{k}
+\end{aligned}\]
+其中 \(\hat{\mathbf x_k}^\prime\)为本次更新的最佳预测值。</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-08-23_855027a453eb445e25ba3b8d9b11695c_720w.jpg"/>
+</figure>
+
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" data-title="滤波算法" data-hashtags="嵌入式"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" data-hashtag="嵌入式"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" data-title="滤波算法"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" data-title="滤波算法"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/" data-title="滤波算法"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" class="prev" rel="prev" title="电路基础"><i class="fas fa-angle-left fa-fw"></i>电路基础</a>
+            <a href="https://bohonghuang.github.io/posts/notes/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/" class="next" rel="next" title="模拟电子技术">模拟电子技术<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>
