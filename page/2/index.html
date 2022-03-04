@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-    <head>
+
+<head>
 	<meta name="generator" content="Hugo 0.92.2" />
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="黄博宏的个人主页" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="黄博宏的个人主页" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://bohonghuang.github.io/" /><meta property="og:site_name" content="黄博宏的个人主页" />
@@ -15,9 +15,13 @@
 <meta name="twitter:title" content="黄博宏的个人主页"/>
 <meta name="twitter:description" content=""/>
 <meta name="application-name" content="黄博宏的个人笔记">
-<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://bohonghuang.github.io/site.webmanifest"><link rel="canonical" href="https://bohonghuang.github.io/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "WebSite",
@@ -27,9 +31,17 @@
             },"image": "https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png","thumbnailUrl": "https:\/\/bohonghuang.github.io\/images\/screenshot.png","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","name": "黄博宏的个人主页"
     }
     </script></head>
-    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
@@ -37,19 +49,18 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
@@ -65,20 +76,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -90,57 +101,75 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="page home" posts><div class="home-profile"><div class="home-avatar"><a href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"><img
+            <div class="container"><div class="page home" posts><div class="home-profile"><div class="home-avatar"><a href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"><img
         class="lazyload"
-        src="https://bohonghuang.github.io/svg/loading.min.svg"
         data-src="https://www.gravatar.com/avatar/eec0e0f05dcd00d5cedbd3072e16f569?s=240&amp;d=mp"
         data-srcset="https://www.gravatar.com/avatar/eec0e0f05dcd00d5cedbd3072e16f569?s=240&amp;d=mp, https://www.gravatar.com/avatar/eec0e0f05dcd00d5cedbd3072e16f569?s=240&amp;d=mp 1.5x, https://www.gravatar.com/avatar/eec0e0f05dcd00d5cedbd3072e16f569?s=240&amp;d=mp 2x"
         data-sizes="auto"
         alt="https://www.gravatar.com/avatar/eec0e0f05dcd00d5cedbd3072e16f569?s=240&amp;d=mp"
-        title="https://www.gravatar.com/avatar/eec0e0f05dcd00d5cedbd3072e16f569?s=240&amp;d=mp" /></a></div><h1 class="home-title">All dreams are but another reality. Never forget...</h1><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/BohongHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://www.zhihu.com/people/huang-bo-hong-72" title="知乎" target="_blank" rel="noopener noreffer me"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/zhihu.svg"></i></a><a href="https://space.bilibili.com/11941235" title="bilibili" target="_blank" rel="noopener noreffer me"><i data-svg-src="https://bohonghuang.github.io/svg/icons/bilibili.min.svg"></i></a><a href="mailto:1281299809@qq.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div><h3 class="home-disclaimer">所有文章均为个人学习记录，仅供分享用于交流、学习，不保证内容的准确性以及具有合法的相关素材使用权。</h3></div>
+        title="https://www.gravatar.com/avatar/eec0e0f05dcd00d5cedbd3072e16f569?s=240&amp;d=mp" height="6rem" width="6rem"
+    /></a></div><h1 class="home-title">All dreams are but another reality. Never forget...</h1><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/BohongHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://www.zhihu.com/people/huang-bo-hong-72" title="知乎" target="_blank" rel="noopener noreffer me"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/zhihu.svg"></i></a><a href="https://space.bilibili.com/11941235" title="bilibili" target="_blank" rel="noopener noreffer me"><i data-svg-src="https://bohonghuang.github.io/svg/icons/bilibili.min.svg"></i></a><a href="mailto:1281299809@qq.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div><h3 class="home-disclaimer">所有文章均为个人学习记录，仅供分享用于交流、学习，不保证内容的准确性以及具有合法的相关素材使用权。</h3></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="https://bohonghuang.github.io/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/">复变函数与积分变换</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">复数 常识： 两个复数（不全为实数）不能比较大小。 表示 \(r=\sqrt{x^2+y^2},\theta=\text{arg}(z),x=r\c</div><div class="post-footer">
+    </h1><div class="post-meta">
+        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">复数 常识： 两个复数（不全为实数）不能比较大小。 表示 \(r=\sqrt{x^2+y^2},\theta=\text{arg}(z),x=r\c</div><div class="post-footer">
         <a href="https://bohonghuang.github.io/posts/notes/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="https://bohonghuang.github.io/posts/notes/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86/">大学物理</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 电学 1 2 3 4 5 6 7 ÷d /--&gt; E ---\ ×q | | | v U F ^ | | | ÷q \--- W &lt;--/ ×r 电场强度 意义 单位面积的电通量（</div><div class="post-footer">
+    </h1><div class="post-meta">
+        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 电学 1 2 3 4 5 6 7 ÷d /--&gt; E ---\ ×q | | | v U F ^ | | | ÷q \--- W &lt;--/ ×r 电场强度 意义 单位面积的电通量（</div><div class="post-footer">
         <a href="https://bohonghuang.github.io/posts/notes/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E7%89%A9%E7%90%86/">物理</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="https://bohonghuang.github.io/posts/notes/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/">模拟电子技术</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">下标说明： 下标 含义 \(I_B\) 直流 \(i_B\) 既有直流又有交流 \(i_b\) 交流 \(\dot I_b\) 正弦交流的相量 \(I_b\) 正弦交流的有效值 半导体 N型半导体和P型半导体都是不带电的，在PN结中当多</div><div class="post-footer">
+    </h1><div class="post-meta">
+        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">下标说明： 下标 含义 \(I_B\) 直流 \(i_B\) 既有直流又有交流 \(i_b\) 交流 \(\dot I_b\) 正弦交流的相量 \(I_b\) 正弦交流的有效值 半导体 N型半导体和P型半导体都是不带电的，在PN结中当多</div><div class="post-footer">
         <a href="https://bohonghuang.github.io/posts/notes/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E7%94%B5%E5%AD%90/">电子</a>,&nbsp;<a href="https://bohonghuang.github.io/tags/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/">模拟电路</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/">滤波算法</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 限幅滤波法（判断滤波法） 设置一个阈值，当一次数据与上次数据的偏差小于这个阈值时才算入测量的数据，</div><div class="post-footer">
+    </h1><div class="post-meta">
+        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 限幅滤波法（判断滤波法） 设置一个阈值，当一次数据与上次数据的偏差小于这个阈值时才算入测量的数据，</div><div class="post-footer">
         <a href="https://bohonghuang.github.io/posts/notes/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/">电路基础</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 电路元素 交流电路为什么要引入复数？复数相对于实数而言多了一个维度，一个数就可以表示更多的特性。电</div><div class="post-footer">
+    </h1><div class="post-meta">
+        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 电路元素 交流电路为什么要引入复数？复数相对于实数而言多了一个维度，一个数就可以表示更多的特性。电</div><div class="post-footer">
         <a href="https://bohonghuang.github.io/posts/notes/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E7%94%B5%E5%AD%90/">电子</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="https://bohonghuang.github.io/posts/notes/%E7%AE%97%E6%B3%95/">算法</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 最佳匹配算法</div><div class="post-footer">
+    </h1><div class="post-meta">
+        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 最佳匹配算法</div><div class="post-footer">
         <a href="https://bohonghuang.github.io/posts/notes/%E7%AE%97%E6%B3%95/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="https://bohonghuang.github.io/posts/notes/%E7%BB%9F%E8%AE%A1%E5%AD%A6/">统计学</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 方差 \[\sigma_{x}^{2}=\frac{1}{n-1} \sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}\] 协方差 公式 \[\sigma(x, y)=\frac{1}{n-1} \sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)\] 意义协方差反映了： 两个变量是同向变化还是反向变化（正负） 运动方向 同向运动</div><div class="post-footer">
+    </h1><div class="post-meta">
+        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 方差 \[\sigma_{x}^{2}=\frac{1}{n-1} \sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}\] 协方差 公式 \[\sigma(x, y)=\frac{1}{n-1} \sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)\] 意义协方差反映了： 两个变量是同向变化还是反向变化（正负） 运动方向 同向运动</div><div class="post-footer">
         <a href="https://bohonghuang.github.io/posts/notes/%E7%BB%9F%E8%AE%A1%E5%AD%A6/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="https://bohonghuang.github.io/posts/notes/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">通信协议</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 I2S 接口 SD(Serial Data)：串行数据线，用于发送或接收两个时分复用的数据通道上的数据（仅半双工模式），如</div><div class="post-footer">
+    </h1><div class="post-meta">
+        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 I2S 接口 SD(Serial Data)：串行数据线，用于发送或接收两个时分复用的数据通道上的数据（仅半双工模式），如</div><div class="post-footer">
         <a href="https://bohonghuang.github.io/posts/notes/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 函数 初等函数 定义 在定义域上可以用一个解析式来表示。也就是说\(\sum\limits_{i=1}</div><div class="post-footer">
+    </h1><div class="post-meta">
+        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-03-02">2022-03-02</time></span></div><div class="content">警告 该部分尚未完成，可能会影响您的阅读体验。 函数 初等函数 定义 在定义域上可以用一个解析式来表示。也就是说\(\sum\limits_{i=1}</div><div class="post-footer">
         <a href="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
@@ -152,18 +181,22 @@
                         <a href="https://bohonghuang.github.io/page/2/">2</a>
                     </span>
                 </li></ul></div></div>
-            </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
-    </footer></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
-                <i class="fas fa-arrow-up fa-fw"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-                <i class="fas fa-comment fa-fw"></i>
-            </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"data":{"id-1":"M-x view-hello-file RET"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-221867158-1');
-        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></body>
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"data":{"id-1":"M-x view-hello-file RET"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true,"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
 </html>

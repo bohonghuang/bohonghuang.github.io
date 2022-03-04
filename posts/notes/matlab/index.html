@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Matlab - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="Matlab" />
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">Matlab - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="Matlab" />
 <meta property="og:description" content="基本语法 % 注释。 ... connect 续行。 &quot;;&quot; 抑制输出。 命令 clc 清除命令窗口。 clear 清除会话变量。 clf 清除所有图表。 close 关闭所有图表。 doc fun 打开 fun 的文档。 format 设置输出格式。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bohonghuang.github.io/posts/notes/matlab/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-03T19:40:54+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta property="article:modified_time" content="2022-03-04T21:07:13+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Matlab"/>
 <meta name="twitter:description" content="基本语法 % 注释。 ... connect 续行。 &quot;;&quot; 抑制输出。 命令 clc 清除命令窗口。 clear 清除会话变量。 clf 清除所有图表。 close 关闭所有图表。 doc fun 打开 fun 的文档。 format 设置输出格式。"/>
 <meta name="application-name" content="黄博宏的个人笔记">
-<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://bohonghuang.github.io/site.webmanifest"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/matlab/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/numpy/" /><link rel="next" href="https://bohonghuang.github.io/posts/notes/freertos/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/matlab/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/numpy/" /><link rel="next" href="https://bohonghuang.github.io/posts/notes/freertos/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,8 +31,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/matlab\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "编程语言, 数学建模, 数学","wordcount":  2113 ,
-        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/matlab\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T19:40:54+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "编程语言, 数学建模, 数学","wordcount":  3309 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/matlab\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-04T21:07:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
                 "@type": "Person",
@@ -36,9 +40,17 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
@@ -46,19 +58,18 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
@@ -74,20 +85,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -99,13 +110,15 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">目录</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Matlab</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>黄博宏</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2113 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/posts/notes/matlab/" class="leancloud_visitors" data-flag-title="Matlab">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Matlab</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-04">2022-03-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3309 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/posts/notes/matlab/" class="leancloud_visitors" data-flag-title="Matlab">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -131,6 +144,7 @@
             <li><a href="#逻辑运算符">逻辑运算符</a></li>
             <li><a href="#数学运算符">数学运算符</a></li>
             <li><a href="#内置函数">内置函数</a></li>
+            <li><a href="#绘图">绘图</a></li>
           </ul>
         </li>
         <li><a href="#控制流">控制流</a>
@@ -1963,6 +1977,845 @@ contribute missing functionality.
 </tr>
 </tbody>
 </table>
+<h4 id="绘图">绘图</h4>
+<ul>
+<li>
+<p><code>figure</code> <br />
+手动创建一个图表。</p>
+</li>
+<li>
+<p><code>title</code> <br />
+指定图表标题。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/593019043467172105.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">z</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;sin(x)&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/593019043467172106.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;cos(x)&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">)</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        data-src="https://bohonghuang.github.io/ox-hugo/593019043467172105.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/593019043467172105.png, https://bohonghuang.github.io/ox-hugo/593019043467172105.png 1.5x, https://bohonghuang.github.io/ox-hugo/593019043467172105.png 2x"
+        data-sizes="auto"
+        alt="/ox-hugo/593019043467172105.png"
+        title="/ox-hugo/593019043467172105.png"
+    />
+<img
+        class="lazyload"
+        data-src="https://bohonghuang.github.io/ox-hugo/593019043467172106.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/593019043467172106.png, https://bohonghuang.github.io/ox-hugo/593019043467172106.png 1.5x, https://bohonghuang.github.io/ox-hugo/593019043467172106.png 2x"
+        data-sizes="auto"
+        alt="/ox-hugo/593019043467172106.png"
+        title="/ox-hugo/593019043467172106.png"
+    /></p>
+</li>
+<li>
+<p><code>axis</code> <br />
+指定坐标轴的范围。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1240088008176880943.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">1</span> <span class="o">./</span> <span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">axis</span><span class="p">([</span><span class="mf">0.005</span> <span class="mf">0.01</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">1</span><span class="p">]);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1240088008176880943.png"/>
+</figure>
+
+</li>
+<li>
+<p><code>hold</code></p>
+<ul>
+<li>
+<p><code>hold on</code> <br />
+不清空当前画布，继续在当前画布上绘制。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2084804487745472843.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">z</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">hold</span> <span class="n">on</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2084804487745472843.png"/>
+</figure>
+
+</li>
+<li>
+<p><code>hold off</code> <br />
+清空当前画布。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/503965652086705578.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">z</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">hold</span> <span class="n">off</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/503965652086705578.png"/>
+</figure>
+
+</li>
+</ul>
+</li>
+<li>
+<p><code>subplot</code> <br />
+分割图表区域。第一、二个参数传入分割的行、列，第三个参数传入当前打印的区域编号。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">z</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">a</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">.*</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">b</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">./</span> <span class="p">(</span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="nb">eps</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;sin(x)&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1475214018307287082.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;cos(x)&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1475214018307287083.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;sin(x)cos(x)&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1475214018307287084.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;sin(x)/cos(x)&#39;</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1475214018307287085.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        data-src="https://bohonghuang.github.io/ox-hugo/1475214018307287082.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/1475214018307287082.png, https://bohonghuang.github.io/ox-hugo/1475214018307287082.png 1.5x, https://bohonghuang.github.io/ox-hugo/1475214018307287082.png 2x"
+        data-sizes="auto"
+        alt="/ox-hugo/1475214018307287082.png"
+        title="/ox-hugo/1475214018307287082.png"
+    />
+<img
+        class="lazyload"
+        data-src="https://bohonghuang.github.io/ox-hugo/1475214018307287083.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/1475214018307287083.png, https://bohonghuang.github.io/ox-hugo/1475214018307287083.png 1.5x, https://bohonghuang.github.io/ox-hugo/1475214018307287083.png 2x"
+        data-sizes="auto"
+        alt="/ox-hugo/1475214018307287083.png"
+        title="/ox-hugo/1475214018307287083.png"
+    />
+<img
+        class="lazyload"
+        data-src="https://bohonghuang.github.io/ox-hugo/1475214018307287084.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/1475214018307287084.png, https://bohonghuang.github.io/ox-hugo/1475214018307287084.png 1.5x, https://bohonghuang.github.io/ox-hugo/1475214018307287084.png 2x"
+        data-sizes="auto"
+        alt="/ox-hugo/1475214018307287084.png"
+        title="/ox-hugo/1475214018307287084.png"
+    />
+<img
+        class="lazyload"
+        data-src="https://bohonghuang.github.io/ox-hugo/1475214018307287085.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/1475214018307287085.png, https://bohonghuang.github.io/ox-hugo/1475214018307287085.png 1.5x, https://bohonghuang.github.io/ox-hugo/1475214018307287085.png 2x"
+        data-sizes="auto"
+        alt="/ox-hugo/1475214018307287085.png"
+        title="/ox-hugo/1475214018307287085.png"
+    /></p>
+</li>
+<li>
+<p><code>zoom</code></p>
+<ul>
+<li><code>zoom on</code> <br />
+打开缩放模式。</li>
+<li><code>zoom off</code> <br />
+关闭缩放模式。</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>二维绘图</p>
+<ul>
+<li>
+<p><code>plot</code> <br />
+散点绘图。参数以 3 个为一组，每组的：</p>
+<ul>
+<li>第一个参数传入向量，作为横坐标</li>
+<li>第二个参数传入向量，作为纵坐标</li>
+<li>第三个参数指定绘图格式</li>
+</ul>
+<!--listend-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1353678310868302203.png&#34;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">z</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="s">&#39;bo&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1353678310868302203.png"/>
+</figure>
+
+</li>
+<li>
+<p><code>ezplot</code> <br />
+符号函数绘图。</p>
+<ul>
+<li>
+<p>显函数 <br />
+第一个参数传入符号函数，第二个传入自变量范围。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1111849061060396539.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">ezplot</span><span class="p">(</span><span class="s">&#39;sin(x)&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">])</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1111849061060396539.png"/>
+</figure>
+
+</li>
+<li>
+<p>参数方程 <br />
+第一、二个参数传入参数方程，第三个参数传入参数范围。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1988435374878063066.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">ezplot</span><span class="p">(</span><span class="s">&#39;cos(t)^3&#39;</span><span class="p">,</span> <span class="s">&#39;sin(t)^3&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">])</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1988435374878063066.png"/>
+</figure>
+
+</li>
+<li>
+<p>隐函数 <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1938790695925422842.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">ezplot</span><span class="p">(</span><span class="s">&#39;exp(x)+sin(x*y)&#39;</span><span class="p">,[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1938790695925422842.png"/>
+</figure>
+
+</li>
+</ul>
+</li>
+<li>
+<p><code>fplot</code> <br />
+第一个参数可传入多个：</p>
+<ul>
+<li>符号函数</li>
+<li>自变量为 <code>x</code> 的函数字符串</li>
+<li>已定义的函数名称</li>
+</ul>
+<p>第二个参数传入自变量的范围（向量）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1552735357561511185.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">fplot</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span><span class="nb">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]);</span><span class="err">
+</span><span class="err"></span><span class="nb">fplot</span><span class="p">(</span><span class="s">&#39;tanh(x)&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]);</span><span class="err">
+</span><span class="err"></span><span class="nb">fplot</span><span class="p">(</span><span class="s">&#39;tanh&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1552735357561511185.png"/>
+</figure>
+
+<p>一次性绘制多个函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2248936571741592863.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">fplot</span><span class="p">(@(</span><span class="n">x</span><span class="p">)[</span><span class="nb">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span> <span class="o">*</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2248936571741592863.png"/>
+</figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>三维绘制</p>
+<ul>
+<li>
+<p><code>meshgrid</code> <br />
+输出多个矩阵，每一个矩阵维度相同，只在一个维度上值发生变化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">]</span> <span class="p">=</span> <span class="nb">meshgrid</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">1</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">X</span><span class="err">
+</span><span class="err"></span><span class="n">Y</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">X =
+
+  -2  -1   0   1   2
+  -2  -1   0   1   2
+  -2  -1   0   1   2
+  -2  -1   0   1   2
+  -2  -1   0   1   2
+
+Y =
+
+  -1.0000  -1.0000  -1.0000  -1.0000  -1.0000
+  -0.5000  -0.5000  -0.5000  -0.5000  -0.5000
+        0        0        0        0        0
+   0.5000   0.5000   0.5000   0.5000   0.5000
+   1.0000   1.0000   1.0000   1.0000   1.0000
+
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>plot3</code> <br />
+散点绘制三维函数图，第一、二、三个参数分别传入三个维度坐标值向量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2251302753473035078.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="nb">pi</span><span class="o">/</span><span class="mi">50</span><span class="p">:</span><span class="mi">10</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">plot3</span><span class="p">(</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="nb">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">t</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2251302753473035078.png"/>
+</figure>
+
+<p>当每个参数均为多个向量（矩阵），可以绘制多条曲线：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1823209209640754763.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">]</span> <span class="p">=</span> <span class="nb">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">Z</span> <span class="p">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">+</span><span class="n">Y</span><span class="p">)</span> <span class="o">.^</span> <span class="mi">2</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">plot3</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1823209209640754763.png"/>
+</figure>
+
+</li>
+<li>
+<p><code>surf</code> <br />
+由散点绘制曲面图。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/290007673208891247.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">]</span> <span class="p">=</span> <span class="nb">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">Z</span> <span class="p">=</span> <span class="p">(</span><span class="n">X</span><span class="o">+</span><span class="n">Y</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="nb">surf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">shading</span> <span class="n">flat</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/290007673208891247.png"/>
+</figure>
+
+<p>其中 <code>shading flat</code> 可以然输出图形变得更加平滑。</p>
+</li>
+<li>
+<p><code>mesh</code> <br />
+由散点绘制网格曲面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1180822666604807829.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">]</span> <span class="p">=</span> <span class="nb">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">Z</span> <span class="p">=</span> <span class="p">(</span><span class="n">X</span><span class="o">+</span><span class="n">Y</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="nb">mesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1180822666604807829.png"/>
+</figure>
+
+</li>
+<li>
+<p><code>meshz</code> <br />
+与 <code>mesh</code> 相比，会绘制图形的侧裙。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2204735102281016159.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">]</span> <span class="p">=</span> <span class="nb">meshgrid</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">:.</span><span class="mi">125</span><span class="p">:</span><span class="mi">3</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">Z</span> <span class="p">=</span> <span class="nb">peaks</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">meshz</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2204735102281016159.png"/>
+</figure>
+
+</li>
+<li>
+<p><code>view</code> <br />
+改变三维视图的视角，参数可以传入：</p>
+<ul>
+<li>方位角和俯仰角</li>
+<li>一个方向向量</li>
+</ul>
+<!--listend-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/934784795847423615.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">]</span> <span class="p">=</span> <span class="nb">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">Z</span> <span class="p">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">+</span> <span class="n">Y</span><span class="p">)</span> <span class="o">.^</span> <span class="mi">2</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">mesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">mesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">view</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">34</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">mesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">view</span><span class="p">(</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">mesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">view</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/934784795847423615.png"/>
+</figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>动画绘制</p>
+<ul>
+<li>
+<p><code>moviein</code> <br />
+创建指定大小的帧矩阵。</p>
+</li>
+<li>
+<p><code>getframe</code> <br />
+获取当前视图的帧。</p>
+</li>
+<li>
+<p><code>movie</code> <br />
+在当前窗口按顺序播放传入的帧矩阵。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]</span> <span class="p">=</span> <span class="nb">peaks</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">surf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span> <span class="mi">3</span> <span class="o">-</span><span class="mi">3</span> <span class="mi">3</span> <span class="o">-</span><span class="mi">10</span> <span class="mi">10</span><span class="p">])</span><span class="err">
+</span><span class="err"></span><span class="n">m</span> <span class="p">=</span> <span class="n">moviein</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="err">
+</span><span class="err"></span>  <span class="nb">view</span><span class="p">(</span><span class="o">-</span><span class="mf">37.5</span><span class="o">+</span><span class="mi">24</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="mi">30</span><span class="p">)</span><span class="err">
+</span><span class="err"></span>  <span class="n">m</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span> <span class="p">=</span> <span class="n">getframe</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="k">end</span><span class="err">
+</span><span class="err"></span><span class="n">movie</span><span class="p">(</span><span class="n">m</span><span class="p">);</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
 <h3 id="控制流">控制流</h3>
 <h4 id="条件">条件</h4>
 <!--list-separator-->
@@ -1988,7 +2841,7 @@ contribute missing functionality.
 </span><span class="err"></span>  <span class="nb">disp</span><span class="p">(</span><span class="s">&#39;n between 10 and 20&#39;</span><span class="p">)</span><span class="err">
 </span><span class="err"></span><span class="k">else</span><span class="err">
 </span><span class="err"></span>  <span class="nb">disp</span><span class="p">(</span><span class="s">&#39;n larger than 20&#39;</span><span class="p">)</span><span class="err">
-</span><span class="err"></span><span class="k">endif</span>                           <span class="c"># or end</span><span class="err">
+</span><span class="err"></span><span class="k">end</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -2032,7 +2885,7 @@ n between 10 and 20
 </span><span class="err"></span>    <span class="nb">disp</span><span class="p">(</span><span class="s">&#39;positive one&#39;</span><span class="p">)</span><span class="err">
 </span><span class="err"></span>  <span class="k">otherwise</span><span class="err">
 </span><span class="err"></span>    <span class="nb">disp</span><span class="p">(</span><span class="s">&#39;other value&#39;</span><span class="p">)</span><span class="err">
-</span><span class="err"></span><span class="k">endswitch</span><span class="err">
+</span><span class="err"></span><span class="k">end</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -2061,7 +2914,7 @@ positive one
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="err">
 </span><span class="err"></span>  <span class="nb">disp</span><span class="p">(</span><span class="s">&#39;cool&#39;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="k">endfor</span><span class="err">
+</span><span class="err"></span><span class="k">end</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -2098,7 +2951,7 @@ cool
 </span><span class="err"></span><span class="k">while</span> <span class="n">nFactorial</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="err">
 </span><span class="err"></span>  <span class="n">n</span> <span class="p">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span><span class="err">
 </span><span class="err"></span>  <span class="n">nFactorial</span> <span class="p">=</span> <span class="n">nFactorial</span> <span class="o">*</span> <span class="n">n</span><span class="p">;</span><span class="err">
-</span><span class="err"></span><span class="k">endwhile</span><span class="err">
+</span><span class="err"></span><span class="k">end</span><span class="err">
 </span><span class="err"></span><span class="n">n</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
@@ -2120,18 +2973,20 @@ cool
     </div>
 </li>
 </ul>
-</div><div class="post-footer" id="post-footer">
+</div>
+
+        <div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-03</span>
+                <span>更新于 2022-03-04</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-title="Matlab" data-hashtags="编程语言,数学建模,数学"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-hashtag="编程语言"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-title="Matlab"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-title="Matlab"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-title="Matlab"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-title="Matlab" data-hashtags="编程语言,数学建模,数学"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-hashtag="编程语言"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-title="Matlab"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-title="Matlab"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/matlab/" data-title="Matlab"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -2149,18 +3004,23 @@ cool
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
-            </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
-    </footer></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
-                <i class="fas fa-arrow-up fa-fw"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-                <i class="fas fa-comment fa-fw"></i>
-            </a>
-        </div><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-221867158-1');
-        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></body>
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
 </html>
