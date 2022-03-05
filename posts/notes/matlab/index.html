@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bohonghuang.github.io/posts/notes/matlab/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-04T21:07:13+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta property="article:modified_time" content="2022-03-05T21:09:31+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Matlab"/>
@@ -31,8 +31,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/matlab\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "编程语言, 数学建模, 数学","wordcount":  3309 ,
-        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/matlab\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-04T21:07:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "编程语言, 数学建模, 数学","wordcount":  3505 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/matlab\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-05T21:09:31+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
                 "@type": "Person",
@@ -117,7 +117,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-04">2022-03-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3309 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-05">2022-03-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3505 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/posts/notes/matlab/" class="leancloud_visitors" data-flag-title="Matlab">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -141,6 +141,7 @@
         </li>
         <li><a href="#函数">函数</a>
           <ul>
+            <li><a href="#匿名函数">匿名函数</a></li>
             <li><a href="#逻辑运算符">逻辑运算符</a></li>
             <li><a href="#数学运算符">数学运算符</a></li>
             <li><a href="#内置函数">内置函数</a></li>
@@ -458,18 +459,16 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
-</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">
-A =
+&gt; &gt; A =
 
     1    2    3    4
     5    6    7    8
     9   10   11   12
    13   14   15   16
-
-B =
+&gt; &gt; &gt; B =
 
    13   14   15   16
    17   18   19   20
@@ -584,9 +583,9 @@ Diagonal Matrix
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">ans =
 
-    11    38    94
-   100    77    95
-    50    18    36
+   94   28   77
+   74    3   19
+   32   75   99
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1400,15 +1399,23 @@ Diagonal Matrix
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">ans =
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">warning: matrix singular to machine precision, rcond = 1.38778e-18
+warning: called from
+    linsolve at line 113 column 7
+
+ans =
 
   -2.9000  -3.2000  -3.5000  -3.8000
   -0.8000  -0.9000  -1.0000  -1.1000
@@ -1840,6 +1847,16 @@ contribute missing functionality.
 <pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="k">function</span><span class="w"> </span>f <span class="p">=</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span>x<span class="p">)</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
+</div><h4 id="匿名函数">匿名函数</h4>
+<p>匿名函数不支持多行定义（因此 <code>if</code> 语句无法使用），如果是分段函数可以通过逻辑表达式（真为 <code>1</code> ，假为 <code>0</code> ）乘上各段对应的函数得到：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">f</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span><span class="p">=</span> <span class="mi">1</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
 </div><h4 id="逻辑运算符">逻辑运算符</h4>
 <h4 id="数学运算符">数学运算符</h4>
 <table>
@@ -2008,7 +2025,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/593019043467172105.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_593019043467172105.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
@@ -2019,29 +2036,26 @@ contribute missing functionality.
 </span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="nb">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/593019043467172106.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_593019043467172106.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;cos(x)&#39;</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">)</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img
-        class="lazyload"
-        data-src="https://bohonghuang.github.io/ox-hugo/593019043467172105.png"
-        data-srcset="https://bohonghuang.github.io/ox-hugo/593019043467172105.png, https://bohonghuang.github.io/ox-hugo/593019043467172105.png 1.5x, https://bohonghuang.github.io/ox-hugo/593019043467172105.png 2x"
-        data-sizes="auto"
-        alt="/ox-hugo/593019043467172105.png"
-        title="/ox-hugo/593019043467172105.png"
-    />
-<img
-        class="lazyload"
-        data-src="https://bohonghuang.github.io/ox-hugo/593019043467172106.png"
-        data-srcset="https://bohonghuang.github.io/ox-hugo/593019043467172106.png, https://bohonghuang.github.io/ox-hugo/593019043467172106.png 1.5x, https://bohonghuang.github.io/ox-hugo/593019043467172106.png 2x"
-        data-sizes="auto"
-        alt="/ox-hugo/593019043467172106.png"
-        title="/ox-hugo/593019043467172106.png"
-    /></p>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">/tmp/2022-03-05-21-01-30_593019043467172105.png
+/tmp/2022-03-05-21-01-30_593019043467172106.png
+</code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_593019043467172106.png"/>
+</figure>
+
 </li>
 <li>
 <p><code>axis</code> <br />
@@ -2061,7 +2075,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1240088008176880943.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1240088008176880943.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">1</span> <span class="o">./</span> <span class="n">x</span><span class="p">);</span><span class="err">
@@ -2072,9 +2086,18 @@ contribute missing functionality.
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1240088008176880943.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1240088008176880943.png"/>
 </figure>
 
+</li>
+<li>
+<p><code>grid</code></p>
+<ul>
+<li><code>grid on</code> <br />
+开启网格。</li>
+<li><code>grid off</code> <br />
+关闭网格。</li>
+</ul>
 </li>
 <li>
 <p><code>hold</code></p>
@@ -2099,7 +2122,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2084804487745472843.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_2084804487745472843.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
@@ -2112,7 +2135,7 @@ contribute missing functionality.
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2084804487745472843.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_2084804487745472843.png"/>
 </figure>
 
 </li>
@@ -2136,7 +2159,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/503965652086705578.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_503965652086705578.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
@@ -2149,7 +2172,7 @@ contribute missing functionality.
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/503965652086705578.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_503965652086705578.png"/>
 </figure>
 
 </li>
@@ -2208,63 +2231,69 @@ contribute missing functionality.
 </span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;sin(x)&#39;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1475214018307287082.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1475214018307287082.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;cos(x)&#39;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1475214018307287083.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1475214018307287083.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;sin(x)cos(x)&#39;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1475214018307287084.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1475214018307287084.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;sin(x)/cos(x)&#39;</span><span class="p">)</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1475214018307287085.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1475214018307287085.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">figurefile</span><span class="p">);</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">/tmp/2022-03-05-21-01-30_1475214018307287082.png
+/tmp/2022-03-05-21-01-30_1475214018307287083.png
+/tmp/2022-03-05-21-01-30_1475214018307287084.png
+/tmp/2022-03-05-21-01-30_1475214018307287085.png
+</code></pre></td></tr></table>
+</div>
 </div><p><img
         class="lazyload"
-        data-src="https://bohonghuang.github.io/ox-hugo/1475214018307287082.png"
-        data-srcset="https://bohonghuang.github.io/ox-hugo/1475214018307287082.png, https://bohonghuang.github.io/ox-hugo/1475214018307287082.png 1.5x, https://bohonghuang.github.io/ox-hugo/1475214018307287082.png 2x"
+        data-src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287083.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287083.png, https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287083.png 1.5x, https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287083.png 2x"
         data-sizes="auto"
-        alt="/ox-hugo/1475214018307287082.png"
-        title="/ox-hugo/1475214018307287082.png"
+        alt="/ox-hugo/2022-03-05-21-01-30_1475214018307287083.png"
+        title="/ox-hugo/2022-03-05-21-01-30_1475214018307287083.png"
     />
 <img
         class="lazyload"
-        data-src="https://bohonghuang.github.io/ox-hugo/1475214018307287083.png"
-        data-srcset="https://bohonghuang.github.io/ox-hugo/1475214018307287083.png, https://bohonghuang.github.io/ox-hugo/1475214018307287083.png 1.5x, https://bohonghuang.github.io/ox-hugo/1475214018307287083.png 2x"
+        data-src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287084.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287084.png, https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287084.png 1.5x, https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287084.png 2x"
         data-sizes="auto"
-        alt="/ox-hugo/1475214018307287083.png"
-        title="/ox-hugo/1475214018307287083.png"
+        alt="/ox-hugo/2022-03-05-21-01-30_1475214018307287084.png"
+        title="/ox-hugo/2022-03-05-21-01-30_1475214018307287084.png"
     />
 <img
         class="lazyload"
-        data-src="https://bohonghuang.github.io/ox-hugo/1475214018307287084.png"
-        data-srcset="https://bohonghuang.github.io/ox-hugo/1475214018307287084.png, https://bohonghuang.github.io/ox-hugo/1475214018307287084.png 1.5x, https://bohonghuang.github.io/ox-hugo/1475214018307287084.png 2x"
+        data-src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287085.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287085.png, https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287085.png 1.5x, https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1475214018307287085.png 2x"
         data-sizes="auto"
-        alt="/ox-hugo/1475214018307287084.png"
-        title="/ox-hugo/1475214018307287084.png"
-    />
-<img
-        class="lazyload"
-        data-src="https://bohonghuang.github.io/ox-hugo/1475214018307287085.png"
-        data-srcset="https://bohonghuang.github.io/ox-hugo/1475214018307287085.png, https://bohonghuang.github.io/ox-hugo/1475214018307287085.png 1.5x, https://bohonghuang.github.io/ox-hugo/1475214018307287085.png 2x"
-        data-sizes="auto"
-        alt="/ox-hugo/1475214018307287085.png"
-        title="/ox-hugo/1475214018307287085.png"
+        alt="/ox-hugo/2022-03-05-21-01-30_1475214018307287085.png"
+        title="/ox-hugo/2022-03-05-21-01-30_1475214018307287085.png"
     /></p>
 </li>
 <li>
@@ -2306,7 +2335,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1353678310868302203.png&#34;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1353678310868302203.png&#34;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
@@ -2317,7 +2346,7 @@ contribute missing functionality.
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1353678310868302203.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1353678310868302203.png"/>
 </figure>
 
 </li>
@@ -2340,7 +2369,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1111849061060396539.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1111849061060396539.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="nb">ezplot</span><span class="p">(</span><span class="s">&#39;sin(x)&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">])</span><span class="err">
 </span><span class="err">
@@ -2348,7 +2377,7 @@ contribute missing functionality.
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1111849061060396539.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1111849061060396539.png"/>
 </figure>
 
 </li>
@@ -2367,7 +2396,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1988435374878063066.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1988435374878063066.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="nb">ezplot</span><span class="p">(</span><span class="s">&#39;cos(t)^3&#39;</span><span class="p">,</span> <span class="s">&#39;sin(t)^3&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">])</span><span class="err">
 </span><span class="err">
@@ -2375,7 +2404,7 @@ contribute missing functionality.
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1988435374878063066.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1988435374878063066.png"/>
 </figure>
 
 </li>
@@ -2393,7 +2422,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1938790695925422842.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1938790695925422842.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="nb">ezplot</span><span class="p">(</span><span class="s">&#39;exp(x)+sin(x*y)&#39;</span><span class="p">,[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]);</span><span class="err">
 </span><span class="err">
@@ -2401,7 +2430,7 @@ contribute missing functionality.
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1938790695925422842.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1938790695925422842.png"/>
 </figure>
 
 </li>
@@ -2430,7 +2459,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1552735357561511185.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1552735357561511185.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="nb">fplot</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span><span class="nb">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]);</span><span class="err">
 </span><span class="err"></span><span class="nb">fplot</span><span class="p">(</span><span class="s">&#39;tanh(x)&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]);</span><span class="err">
@@ -2440,7 +2469,7 @@ contribute missing functionality.
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1552735357561511185.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1552735357561511185.png"/>
 </figure>
 
 <p>一次性绘制多个函数：</p>
@@ -2456,7 +2485,7 @@ contribute missing functionality.
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2248936571741592863.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_2248936571741592863.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="nb">fplot</span><span class="p">(@(</span><span class="n">x</span><span class="p">)[</span><span class="nb">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span> <span class="o">*</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span><span class="err">
 </span><span class="err">
@@ -2464,7 +2493,7 @@ contribute missing functionality.
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2248936571741592863.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_2248936571741592863.png"/>
 </figure>
 
 </li>
@@ -2550,7 +2579,7 @@ Y =
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2251302753473035078.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_2251302753473035078.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="nb">pi</span><span class="o">/</span><span class="mi">50</span><span class="p">:</span><span class="mi">10</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="n">plot3</span><span class="p">(</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="nb">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">t</span><span class="p">);</span><span class="err">
@@ -2559,7 +2588,7 @@ Y =
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2251302753473035078.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_2251302753473035078.png"/>
 </figure>
 
 <p>当每个参数均为多个向量（矩阵），可以绘制多条曲线：</p>
@@ -2581,7 +2610,7 @@ Y =
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
 </span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1823209209640754763.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1823209209640754763.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">;</span><span class="err">
@@ -2593,7 +2622,7 @@ Y =
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1823209209640754763.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1823209209640754763.png"/>
 </figure>
 
 </li>
@@ -2617,7 +2646,7 @@ Y =
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/290007673208891247.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_290007673208891247.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">;</span><span class="err">
@@ -2630,10 +2659,47 @@ Y =
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/290007673208891247.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_290007673208891247.png"/>
 </figure>
 
 <p>其中 <code>shading flat</code> 可以然输出图形变得更加平滑。</p>
+</li>
+<li>
+<p><code>gtext</code> <br />
+执行该函数时会阻塞，等待鼠标将标签放置在图表上。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;on&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1853688281251754407.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">z</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">gtext</span><span class="p">(</span><span class="s">&#39;sin(x)&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="nb">gtext</span><span class="p">(</span><span class="s">&#39;cos(x)&#39;</span><span class="p">);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">print</span><span class="p">(</span><span class="n">figurefile</span><span class="p">,</span> <span class="s">&#34;-dpng&#34;</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1853688281251754407.png"/>
+</figure>
+
 </li>
 <li>
 <p><code>mesh</code> <br />
@@ -2654,7 +2720,7 @@ Y =
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/1180822666604807829.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_1180822666604807829.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">;</span><span class="err">
@@ -2666,7 +2732,7 @@ Y =
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/1180822666604807829.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_1180822666604807829.png"/>
 </figure>
 
 </li>
@@ -2687,7 +2753,7 @@ Y =
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2204735102281016159.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_2204735102281016159.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">]</span> <span class="p">=</span> <span class="nb">meshgrid</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">:.</span><span class="mi">125</span><span class="p">:</span><span class="mi">3</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="n">Z</span> <span class="p">=</span> <span class="nb">peaks</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">);</span><span class="err">
@@ -2697,7 +2763,7 @@ Y =
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2204735102281016159.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_2204735102281016159.png"/>
 </figure>
 
 </li>
@@ -2739,7 +2805,7 @@ Y =
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;visible&#34;</span><span class="p">,</span> <span class="s">&#34;off&#34;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/934784795847423615.png&#34;</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">figurefile</span> <span class="p">=</span> <span class="s">&#34;/tmp/2022-03-05-21-01-30_934784795847423615.png&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">;</span><span class="err">
@@ -2765,7 +2831,7 @@ Y =
 </span><span class="err"></span><span class="n">ans</span> <span class="p">=</span> <span class="n">figurefile</span><span class="p">;</span><span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><figure><img src="https://bohonghuang.github.io/ox-hugo/934784795847423615.png"/>
+</div><figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05-21-01-30_934784795847423615.png"/>
 </figure>
 
 </li>
@@ -2979,7 +3045,7 @@ cool
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-04</span>
+                <span>更新于 2022-03-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>
