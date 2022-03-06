@@ -5,34 +5,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title class="pjax-title">使用 mu-wizard 配置 mu4e 邮件客户端 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="使用 mu-wizard 配置 mu4e 邮件客户端" />
-<meta property="og:description" content="序言 本人目前不是很经常使用电子邮件，一个简单的邮件客户端用于在不打开浏览器的情况下查看邮件文本内容就够用了，想到 Emacs 上可以使用 mu4e 来收发邮件，今" />
+    <title class="pjax-title">让 EMMS 读取并显示音乐文件内嵌歌词 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="让 EMMS 读取并显示音乐文件内嵌歌词" />
+<meta property="og:description" content="引言 本人目前将 EMMS 作为主力本地音乐播放器使用，因为 EMMS 不仅可以方便地用于播放列表管理、歌曲评分管理，还能在敲代码时用余光瞄一眼歌词。 EMMS 虽然可以实" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-03-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-05T19:55:53+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-06T20:11:40+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="使用 mu-wizard 配置 mu4e 邮件客户端"/>
-<meta name="twitter:description" content="序言 本人目前不是很经常使用电子邮件，一个简单的邮件客户端用于在不打开浏览器的情况下查看邮件文本内容就够用了，想到 Emacs 上可以使用 mu4e 来收发邮件，今"/>
+<meta name="twitter:title" content="让 EMMS 读取并显示音乐文件内嵌歌词"/>
+<meta name="twitter:description" content="引言 本人目前将 EMMS 作为主力本地音乐播放器使用，因为 EMMS 不仅可以方便地用于播放列表管理、歌曲评分管理，还能在敲代码时用余光瞄一眼歌词。 EMMS 虽然可以实"/>
 <meta name="application-name" content="黄博宏的个人笔记">
 <meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" /><link rel="prev" href="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" /><link rel="next" href="https://bohonghuang.github.io/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" /><link rel="prev" href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "使用 mu-wizard 配置 mu4e 邮件客户端",
+        "headline": "让 EMMS 读取并显示音乐文件内嵌歌词",
         "inLanguage": "zh-cn",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "org-mode, Emacs","wordcount":  742 ,
-        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF\/","datePublished": "2022-03-05T00:00:00+00:00","dateModified": "2022-03-05T19:55:53+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "EMMS, Emacs","wordcount":  814 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D\/","datePublished": "2022-03-06T00:00:00+00:00","dateModified": "2022-03-06T20:11:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
                 "@type": "Person",
@@ -113,12 +113,12 @@
             <div class="container"><div class="toc" id="toc-auto">
         <h2 class="toc-title">目录</h2>
         <div class="toc-content" id="toc-content-auto"></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">使用 mu-wizard 配置 mu4e 邮件客户端</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">让 EMMS 读取并显示音乐文件内嵌歌词</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-05">2022-03-05</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-05">2022-03-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 742 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" class="leancloud_visitors" data-flag-title="使用 mu-wizard 配置 mu4e 邮件客户端">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-06">2022-03-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-06">2022-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 814 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" class="leancloud_visitors" data-flag-title="让 EMMS 读取并显示音乐文件内嵌歌词">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -128,60 +128,15 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#序言">序言</a></li>
-    <li><a href="#步骤">步骤</a>
-      <ul>
-        <li><a href="#安装-mu-wizard">安装 <code>mu-wizard</code></a></li>
-        <li><a href="#配置密码存储">配置密码存储</a></li>
-        <li><a href="#配置邮箱">配置邮箱</a></li>
-        <li><a href="#配置-mu4e">配置 <code>mu4e</code></a></li>
-      </ul>
-    </li>
+    <li><a href="#引言">引言</a></li>
+    <li><a href="#实现">实现</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="序言">序言</h2>
-<p>本人目前不是很经常使用电子邮件，一个简单的邮件客户端用于在不打开浏览器的情况下查看邮件文本内容就够用了，想到 Emacs 上可以使用 <code>mu4e</code> 来收发邮件，今天尝试自己配置的过程中，无意中发现了 <a href="https://github.com/cemkeylan/mu-wizard" target="_blank" rel="noopener noreffer"><code>mu-wizard</code></a> 这个脚本，可以很方便地完成 <code>mu4e</code> 的配置。</p>
-<h2 id="步骤">步骤</h2>
-<h3 id="安装-mu-wizard">安装 <code>mu-wizard</code></h3>
-<p>Arch 系的发行版在 AUR 中找到 <code>mu-wizard-git</code> 这个包安装即可：</p>
-<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05%2019-30-13.png"/>
-</figure>
-
-<p>其余的发行安装好依赖后 <code>make install</code> 也是可以的。</p>
-<h3 id="配置密码存储">配置密码存储</h3>
-<p>先生成 GPG 密钥，这一步会提示输入姓名、邮箱与密码：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">gpg --gen-key
-</code></pre></td></tr></table>
-</div>
-</div><p>然后使用 <code>pass</code> 命令初始化密码储存，邮箱需要与刚才输入的一致：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">pass init 1281299809@qq.com
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="配置邮箱">配置邮箱</h3>
-<p>接着使用 <code>muw</code> 命令添加邮箱地址（这里以 QQ 邮箱为例）：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">muw add -a <span class="s2">&#34;1281299809@qq.com&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>对于 QQ 邮箱而言需要确保 IMAP/SMTP 服务已经开启，并两次输入授权码：</p>
-<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05%2019-40-48.png"/>
-</figure>
-
-<p>最终得到如下输出：</p>
+            </div><div class="content" id="content"><h2 id="引言">引言</h2>
+<p>本人目前将 EMMS 作为主力本地音乐播放器使用，因为 EMMS 不仅可以方便地用于播放列表管理、歌曲评分管理，还能在敲代码时用余光瞄一眼歌词。
+EMMS 虽然可以实现外部 <code>.lrc</code> 文件的加载以及网络歌词的下载，但对于自己下载的本地歌词而言，本人还是习惯于将歌词文件嵌入到音乐的标签数据中，这样不仅可以没有顾虑地随意移动或者重命名音乐文件，还可以让存放音乐的文件夹更加简洁。目前上很多播放器都支持内嵌歌词的功能，但是 EMMS 原生是不支持这个功能的，于是就打算自己添加了。</p>
+<h2 id="实现">实现</h2>
+<p>研究了一段时间，发现只需要修改 2 个函数即可实现：现在的 EMMS 大部分音乐的元数据主要由 <code>emms-info-native</code> 提供，里面定义了这个列表常量：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -202,38 +157,45 @@
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Your domain information was found!&#39;
-The following information will be used:
-
-Domain: qq.com
-IMAP:   imap.qq.com:993
-SMTP:   smtp.qq.com:587
-Enter your full name you want to be identified on this account.
-Real name: 1281299809@qq.com
-Enter a short, one-word identifier for this email account that will
-distinguish them from any other accounts you add
-Account name: qq
-If your account has a special username different from your address,
-insert it now. Otherwise leave this blank.
-Login: 1281299809
-mkdir: 已创建目录 &#39;/home/coco24/.password-store/muw&#39;
-Enter password for muw/1281299809@qq.com:
-Retype password for muw/1281299809@qq.com:
-All done. You can now run &#39;muw sync qq&#39; in order to sync this account.
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">emms-info-native--accepted-vorbis-fields</span>
+  <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;album&#34;</span>
+    <span class="s">&#34;albumartist&#34;</span>
+    <span class="s">&#34;albumartistsort&#34;</span>
+    <span class="s">&#34;albumsort&#34;</span>
+    <span class="s">&#34;artist&#34;</span>
+    <span class="s">&#34;artistsort&#34;</span>
+    <span class="s">&#34;composer&#34;</span>
+    <span class="s">&#34;composersort&#34;</span>
+    <span class="s">&#34;date&#34;</span>
+    <span class="s">&#34;discnumber&#34;</span>
+    <span class="s">&#34;genre&#34;</span>
+    <span class="s">&#34;label&#34;</span>
+    <span class="s">&#34;originaldate&#34;</span>
+    <span class="s">&#34;originalyear&#34;</span>
+    <span class="s">&#34;performer&#34;</span>
+    <span class="s">&#34;title&#34;</span>
+    <span class="s">&#34;titlesort&#34;</span>
+    <span class="s">&#34;tracknumber&#34;</span>
+    <span class="s">&#34;year&#34;</span><span class="p">)</span>
+  <span class="s">&#34;EMMS info fields that are extracted from Vorbis comments.&#34;</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>在运行 <code>muw sync</code> 之前，需要先执行 <code>muw mu-init</code> 刷新缓存，否则会出现文件缺失的错误：</p>
+</div><p>这个列表常量用于指定 EMMS 读取的音乐文件的标签类型，我个人不太清楚 EMMS 作者将它定义成常量的意图，但是不影响修改它，为它增加 <code>&quot;lyrics&quot;</code> 元素：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">muw mu-init
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">push</span> <span class="s">&#34;lyrics&#34;</span> <span class="nv">emms-info-native--accepted-vorbis-fields</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div class="chroma">
+</div><p>至此， EMMS 已经可以读取文件的 <code>info-lyrics</code> 了，但是 <code>emms-info-native</code> 默认标签数据不含有换行的，而歌词文件中是以换行分割不同时间的歌词的，如：</p>
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -245,28 +207,46 @@ All done. You can now run &#39;muw sync qq&#39; in order to sync this account.
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">maildir           : /home/coco24/.local/share/mail
-database-path     : /home/coco24/.cache/mu/xapian
-schema-version    : 452
-max-message-size  : 100000000
-batch-size        : 250000
-messages in store : 0
-created           : 2022年03月05日 星期六 19时15分22秒
-personal-address  : 1281299809@qq.com
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">[00:29.25]过完整个夏天
+[00:34.74]忧伤并没有好一些
+[00:41.18]开车行驶在公路无际无边
+[00:47.32]有离开自己的感觉
+[00:52.45]
+[00:53.34]唱不完一首歌
+[00:59.37]疲倦还剩下黑眼圈
+...
 </code></pre></td></tr></table>
 </div>
-</div><p>最后执行（这里的 <code>qq</code> 是之前设置的 Account Name）：</p>
+</div><p>因此还需要修改 <code>emms-info-native</code> 中，标签解析函数的正则表达式：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">muw sync qq
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">emms-info-native--split-vorbis-comment-multiline</span> <span class="p">(</span><span class="nv">comment</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">comment-string</span> <span class="p">(</span><span class="nf">decode-coding-string</span> <span class="p">(</span><span class="nf">mapconcat</span>
+                                               <span class="nf">#&#39;byte-to-string</span>
+                                               <span class="nv">comment</span>
+                                               <span class="no">nil</span><span class="p">)</span>
+                                              <span class="ss">&#39;utf-8</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">string-match</span> <span class="s">&#34;^\\(.+?\\)=\\([\0-\377[:nonascii:]]*\\)&#34;</span> <span class="nv">comment-string</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">downcase</span> <span class="p">(</span><span class="nv">match-string</span> <span class="mi">1</span> <span class="nv">comment-string</span><span class="p">))</span>
+            <span class="p">(</span><span class="nv">match-string</span> <span class="mi">2</span> <span class="nv">comment-string</span><span class="p">)))))</span>
+
+<span class="p">(</span><span class="nv">advice-add</span> <span class="nf">#&#39;</span><span class="nv">emms-info-native--split-vorbis-comment</span> <span class="nb">:override</span> <span class="nf">#&#39;</span><span class="nv">emms-info-native--split-vorbis-comment-multiline</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>如果没有出现错误，那么邮箱就配置完成了。</p>
-<h3 id="配置-mu4e">配置 <code>mu4e</code></h3>
-<p>作者给出了一个短短几行的 <code>mu4e-config.el</code> 文件，个人觉得没有必要单独弄成一个文件加载，这里给出 <code>use-package</code> 配置范例：</p>
+</div><p>现在内嵌歌词就可以被正确地载入至轨道信息中了，下面就可以扩展 <code>emms-lyrics</code> 中查找歌词文件的函数了：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -284,58 +264,48 @@ personal-address  : 1281299809@qq.com
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">mu4e</span>
-  <span class="nb">:when</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">boundp</span> <span class="ss">&#39;use-mu4e</span><span class="p">)</span> <span class="nv">use-mu4e</span><span class="p">)</span>
-  <span class="nb">:defer</span> <span class="no">t</span>
-  <span class="nb">:commands</span> <span class="p">(</span><span class="nv">mu4e</span><span class="p">)</span>
-  <span class="nb">:config</span>
-  <span class="p">(</span><span class="nb">setq</span> <span class="nv">mu4e-get-mail-command</span>       <span class="s">&#34;mbsync -a&#34;</span>
-        <span class="nv">mail-user-agent</span>             <span class="ss">&#39;mu4e-user-agent</span>
-        <span class="nv">message-send-mail-function</span>  <span class="ss">&#39;message-send-mail-with-sendmail</span>
-        <span class="nv">sendmail-program</span>            <span class="p">(</span><span class="nv">executable-find</span> <span class="s">&#34;msmtp&#34;</span><span class="p">))</span>
-  <span class="p">(</span><span class="nb">setq</span> <span class="nv">mu4e-contexts</span> <span class="no">nil</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">file</span> <span class="p">(</span><span class="nf">directory-files</span>
-                 <span class="p">(</span><span class="nf">expand-file-name</span> <span class="s">&#34;mu4e/accounts&#34;</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">getenv</span> <span class="s">&#34;XDG_CONFIG_HOME&#34;</span><span class="p">)</span> <span class="s">&#34;~/.config&#34;</span><span class="p">))</span> <span class="no">t</span> <span class="s">&#34;\\.el$&#34;</span> <span class="no">nil</span><span class="p">))</span>
-    <span class="p">(</span><span class="nf">load</span> <span class="nv">file</span><span class="p">)))</span>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">emms-info-lyrics-temp-file</span> <span class="p">(</span><span class="nv">make-temp-file</span> <span class="s">&#34;emms-info-lyrics-&#34;</span> <span class="no">nil</span> <span class="s">&#34;.lrc&#34;</span><span class="p">))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">emms-lyrics-find-with-info-lyric</span> <span class="p">(</span><span class="nv">file</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">if-let</span> <span class="p">((</span><span class="nv">file</span> <span class="p">(</span><span class="nv">emms-lyrics-find-lyric</span> <span class="nv">file</span><span class="p">)))</span>
+      <span class="nv">file</span>
+    <span class="p">(</span><span class="nv">when-let</span> <span class="p">((</span><span class="nv">embedded-lyric</span> <span class="p">(</span><span class="nv">emms-track-get</span> <span class="p">(</span><span class="nv">emms-playlist-current-selected-track</span><span class="p">)</span> <span class="ss">&#39;info-lyrics</span><span class="p">)))</span>
+      <span class="p">(</span><span class="nb">with-temp-buffer</span>
+        <span class="p">(</span><span class="nf">insert</span> <span class="nv">embedded-lyric</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">write-region</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">)</span> <span class="p">(</span><span class="nf">point-max</span><span class="p">)</span> <span class="nv">emms-info-lyrics-temp-file</span> <span class="no">nil</span><span class="p">))</span>
+      <span class="nv">emms-info-lyrics-temp-file</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nb">setq</span> <span class="nv">emms-lyrics-find-lyric-function</span> <span class="nf">#&#39;</span><span class="nv">emms-lyrics-find-with-info-lyric</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;kill-emacs-hook</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">file-exists-p</span> <span class="nv">emms-info-lyrics-temp-file</span><span class="p">)</span> <span class="p">(</span><span class="nf">delete-file</span> <span class="nv">emms-info-lyrics-temp-file</span><span class="p">))))</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>需要注意的是 <code>mu4e</code> 无法使用 ELPA 安装，它是随着系统的包管理器安装 <code>mu</code> 时一起被安装进 Emacs 的 <code>load-path</code> 中的，因此为了保证配置文件的通用性，我使用 <code>use-mu4e</code> 这个变量控制 <code>mu4e</code> 的加载。然后在 Emacs 中运行：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">M-x mu4e
-</code></pre></td></tr></table>
-</div>
-</div><p>就可以使用配置好的 <code>mu4e</code> 了。</p>
+</div><p>这里在临时目录创建了一个临时的歌词文件，写入当前播放曲目内嵌的歌词并作为 <code>emms-lyrics-find-with-info-lyric</code> 的返回值，可以通过 <code>emms-lyrics-visit-lyric</code> 进行访问。这样， EMMS 就可以像其他播放器那样加载内嵌歌词了，并且功能与加载一般歌词文件没有太大区别。</p>
 </div>
 
         <div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-05</span>
+                <span>更新于 2022-03-06</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" data-title="使用 mu-wizard 配置 mu4e 邮件客户端" data-hashtags="org-mode,Emacs"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" data-hashtag="org-mode"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" data-title="使用 mu-wizard 配置 mu4e 邮件客户端"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" data-title="使用 mu-wizard 配置 mu4e 邮件客户端"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" data-title="使用 mu-wizard 配置 mu4e 邮件客户端"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" data-title="让 EMMS 读取并显示音乐文件内嵌歌词" data-hashtags="EMMS,Emacs"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" data-hashtag="EMMS"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" data-title="让 EMMS 读取并显示音乐文件内嵌歌词"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" data-title="让 EMMS 读取并显示音乐文件内嵌歌词"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" data-title="让 EMMS 读取并显示音乐文件内嵌歌词"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/org-mode/">org-mode</a>,&nbsp;<a href="https://bohonghuang.github.io/tags/emacs/">Emacs</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/emms/">EMMS</a>,&nbsp;<a href="https://bohonghuang.github.io/tags/emacs/">Emacs</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" class="prev" rel="prev" title="Org 经验分享（一） 使用 org-agenda 实现课程表"><i class="fas fa-angle-left fa-fw"></i>Org 经验分享（一） 使用 org-agenda 实现课程表</a>
-            <a href="https://bohonghuang.github.io/posts/blog/%E8%AE%A9-emms-%E8%AF%BB%E5%8F%96%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%9F%B3%E4%B9%90%E6%96%87%E4%BB%B6%E5%86%85%E5%B5%8C%E6%AD%8C%E8%AF%8D/" class="next" rel="next" title="让 EMMS 读取并显示音乐文件内嵌歌词">让 EMMS 读取并显示音乐文件内嵌歌词<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" class="prev" rel="prev" title="使用 mu-wizard 配置 mu4e 邮件客户端"><i class="fas fa-angle-left fa-fw"></i>使用 mu-wizard 配置 mu4e 邮件客户端</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
