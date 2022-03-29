@@ -201,54 +201,54 @@
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;cal-iso</span><span class="p">)</span>
-
-<span class="p">(</span><span class="nb">defconst</span> <span class="nv">school-term-start-date</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">6</span> <span class="mi">2021</span><span class="p">))</span> <span class="c1">;定义开学周</span>
-
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">iso-week-to-date</span> <span class="p">(</span><span class="nv">week</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">)</span>
-  <span class="s">&#34;从ISO时间标准周转换为日期&#34;</span>
-  <span class="p">(</span><span class="nv">calendar-gregorian-from-absolute</span>
-   <span class="p">(</span><span class="nv">calendar-iso-to-absolute</span> <span class="p">(</span><span class="nf">list</span> <span class="nv">week</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">))))</span>
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">iso-week-from-date</span> <span class="p">(</span><span class="nv">month</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">)</span>
-  <span class="s">&#34;从日期转换为ISO时间标准周&#34;</span>
-  <span class="p">(</span><span class="nv">calendar-iso-from-absolute</span>
-   <span class="p">(</span><span class="nv">calendar-absolute-from-gregorian</span> <span class="p">(</span><span class="nf">list</span> <span class="nv">month</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">))))</span>
-
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">school-week-to-date</span> <span class="p">(</span><span class="nv">week</span> <span class="nv">day</span><span class="p">)</span>
-  <span class="s">&#34;把学期开始的周数和周几转换为日期&#34;</span>
-  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">week</span> <span class="p">(</span><span class="nf">+</span> <span class="p">(</span><span class="nf">nth</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">iso-week-from-date</span> <span class="nv">school-term-start-date</span><span class="p">))</span> <span class="nv">week</span> <span class="mi">-1</span><span class="p">)))</span>
-    <span class="p">(</span><span class="nv">iso-week-to-date</span> <span class="p">(</span><span class="nf">list</span> <span class="nv">week</span> <span class="nv">day</span> <span class="p">(</span><span class="nv">calendar-extract-year</span> <span class="nv">school-term-start-date</span><span class="p">)))))</span>
-
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">school-class</span> <span class="p">(</span><span class="nv">weeks</span> <span class="nv">day</span><span class="p">)</span>
-  <span class="s">&#34;输入周数和周几，并判断和org-agenda当前检索的日期是否匹配&#34;</span>
-  <span class="p">(</span><span class="nb">let</span> <span class="p">(</span><span class="nv">ret</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">setq</span> <span class="nv">ret</span>
-          <span class="p">(</span><span class="nb">or</span> <span class="nv">ret</span>
-              <span class="p">(</span><span class="nb">pcase</span> <span class="nv">weeks</span>
-                <span class="p">((</span><span class="nv">pred</span> <span class="nf">integerp</span><span class="p">)</span>
-                 <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">date1</span> <span class="p">(</span><span class="nv">school-week-to-date</span> <span class="nv">week</span> <span class="nv">day</span><span class="p">)))</span>
-                   <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">equal</span> <span class="nv">date</span> <span class="nv">date1</span><span class="p">)</span> <span class="nv">entry</span><span class="p">)))</span>
-                <span class="p">((</span><span class="nb">and</span> <span class="p">(</span><span class="nv">pred</span> <span class="nv">proper-list-p</span><span class="p">)</span> <span class="nf">list</span><span class="p">)</span>
-                 <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">week</span> <span class="nv">weeks</span> <span class="nv">ret</span><span class="p">)</span> <span class="p">(</span><span class="nb">setq</span> <span class="nv">ret</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">ret</span> <span class="p">(</span><span class="nv">school-class</span> <span class="nv">week</span> <span class="nv">day</span><span class="p">)))))</span>
-                <span class="p">(</span><span class="o">`</span><span class="p">((</span><span class="o">,</span><span class="nv">from-week</span> <span class="o">.</span> <span class="o">,</span><span class="nv">to-week</span><span class="p">)</span> <span class="o">.</span> <span class="o">,</span><span class="nv">odd-or-even</span><span class="p">)</span>
-                 <span class="p">(</span><span class="nv">school-class</span>
-                  <span class="p">(</span><span class="nv">-filter</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
-                             <span class="p">(</span><span class="nf">=</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">2</span><span class="p">)</span>
-                                <span class="p">(</span><span class="nb">pcase</span> <span class="nv">odd-or-even</span> <span class="p">(</span><span class="ss">&#39;odd</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="ss">&#39;even</span> <span class="mi">0</span><span class="p">))))</span>
-                           <span class="p">(</span><span class="nv">number-sequence</span> <span class="nv">from-week</span> <span class="nv">to-week</span><span class="p">))</span>
-                  <span class="nv">day</span><span class="p">))</span>
-                <span class="p">(</span><span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nv">from-week</span> <span class="o">.</span> <span class="o">,</span><span class="nv">to-week</span><span class="p">)</span>
-                 <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">date1</span> <span class="p">(</span><span class="nv">school-week-to-date</span> <span class="nv">from-week</span> <span class="nv">day</span><span class="p">))</span>
-                        <span class="p">(</span><span class="nv">date2</span> <span class="p">(</span><span class="nv">school-week-to-date</span> <span class="nv">to-week</span> <span class="nv">day</span><span class="p">))</span>
-                        <span class="p">(</span><span class="nv">year1</span> <span class="p">(</span><span class="nv">calendar-extract-year</span> <span class="nv">date1</span><span class="p">))</span>
-                        <span class="p">(</span><span class="nv">month1</span> <span class="p">(</span><span class="nv">calendar-extract-month</span> <span class="nv">date1</span><span class="p">))</span>
-                        <span class="p">(</span><span class="nv">day1</span> <span class="p">(</span><span class="nv">calendar-extract-day</span> <span class="nv">date1</span><span class="p">))</span>
-                        <span class="p">(</span><span class="nv">year2</span> <span class="p">(</span><span class="nv">calendar-extract-year</span> <span class="nv">date2</span><span class="p">))</span>
-                        <span class="p">(</span><span class="nv">month2</span> <span class="p">(</span><span class="nv">calendar-extract-month</span> <span class="nv">date2</span><span class="p">))</span>
-                        <span class="p">(</span><span class="nv">day2</span> <span class="p">(</span><span class="nv">calendar-extract-day</span> <span class="nv">date2</span><span class="p">)))</span>
-                   <span class="p">(</span><span class="nv">org-class</span> <span class="nv">year1</span> <span class="nv">month1</span> <span class="nv">day1</span> <span class="nv">year2</span> <span class="nv">month2</span> <span class="nv">day2</span> <span class="nv">day</span><span class="p">))))))</span>
-    <span class="nv">ret</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;cal-iso</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">school-term-start-date</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">6</span> <span class="mi">2021</span><span class="p">))</span> <span class="c1">;定义开学周</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">iso-week-to-date</span> <span class="p">(</span><span class="nv">week</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;从ISO时间标准周转换为日期&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">calendar-gregorian-from-absolute</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nv">calendar-iso-to-absolute</span> <span class="p">(</span><span class="nf">list</span> <span class="nv">week</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">iso-week-from-date</span> <span class="p">(</span><span class="nv">month</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;从日期转换为ISO时间标准周&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">calendar-iso-from-absolute</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nv">calendar-absolute-from-gregorian</span> <span class="p">(</span><span class="nf">list</span> <span class="nv">month</span> <span class="nv">day</span> <span class="nv">year</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">school-week-to-date</span> <span class="p">(</span><span class="nv">week</span> <span class="nv">day</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;把学期开始的周数和周几转换为日期&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">week</span> <span class="p">(</span><span class="nf">+</span> <span class="p">(</span><span class="nf">nth</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">iso-week-from-date</span> <span class="nv">school-term-start-date</span><span class="p">))</span> <span class="nv">week</span> <span class="mi">-1</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">iso-week-to-date</span> <span class="p">(</span><span class="nf">list</span> <span class="nv">week</span> <span class="nv">day</span> <span class="p">(</span><span class="nv">calendar-extract-year</span> <span class="nv">school-term-start-date</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">school-class</span> <span class="p">(</span><span class="nv">weeks</span> <span class="nv">day</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;输入周数和周几，并判断和org-agenda当前检索的日期是否匹配&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">(</span><span class="nv">ret</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">ret</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">or</span> <span class="nv">ret</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="nb">pcase</span> <span class="nv">weeks</span>
+</span></span><span class="line"><span class="cl">                <span class="p">((</span><span class="nv">pred</span> <span class="nf">integerp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">date1</span> <span class="p">(</span><span class="nv">school-week-to-date</span> <span class="nv">week</span> <span class="nv">day</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">equal</span> <span class="nv">date</span> <span class="nv">date1</span><span class="p">)</span> <span class="nv">entry</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                <span class="p">((</span><span class="nb">and</span> <span class="p">(</span><span class="nv">pred</span> <span class="nv">proper-list-p</span><span class="p">)</span> <span class="nf">list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">week</span> <span class="nv">weeks</span> <span class="nv">ret</span><span class="p">)</span> <span class="p">(</span><span class="nb">setq</span> <span class="nv">ret</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">ret</span> <span class="p">(</span><span class="nv">school-class</span> <span class="nv">week</span> <span class="nv">day</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="o">`</span><span class="p">((</span><span class="o">,</span><span class="nv">from-week</span> <span class="o">.</span> <span class="o">,</span><span class="nv">to-week</span><span class="p">)</span> <span class="o">.</span> <span class="o">,</span><span class="nv">odd-or-even</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nv">school-class</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="nv">-filter</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                             <span class="p">(</span><span class="nf">=</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">pcase</span> <span class="nv">odd-or-even</span> <span class="p">(</span><span class="ss">&#39;odd</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="ss">&#39;even</span> <span class="mi">0</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">                           <span class="p">(</span><span class="nv">number-sequence</span> <span class="nv">from-week</span> <span class="nv">to-week</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                  <span class="nv">day</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nv">from-week</span> <span class="o">.</span> <span class="o">,</span><span class="nv">to-week</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">date1</span> <span class="p">(</span><span class="nv">school-week-to-date</span> <span class="nv">from-week</span> <span class="nv">day</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="nv">date2</span> <span class="p">(</span><span class="nv">school-week-to-date</span> <span class="nv">to-week</span> <span class="nv">day</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="nv">year1</span> <span class="p">(</span><span class="nv">calendar-extract-year</span> <span class="nv">date1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="nv">month1</span> <span class="p">(</span><span class="nv">calendar-extract-month</span> <span class="nv">date1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="nv">day1</span> <span class="p">(</span><span class="nv">calendar-extract-day</span> <span class="nv">date1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="nv">year2</span> <span class="p">(</span><span class="nv">calendar-extract-year</span> <span class="nv">date2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="nv">month2</span> <span class="p">(</span><span class="nv">calendar-extract-month</span> <span class="nv">date2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="nv">day2</span> <span class="p">(</span><span class="nv">calendar-extract-day</span> <span class="nv">date2</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">(</span><span class="nv">org-class</span> <span class="nv">year1</span> <span class="nv">month1</span> <span class="nv">day1</span> <span class="nv">year2</span> <span class="nv">month2</span> <span class="nv">day2</span> <span class="nv">day</span><span class="p">))))))</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">ret</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>接着就可以在 <code>org-agenda-files</code> 中使用了：</p>
 <div class="highlight"><div class="chroma">
@@ -263,15 +263,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-org" data-lang="org"><span class="gh">*</span><span class="gs"> 数字电路与逻辑设计</span>
-<span class="c">:PROPERTIES:
-</span><span class="c"></span><span class="cs">:CATEGORY: 数字电路与逻辑设计 方怡冰
-</span><span class="cs"></span><span class="c">:END:</span>
-<span class="gu">**</span> 10:05-11:40 禹州406
-&lt;<span class="s">%%(school-class &#39;(((1 . 12) . even) (14 . 16)) 1)</span>&gt;
-<span class="gu">**</span> 10:05-11:40 美岭314
-&lt;<span class="s">%%(school-class &#39;(((1 . 12) . odd) (14 . 16)) 4)</span>&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-org" data-lang="org"><span class="line"><span class="cl"><span class="gh">*</span><span class="gs"> 数字电路与逻辑设计</span>
+</span></span><span class="line"><span class="cl"><span class="c">:PROPERTIES:
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="cs">:CATEGORY: 数字电路与逻辑设计 方怡冰
+</span></span></span><span class="line"><span class="cl"><span class="cs"></span><span class="c">:END:</span>
+</span></span><span class="line"><span class="cl"><span class="gu">**</span> 10:05-11:40 禹州406
+</span></span><span class="line"><span class="cl">&lt;<span class="s">%%(school-class &#39;(((1 . 12) . even) (14 . 16)) 1)</span>&gt;
+</span></span><span class="line"><span class="cl"><span class="gu">**</span> 10:05-11:40 美岭314
+</span></span><span class="line"><span class="cl">&lt;<span class="s">%%(school-class &#39;(((1 . 12) . odd) (14 . 16)) 4)</span>&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>school-class</code> 这个函数接受一个列表和整数，列表里面可以是整数或者是一个表示周范围（可以指定单双周）的二元组，第二个整数参数表明是周几，<a href="#org-target---1" rel="">第一个</a>和<a href="#org-target---2" rel="">第二个问题</a>解决。</p>
 <h3 id="自定义时间段显示">自定义时间段显示</h3>
@@ -347,74 +347,74 @@
 </span><span class="lnt">67
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-agenda-get-day-entries</span> <span class="p">(</span><span class="nv">file</span> <span class="nv">date</span> <span class="kp">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
-  <span class="s">&#34;Does the work for </span><span class="ss">`org-diary&#39;</span><span class="s"> and </span><span class="ss">`org-agenda&#39;</span><span class="s">.
-</span><span class="s">FILE is the path to a file to be checked for entries.  DATE is date like
-</span><span class="s">the one returned by </span><span class="ss">`calendar-current-date&#39;</span><span class="s">.  ARGS are symbols indicating
-</span><span class="s">which kind of entries should be extracted.  For details about these, see
-</span><span class="s">the documentation of </span><span class="ss">`org-diary&#39;</span><span class="s">.&#34;</span>
-  <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">org-startup-folded</span> <span class="no">nil</span><span class="p">)</span>
-         <span class="p">(</span><span class="nv">org-startup-align-all-tables</span> <span class="no">nil</span><span class="p">)</span>
-         <span class="p">(</span><span class="nv">buffer</span> <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">file-exists-p</span> <span class="nv">file</span><span class="p">)</span> <span class="p">(</span><span class="nv">org-get-agenda-file-buffer</span> <span class="nv">file</span><span class="p">)</span>
-                   <span class="p">(</span><span class="ne">error</span> <span class="s">&#34;No such file %s&#34;</span> <span class="nv">file</span><span class="p">))))</span>
-    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">not</span> <span class="nv">buffer</span><span class="p">)</span>
-        <span class="c1">;; If file does not exist, signal it in diary nonetheless.</span>
-        <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;ORG-AGENDA-ERROR: No such org-file %s&#34;</span> <span class="nv">file</span><span class="p">))</span>
-      <span class="p">(</span><span class="nb">with-current-buffer</span> <span class="nv">buffer</span>
-        <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">derived-mode-p</span> <span class="ss">&#39;org-mode</span><span class="p">)</span>
-          <span class="p">(</span><span class="ne">error</span> <span class="s">&#34;Agenda file %s is not in Org mode&#34;</span> <span class="nv">file</span><span class="p">))</span>
-        <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-buffer</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">org-agenda-buffer</span> <span class="nv">buffer</span><span class="p">))</span>
-        <span class="p">(</span><span class="nb">setf</span> <span class="nv">org-agenda-current-date</span> <span class="nv">date</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">undo-boundary</span><span class="p">)</span>
-        <span class="p">(</span><span class="nv">org-macro-replace-all</span> <span class="nv">org-macro-templates</span><span class="p">)</span>
-        <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">ret</span> <span class="p">(</span><span class="nb">save-excursion</span>
-                     <span class="p">(</span><span class="nb">save-restriction</span>
-                       <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">eq</span> <span class="nv">buffer</span> <span class="nv">org-agenda-restrict</span><span class="p">)</span>
-                           <span class="p">(</span><span class="nf">narrow-to-region</span> <span class="nv">org-agenda-restrict-begin</span>
-                                             <span class="nv">org-agenda-restrict-end</span><span class="p">)</span>
-                         <span class="p">(</span><span class="nf">widen</span><span class="p">))</span>
-                       <span class="c1">;; Rationalize ARGS.  Also make sure `:deadline&#39; comes</span>
-                       <span class="c1">;; first in order to populate DEADLINES before passing it.</span>
-                       <span class="c1">;;</span>
-                       <span class="c1">;; We use `delq&#39; since `org-uniquify&#39; duplicates ARGS,</span>
-                       <span class="c1">;; guarding us from modifying `org-agenda-entry-types&#39;.</span>
-                       <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nv">org-uniquify</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">args</span> <span class="nv">org-agenda-entry-types</span><span class="p">)))</span>
-                       <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">memq</span> <span class="nb">:scheduled</span> <span class="nv">args</span><span class="p">)</span> <span class="p">(</span><span class="nf">memq</span> <span class="nb">:scheduled*</span> <span class="nv">args</span><span class="p">))</span>
-                         <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">delq</span> <span class="nb">:scheduled*</span> <span class="nv">args</span><span class="p">)))</span>
-                       <span class="p">(</span><span class="nb">cond</span>
-                        <span class="p">((</span><span class="nf">memq</span> <span class="nb">:deadline</span> <span class="nv">args</span><span class="p">)</span>
-                         <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">cons</span> <span class="nb">:deadline</span>
-                                          <span class="p">(</span><span class="nf">delq</span> <span class="nb">:deadline</span> <span class="p">(</span><span class="nf">delq</span> <span class="nb">:deadline*</span> <span class="nv">args</span><span class="p">)))))</span>
-                        <span class="p">((</span><span class="nf">memq</span> <span class="nb">:deadline*</span> <span class="nv">args</span><span class="p">)</span>
-                         <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">cons</span> <span class="nb">:deadline*</span> <span class="p">(</span><span class="nf">delq</span> <span class="nb">:deadline*</span> <span class="nv">args</span><span class="p">)))))</span>
-                       <span class="c1">;; Collect list of headlines.  Return them flattened.</span>
-                       <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">case-fold-search</span> <span class="no">nil</span><span class="p">)</span> <span class="nv">results</span> <span class="nv">deadlines</span><span class="p">)</span>
-                         <span class="p">(</span><span class="nv">org-dlet</span>
-                             <span class="p">((</span><span class="nv">date</span> <span class="nv">date</span><span class="p">))</span>
-                           <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">arg</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">apply</span> <span class="nf">#&#39;nconc</span> <span class="p">(</span><span class="nf">nreverse</span> <span class="nv">results</span><span class="p">)))</span>
-                             <span class="p">(</span><span class="nb">pcase</span> <span class="nv">arg</span>
-                               <span class="p">((</span><span class="nb">and</span> <span class="nb">:todo</span> <span class="p">(</span><span class="nv">guard</span> <span class="p">(</span><span class="nv">org-agenda-today-p</span> <span class="nv">date</span><span class="p">)))</span>
-                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-todos</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
-                               <span class="p">(</span><span class="nb">:timestamp</span>
-                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-blocks</span><span class="p">)</span> <span class="nv">results</span><span class="p">)</span>
-                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-timestamps</span> <span class="nv">deadlines</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
-                               <span class="p">(</span><span class="nb">:sexp</span>
-                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-sexps</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
-                               <span class="p">(</span><span class="nb">:scheduled</span>
-                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-scheduled</span> <span class="nv">deadlines</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
-                               <span class="p">(</span><span class="nb">:scheduled*</span>
-                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-scheduled</span> <span class="nv">deadlines</span> <span class="no">t</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
-                               <span class="p">(</span><span class="nb">:closed</span>
-                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-progress</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
-                               <span class="p">(</span><span class="nb">:deadline</span>
-                                <span class="p">(</span><span class="nb">setf</span> <span class="nv">deadlines</span> <span class="p">(</span><span class="nv">org-agenda-get-deadlines</span><span class="p">))</span>
-                                <span class="p">(</span><span class="nb">push</span> <span class="nv">deadlines</span> <span class="nv">results</span><span class="p">))</span>
-                               <span class="p">(</span><span class="nb">:deadline*</span>
-                                <span class="p">(</span><span class="nb">setf</span> <span class="nv">deadlines</span> <span class="p">(</span><span class="nv">org-agenda-get-deadlines</span> <span class="no">t</span><span class="p">))</span>
-                                <span class="p">(</span><span class="nb">push</span> <span class="nv">deadlines</span> <span class="nv">results</span><span class="p">))))))))))</span>
-          <span class="p">(</span><span class="nv">primitive-undo</span> <span class="mi">1</span> <span class="nv">buffer-undo-list</span><span class="p">)</span>
-          <span class="nv">ret</span><span class="p">)))))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-agenda-get-day-entries</span> <span class="p">(</span><span class="nv">file</span> <span class="nv">date</span> <span class="kp">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Does the work for </span><span class="ss">`org-diary&#39;</span><span class="s"> and </span><span class="ss">`org-agenda&#39;</span><span class="s">.
+</span></span></span><span class="line"><span class="cl"><span class="s">FILE is the path to a file to be checked for entries.  DATE is date like
+</span></span></span><span class="line"><span class="cl"><span class="s">the one returned by </span><span class="ss">`calendar-current-date&#39;</span><span class="s">.  ARGS are symbols indicating
+</span></span></span><span class="line"><span class="cl"><span class="s">which kind of entries should be extracted.  For details about these, see
+</span></span></span><span class="line"><span class="cl"><span class="s">the documentation of </span><span class="ss">`org-diary&#39;</span><span class="s">.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">org-startup-folded</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">org-startup-align-all-tables</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">buffer</span> <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">file-exists-p</span> <span class="nv">file</span><span class="p">)</span> <span class="p">(</span><span class="nv">org-get-agenda-file-buffer</span> <span class="nv">file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">(</span><span class="ne">error</span> <span class="s">&#34;No such file %s&#34;</span> <span class="nv">file</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">not</span> <span class="nv">buffer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">;; If file does not exist, signal it in diary nonetheless.</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;ORG-AGENDA-ERROR: No such org-file %s&#34;</span> <span class="nv">file</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">with-current-buffer</span> <span class="nv">buffer</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">derived-mode-p</span> <span class="ss">&#39;org-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="ne">error</span> <span class="s">&#34;Agenda file %s is not in Org mode&#34;</span> <span class="nv">file</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-buffer</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">org-agenda-buffer</span> <span class="nv">buffer</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">setf</span> <span class="nv">org-agenda-current-date</span> <span class="nv">date</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nf">undo-boundary</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">org-macro-replace-all</span> <span class="nv">org-macro-templates</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">ret</span> <span class="p">(</span><span class="nb">save-excursion</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nb">save-restriction</span>
+</span></span><span class="line"><span class="cl">                       <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">eq</span> <span class="nv">buffer</span> <span class="nv">org-agenda-restrict</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                           <span class="p">(</span><span class="nf">narrow-to-region</span> <span class="nv">org-agenda-restrict-begin</span>
+</span></span><span class="line"><span class="cl">                                             <span class="nv">org-agenda-restrict-end</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                         <span class="p">(</span><span class="nf">widen</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                       <span class="c1">;; Rationalize ARGS.  Also make sure `:deadline&#39; comes</span>
+</span></span><span class="line"><span class="cl">                       <span class="c1">;; first in order to populate DEADLINES before passing it.</span>
+</span></span><span class="line"><span class="cl">                       <span class="c1">;;</span>
+</span></span><span class="line"><span class="cl">                       <span class="c1">;; We use `delq&#39; since `org-uniquify&#39; duplicates ARGS,</span>
+</span></span><span class="line"><span class="cl">                       <span class="c1">;; guarding us from modifying `org-agenda-entry-types&#39;.</span>
+</span></span><span class="line"><span class="cl">                       <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nv">org-uniquify</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">args</span> <span class="nv">org-agenda-entry-types</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                       <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">memq</span> <span class="nb">:scheduled</span> <span class="nv">args</span><span class="p">)</span> <span class="p">(</span><span class="nf">memq</span> <span class="nb">:scheduled*</span> <span class="nv">args</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                         <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">delq</span> <span class="nb">:scheduled*</span> <span class="nv">args</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                       <span class="p">(</span><span class="nb">cond</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">((</span><span class="nf">memq</span> <span class="nb">:deadline</span> <span class="nv">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                         <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">cons</span> <span class="nb">:deadline</span>
+</span></span><span class="line"><span class="cl">                                          <span class="p">(</span><span class="nf">delq</span> <span class="nb">:deadline</span> <span class="p">(</span><span class="nf">delq</span> <span class="nb">:deadline*</span> <span class="nv">args</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">((</span><span class="nf">memq</span> <span class="nb">:deadline*</span> <span class="nv">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                         <span class="p">(</span><span class="nb">setf</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">cons</span> <span class="nb">:deadline*</span> <span class="p">(</span><span class="nf">delq</span> <span class="nb">:deadline*</span> <span class="nv">args</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">                       <span class="c1">;; Collect list of headlines.  Return them flattened.</span>
+</span></span><span class="line"><span class="cl">                       <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">case-fold-search</span> <span class="no">nil</span><span class="p">)</span> <span class="nv">results</span> <span class="nv">deadlines</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                         <span class="p">(</span><span class="nv">org-dlet</span>
+</span></span><span class="line"><span class="cl">                             <span class="p">((</span><span class="nv">date</span> <span class="nv">date</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                           <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">arg</span> <span class="nv">args</span> <span class="p">(</span><span class="nf">apply</span> <span class="nf">#&#39;nconc</span> <span class="p">(</span><span class="nf">nreverse</span> <span class="nv">results</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                             <span class="p">(</span><span class="nb">pcase</span> <span class="nv">arg</span>
+</span></span><span class="line"><span class="cl">                               <span class="p">((</span><span class="nb">and</span> <span class="nb">:todo</span> <span class="p">(</span><span class="nv">guard</span> <span class="p">(</span><span class="nv">org-agenda-today-p</span> <span class="nv">date</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-todos</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                               <span class="p">(</span><span class="nb">:timestamp</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-blocks</span><span class="p">)</span> <span class="nv">results</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-timestamps</span> <span class="nv">deadlines</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                               <span class="p">(</span><span class="nb">:sexp</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-sexps</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                               <span class="p">(</span><span class="nb">:scheduled</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-scheduled</span> <span class="nv">deadlines</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                               <span class="p">(</span><span class="nb">:scheduled*</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-scheduled</span> <span class="nv">deadlines</span> <span class="no">t</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                               <span class="p">(</span><span class="nb">:closed</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nv">org-agenda-get-progress</span><span class="p">)</span> <span class="nv">results</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                               <span class="p">(</span><span class="nb">:deadline</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">setf</span> <span class="nv">deadlines</span> <span class="p">(</span><span class="nv">org-agenda-get-deadlines</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">push</span> <span class="nv">deadlines</span> <span class="nv">results</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                               <span class="p">(</span><span class="nb">:deadline*</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">setf</span> <span class="nv">deadlines</span> <span class="p">(</span><span class="nv">org-agenda-get-deadlines</span> <span class="no">t</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="nb">push</span> <span class="nv">deadlines</span> <span class="nv">results</span><span class="p">))))))))))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">primitive-undo</span> <span class="mi">1</span> <span class="nv">buffer-undo-list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">ret</span><span class="p">)))))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后就可以在课程表的 <code>agenda</code> 文件中定义一个 <code>MACRO</code> ：</p>
 <div class="highlight"><div class="chroma">
@@ -422,8 +422,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-org" data-lang="org"><span class="cs">#+MACRO</span><span class="c">: school-time (eval (concat (cdr (assoc (string-to-number $1) school-time-periods)) &#34;（&#34; (cdr (assoc (string-to-number $1) school-time-class-nums)) &#34;）&#34;))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-org" data-lang="org"><span class="line"><span class="cl"><span class="cs">#+MACRO</span><span class="c">: school-time (eval (concat (cdr (assoc (string-to-number $1) school-time-periods)) &#34;（&#34; (cdr (assoc (string-to-number $1) school-time-class-nums)) &#34;）&#34;))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中的 <code>school-time-class-nums</code> 和 <code>school-time-periods</code> 如下：</p>
 <div class="highlight"><div class="chroma">
@@ -440,17 +440,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">school-time-class-nums</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="s">&#34;上午1、2节&#34;</span><span class="p">)</span>
-                                   <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="s">&#34;上午3、4节&#34;</span><span class="p">)</span>
-                                   <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="s">&#34;下午5、6节&#34;</span><span class="p">)</span>
-                                   <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="s">&#34;下午7、8节&#34;</span><span class="p">)</span>
-                                   <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="s">&#34;晚上9、10节&#34;</span><span class="p">)))</span>
-<span class="p">(</span><span class="nb">defconst</span> <span class="nv">school-time-periods</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="s">&#34;8:00-9:35&#34;</span><span class="p">)</span>
-                                <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="s">&#34;10:05-11:40&#34;</span><span class="p">)</span>
-                                <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="s">&#34;14:00-15:35&#34;</span><span class="p">)</span>
-                                <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="s">&#34;15:55-17:30&#34;</span><span class="p">)</span>
-                                <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="s">&#34;19:00-21:30&#34;</span><span class="p">)))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">school-time-class-nums</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="s">&#34;上午1、2节&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                   <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="s">&#34;上午3、4节&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                   <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="s">&#34;下午5、6节&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                   <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="s">&#34;下午7、8节&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                   <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="s">&#34;晚上9、10节&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">school-time-periods</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="s">&#34;8:00-9:35&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="s">&#34;10:05-11:40&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="s">&#34;14:00-15:35&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="s">&#34;15:55-17:30&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="s">&#34;19:00-21:30&#34;</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后就可以愉快地将时间段用宏来代替了：</p>
 <div class="highlight"><div class="chroma">
@@ -461,11 +461,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-org" data-lang="org"><span class="gu">**</span> {{{school-time(2)}}} 禹州406
-&lt;<span class="s">%%(school-class &#39;(((1 . 12) . even) (14 . 16)) 1)</span>&gt;
-<span class="gu">**</span> {{{school-time(2)}}} 美岭314
-&lt;<span class="s">%%(school-class &#39;(((1 . 12) . odd) (14 . 16)) 4)</span>&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-org" data-lang="org"><span class="line"><span class="cl"><span class="gu">**</span> {{{school-time(2)}}} 禹州406
+</span></span><span class="line"><span class="cl">&lt;<span class="s">%%(school-class &#39;(((1 . 12) . even) (14 . 16)) 1)</span>&gt;
+</span></span><span class="line"><span class="cl"><span class="gu">**</span> {{{school-time(2)}}} 美岭314
+</span></span><span class="line"><span class="cl">&lt;<span class="s">%%(school-class &#39;(((1 . 12) . odd) (14 . 16)) 4)</span>&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>虽然看上去字数反而变多了，但是每次输入只要进行复制粘贴后只更改一个数即可了，并且格式可以统一修改，最终效果如下：</p>
 <div class="highlight"><div class="chroma">
@@ -485,20 +485,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Thursday    3 March 2022
-  数学建模 畅航: 8:00-9:35  （上午1、2节） 章辉301
-               8:00...... ----------------
-              10:00...... ----------------
-  微机原理与接口技术 秦德兴:10:05-11:40 （上午3、4节） 美岭407
-              12:00...... ----------------
-              13:57...... now - - - - - - - - - - - - - - - - - - - - - - - - -
-  信号与系统 冯文:14:00-15:35 （下午5、6节） 禹州205
-              14:00...... ----------------
-              16:00...... ----------------
-              18:00...... ----------------
-  概率论与数理统计 王凤筵:19:00-21:30 （晚上9、10节） 建发315
-              20:00...... ----------------
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Thursday    3 March 2022
+</span></span><span class="line"><span class="cl">  数学建模 畅航: 8:00-9:35  （上午1、2节） 章辉301
+</span></span><span class="line"><span class="cl">               8:00...... ----------------
+</span></span><span class="line"><span class="cl">              10:00...... ----------------
+</span></span><span class="line"><span class="cl">  微机原理与接口技术 秦德兴:10:05-11:40 （上午3、4节） 美岭407
+</span></span><span class="line"><span class="cl">              12:00...... ----------------
+</span></span><span class="line"><span class="cl">              13:57...... now - - - - - - - - - - - - - - - - - - - - - - - - -
+</span></span><span class="line"><span class="cl">  信号与系统 冯文:14:00-15:35 （下午5、6节） 禹州205
+</span></span><span class="line"><span class="cl">              14:00...... ----------------
+</span></span><span class="line"><span class="cl">              16:00...... ----------------
+</span></span><span class="line"><span class="cl">              18:00...... ----------------
+</span></span><span class="line"><span class="cl">  概率论与数理统计 王凤筵:19:00-21:30 （晚上9、10节） 建发315
+</span></span><span class="line"><span class="cl">              20:00...... ----------------
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
 

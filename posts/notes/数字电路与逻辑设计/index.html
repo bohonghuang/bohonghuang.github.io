@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
     <title class="pjax-title">数字电路与逻辑设计 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="数字电路与逻辑设计" />
-<meta property="og:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 数字逻辑 机器码 原码 使用最高位来表示正负，剩下的位用于表示绝对值。 反码 使用最高位来表示正负，但在表" />
+<meta property="og:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 数字逻辑 1 2 3 4 5 6 7 8 9 10 11 flowchart LR A[波形图] B[真值表] C[逻辑表达式] D[逻辑图] E[卡诺图" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-03T19:31:08+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta property="article:modified_time" content="2022-03-29T21:41:04+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数字电路与逻辑设计"/>
-<meta name="twitter:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 数字逻辑 机器码 原码 使用最高位来表示正负，剩下的位用于表示绝对值。 反码 使用最高位来表示正负，但在表"/>
+<meta name="twitter:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 数字逻辑 1 2 3 4 5 6 7 8 9 10 11 flowchart LR A[波形图] B[真值表] C[逻辑表达式] D[逻辑图] E[卡诺图"/>
 <meta name="application-name" content="黄博宏的个人笔记">
 <meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/bash/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/bash/" /><link rel="next" href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -31,8 +31,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "数字电路","wordcount":  10138 ,
-        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1\/","datePublished": "2022-03-03T00:00:00+00:00","dateModified": "2022-03-03T19:31:08+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "数字电路","wordcount":  10439 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1\/","datePublished": "2022-03-03T00:00:00+00:00","dateModified": "2022-03-29T21:41:04+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
                 "@type": "Person",
@@ -117,7 +117,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10138 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-29">2022-03-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10439 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 21 分钟&nbsp;<span id="/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" class="leancloud_visitors" data-flag-title="数字电路与逻辑设计">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -165,7 +165,7 @@
         <li><a href="#数字编码">数字编码</a>
           <ul>
             <li><a href="#伪码">伪码</a></li>
-            <li><a href="#bcd码">BCD码</a></li>
+            <li><a href="#bcd-码">BCD 码</a></li>
             <li><a href="#格雷码">格雷码</a></li>
           </ul>
         </li>
@@ -210,28 +210,88 @@
         </div>
     </div>
 <h2 id="数字逻辑">数字逻辑</h2>
-<div class="mermaid" id="id-1"></div>
-<h3 id="机器码">机器码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flowchart LR
+</span></span><span class="line"><span class="cl">     A[波形图]
+</span></span><span class="line"><span class="cl">     B[真值表]
+</span></span><span class="line"><span class="cl">     C[逻辑表达式]
+</span></span><span class="line"><span class="cl">     D[逻辑图]
+</span></span><span class="line"><span class="cl">     E[卡诺图]
+</span></span><span class="line"><span class="cl">     A &lt;--&gt; B
+</span></span><span class="line"><span class="cl">     B &lt;--&gt; C
+</span></span><span class="line"><span class="cl">     C &lt;--&gt; D
+</span></span><span class="line"><span class="cl">     B &lt;--&gt; E
+</span></span><span class="line"><span class="cl">     E &lt;--&gt; C
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="机器码">机器码</h3>
 <h4 id="原码">原码</h4>
-<p>使用最高位来表示正负，剩下的位用于表示绝对值。</p>
+<p>正数的符号位用“0”表示，负数的符号位用“1”，数值部分按二进制数的绝对值表示。</p>
+<ul>
+<li>范围 <br />
+有一位专门用于表示符号，意味着 0 将有两种表示方式： <code>00000000</code> 和 <code>10000000</code> ，因此范围上下限的绝对值是相同的。</li>
+<li>运算 <br />
+符号位不参与计算。</li>
+</ul>
 <h4 id="反码">反码</h4>
 <p>使用最高位来表示正负，但在表示负数时，其余位在原码的基础上取反。</p>
 <h4 id="补码">补码</h4>
-<p>使用最高位来表示正负，但在表示负数时，其余位在反码的基础上加1。
-<del>也就是说补码在进行取相反数时没有<a href="#%e5%8e%9f%e7%a0%81" rel="">原码</a>和<a href="#%e5%8f%8d%e7%a0%81" rel="">反码</a>那么方便了，需要先判断最高为是否为0（是否为负数），如果为1的话，则需要令最高位为0，并且其余位减去1再取反。如果为0的话，则需要令最高位为0，其余位取反再加上1。</del>
-补码的取相反数就是把最高位取反，然后有两种做法都可以：</p>
+<p>正数的补码就是与原码相同，负数的补码为模减去该数的绝对值。因此对于同一个数不同的模（即不同的计算机位数），其补码是不同。</p>
+<ul>
+<li>
+<p>范围 <br />
+当一个正数与一个负数的补码相同时，负数优先，这样最高位可以表示正负：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">100 (4)
+</span></span><span class="line"><span class="cl">011  3
+</span></span><span class="line"><span class="cl">000  0
+</span></span><span class="line"><span class="cl">111 -1
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">100 -4
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因此补码的表示范围为\([-2^{n-1},2^{n-1}-1]\)。</p>
+</li>
+<li>
+<p>运算</p>
+<ul>
+<li>加减 <br />
+在不溢出的情况下，加减法不用管符号位。</li>
+<li>相反数 <br />
+两种方法都可以：
 <ol>
-<li>
-<p>其余位减去1再取反</p>
-</li>
-<li>
-<p>其余位取反后加上1</p>
-</li>
-<li>
-<p>例 <br />
-<code>0000</code> 取相反数的过程为： <code>0000</code> -&gt; <code>1000</code> -&gt; <code>1111</code> -&gt; <code>0000</code> 。</p>
-</li>
+<li>其余位减去1再取反</li>
+<li>其余位取反后加上1</li>
+<li>例 <br />
+<code>0000</code> 取相反数的过程为： <code>0000</code> -&gt; <code>1000</code> -&gt; <code>1111</code> -&gt; <code>0000</code> 。</li>
 </ol>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="真值表">真值表</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -259,29 +319,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="k">implicit</span> <span class="k">class</span> <span class="nc">boolOps</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="o">{</span>
-  <span class="k">def</span> <span class="o">+(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="o">||</span> <span class="n">b</span>
-  <span class="k">def</span> <span class="o">*(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="o">&amp;&amp;</span> <span class="n">b</span>
-  <span class="k">def</span> <span class="n">unary_-</span> <span class="k">=</span> <span class="o">!</span><span class="n">a</span>
-<span class="o">}</span>
-
-<span class="nd">@main</span>
-<span class="k">def</span> <span class="n">main</span><span class="o">()</span> <span class="k">=</span> <span class="o">{</span>
-  <span class="k">def</span> <span class="n">rec</span><span class="o">(</span><span class="n">vec</span><span class="k">:</span> <span class="kt">Vector</span><span class="o">[</span><span class="kt">Boolean</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">.</span><span class="n">empty</span><span class="o">,</span> <span class="n">i</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">rec</span><span class="o">(</span><span class="n">vec</span> <span class="k">:</span><span class="kt">+</span> <span class="kt">false</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
-    <span class="n">rec</span><span class="o">(</span><span class="n">vec</span> <span class="k">:</span><span class="kt">+</span> <span class="kt">true</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
-  <span class="o">}</span> <span class="k">else</span> <span class="n">vec</span> <span class="k">match</span> <span class="o">{</span>
-    <span class="k">case</span> <span class="nc">Vector</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">)</span> <span class="k">=&gt;</span>
-      <span class="k">val</span> <span class="n">res</span> <span class="k">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="o">-</span><span class="n">b</span>
-      <span class="k">def</span> <span class="n">booleanToNumString</span><span class="o">(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="k">=</span> <span class="n">b</span> <span class="k">match</span> <span class="o">{</span>
-        <span class="k">case</span> <span class="kc">true</span> <span class="k">=&gt;</span> <span class="s">&#34;1&#34;</span>
-        <span class="k">case</span> <span class="kc">false</span> <span class="k">=&gt;</span> <span class="s">&#34;0&#34;</span>
-      <span class="o">}</span>
-      <span class="n">println</span><span class="o">(</span><span class="s">s&#34;</span><span class="si">${</span><span class="n">vec</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">booleanToNumString</span><span class="o">).</span><span class="n">mkString</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)</span><span class="si">}</span><span class="s"> </span><span class="si">${</span><span class="n">booleanToNumString</span><span class="o">(</span><span class="n">res</span><span class="o">)</span><span class="si">}</span><span class="s">&#34;</span><span class="o">)</span>
-  <span class="o">}</span>
-  <span class="n">rec</span><span class="o">()</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="k">implicit</span> <span class="k">class</span> <span class="nc">boolOps</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="o">+(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="o">||</span> <span class="n">b</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="o">*(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="o">&amp;&amp;</span> <span class="n">b</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="n">unary_-</span> <span class="k">=</span> <span class="o">!</span><span class="n">a</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@main</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="n">main</span><span class="o">()</span> <span class="k">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="n">rec</span><span class="o">(</span><span class="n">vec</span><span class="k">:</span> <span class="kt">Vector</span><span class="o">[</span><span class="kt">Boolean</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">.</span><span class="n">empty</span><span class="o">,</span> <span class="n">i</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rec</span><span class="o">(</span><span class="n">vec</span> <span class="k">:</span><span class="kt">+</span> <span class="kt">false</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rec</span><span class="o">(</span><span class="n">vec</span> <span class="k">:</span><span class="kt">+</span> <span class="kt">true</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span> <span class="k">else</span> <span class="n">vec</span> <span class="k">match</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nc">Vector</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">)</span> <span class="k">=&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">val</span> <span class="n">res</span> <span class="k">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="o">-</span><span class="n">b</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="n">booleanToNumString</span><span class="o">(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span> <span class="k">=</span> <span class="n">b</span> <span class="k">match</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="kc">true</span> <span class="k">=&gt;</span> <span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="kc">false</span> <span class="k">=&gt;</span> <span class="s">&#34;0&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">println</span><span class="o">(</span><span class="s">s&#34;</span><span class="si">${</span><span class="n">vec</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">booleanToNumString</span><span class="o">).</span><span class="n">mkString</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)</span><span class="si">}</span><span class="s"> </span><span class="si">${</span><span class="n">booleanToNumString</span><span class="o">(</span><span class="n">res</span><span class="o">)</span><span class="si">}</span><span class="s">&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">rec</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="逻辑运算">逻辑运算</h3>
 <table>
@@ -404,7 +464,7 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 </li>
 </ul>
 <h4 id="不完全确定的逻辑函数">不完全确定的逻辑函数</h4>
-<p>有时候对于可能的输入的数量小于其对于二进制可表示的数量时，多出来的输入就是不需要考虑的。比如<a href="#bcd%e7%a0%81" rel="">BCD码</a>的处理电路就存在6个不可能的输入（伪码），如果真的产生了这些输入，输出值可以不一定是假，而是可以任意，这样可以简化电路。对于不可能的输入，可以在<a href="#%e5%8d%a1%e8%af%ba%e5%9b%be" rel="">卡诺图</a>中用“d”来表示，在画圈时既可以当作”1“，又可以当作”0“，目的是让圈画得更大更多：</p>
+<p>有时候对于可能的输入的数量小于其对于二进制可表示的数量时，多出来的输入就是不需要考虑的。比如<a href="#bcd-%e7%a0%81" rel="">BCD 码</a>的处理电路就存在6个不可能的输入（伪码），如果真的产生了这些输入，输出值可以不一定是假，而是可以任意，这样可以简化电路。对于不可能的输入，可以在<a href="#%e5%8d%a1%e8%af%ba%e5%9b%be" rel="">卡诺图</a>中用“d”来表示，在画圈时既可以当作”1“，又可以当作”0“，目的是让圈画得更大更多：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-09-16_15-33-00_screenshot.png"/>
 </figure>
 
@@ -418,8 +478,35 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 <ul>
 <li>
 <p>找对称：</p>
-<div class="mermaid" id="id-2"></div>
-<p>以下两种相邻的必定对称：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flowchart TD
+</span></span><span class="line"><span class="cl">     I[把当前位数所有可能的格雷码按顺序作为当前部分]
+</span></span><span class="line"><span class="cl">     A{当前部分是否可分}
+</span></span><span class="line"><span class="cl">     B[将当前部分中目标项镜像对称的项添加到列表]
+</span></span><span class="line"><span class="cl">     C[把当前部分分成两半并取含有目标项的那一半作为当前部分]
+</span></span><span class="line"><span class="cl">     D[列表中的项就是与目标项只差一位的项]
+</span></span><span class="line"><span class="cl">     I --&gt; A
+</span></span><span class="line"><span class="cl">     A --是--&gt; B
+</span></span><span class="line"><span class="cl">     B --&gt; C
+</span></span><span class="line"><span class="cl">     C --&gt; A
+</span></span><span class="line"><span class="cl">     A --否--&gt; D
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以下两种相邻的必定对称：</p>
 <ul>
 <li>位置上相邻</li>
 <li>边缘扩展相邻：假设有这张卡诺图的上下左右都是这张卡诺图，看边缘上是否存在跨边缘的相邻”1“。</li>
@@ -432,7 +519,7 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 <h3 id="数字编码">数字编码</h3>
 <h4 id="伪码">伪码</h4>
 <p>未使用的编码。</p>
-<h4 id="bcd码">BCD码</h4>
+<h4 id="bcd-码">BCD 码</h4>
 <p>用二进制表示十进制的 <strong>每一位</strong> 数。</p>
 <!--list-separator-->
 <ul>
@@ -485,15 +572,15 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="nd">@main</span>
-<span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
-  <span class="k">def</span> <span class="n">grayCodes</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">n</span><span class="o">)</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]]</span> <span class="k">=</span> <span class="n">i</span> <span class="k">match</span> <span class="o">{</span>
-    <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="nc">Nil</span> <span class="k">:</span><span class="kt">:</span> <span class="kt">Nil</span>
-    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">grayCodes</span><span class="o">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="mi">0</span> <span class="k">:</span><span class="kt">:</span> <span class="k">_</span><span class="o">)</span> <span class="k">:</span><span class="kt">::</span> <span class="kt">grayCodes</span><span class="o">(</span><span class="kt">i</span> <span class="kt">-</span> <span class="err">1</span><span class="o">)</span><span class="kt">.reverse.map</span><span class="o">(</span><span class="err">1</span> <span class="kt">::</span> <span class="k">_</span><span class="o">)</span>
-  <span class="o">}</span>
-  <span class="n">println</span><span class="o">(</span><span class="n">grayCodes</span><span class="o">().</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">mkString</span><span class="o">).</span><span class="n">mkString</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">))</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="nd">@main</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="n">grayCodes</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">n</span><span class="o">)</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]]</span> <span class="k">=</span> <span class="n">i</span> <span class="k">match</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="nc">Nil</span> <span class="k">:</span><span class="kt">:</span> <span class="kt">Nil</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">grayCodes</span><span class="o">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="mi">0</span> <span class="k">:</span><span class="kt">:</span> <span class="k">_</span><span class="o">)</span> <span class="k">:</span><span class="kt">::</span> <span class="kt">grayCodes</span><span class="o">(</span><span class="kt">i</span> <span class="kt">-</span> <span class="err">1</span><span class="o">)</span><span class="kt">.reverse.map</span><span class="o">(</span><span class="err">1</span> <span class="kt">::</span> <span class="k">_</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">println</span><span class="o">(</span><span class="n">grayCodes</span><span class="o">().</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">mkString</span><span class="o">).</span><span class="n">mkString</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -530,38 +617,38 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">gray-codes</span> <span class="p">(</span><span class="nv">n</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">pcase</span> <span class="nv">n</span>
-    <span class="p">(</span><span class="o">`</span><span class="mi">0</span> <span class="o">&#39;</span><span class="p">(()))</span>
-    <span class="p">(</span><span class="nv">n</span> <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">codes</span> <span class="p">(</span><span class="nv">gray-codes</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">n</span> <span class="mi">1</span><span class="p">))))</span>
-         <span class="p">(</span><span class="nv">-concat</span> <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">0</span> <span class="nv">it</span><span class="p">)</span> <span class="nv">codes</span><span class="p">)</span>
-                  <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="nv">it</span><span class="p">)</span> <span class="p">(</span><span class="nf">reverse</span> <span class="nv">codes</span><span class="p">)))))))</span>
-
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">binary-codes</span> <span class="p">(</span><span class="nv">n</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">pcase</span> <span class="nv">n</span>
-    <span class="p">(</span><span class="o">`</span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
-    <span class="p">(</span><span class="nv">_</span> <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">codes</span> <span class="p">(</span><span class="nv">binary-codes</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">n</span> <span class="mi">1</span><span class="p">))))</span>
-         <span class="p">(</span><span class="nv">-concat</span> <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">0</span> <span class="nv">it</span><span class="p">)</span> <span class="nv">codes</span><span class="p">)</span>
-                  <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="nv">it</span><span class="p">)</span> <span class="nv">codes</span><span class="p">))))))</span>
-
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">binary-codes-to-strings</span> <span class="p">(</span><span class="nv">codes</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">-map</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">code</span><span class="p">)</span>
-          <span class="p">(</span><span class="nv">-reduce</span> <span class="nf">#&#39;concat</span> <span class="p">(</span><span class="nv">-map</span> <span class="nf">#&#39;number-to-string</span> <span class="nv">code</span><span class="p">)))</span>
-        <span class="nv">codes</span><span class="p">))</span>
-
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">gray-code-strings-with-decimal</span> <span class="p">(</span><span class="nv">n</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%s%4s&#34;</span> <span class="nv">it</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;(%d)&#34;</span> <span class="p">(</span><span class="nf">string-to-number</span> <span class="nv">it</span> <span class="mi">2</span><span class="p">)))</span>
-         <span class="p">(</span><span class="nv">binary-codes-to-strings</span> <span class="p">(</span><span class="nv">gray-codes</span> <span class="nv">n</span><span class="p">))))</span>
-
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">gray-code-table</span> <span class="p">(</span><span class="nv">rows</span> <span class="nv">columns</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">-map-indexed</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">index</span> <span class="nv">row-str</span><span class="p">)</span>
-                  <span class="p">(</span><span class="nf">cons</span> <span class="nv">row-str</span> <span class="p">(</span><span class="nb">pcase</span> <span class="nv">index</span>
-                                  <span class="p">(</span><span class="o">`</span><span class="mi">0</span> <span class="p">(</span><span class="nv">gray-code-strings-with-decimal</span> <span class="nv">columns</span><span class="p">))</span>
-                                  <span class="p">(</span><span class="nv">i</span> <span class="p">(</span><span class="nv">-repeat</span> <span class="nv">columns</span> <span class="s">&#34;&#34;</span><span class="p">)))))</span>
-                <span class="p">(</span><span class="nf">cons</span> <span class="s">&#34;&#34;</span> <span class="p">(</span><span class="nv">gray-code-strings-with-decimal</span> <span class="nv">rows</span><span class="p">))))</span>
-
-<span class="p">(</span><span class="nv">gray-code-table</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">gray-codes</span> <span class="p">(</span><span class="nv">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">pcase</span> <span class="nv">n</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="o">`</span><span class="mi">0</span> <span class="o">&#39;</span><span class="p">(()))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">n</span> <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">codes</span> <span class="p">(</span><span class="nv">gray-codes</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">n</span> <span class="mi">1</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">-concat</span> <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">0</span> <span class="nv">it</span><span class="p">)</span> <span class="nv">codes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="nv">it</span><span class="p">)</span> <span class="p">(</span><span class="nf">reverse</span> <span class="nv">codes</span><span class="p">)))))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">binary-codes</span> <span class="p">(</span><span class="nv">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">pcase</span> <span class="nv">n</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="o">`</span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">_</span> <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">codes</span> <span class="p">(</span><span class="nv">binary-codes</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">n</span> <span class="mi">1</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">-concat</span> <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">0</span> <span class="nv">it</span><span class="p">)</span> <span class="nv">codes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="nv">it</span><span class="p">)</span> <span class="nv">codes</span><span class="p">))))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">binary-codes-to-strings</span> <span class="p">(</span><span class="nv">codes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">-map</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">-reduce</span> <span class="nf">#&#39;concat</span> <span class="p">(</span><span class="nv">-map</span> <span class="nf">#&#39;number-to-string</span> <span class="nv">code</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">codes</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">gray-code-strings-with-decimal</span> <span class="p">(</span><span class="nv">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">--map</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%s%4s&#34;</span> <span class="nv">it</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;(%d)&#34;</span> <span class="p">(</span><span class="nf">string-to-number</span> <span class="nv">it</span> <span class="mi">2</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">binary-codes-to-strings</span> <span class="p">(</span><span class="nv">gray-codes</span> <span class="nv">n</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">gray-code-table</span> <span class="p">(</span><span class="nv">rows</span> <span class="nv">columns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">-map-indexed</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">index</span> <span class="nv">row-str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="nf">cons</span> <span class="nv">row-str</span> <span class="p">(</span><span class="nb">pcase</span> <span class="nv">index</span>
+</span></span><span class="line"><span class="cl">                                  <span class="p">(</span><span class="o">`</span><span class="mi">0</span> <span class="p">(</span><span class="nv">gray-code-strings-with-decimal</span> <span class="nv">columns</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                                  <span class="p">(</span><span class="nv">i</span> <span class="p">(</span><span class="nv">-repeat</span> <span class="nv">columns</span> <span class="s">&#34;&#34;</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="nf">cons</span> <span class="s">&#34;&#34;</span> <span class="p">(</span><span class="nv">gray-code-strings-with-decimal</span> <span class="nv">rows</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">gray-code-table</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1127,28 +1214,28 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">entity</span> <span class="nc">common_encoder</span> <span class="k">is</span>
-  <span class="k">port</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">CLK</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic</span><span class="p">;</span>   <span class="c1">-- 输入信号</span>
-        <span class="n">F2</span><span class="p">,</span> <span class="n">F1</span><span class="p">,</span> <span class="n">F0</span>            <span class="o">:</span> <span class="k">out</span> <span class="kt">std_logic</span><span class="p">);</span>  <span class="c1">-- 输出信号</span>
-<span class="k">end</span> <span class="nc">common_encoder</span><span class="p">;</span>
-
-<span class="k">architecture</span> <span class="nc">abc</span> <span class="k">of</span> <span class="nc">common_encoder</span> <span class="k">is</span>   <span class="c1">-- 定义一个结构，一个实体可能有多个结构</span>
-  <span class="k">signal</span> <span class="n">INA</span> <span class="o">:</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">5</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-<span class="k">begin</span>
-  <span class="n">INA</span> <span class="o">&lt;=</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span> <span class="o">&amp;</span> <span class="n">C</span> <span class="o">&amp;</span> <span class="n">D</span> <span class="o">&amp;</span> <span class="n">E</span> <span class="o">&amp;</span> <span class="n">F</span><span class="p">;</span>         <span class="c1">-- 也就是 5 &amp; 4 &amp; 3 &amp; 2 &amp; 1 &amp; 0</span>
-  <span class="k">process</span><span class="p">(</span><span class="n">INA</span><span class="p">,</span> <span class="n">CLK</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="k">if</span> <span class="n">CLK</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">CLK</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span> <span class="k">then</span>     <span class="c1">-- event 代表跳变</span>
-      <span class="k">case</span> <span class="n">INA</span> <span class="k">is</span>
-        <span class="k">when</span> <span class="s">&#34;111110&#34;</span> <span class="o">=&gt;</span> <span class="n">F2</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F1</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F0</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-        <span class="k">when</span> <span class="s">&#34;111101&#34;</span> <span class="o">=&gt;</span> <span class="n">F2</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F1</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F0</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-        <span class="c1">-- ...</span>
-        <span class="k">when</span> <span class="k">others</span>   <span class="o">=&gt;</span> <span class="n">F2</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">F1</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">F0</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>  <span class="c1">-- 表示输入无效时，输出也无效（必需）</span>
-      <span class="k">end</span> <span class="k">case</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">abc</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">entity</span> <span class="nc">common_encoder</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="k">port</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">CLK</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic</span><span class="p">;</span>   <span class="c1">-- 输入信号</span>
+</span></span><span class="line"><span class="cl">        <span class="n">F2</span><span class="p">,</span> <span class="n">F1</span><span class="p">,</span> <span class="n">F0</span>            <span class="o">:</span> <span class="k">out</span> <span class="kt">std_logic</span><span class="p">);</span>  <span class="c1">-- 输出信号</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">common_encoder</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">architecture</span> <span class="nc">abc</span> <span class="k">of</span> <span class="nc">common_encoder</span> <span class="k">is</span>   <span class="c1">-- 定义一个结构，一个实体可能有多个结构</span>
+</span></span><span class="line"><span class="cl">  <span class="k">signal</span> <span class="n">INA</span> <span class="o">:</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">5</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="n">INA</span> <span class="o">&lt;=</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span> <span class="o">&amp;</span> <span class="n">C</span> <span class="o">&amp;</span> <span class="n">D</span> <span class="o">&amp;</span> <span class="n">E</span> <span class="o">&amp;</span> <span class="n">F</span><span class="p">;</span>         <span class="c1">-- 也就是 5 &amp; 4 &amp; 3 &amp; 2 &amp; 1 &amp; 0</span>
+</span></span><span class="line"><span class="cl">  <span class="k">process</span><span class="p">(</span><span class="n">INA</span><span class="p">,</span> <span class="n">CLK</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">CLK</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">CLK</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span> <span class="k">then</span>     <span class="c1">-- event 代表跳变</span>
+</span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="n">INA</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">        <span class="k">when</span> <span class="s">&#34;111110&#34;</span> <span class="o">=&gt;</span> <span class="n">F2</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F1</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F0</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">when</span> <span class="s">&#34;111101&#34;</span> <span class="o">=&gt;</span> <span class="n">F2</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F1</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">F0</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">-- ...</span>
+</span></span><span class="line"><span class="cl">        <span class="k">when</span> <span class="k">others</span>   <span class="o">=&gt;</span> <span class="n">F2</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">F1</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">F0</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>  <span class="c1">-- 表示输入无效时，输出也无效（必需）</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span> <span class="k">case</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">abc</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1252,16 +1339,16 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="k">if</span><span class="p">(</span><span class="n">PIN_4</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// XXX1
-</span><span class="c1"></span> <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">PIN_3</span><span class="p">)</span> <span class="p">{</span>            <span class="cm">/* 此时的PIN4一定为0 */</span>
-  <span class="c1">// XX10
-</span><span class="c1"></span> <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">PIN_2</span><span class="p">)</span> <span class="p">{</span>            <span class="cm">/* 此时的PIN3和PIN4一定为0 */</span>
-  <span class="c1">// X100
-</span><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">PIN_1</span><span class="p">)</span> <span class="p">{</span>            <span class="cm">/* 此时的PIN2、PIN3、PIN4一定为0 */</span>
-  <span class="c1">// 1000
-</span><span class="c1"></span> <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">PIN_4</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// XXX1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">PIN_3</span><span class="p">)</span> <span class="p">{</span>            <span class="cm">/* 此时的PIN4一定为0 */</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// XX10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">PIN_2</span><span class="p">)</span> <span class="p">{</span>            <span class="cm">/* 此时的PIN3和PIN4一定为0 */</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// X100
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">PIN_1</span><span class="p">)</span> <span class="p">{</span>            <span class="cm">/* 此时的PIN2、PIN3、PIN4一定为0 */</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 1000
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>条件越宽松，优先权越高。这里的4号引脚的优先权最高。</p>
 <div class="highlight"><div class="chroma">
@@ -1294,33 +1381,33 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">entity</span> <span class="nc">priority_encoder_2421</span> <span class="k">is</span>
-  <span class="k">port</span> <span class="p">(</span><span class="n">clk</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic</span><span class="p">;</span>
-        <span class="n">I</span>   <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">9</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">F</span>   <span class="o">:</span> <span class="k">out</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">));</span>
-<span class="k">end</span> <span class="nc">priority_encoder_2421</span><span class="p">;</span>
-
-<span class="k">architecture</span> <span class="nc">abc</span> <span class="k">of</span> <span class="nc">priority_encoder_2421</span> <span class="k">is</span>
-<span class="k">begin</span>
-  <span class="k">process</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="k">if</span> <span class="n">clk</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">clk</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-      <span class="k">if</span> <span class="n">I</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span>    <span class="o">&lt;=</span> <span class="s">&#34;0000&#34;</span><span class="p">;</span>
-      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0001&#34;</span><span class="p">;</span>
-      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0010&#34;</span><span class="p">;</span>
-      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0011&#34;</span><span class="p">;</span>
-      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0100&#34;</span><span class="p">;</span>
-      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1011&#34;</span><span class="p">;</span>
-      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1100&#34;</span><span class="p">;</span>
-      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1101&#34;</span><span class="p">;</span>
-      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1110&#34;</span><span class="p">;</span>
-      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1111&#34;</span><span class="p">;</span>
-      <span class="k">else</span> <span class="n">F</span>                  <span class="o">&lt;=</span> <span class="s">&#34;ZZZZ&#34;</span><span class="p">;</span>
-      <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">abc</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">entity</span> <span class="nc">priority_encoder_2421</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="k">port</span> <span class="p">(</span><span class="n">clk</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">I</span>   <span class="o">:</span> <span class="k">in</span>  <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">9</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">F</span>   <span class="o">:</span> <span class="k">out</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">priority_encoder_2421</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">architecture</span> <span class="nc">abc</span> <span class="k">of</span> <span class="nc">priority_encoder_2421</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="k">process</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">clk</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">clk</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="n">I</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span>    <span class="o">&lt;=</span> <span class="s">&#34;0000&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0001&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0010&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0011&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;0100&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1011&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1100&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1101&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1110&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">elsif</span> <span class="n">I</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span> <span class="k">then</span> <span class="n">F</span> <span class="o">&lt;=</span> <span class="s">&#34;1111&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">else</span> <span class="n">F</span>                  <span class="o">&lt;=</span> <span class="s">&#34;ZZZZ&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">abc</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1735,7 +1822,7 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 <!--list-separator-->
 <ul>
 <li>
-<p>RS触发器</p>
+<p>RS 触发器</p>
 <p>当 S 为 1 时，置 1 ；当 R 为 1 时清零，因此 R 和 S 最多只能有 1 个等于 1 。也就是：</p>
 <table>
 <thead>
@@ -1788,13 +1875,13 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 <!--list-separator-->
 <ul>
 <li>
-<p>D触发器</p>
-<p>RS触发器有如下缺点，设置一个值需要两个输入同时参与，并且具有非法输入。而D触发器更像一个锁存器，一个输入用于使能写入，一个输入用于设置写入的值。当写入没有被使能时，无论写入的值如何变化，储存的值都不会发生改变。</p>
+<p>D 触发器</p>
+<p><a href="#rs-%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS 触发器</a>有如下缺点，设置一个值需要两个输入同时参与，并且具有非法输入。而<a href="#d-%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">D 触发器</a>更像一个锁存器，一个输入用于使能写入，一个输入用于设置写入的值。当写入没有被使能时，无论写入的值如何变化，储存的值都不会发生改变。</p>
 <p>\[Q^{n+1}=D\]</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-29_11-15-41_image.png"/>
 </figure>
 
-<p><code>EN</code> 决定是否输入为 <code>00</code> ，D的值决定RS触发器的输入为 <code>10</code> 还是 <code>01</code> 。</p>
+<p><code>EN</code> 决定是否输入为 <code>00</code> ，D的值决定<a href="#rs-%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS 触发器</a>的输入为 <code>10</code> 还是 <code>01</code> 。</p>
 <ul>
 <li>芯片
 <ul>
@@ -1815,7 +1902,7 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-12-29_11-34-56_image.svg"/>
 </figure>
 
-<p>与 <a href="#org-target--74xx374-" rel=""><code>74xx374</code></a> 不同的是，它既可以作为D触发器使用，又可以作为<a href="#rs%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS触发器</a>使用或者置位。作为D触发器用时， <code>R</code> 和 <code>S</code> 端应当使触发器保持不变（由于是低电平有效，因此应当为高电平）。</p>
+<p>与 <a href="#org-target--74xx374-" rel=""><code>74xx374</code></a> 不同的是，它既可以作为D触发器使用，又可以作为<a href="#rs-%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS 触发器</a>使用或者置位。作为D触发器用时， <code>R</code> 和 <code>S</code> 端应当使触发器保持不变（由于是低电平有效，因此应当为高电平）。</p>
 </li>
 </ul>
 </li>
@@ -1825,7 +1912,7 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 <!--list-separator-->
 <ul>
 <li>
-<p>JK触发器</p>
+<p>JK 触发器</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-01_13-00-32_jk.png"/>
 </figure>
 
@@ -1884,7 +1971,7 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 <li>
 <p><code>74xx112</code> ：双负沿JK触发器 <br /></p>
 <p>&lt;/ox-hugo/2022-01-06_06-02-40_74hc112.pdf&gt;</p>
-<p>既可以作为D触发器使用，又可以作为<a href="#rs%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS触发器</a>使用或者置位。作为JK触发器用时，
+<p>既可以作为D触发器使用，又可以作为<a href="#rs-%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS 触发器</a>使用或者置位。作为JK触发器用时，
 <code>R</code> 和 <code>S</code> 端应当使触发器保持不变（由于是低电平有效，因此应当为高电平）。</p>
 </li>
 </ul>
@@ -1897,10 +1984,10 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-01_13-03-55_jk.png"/>
 </figure>
 
-<p><a href="#jk%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">JK触发器</a>的输入直接影响输出而输出又直接影响输入，导致可能不停翻转。解决办法是使用两个JK触发器（其实是1个<a href="#jk%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">JK触发器</a>和1个带使能端的RS触发器），主从触发器只能轮流使能，反馈从从触发器引回到主触发器：</p>
+<p><a href="#jk-%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">JK 触发器</a>的输入直接影响输出而输出又直接影响输入，导致可能不停翻转。解决办法是使用两个JK触发器（其实是1个<a href="#jk-%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">JK 触发器</a>和1个带使能端的<a href="#rs-%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS 触发器</a>），主从触发器只能轮流使能，反馈从从触发器引回到主触发器：</p>
 <ul>
 <li>主触发器使能（ <code>CP</code> 为 <code>1</code> ）：接受 <code>JK</code> 的变化，改变主触发器的值。 <br />
-由于两个输出是互斥的，因此主触发器中<a href="#rs%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS触发器</a>的输入要么为 <code>00</code> （对\(\overline S\)和\(\overline R\)取反），要么为\(\overline Q\)和\(Q\)，也就是不变或者翻转。由于输出是一直不变的，因此如果翻转，最多只能翻转一次。</li>
+由于两个输出是互斥的，因此主触发器中<a href="#rs-%e8%a7%a6%e5%8f%91%e5%99%a8" rel="">RS 触发器</a>的输入要么为 <code>00</code> （对\(\overline S\)和\(\overline R\)取反），要么为\(\overline Q\)和\(Q\)，也就是不变或者翻转。由于输出是一直不变的，因此如果翻转，最多只能翻转一次。</li>
 <li>从触发器使能（ <code>CP</code> 为 <code>0</code> ）：把主触发器的值直接给输出。</li>
 </ul>
 <p>因此，只有在CP从1变成0时，输出才会变化。当CP等于1期间，如果JK发生翻转，由于从触发器反馈给主触发器的电平不变，会以第一次翻转为准，而不是CP从1变0那一瞬间的电平。</p>
@@ -1996,7 +2083,7 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-03</span>
+                <span>更新于 2022-03-29</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -2015,7 +2102,8 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
         </section>
     </div>
 
-    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/notes/bash/" class="prev" rel="prev" title="Bash"><i class="fas fa-angle-left fa-fw"></i>Bash</a></div>
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/notes/bash/" class="prev" rel="prev" title="Bash"><i class="fas fa-angle-left fa-fw"></i>Bash</a>
+            <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/" class="next" rel="next" title="微机原理">微机原理<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
@@ -2034,10 +2122,9 @@ L 1&amp;=(A+B+C+f(0,0,0)) \cdot(A+B+\bar{C}+\mathrm{f}(0,0,1)) \cdot(A+\bar{B}+C
             gtag('config', 'UA-221867158-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
 
-<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"data":{"id-1":"flowchart LR\n     A[波形图]\n     B[真值表]\n     C[逻辑表达式]\n     D[逻辑图]\n     E[卡诺图]\n     A \u003c--\u003e B\n     B \u003c--\u003e C\n     C \u003c--\u003e D\n     B \u003c--\u003e E\n     E \u003c--\u003e C","id-2":"        flowchart TD\n             I[把当前位数所有可能的格雷码按顺序作为当前部分]\n             A{当前部分是否可分}\n             B[将当前部分中目标项镜像对称的项添加到列表]\n             C[把当前部分分成两半并取含有目标项的那一半作为当前部分]\n             D[列表中的项就是与目标项只差一位的项]\n             I --\u003e A\n             A --是--\u003e B\n             B --\u003e C\n             C --\u003e A\n             A --否--\u003e D\n        "},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"mermaid":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
     <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/mermaid/mermaid.min.css">
-    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/mermaid/mermaid.min.css"></noscript></div>
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
 </body>
 
 </html>

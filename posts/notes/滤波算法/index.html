@@ -284,20 +284,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">counter_size</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">last_x</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-  <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">last_x</span><span class="p">:</span>
-    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="n">counter</span> <span class="o">=</span> <span class="p">(</span><span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">counter_size</span>
-    <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="n">result</span> <span class="o">=</span> <span class="n">x</span>
-      <span class="n">last_x</span> <span class="o">=</span> <span class="n">x</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">counter_size</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">last_x</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">last_x</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">counter</span> <span class="o">=</span> <span class="p">(</span><span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">counter_size</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="n">result</span> <span class="o">=</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">      <span class="n">last_x</span> <span class="o">=</span> <span class="n">x</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="优点">优点</h3>
 <p>对于变化缓慢的被测参数有较好的滤波效果。</p>

@@ -31,7 +31,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/freertos\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "嵌入式","wordcount":  5469 ,
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "嵌入式","wordcount":  5468 ,
         "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/freertos\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T19:36:47+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
@@ -117,7 +117,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5469 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5468 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/posts/notes/freertos/" class="leancloud_visitors" data-flag-title="FreeRTOS">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -187,8 +187,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">vTaskDelay</span><span class="p">(</span><span class="n">portTickType</span> <span class="n">xTicksToDelay</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vTaskDelay</span><span class="p">(</span><span class="n">portTickType</span> <span class="n">xTicksToDelay</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xTicksToDelay</code> ：延时时间总数，单位是系统时钟节拍周期。</li>
@@ -208,17 +208,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">task</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">const</span> <span class="n">portTickType</span> <span class="n">xDelay</span> <span class="o">=</span> <span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-  <span class="k">for</span><span class="p">(</span> <span class="p">;;</span> <span class="p">)</span>
-    <span class="p">{</span>
-      <span class="cm">/****************/</span>
-      <span class="cm">/* 任务主体代码 */</span>
-      <span class="cm">/****************/</span>
-      <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">xDelay</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">task</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="n">portTickType</span> <span class="n">xDelay</span> <span class="o">=</span> <span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span> <span class="p">;;</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="cm">/****************/</span>
+</span></span><span class="line"><span class="cl">      <span class="cm">/* 任务主体代码 */</span>
+</span></span><span class="line"><span class="cl">      <span class="cm">/****************/</span>
+</span></span><span class="line"><span class="cl">      <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">xDelay</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -229,9 +229,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">vTaskDelayUntil</span><span class="p">(</span><span class="n">TickType_t</span> <span class="o">*</span><span class="n">pxPreviousWakeTime</span><span class="p">,</span>
-                     <span class="k">const</span> <span class="n">TickType_txTimeIncrement</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vTaskDelayUntil</span><span class="p">(</span><span class="n">TickType_t</span> <span class="o">*</span><span class="n">pxPreviousWakeTime</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">const</span> <span class="n">TickType_txTimeIncrement</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>pxPreviousWakeTime</code> ：指向一个变量的 <strong>指针</strong> ，该变量保存任务最后一次解除阻塞的时间。第一次使用前，该变量必须初始化为当前时间。之后这个变量会在 <code>vTaskDelayUntil()</code> 函数内 <strong>自动更新</strong> 。</li>
@@ -255,20 +255,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">task</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">static</span> <span class="n">portTickType</span> <span class="n">xLastWakeTime</span><span class="p">;</span>  <span class="c1">//注意是静态变量，只会被初始化一次
-</span><span class="c1"></span>  <span class="k">const</span> <span class="n">portTickType</span> <span class="n">xDelay</span> <span class="o">=</span> <span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-
-  <span class="n">xLastWakeTime</span> <span class="o">=</span> <span class="n">xTaskGetTickCount</span><span class="p">();</span>
-
-  <span class="k">for</span><span class="p">(</span> <span class="p">;;</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="n">vTaskDelayUntil</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xLastWakeTime</span><span class="p">,</span> <span class="n">xDelay</span><span class="p">);</span> <span class="c1">//注意取地址
-</span><span class="c1"></span>    <span class="cm">/****************/</span>
-    <span class="cm">/* 任务主体代码 */</span>
-    <span class="cm">/****************/</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">task</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">portTickType</span> <span class="n">xLastWakeTime</span><span class="p">;</span>  <span class="c1">//注意是静态变量，只会被初始化一次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">const</span> <span class="n">portTickType</span> <span class="n">xDelay</span> <span class="o">=</span> <span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">xLastWakeTime</span> <span class="o">=</span> <span class="n">xTaskGetTickCount</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span> <span class="p">;;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vTaskDelayUntil</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xLastWakeTime</span><span class="p">,</span> <span class="n">xDelay</span><span class="p">);</span> <span class="c1">//注意取地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="cm">/****************/</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* 任务主体代码 */</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/****************/</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -398,15 +398,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">vATaskFunction</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">for</span><span class="p">(</span> <span class="p">;;</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="cm">/****************/</span>
-    <span class="cm">/* 任务主体代码 */</span>
-    <span class="cm">/****************/</span>
-  <span class="p">}</span>
-  <span class="n">vTaskDelete</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span> <span class="c1">//如果要退出任务都必须要调用该函数，而不能直接返回
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vATaskFunction</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span> <span class="p">;;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/****************/</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* 任务主体代码 */</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/****************/</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">vTaskDelete</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span> <span class="c1">//如果要退出任务都必须要调用该函数，而不能直接返回
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -424,13 +424,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">BaseType_t</span> <span class="nf">xTaskCreate</span><span class="p">(</span><span class="n">TaskFunction_t</span> <span class="n">pvTaskCode</span><span class="p">,</span>
-                       <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pcName</span><span class="p">,</span>
-                       <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">usStackDepth</span><span class="p">,</span>
-                       <span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">,</span>
-                       <span class="n">UBaseType_t</span> <span class="n">uxPriority</span><span class="p">,</span>
-                       <span class="n">TaskHandle_t</span> <span class="o">*</span> <span class="n">pvCreatedTask</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="nf">xTaskCreate</span><span class="p">(</span><span class="n">TaskFunction_t</span> <span class="n">pvTaskCode</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pcName</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">usStackDepth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">UBaseType_t</span> <span class="n">uxPriority</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">TaskHandle_t</span> <span class="o">*</span> <span class="n">pvCreatedTask</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>pvTaskCode</code> ：指向任务函数的入口的指针。任务永远不会返回（位于死循环内）。</li>
@@ -453,8 +453,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">vTaskDelete</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTask</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vTaskDelete</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTask</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xTask</code> ： 任务句柄
@@ -476,8 +476,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">vTaskSuspend</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTaskToSuspend</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vTaskSuspend</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTaskToSuspend</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xTaskxTaskToSuspend</code> ： 任务句柄
@@ -499,8 +499,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">vTaskResume</span><span class="p">(</span><span class="n">TaskHandle_tx</span> <span class="n">TaskToResume</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vTaskResume</span><span class="p">(</span><span class="n">TaskHandle_tx</span> <span class="n">TaskToResume</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xTaskToResume</code> ：要恢复运行的任务句柄</li>
@@ -513,8 +513,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">BaseType_t</span> <span class="nf">xTaskResumeFromISR</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTaskToResume</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="nf">xTaskResumeFromISR</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTaskToResume</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xTaskToResume</code> ：要恢复运行的任务句柄</li>
@@ -595,8 +595,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">UBaseType_t</span> <span class="nf">uxTaskPriorityGet</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTask</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">UBaseType_t</span> <span class="nf">uxTaskPriorityGet</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTask</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xTask</code> ：要设置优先级任务的句柄。
@@ -618,9 +618,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">vTaskPrioritySet</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTask</span><span class="p">,</span>
-                      <span class="n">UBaseType_t</span> <span class="n">uxNewPriority</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vTaskPrioritySet</span><span class="p">(</span><span class="n">TaskHandle_t</span> <span class="n">xTask</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">UBaseType_t</span> <span class="n">uxNewPriority</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xTask</code> ：要设置优先级任务的句柄。
@@ -669,8 +669,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">vApplicationIdleHook</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vApplicationIdleHook</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>通常用该函数设置CPU进入低功耗模式。</p>
 </li>
@@ -700,14 +700,12 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">Basetype_t</span> <span class="n">xTaskNotify</span><span class="p">(</span><span class="n">TaskHandle_txTaskToNotify</span><span class="p">,</span>
-                       <span class="kt">uint32_t</span> <span class="n">ulValue</span><span class="p">,</span>
-                       <span class="n">eNotifyAction</span> <span class="n">eAction</span><span class="p">)</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">Basetype_t</span> <span class="n">xTaskNotify</span><span class="p">(</span><span class="n">TaskHandle_txTaskToNotify</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="kt">uint32_t</span> <span class="n">ulValue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">eNotifyAction</span> <span class="n">eAction</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -747,9 +745,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">uint32_t</span> <span class="n">ulTaskNotifyTake</span><span class="p">(</span><span class="n">BaseType_t</span> <span class="n">xClearCountOnExit</span><span class="p">,</span>
-                          <span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">uint32_t</span> <span class="n">ulTaskNotifyTake</span><span class="p">(</span><span class="n">BaseType_t</span> <span class="n">xClearCountOnExit</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xClearCountOnExit</code>
@@ -770,11 +768,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">BaseType_t</span> <span class="n">xTaskNotifyWait</span><span class="p">(</span><span class="n">uint32_tulBitsToClearOnEntry</span><span class="p">,</span>
-                           <span class="n">uint32_tulBitsToClearOnExit</span><span class="p">,</span>
-                           <span class="kt">uint32_t</span><span class="o">*</span><span class="n">pulNotificationValue</span><span class="p">,</span>
-                           <span class="n">TickType_txTicksToWait</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="n">xTaskNotifyWait</span><span class="p">(</span><span class="n">uint32_tulBitsToClearOnEntry</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                           <span class="n">uint32_tulBitsToClearOnExit</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                           <span class="kt">uint32_t</span><span class="o">*</span><span class="n">pulNotificationValue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                           <span class="n">TickType_txTicksToWait</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>ulBitsToClearOnEntry</code> ：在使用通知之前，先将任务的通知值与参数 <code>ulBitsToClearOnEntry</code> 的按位取反值按位与操作。设置参数 <code>ulBitsToClearOnEntry</code> 为 <code>0xFFFFFFFF(ULONG_MAX)</code> ，表示清零任务通知值。</li>
@@ -805,12 +803,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">QueueHandle_t</span> <span class="n">xQueueGenericCreate</span><span class="p">(</span><span class="k">const</span> <span class="n">UBaseType_t</span> <span class="n">uxQueueLength</span><span class="p">,</span>
-                                  <span class="k">const</span> <span class="n">UBaseType_t</span> <span class="n">uxItemSize</span><span class="p">,</span>
-                                  <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">pucQueueStorage</span><span class="p">,</span>
-                                  <span class="n">StaticQueue_t</span> <span class="o">*</span><span class="n">pxStaticQueue</span><span class="p">,</span>
-                                  <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">ucQueueType</span> <span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">QueueHandle_t</span> <span class="n">xQueueGenericCreate</span><span class="p">(</span><span class="k">const</span> <span class="n">UBaseType_t</span> <span class="n">uxQueueLength</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                  <span class="k">const</span> <span class="n">UBaseType_t</span> <span class="n">uxItemSize</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                  <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">pucQueueStorage</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                  <span class="n">StaticQueue_t</span> <span class="o">*</span><span class="n">pxStaticQueue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                  <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">ucQueueType</span> <span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>uxQueueLength</code> ：队列项数目</li>
@@ -847,11 +845,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">BaseType_t</span> <span class="n">xQueueGenericSendFromISR</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
-                                    <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pvItemToQueue</span><span class="p">,</span>
-                                    <span class="n">BaseType_t</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pxHigherPriorityTaskWoken</span><span class="p">,</span>
-                                    <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xCopyPosition</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="n">xQueueGenericSendFromISR</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pvItemToQueue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="n">BaseType_t</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pxHigherPriorityTaskWoken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xCopyPosition</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xQueue</code> ：队列句柄</li>
@@ -881,11 +879,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">BaseType_t</span> <span class="n">xQueueGenericSend</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
-                             <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pvItemToQueue</span><span class="p">,</span>
-                             <span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">,</span>
-                             <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xCopyPosition</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="n">xQueueGenericSend</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                             <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pvItemToQueue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                             <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xCopyPosition</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xQueue</code> ：队列句柄</li>
@@ -916,9 +914,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">BaseType_t</span> <span class="nf">xQueueReceive</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
-                         <span class="kt">void</span> <span class="o">*</span><span class="n">pvBuffer</span><span class="p">,</span><span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="nf">xQueueReceive</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                         <span class="kt">void</span> <span class="o">*</span><span class="n">pvBuffer</span><span class="p">,</span><span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>pxQueue</code> ：队列句柄。</li>
@@ -955,13 +953,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="cp">#define xSemaphoreGive( xSemaphore )                                    \
-</span><span class="cp">  xQueueGenericSend(                                                    \
-</span><span class="cp">                                                        ( QueueHandle_t ) ( xSemaphore ), \
-</span><span class="cp">                                                        NULL,           \
-</span><span class="cp">                                                        semGIVE_BLOCK_TIME, \
-</span><span class="cp">                                                        queueSEND_TO_BACK )
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#define xSemaphoreGive( xSemaphore )                                    \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  xQueueGenericSend(                                                    \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        ( QueueHandle_t ) ( xSemaphore ), \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        NULL,           \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        semGIVE_BLOCK_TIME, \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        queueSEND_TO_BACK )
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>实际上是一次并且阻塞时间为0的入队操作（宏 <code>semGIVE_BLOCK_TIME</code> 定义为0）</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_10-36-03_20160530132805357.png"/>
@@ -989,10 +987,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="cp">#define xSemaphoreCreateCounting(uxMaxCount, uxInitialCount)    \
-</span><span class="cp">  xQueueCreateCountingSemaphore(( uxMaxCount ),                 \
-</span><span class="cp">                                ( uxInitialCount ), (NULL))
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#define xSemaphoreCreateCounting(uxMaxCount, uxInitialCount)    \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  xQueueCreateCountingSemaphore(( uxMaxCount ),                 \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                ( uxInitialCount ), (NULL))
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>uxMaxCount</code> ：最大计数值，当信号到达这个值后，就不再增长了</li>
@@ -1028,15 +1026,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="cp">#define xSemaphoreCreateBinary()                                        \
-</span><span class="cp">  xQueueGenericCreate(                                                  \
-</span><span class="cp">                                                        ( UBaseType_t ) 1, \
-</span><span class="cp">                                                        semSEMAPHORE_QUEUE_ITEM_LENGTH, \
-</span><span class="cp">                                                        NULL,           \
-</span><span class="cp">                                                        NULL,           \
-</span><span class="cp">                                                        queueQUEUE_TYPE_BINARY_SEMAPHORE \
-</span><span class="cp">                                                        )
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#define xSemaphoreCreateBinary()                                        \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  xQueueGenericCreate(                                                  \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        ( UBaseType_t ) 1, \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        semSEMAPHORE_QUEUE_ITEM_LENGTH, \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        NULL,           \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        NULL,           \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        queueQUEUE_TYPE_BINARY_SEMAPHORE \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                                                        )
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>实际上是创建了一个队列，队列项有1个，但是队列项的大小为0（宏 <code>semSEMAPHORE_QUEUE_ITEM_LENGTH</code> 定义为0）。</p>
 </li>
@@ -1063,9 +1061,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="cp">#define xSemaphoreCreateMutex()                         \
-</span><span class="cp">  xQueueCreateMutex( queueQUEUE_TYPE_MUTEX, NULL )
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#define xSemaphoreCreateMutex()                         \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  xQueueCreateMutex( queueQUEUE_TYPE_MUTEX, NULL )
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1080,10 +1078,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="cp">#define pxMutexHolder                         pcTail
-</span><span class="cp">#define uxQueueType                           pcHead
-</span><span class="cp">#define queueQUEUE_IS_MUTEX                    NULL
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#define pxMutexHolder                         pcTail
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define uxQueueType                           pcHead
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define queueQUEUE_IS_MUTEX                    NULL
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1126,10 +1124,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="cp">#define xSemaphoreCreateRecursiveMutex()                \
-</span><span class="cp">  xQueueCreateMutex(queueQUEUE_TYPE_RECURSIVE_MUTEX,    \
-</span><span class="cp">                    NULL)
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#define xSemaphoreCreateRecursiveMutex()                \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  xQueueCreateMutex(queueQUEUE_TYPE_RECURSIVE_MUTEX,    \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                    NULL)
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1163,8 +1161,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroupCreate</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroupCreate</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1174,8 +1172,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroupCreateStatic</span><span class="p">(</span><span class="n">StaticEventGroup_t</span> <span class="o">*</span><span class="n">pxEventGroupBuffer</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroupCreateStatic</span><span class="p">(</span><span class="n">StaticEventGroup_t</span> <span class="o">*</span><span class="n">pxEventGroupBuffer</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>pxEventGroupBuffer</code> ：静态事件组的结构体指针</li>
@@ -1194,9 +1192,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">EventBits_t</span> <span class="n">xEventGroupClearBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
-                                 <span class="k">const</span> <span class="n">EventBits_t</span> <span class="n">uxBitsToClear</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="n">xEventGroupClearBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="k">const</span> <span class="n">EventBits_t</span> <span class="n">uxBitsToClear</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xEventGroup</code> ：要操作的事件标志组的句柄。</li>
@@ -1214,9 +1212,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">EventBits_t</span> <span class="n">xEventGroupSetBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
-                               <span class="k">const</span> <span class="n">EventBits_t</span> <span class="n">uxBitsToSet</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="n">xEventGroupSetBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                               <span class="k">const</span> <span class="n">EventBits_t</span> <span class="n">uxBitsToSet</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>xEventGroup</code> ：要操作的事件标志组句柄。</li>
@@ -1238,8 +1236,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">EventBits_t</span> <span class="n">xEventGroupGetBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="n">xEventGroupGetBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>xEventGroup：要获取的事件标志组的句柄。</li>
@@ -1261,12 +1259,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">EventBits_t</span> <span class="n">xEventGroupWaitBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
-                                <span class="k">const</span> <span class="n">EventBits_t</span> <span class="n">uxBitsToWaitFor</span><span class="p">,</span>
-                                <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xClearOnExit</span><span class="p">,</span>
-                                <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xWaitForAllBits</span><span class="p">,</span>
-                                <span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="n">xEventGroupWaitBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="k">const</span> <span class="n">EventBits_t</span> <span class="n">uxBitsToWaitFor</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xClearOnExit</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xWaitForAllBits</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>EventGroup</code> ：指定要等待的事件标志组。</li>

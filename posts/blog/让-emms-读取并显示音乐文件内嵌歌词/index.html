@@ -162,28 +162,28 @@ EMMS 虽然可以实现外部 <code>.lrc</code> 文件的加载以及网络歌�
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">emms-info-native--accepted-vorbis-fields</span>
-  <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;album&#34;</span>
-    <span class="s">&#34;albumartist&#34;</span>
-    <span class="s">&#34;albumartistsort&#34;</span>
-    <span class="s">&#34;albumsort&#34;</span>
-    <span class="s">&#34;artist&#34;</span>
-    <span class="s">&#34;artistsort&#34;</span>
-    <span class="s">&#34;composer&#34;</span>
-    <span class="s">&#34;composersort&#34;</span>
-    <span class="s">&#34;date&#34;</span>
-    <span class="s">&#34;discnumber&#34;</span>
-    <span class="s">&#34;genre&#34;</span>
-    <span class="s">&#34;label&#34;</span>
-    <span class="s">&#34;originaldate&#34;</span>
-    <span class="s">&#34;originalyear&#34;</span>
-    <span class="s">&#34;performer&#34;</span>
-    <span class="s">&#34;title&#34;</span>
-    <span class="s">&#34;titlesort&#34;</span>
-    <span class="s">&#34;tracknumber&#34;</span>
-    <span class="s">&#34;year&#34;</span><span class="p">)</span>
-  <span class="s">&#34;EMMS info fields that are extracted from Vorbis comments.&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">emms-info-native--accepted-vorbis-fields</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;album&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;albumartist&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;albumartistsort&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;albumsort&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;artist&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;artistsort&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;composer&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;composersort&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;date&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;discnumber&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;genre&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;label&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;originaldate&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;originalyear&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;performer&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;title&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;titlesort&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;tracknumber&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;year&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;EMMS info fields that are extracted from Vorbis comments.&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个列表常量用于指定 EMMS 读取的音乐文件的标签类型，我个人不太清楚 EMMS 作者将它定义成常量的意图，但是不影响修改它，为它增加 <code>&quot;lyrics&quot;</code> 元素：</p>
 <div class="highlight"><div class="chroma">
@@ -191,8 +191,8 @@ EMMS 虽然可以实现外部 <code>.lrc</code> 文件的加载以及网络歌�
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">push</span> <span class="s">&#34;lyrics&#34;</span> <span class="nv">emms-info-native--accepted-vorbis-fields</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">push</span> <span class="s">&#34;lyrics&#34;</span> <span class="nv">emms-info-native--accepted-vorbis-fields</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>至此， EMMS 已经可以读取文件的 <code>info-lyrics</code> 了，但是 <code>emms-info-native</code> 默认标签数据不含有换行的，而歌词文件中是以换行分割不同时间的歌词的，如：</p>
 <div class="highlight"><div class="chroma">
@@ -207,15 +207,15 @@ EMMS 虽然可以实现外部 <code>.lrc</code> 文件的加载以及网络歌�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">[00:29.25]过完整个夏天
-[00:34.74]忧伤并没有好一些
-[00:41.18]开车行驶在公路无际无边
-[00:47.32]有离开自己的感觉
-[00:52.45]
-[00:53.34]唱不完一首歌
-[00:59.37]疲倦还剩下黑眼圈
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">[00:29.25]过完整个夏天
+</span></span><span class="line"><span class="cl">[00:34.74]忧伤并没有好一些
+</span></span><span class="line"><span class="cl">[00:41.18]开车行驶在公路无际无边
+</span></span><span class="line"><span class="cl">[00:47.32]有离开自己的感觉
+</span></span><span class="line"><span class="cl">[00:52.45]
+</span></span><span class="line"><span class="cl">[00:53.34]唱不完一首歌
+</span></span><span class="line"><span class="cl">[00:59.37]疲倦还剩下黑眼圈
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>因此还需要修改 <code>emms-info-native</code> 中，标签解析函数的正则表达式：</p>
 <div class="highlight"><div class="chroma">
@@ -233,18 +233,18 @@ EMMS 虽然可以实现外部 <code>.lrc</code> 文件的加载以及网络歌�
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">emms-info-native--split-vorbis-comment-multiline</span> <span class="p">(</span><span class="nv">comment</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">comment-string</span> <span class="p">(</span><span class="nf">decode-coding-string</span> <span class="p">(</span><span class="nf">mapconcat</span>
-                                               <span class="nf">#&#39;byte-to-string</span>
-                                               <span class="nv">comment</span>
-                                               <span class="no">nil</span><span class="p">)</span>
-                                              <span class="ss">&#39;utf-8</span><span class="p">)))</span>
-    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">string-match</span> <span class="s">&#34;^\\(.+?\\)=\\([\0-\377[:nonascii:]]*\\)&#34;</span> <span class="nv">comment-string</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">downcase</span> <span class="p">(</span><span class="nv">match-string</span> <span class="mi">1</span> <span class="nv">comment-string</span><span class="p">))</span>
-            <span class="p">(</span><span class="nv">match-string</span> <span class="mi">2</span> <span class="nv">comment-string</span><span class="p">)))))</span>
-
-<span class="p">(</span><span class="nv">advice-add</span> <span class="nf">#&#39;</span><span class="nv">emms-info-native--split-vorbis-comment</span> <span class="nb">:override</span> <span class="nf">#&#39;</span><span class="nv">emms-info-native--split-vorbis-comment-multiline</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">emms-info-native--split-vorbis-comment-multiline</span> <span class="p">(</span><span class="nv">comment</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">comment-string</span> <span class="p">(</span><span class="nf">decode-coding-string</span> <span class="p">(</span><span class="nf">mapconcat</span>
+</span></span><span class="line"><span class="cl">                                               <span class="nf">#&#39;byte-to-string</span>
+</span></span><span class="line"><span class="cl">                                               <span class="nv">comment</span>
+</span></span><span class="line"><span class="cl">                                               <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                              <span class="ss">&#39;utf-8</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">string-match</span> <span class="s">&#34;^\\(.+?\\)=\\([\0-\377[:nonascii:]]*\\)&#34;</span> <span class="nv">comment-string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">downcase</span> <span class="p">(</span><span class="nv">match-string</span> <span class="mi">1</span> <span class="nv">comment-string</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="nv">match-string</span> <span class="mi">2</span> <span class="nv">comment-string</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">advice-add</span> <span class="nf">#&#39;</span><span class="nv">emms-info-native--split-vorbis-comment</span> <span class="nb">:override</span> <span class="nf">#&#39;</span><span class="nv">emms-info-native--split-vorbis-comment-multiline</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>现在内嵌歌词就可以被正确地载入至轨道信息中了，下面就可以扩展 <code>emms-lyrics</code> 中查找歌词文件的函数了：</p>
 <div class="highlight"><div class="chroma">
@@ -264,20 +264,20 @@ EMMS 虽然可以实现外部 <code>.lrc</code> 文件的加载以及网络歌�
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">emms-info-lyrics-temp-file</span> <span class="p">(</span><span class="nv">make-temp-file</span> <span class="s">&#34;emms-info-lyrics-&#34;</span> <span class="no">nil</span> <span class="s">&#34;.lrc&#34;</span><span class="p">))</span>
-
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">emms-lyrics-find-with-info-lyric</span> <span class="p">(</span><span class="nv">file</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">if-let</span> <span class="p">((</span><span class="nv">file</span> <span class="p">(</span><span class="nv">emms-lyrics-find-lyric</span> <span class="nv">file</span><span class="p">)))</span>
-      <span class="nv">file</span>
-    <span class="p">(</span><span class="nv">when-let</span> <span class="p">((</span><span class="nv">embedded-lyric</span> <span class="p">(</span><span class="nv">emms-track-get</span> <span class="p">(</span><span class="nv">emms-playlist-current-selected-track</span><span class="p">)</span> <span class="ss">&#39;info-lyrics</span><span class="p">)))</span>
-      <span class="p">(</span><span class="nb">with-temp-buffer</span>
-        <span class="p">(</span><span class="nf">insert</span> <span class="nv">embedded-lyric</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">write-region</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">)</span> <span class="p">(</span><span class="nf">point-max</span><span class="p">)</span> <span class="nv">emms-info-lyrics-temp-file</span> <span class="no">nil</span><span class="p">))</span>
-      <span class="nv">emms-info-lyrics-temp-file</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="nb">setq</span> <span class="nv">emms-lyrics-find-lyric-function</span> <span class="nf">#&#39;</span><span class="nv">emms-lyrics-find-with-info-lyric</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;kill-emacs-hook</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">file-exists-p</span> <span class="nv">emms-info-lyrics-temp-file</span><span class="p">)</span> <span class="p">(</span><span class="nf">delete-file</span> <span class="nv">emms-info-lyrics-temp-file</span><span class="p">))))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">emms-info-lyrics-temp-file</span> <span class="p">(</span><span class="nv">make-temp-file</span> <span class="s">&#34;emms-info-lyrics-&#34;</span> <span class="no">nil</span> <span class="s">&#34;.lrc&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">emms-lyrics-find-with-info-lyric</span> <span class="p">(</span><span class="nv">file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">if-let</span> <span class="p">((</span><span class="nv">file</span> <span class="p">(</span><span class="nv">emms-lyrics-find-lyric</span> <span class="nv">file</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">file</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">when-let</span> <span class="p">((</span><span class="nv">embedded-lyric</span> <span class="p">(</span><span class="nv">emms-track-get</span> <span class="p">(</span><span class="nv">emms-playlist-current-selected-track</span><span class="p">)</span> <span class="ss">&#39;info-lyrics</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">with-temp-buffer</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nf">insert</span> <span class="nv">embedded-lyric</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nf">write-region</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">)</span> <span class="p">(</span><span class="nf">point-max</span><span class="p">)</span> <span class="nv">emms-info-lyrics-temp-file</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">emms-info-lyrics-temp-file</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">emms-lyrics-find-lyric-function</span> <span class="nf">#&#39;</span><span class="nv">emms-lyrics-find-with-info-lyric</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;kill-emacs-hook</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">file-exists-p</span> <span class="nv">emms-info-lyrics-temp-file</span><span class="p">)</span> <span class="p">(</span><span class="nf">delete-file</span> <span class="nv">emms-info-lyrics-temp-file</span><span class="p">))))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里在临时目录创建了一个临时的歌词文件，写入当前播放曲目内嵌的歌词并作为 <code>emms-lyrics-find-with-info-lyric</code> 的返回值，可以通过 <code>emms-lyrics-visit-lyric</code> 进行访问。这样， EMMS 就可以像其他播放器那样加载内嵌歌词了，并且功能与加载一般歌词文件没有太大区别。</p>
 </div>

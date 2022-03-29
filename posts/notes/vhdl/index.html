@@ -237,13 +237,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">ENTITY</span> <span class="err">实体名</span> <span class="k">IS</span>
-  <span class="p">[</span><span class="k">GENERIC</span><span class="p">(</span><span class="err">参数表</span><span class="p">);]</span>
-    <span class="p">[</span><span class="k">PORT</span><span class="p">(</span><span class="err">端口表</span><span class="p">);]</span>
-                     <span class="p">[</span><span class="k">BEGIN</span>
-                        <span class="err">实体语句部分</span><span class="p">;]</span>
-                      <span class="k">END</span> <span class="err">[</span><span class="k">ENTITY</span><span class="err">]</span> <span class="err">[实体名]</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">ENTITY</span> <span class="err">实体名</span> <span class="k">IS</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="k">GENERIC</span><span class="p">(</span><span class="err">参数表</span><span class="p">);]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="k">PORT</span><span class="p">(</span><span class="err">端口表</span><span class="p">);]</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">[</span><span class="k">BEGIN</span>
+</span></span><span class="line"><span class="cl">                        <span class="err">实体语句部分</span><span class="p">;]</span>
+</span></span><span class="line"><span class="cl">                      <span class="k">END</span> <span class="err">[</span><span class="k">ENTITY</span><span class="err">]</span> <span class="err">[实体名]</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以将实体理解为电路图设计中的芯片符号（Symbol），符号规定了电路的符号名、接口和数据类型。</p>
 <p>例：</p>
@@ -258,14 +258,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">entity</span> <span class="nc">entity_name</span> <span class="k">is</span>
-  <span class="k">generic</span> <span class="p">(</span><span class="n">PARAMETER1</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">integer</span> <span class="o">:=</span> <span class="mi">3</span><span class="p">;</span>
-           <span class="n">PARAMETER2</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">integer</span><span class="p">);</span>
-  <span class="k">port</span> <span class="p">(</span>
-    <span class="n">IN1</span><span class="p">,</span> <span class="n">IN2</span>   <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">OUT1</span><span class="p">,</span> <span class="n">OUT2</span> <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span><span class="p">);</span>
-<span class="k">end</span> <span class="nc">entity_name</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">entity</span> <span class="nc">entity_name</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="k">generic</span> <span class="p">(</span><span class="n">PARAMETER1</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">integer</span> <span class="o">:=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">           <span class="n">PARAMETER2</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">integer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">port</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IN1</span><span class="p">,</span> <span class="n">IN2</span>   <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">OUT1</span><span class="p">,</span> <span class="n">OUT2</span> <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">entity_name</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="generic"><code>generic</code></h4>
 <div class="highlight"><div class="chroma">
@@ -273,8 +273,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">GENERIC</span> <span class="p">([</span><span class="k">CONSTANT</span><span class="p">]</span><span class="err">属性名称</span> <span class="o">:</span> <span class="p">[</span><span class="k">IN</span><span class="p">]</span><span class="err">子类型标识</span> <span class="p">[</span><span class="o">:=</span><span class="err">静态表达式</span><span class="p">],</span> <span class="p">...);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">GENERIC</span> <span class="p">([</span><span class="k">CONSTANT</span><span class="p">]</span><span class="err">属性名称</span> <span class="o">:</span> <span class="p">[</span><span class="k">IN</span><span class="p">]</span><span class="err">子类型标识</span> <span class="p">[</span><span class="o">:=</span><span class="err">静态表达式</span><span class="p">],</span> <span class="p">...);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>generic</code> 里只能定义常量并且只能为整型，因此 <code>constant</code> 关键字是可选的。提高实体的复用能力，可以用于规定端口的大小、实体中子元件的数目、实体的延时特性等。</p>
 <h4 id="port"><code>port</code></h4>
@@ -283,8 +283,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">PORT</span><span class="p">([</span><span class="k">SIGNAL</span><span class="p">]</span> <span class="err">端口名称</span> <span class="o">:</span> <span class="p">[</span><span class="err">方向</span><span class="p">]</span> <span class="err">类型标识</span><span class="p">[</span><span class="k">BUS</span><span class="p">]</span> <span class="p">[</span><span class="o">:=</span><span class="err">静态表达式</span><span class="p">],</span> <span class="p">...);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">PORT</span><span class="p">([</span><span class="k">SIGNAL</span><span class="p">]</span> <span class="err">端口名称</span> <span class="o">:</span> <span class="p">[</span><span class="err">方向</span><span class="p">]</span> <span class="err">类型标识</span><span class="p">[</span><span class="k">BUS</span><span class="p">]</span> <span class="p">[</span><span class="o">:=</span><span class="err">静态表达式</span><span class="p">],</span> <span class="p">...);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>port</code> 中只能是信号，因此 <code>signal</code> 关键字是可选的。</p>
 <ul>
@@ -333,12 +333,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">ARCHITECTURE</span> <span class="err">结构体名</span> <span class="k">OF</span> <span class="err">实体名</span> <span class="k">IS</span>
-  <span class="p">[</span><span class="err">定义语句</span><span class="p">]</span>
-<span class="k">BEGIN</span>
-  <span class="p">[</span><span class="err">并行处理语句</span><span class="p">]</span>
-<span class="k">END</span> <span class="err">结构体名</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">ARCHITECTURE</span> <span class="err">结构体名</span> <span class="k">OF</span> <span class="err">实体名</span> <span class="k">IS</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="err">定义语句</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">BEGIN</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="err">并行处理语句</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">END</span> <span class="err">结构体名</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>例：</p>
 <div class="highlight"><div class="chroma">
@@ -363,25 +363,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">architecture</span> <span class="nc">architecture_name</span> <span class="k">of</span> <span class="nc">entity_name</span> <span class="k">is</span>
-  <span class="k">signal</span> <span class="n">TEMP1</span> <span class="o">:</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">5</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="k">component</span> <span class="nc">another_entity_name</span>
-    <span class="k">port</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span> <span class="n">IN2</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">std_logic</span><span class="p">;</span>
-         <span class="n">OUT1</span>     <span class="o">:</span> <span class="k">in</span> <span class="kt">std_logic</span><span class="p">);</span>
-  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
-<span class="k">begin</span>
-  <span class="n">TEMP1</span> <span class="o">&lt;=</span> <span class="n">IN1</span> <span class="o">&amp;</span> <span class="n">IN2</span><span class="p">;</span>
-  <span class="k">process</span><span class="p">(</span><span class="n">IN1</span><span class="p">)</span>
-    <span class="k">variable</span> <span class="n">TEMP2</span> <span class="o">:</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">5</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="k">begin</span>
-  <span class="c1">-- ...</span>
-  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-  <span class="n">block_name</span> <span class="o">:</span> <span class="k">block</span><span class="p">(</span><span class="n">IN1</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="n">TEMP2</span> <span class="o">&lt;=</span> <span class="n">IN1</span> <span class="o">&amp;</span> <span class="n">IN2</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">block</span> <span class="nc">block_name</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">architecture_name</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">architecture</span> <span class="nc">architecture_name</span> <span class="k">of</span> <span class="nc">entity_name</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="k">signal</span> <span class="n">TEMP1</span> <span class="o">:</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">5</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">component</span> <span class="nc">another_entity_name</span>
+</span></span><span class="line"><span class="cl">    <span class="k">port</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span> <span class="n">IN2</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">std_logic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">         <span class="n">OUT1</span>     <span class="o">:</span> <span class="k">in</span> <span class="kt">std_logic</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="n">TEMP1</span> <span class="o">&lt;=</span> <span class="n">IN1</span> <span class="o">&amp;</span> <span class="n">IN2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">process</span><span class="p">(</span><span class="n">IN1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">variable</span> <span class="n">TEMP2</span> <span class="o">:</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">5</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- ...</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">block_name</span> <span class="o">:</span> <span class="k">block</span><span class="p">(</span><span class="n">IN1</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TEMP2</span> <span class="o">&lt;=</span> <span class="n">IN1</span> <span class="o">&amp;</span> <span class="n">IN2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">block</span> <span class="nc">block_name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">architecture_name</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>用于描述实体的功能，并且一个实体可以有多个结构体，每个结构体可以有多个进程同时运行。结构体对实体有3种描述方式：</p>
 <ol>
@@ -401,12 +401,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">PROCEDURE</span> <span class="err">过程名</span><span class="p">(</span><span class="err">参数名</span> <span class="o">:</span> <span class="err">方向</span> <span class="err">类型</span><span class="p">;</span> <span class="p">...)</span> <span class="k">IS</span>
-  <span class="err">定义语句</span><span class="p">;</span>
-<span class="k">BEGIN</span>
-  <span class="err">顺序语句组</span><span class="p">;</span>
-<span class="k">END</span> <span class="err">过程名</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">PROCEDURE</span> <span class="err">过程名</span><span class="p">(</span><span class="err">参数名</span> <span class="o">:</span> <span class="err">方向</span> <span class="err">类型</span><span class="p">;</span> <span class="p">...)</span> <span class="k">IS</span>
+</span></span><span class="line"><span class="cl">  <span class="err">定义语句</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">BEGIN</span>
+</span></span><span class="line"><span class="cl">  <span class="err">顺序语句组</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">END</span> <span class="err">过程名</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>方向
@@ -428,13 +428,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">FUNCTION</span> <span class="err">函数名</span><span class="p">(</span><span class="err">参数名</span> <span class="o">:</span> <span class="err">类型</span><span class="p">;</span> <span class="p">...)</span> <span class="k">RETURN</span> <span class="err">数据类型</span> <span class="k">IS</span>
-  <span class="err">定义语句</span><span class="p">;</span>
-<span class="k">BEGIN</span>
-  <span class="err">顺序语句组</span><span class="p">;</span>
-  <span class="k">RETURN</span> <span class="p">[</span><span class="err">返回变量名</span><span class="p">];</span>
-<span class="k">END</span> <span class="err">函数名</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">FUNCTION</span> <span class="err">函数名</span><span class="p">(</span><span class="err">参数名</span> <span class="o">:</span> <span class="err">类型</span><span class="p">;</span> <span class="p">...)</span> <span class="k">RETURN</span> <span class="err">数据类型</span> <span class="k">IS</span>
+</span></span><span class="line"><span class="cl">  <span class="err">定义语句</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">BEGIN</span>
+</span></span><span class="line"><span class="cl">  <span class="err">顺序语句组</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">RETURN</span> <span class="p">[</span><span class="err">返回变量名</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">END</span> <span class="err">函数名</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>与<a href="#procedure" rel="">过程</a>不同，具有返回值，并且参数均为输入，因此不用写方向，但要标明返回值。</p>
 <h3 id="package"><code>package</code></h3>
@@ -465,27 +465,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">library</span> <span class="nn">IEEE</span><span class="p">;</span>
-<span class="k">use</span> <span class="nn">IEEE.STD_LOGIC_1164.</span><span class="k">all</span><span class="p">;</span>
-
-<span class="c1">-- 程序包申明</span>
-<span class="k">package</span> <span class="n">package_name</span> <span class="k">is</span>
-  <span class="c1">-- 函数申明</span>
-  <span class="k">function</span> <span class="n">function_name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kt">bit</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">package_name</span><span class="p">;</span>
-
-<span class="c1">-- 程序包体</span>
-<span class="k">package</span> <span class="k">body</span> <span class="n">package_name</span> <span class="k">is</span>
-  <span class="c1">-- 函数实现</span>
-  <span class="k">function</span> <span class="n">function_name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">)</span> <span class="k">return</span> <span class="kt">bit</span> <span class="k">is</span>
-    <span class="k">variable</span> <span class="n">ret</span> <span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
-  <span class="k">begin</span>
-    <span class="n">ret</span> <span class="o">=</span> <span class="k">not</span><span class="p">(</span><span class="n">a</span> <span class="k">and</span> <span class="n">b</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
-  <span class="k">end</span> <span class="nc">function_name</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">body</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">library</span> <span class="nn">IEEE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nn">IEEE.STD_LOGIC_1164.</span><span class="k">all</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">-- 程序包申明</span>
+</span></span><span class="line"><span class="cl"><span class="k">package</span> <span class="n">package_name</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- 函数申明</span>
+</span></span><span class="line"><span class="cl">  <span class="k">function</span> <span class="n">function_name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kt">bit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">package_name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">-- 程序包体</span>
+</span></span><span class="line"><span class="cl"><span class="k">package</span> <span class="k">body</span> <span class="n">package_name</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- 函数实现</span>
+</span></span><span class="line"><span class="cl">  <span class="k">function</span> <span class="n">function_name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">)</span> <span class="k">return</span> <span class="kt">bit</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">    <span class="k">variable</span> <span class="n">ret</span> <span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ret</span> <span class="o">=</span> <span class="k">not</span><span class="p">(</span><span class="n">a</span> <span class="k">and</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="nc">function_name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="k">body</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -495,8 +495,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">use</span> <span class="nn">WORK.自定义程序包名称.</span><span class="k">all</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">use</span> <span class="nn">WORK.自定义程序包名称.</span><span class="k">all</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -509,10 +509,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">CONFIGURATION</span> <span class="err">配置名</span> <span class="k">OF</span> <span class="err">实体名</span> <span class="k">IS</span>
-  <span class="p">[</span><span class="err">语句说明</span><span class="p">]</span>
-<span class="k">END</span> <span class="err">配置名</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">CONFIGURATION</span> <span class="err">配置名</span> <span class="k">OF</span> <span class="err">实体名</span> <span class="k">IS</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="err">语句说明</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">END</span> <span class="err">配置名</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果一个实体仅仅具有一个结构体，也需要定义其配置，但是可以写成一种最为简洁的格式：</p>
 <div class="highlight"><div class="chroma">
@@ -523,11 +523,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">CONFIGURATION</span> <span class="err">配置名</span> <span class="k">OF</span> <span class="err">实体名</span> <span class="k">IS</span>
-  <span class="k">FOR</span> <span class="err">结构体名</span>
-  <span class="k">END</span> <span class="k">FOR</span><span class="p">;</span>
-<span class="k">END</span> <span class="err">配置名</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">CONFIGURATION</span> <span class="err">配置名</span> <span class="k">OF</span> <span class="err">实体名</span> <span class="k">IS</span>
+</span></span><span class="line"><span class="cl">  <span class="k">FOR</span> <span class="err">结构体名</span>
+</span></span><span class="line"><span class="cl">  <span class="k">END</span> <span class="k">FOR</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">END</span> <span class="err">配置名</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果一个模块比较复杂，含有多个子模块，可以为每个子模块选择其结构体。</p>
 <div class="highlight"><div class="chroma">
@@ -541,14 +541,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">CONFIGURATION</span> <span class="err">配置名</span> <span class="k">OF</span> <span class="err">实体名</span> <span class="k">IS</span>
-  <span class="k">FOR</span> <span class="err">结构体名</span>
-    <span class="k">FOR</span> <span class="err">标号</span> <span class="o">:</span> <span class="err">元件名</span> <span class="k">USE</span> <span class="nn">CONFIGURATION</span> <span class="nn">WORK</span><span class="p">.</span><span class="err">配置体名</span><span class="p">;</span>
-    <span class="k">END</span> <span class="k">FOR</span><span class="p">;</span>
-    <span class="p">...</span>
-  <span class="k">END</span> <span class="k">FOR</span><span class="p">;</span>
-<span class="k">END</span> <span class="err">配置名</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">CONFIGURATION</span> <span class="err">配置名</span> <span class="k">OF</span> <span class="err">实体名</span> <span class="k">IS</span>
+</span></span><span class="line"><span class="cl">  <span class="k">FOR</span> <span class="err">结构体名</span>
+</span></span><span class="line"><span class="cl">    <span class="k">FOR</span> <span class="err">标号</span> <span class="o">:</span> <span class="err">元件名</span> <span class="k">USE</span> <span class="nn">CONFIGURATION</span> <span class="nn">WORK</span><span class="p">.</span><span class="err">配置体名</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">END</span> <span class="k">FOR</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="k">END</span> <span class="k">FOR</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">END</span> <span class="err">配置名</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="library"><code>library</code></h3>
 <p>经编译后的数据的集合，它存放包集合申明、实体申明、构造体申明和配置定义，使设计者可以共享已经编译过的设计结果。可以存在多个不同的库，但库和库之间不能互相嵌套。</p>
@@ -557,8 +557,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">LIBRARY</span> <span class="err">库名</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">LIBRARY</span> <span class="err">库名</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>种类
@@ -583,8 +583,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">SIGNAL</span> <span class="err">信号名</span> <span class="o">:</span> <span class="err">信号类型</span> <span class="p">[</span><span class="o">:=</span> <span class="err">初始值</span><span class="p">];</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">SIGNAL</span> <span class="err">信号名</span> <span class="o">:</span> <span class="err">信号类型</span> <span class="p">[</span><span class="o">:=</span> <span class="err">初始值</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>实体间动态数据交换的手段，相当于连接元件的导线，在实体说明部分、结构体说明和程序包说明中都能声明。</p>
 <h4 id="variable"><code>variable</code></h4>
@@ -593,8 +593,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">VARIABLE</span> <span class="err">变量名</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量名</span><span class="mi">2</span><span class="p">,</span> <span class="p">...</span> <span class="o">:</span> <span class="err">变量类型</span><span class="p">[</span><span class="o">:=</span> <span class="err">初始值</span><span class="p">];</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">VARIABLE</span> <span class="err">变量名</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量名</span><span class="mi">2</span><span class="p">,</span> <span class="p">...</span> <span class="o">:</span> <span class="err">变量类型</span><span class="p">[</span><span class="o">:=</span> <span class="err">初始值</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>用于存储进程和子程序中的局部数据，与<a href="#signal" rel="">信号</a>相比具有以下优点：</p>
 <ul>
@@ -607,8 +607,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">CONSTANT</span> <span class="err">常量名</span><span class="mi">1</span><span class="p">,</span> <span class="err">常量名</span><span class="mi">2</span> <span class="p">...</span> <span class="o">:</span> <span class="err">常量类型</span> <span class="p">[</span><span class="o">:=</span> <span class="err">值</span><span class="p">];</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">CONSTANT</span> <span class="err">常量名</span><span class="mi">1</span><span class="p">,</span> <span class="err">常量名</span><span class="mi">2</span> <span class="p">...</span> <span class="o">:</span> <span class="err">常量类型</span> <span class="p">[</span><span class="o">:=</span> <span class="err">值</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="数据类型">数据类型</h3>
 <p>很多类型后面可以加上约束区间：</p>
@@ -618,9 +618,9 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="kt">integer</span> <span class="k">range</span> <span class="mi">100</span> <span class="k">downto</span> <span class="mi">1</span><span class="p">;</span>
-<span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">1</span><span class="p">)</span> <span class="n">real</span> <span class="k">range</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="k">to</span> <span class="mi">30</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="kt">integer</span> <span class="k">range</span> <span class="mi">100</span> <span class="k">downto</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">1</span><span class="p">)</span> <span class="n">real</span> <span class="k">range</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="k">to</span> <span class="mi">30</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="标准数据类型">标准数据类型</h4>
 <p>类型变换函数表：</p>
@@ -684,8 +684,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="sc">&#39;0&#39;</span> <span class="sc">&#39;1&#39;</span> <span class="sc">&#39;Z&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="sc">&#39;0&#39;</span> <span class="sc">&#39;1&#39;</span> <span class="sc">&#39;Z&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -699,8 +699,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="s">&#34;0011ZZ&#34;</span> <span class="mh">X&#34;00BB&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="s">&#34;0011ZZ&#34;</span> <span class="mh">X&#34;00BB&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -714,8 +714,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="sc">&#39;0&#39;</span> <span class="sc">&#39;1&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="sc">&#39;0&#39;</span> <span class="sc">&#39;1&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -729,8 +729,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="s">&#34;0011&#34;</span> <span class="mh">X&#34;00BB&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="s">&#34;0011&#34;</span> <span class="mh">X&#34;00BB&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -833,8 +833,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="na">&#39;A</span><span class="p">&#39;</span> <span class="na">&#39;a</span><span class="p">&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="na">&#39;A</span><span class="p">&#39;</span> <span class="na">&#39;a</span><span class="p">&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -848,8 +848,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="s">&#34;Hello World!&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="s">&#34;Hello World!&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -861,8 +861,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="err">{</span><span class="p">,</span><span class="err">数据类型名}</span> <span class="err">数据类型定义</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="err">{</span><span class="p">,</span><span class="err">数据类型名}</span> <span class="err">数据类型定义</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>要放在语句的定义部分中，定义范围直到语句块的最后。</p>
 <!--list-separator-->
@@ -874,8 +874,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="p">(</span><span class="err">元素</span><span class="p">,</span> <span class="p">...)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="p">(</span><span class="err">元素</span><span class="p">,</span> <span class="p">...)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>元素是有序列性的，元素的值就是其下标的二进制数。</p>
 </li>
@@ -889,8 +889,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="err">数据类型定义</span> <span class="err">约束范围</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="err">数据类型定义</span> <span class="err">约束范围</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -903,8 +903,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="k">ARRAY</span> <span class="err">范围</span> <span class="k">OF</span> <span class="err">原数据类型名</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="k">ARRAY</span> <span class="err">范围</span> <span class="k">OF</span> <span class="err">原数据类型名</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>当范围用到除整数类型以外的类型，应在数据范围前加数据类型名：</p>
 <div class="highlight"><div class="chroma">
@@ -913,9 +913,9 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">type</span> <span class="n">week</span> <span class="k">is</span> <span class="p">(</span><span class="n">sun</span><span class="p">,</span> <span class="n">mon</span><span class="p">,</span> <span class="n">tue</span><span class="p">,</span> <span class="n">wed</span><span class="p">,</span> <span class="n">thu</span><span class="p">,</span> <span class="n">fri</span><span class="p">,</span> <span class="n">sat</span><span class="p">);</span>
-             <span class="k">type</span> <span class="n">workdate</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="n">week</span> <span class="n">mon</span> <span class="k">to</span> <span class="n">fri</span><span class="p">)</span> <span class="k">of</span> <span class="kt">std_logic</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">type</span> <span class="n">week</span> <span class="k">is</span> <span class="p">(</span><span class="n">sun</span><span class="p">,</span> <span class="n">mon</span><span class="p">,</span> <span class="n">tue</span><span class="p">,</span> <span class="n">wed</span><span class="p">,</span> <span class="n">thu</span><span class="p">,</span> <span class="n">fri</span><span class="p">,</span> <span class="n">sat</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">             <span class="k">type</span> <span class="n">workdate</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="n">week</span> <span class="n">mon</span> <span class="k">to</span> <span class="n">fri</span><span class="p">)</span> <span class="k">of</span> <span class="kt">std_logic</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>要获取数组里的一个元素时，可以：</p>
 <div class="highlight"><div class="chroma">
@@ -923,8 +923,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="err">数组名</span><span class="p">(</span><span class="err">下标</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="err">数组名</span><span class="p">(</span><span class="err">下标</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -940,11 +940,11 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="err">范围</span>
-                     <span class="k">UNITS</span>  <span class="err">基本单位</span><span class="p">;</span>
-                            <span class="err">单位描述</span><span class="p">;</span>
-                     <span class="k">END</span> <span class="k">UNITS</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="err">范围</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">UNITS</span>  <span class="err">基本单位</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                            <span class="err">单位描述</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">END</span> <span class="k">UNITS</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>例：</p>
 <div class="highlight"><div class="chroma">
@@ -961,17 +961,17 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">type</span> <span class="kt">time</span> <span class="k">is</span> <span class="k">range</span> <span class="o">-</span><span class="mi">1</span><span class="n">E18</span> <span class="k">to</span> <span class="mi">1</span><span class="n">E18</span>
-               <span class="k">units</span> <span class="n">fs</span><span class="p">;</span>
-                     <span class="n">ps</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">fs</span><span class="p">;</span>
-                     <span class="n">ns</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">ps</span><span class="p">;</span>
-                     <span class="n">us</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">ns</span><span class="p">;</span>
-                     <span class="n">ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">us</span><span class="p">;</span>
-                     <span class="n">sec</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">ms</span><span class="p">;</span>
-                     <span class="n">min</span> <span class="o">=</span> <span class="mi">60</span><span class="n">sec</span><span class="p">;</span>
-                     <span class="n">hr</span> <span class="o">=</span> <span class="mi">60</span><span class="n">min</span><span class="p">;</span>
-               <span class="k">end</span> <span class="k">units</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">type</span> <span class="kt">time</span> <span class="k">is</span> <span class="k">range</span> <span class="o">-</span><span class="mi">1</span><span class="n">E18</span> <span class="k">to</span> <span class="mi">1</span><span class="n">E18</span>
+</span></span><span class="line"><span class="cl">               <span class="k">units</span> <span class="n">fs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">ps</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">fs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">ns</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">us</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">ns</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">us</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">sec</span> <span class="o">=</span> <span class="mi">1000</span><span class="n">ms</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">min</span> <span class="o">=</span> <span class="mi">60</span><span class="n">sec</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">hr</span> <span class="o">=</span> <span class="mi">60</span><span class="n">min</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">               <span class="k">end</span> <span class="k">units</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -987,11 +987,11 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="k">RECORD</span>
-                     <span class="err">元素名</span> <span class="o">:</span> <span class="err">数据类型名</span><span class="p">;</span>
-                     <span class="p">...</span>
-                   <span class="k">END</span> <span class="k">RECORD</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">TYPE</span> <span class="err">数据类型名</span> <span class="k">IS</span> <span class="k">RECORD</span>
+</span></span><span class="line"><span class="cl">                     <span class="err">元素名</span> <span class="o">:</span> <span class="err">数据类型名</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">...</span>
+</span></span><span class="line"><span class="cl">                   <span class="k">END</span> <span class="k">RECORD</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>例：</p>
 <div class="highlight"><div class="chroma">
@@ -1005,14 +1005,14 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">type</span> <span class="n">window</span> <span class="k">is</span> <span class="k">record</span>
-                 <span class="n">length</span> <span class="o">:</span> <span class="kt">integer</span><span class="p">;</span>
-                 <span class="n">width</span>  <span class="o">:</span> <span class="kt">integer</span><span class="p">;</span>
-               <span class="k">end</span> <span class="k">record</span><span class="p">;</span>
-
-               <span class="k">signal</span> <span class="n">win</span> <span class="o">:</span> <span class="n">window</span><span class="p">;</span>
-               <span class="n">win</span><span class="p">.</span><span class="n">length</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">type</span> <span class="n">window</span> <span class="k">is</span> <span class="k">record</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">length</span> <span class="o">:</span> <span class="kt">integer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">width</span>  <span class="o">:</span> <span class="kt">integer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">               <span class="k">end</span> <span class="k">record</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">               <span class="k">signal</span> <span class="n">win</span> <span class="o">:</span> <span class="n">window</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">               <span class="n">win</span><span class="p">.</span><span class="n">length</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1025,8 +1025,8 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">SUBTYPE</span> <span class="err">子类型名</span> <span class="k">IS</span> <span class="err">数据类型名</span><span class="p">[</span><span class="err">范围</span><span class="p">];</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">SUBTYPE</span> <span class="err">子类型名</span> <span class="k">IS</span> <span class="err">数据类型名</span><span class="p">[</span><span class="err">范围</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>例：</p>
 <div class="highlight"><div class="chroma">
@@ -1035,9 +1035,9 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">subtype</span> <span class="n">digit</span> <span class="k">is</span> <span class="kt">integer</span> <span class="k">range</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">9</span><span class="p">;</span>
-                 <span class="k">subtype</span> <span class="n">abus</span> <span class="k">is</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">7</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">subtype</span> <span class="n">digit</span> <span class="k">is</span> <span class="kt">integer</span> <span class="k">range</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                 <span class="k">subtype</span> <span class="n">abus</span> <span class="k">is</span> <span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">7</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1247,11 +1247,11 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">wait</span> <span class="k">until</span> <span class="p">(</span><span class="n">sendB</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="mi">1</span> <span class="n">ns</span><span class="p">;</span>
-<span class="k">assert</span> <span class="p">(</span><span class="n">sendB</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">)</span>
-  <span class="n">report</span> <span class="s">&#34;sendB timed out at &#39;1&#39;&#34;</span>
-  <span class="k">severity</span> <span class="n">error</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">wait</span> <span class="k">until</span> <span class="p">(</span><span class="n">sendB</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="mi">1</span> <span class="n">ns</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="p">(</span><span class="n">sendB</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">report</span> <span class="s">&#34;sendB timed out at &#39;1&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">severity</span> <span class="n">error</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1263,10 +1263,10 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">assert</span> <span class="err">断言表达式</span>
-  <span class="p">[</span><span class="err">报告表达式</span><span class="p">]</span>                          <span class="c1">-- 默认为 ASSERTION VIOLATION</span>
-  <span class="p">[</span><span class="err">严重性表达式</span><span class="p">]</span>                        <span class="c1">-- 默认为 ERROR</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">assert</span> <span class="err">断言表达式</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="err">报告表达式</span><span class="p">]</span>                          <span class="c1">-- 默认为 ASSERTION VIOLATION</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="err">严重性表达式</span><span class="p">]</span>                        <span class="c1">-- 默认为 ERROR</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>报告一个文本字符串，包含布尔表达式。为假时将输出规定的字符串到标准输出终端。例：</p>
 <div class="highlight"><div class="chroma">
@@ -1297,31 +1297,31 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">process</span> <span class="p">(</span><span class="n">clk</span><span class="p">,</span> <span class="n">din</span><span class="p">)</span>
-  <span class="k">variable</span> <span class="n">last_d_change</span>  <span class="o">:</span> <span class="kt">time</span>      <span class="o">:=</span> <span class="mi">0</span> <span class="n">ns</span><span class="p">;</span>
-  <span class="k">variable</span> <span class="n">last_d_value</span>   <span class="o">:</span> <span class="kt">std_logic</span> <span class="o">:=</span> <span class="sc">&#39;X&#39;</span><span class="p">;</span>
-  <span class="k">variable</span> <span class="n">last_clk_value</span> <span class="o">:</span> <span class="kt">std_logic</span> <span class="o">:=</span> <span class="sc">&#39;X&#39;</span><span class="p">;</span>
-
-<span class="k">begin</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">last_d_value</span> <span class="o">/=</span> <span class="n">din</span><span class="p">)</span> <span class="k">then</span>
-    <span class="n">last_d_change</span> <span class="o">:=</span> <span class="n">NOW</span><span class="p">;</span>
-    <span class="n">last_d_value</span>  <span class="o">:=</span> <span class="n">din</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="n">last_clk_value</span> <span class="o">/=</span> <span class="n">clk</span><span class="p">)</span> <span class="k">then</span>
-    <span class="n">last_clk_value</span> <span class="o">:=</span> <span class="n">clk</span><span class="p">;</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">clk</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">)</span> <span class="k">then</span>
-      <span class="c1">-- 断言语句</span>
-      <span class="k">assert</span> <span class="p">(</span><span class="n">NOW</span> <span class="o">-</span> <span class="n">last_d_change</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="n">ns</span><span class="p">)</span>
-        <span class="n">report</span> <span class="s">&#34;setup violation&#34;</span>
-        <span class="k">severity</span> <span class="n">warning</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-
-  <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-
-<span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">process</span> <span class="p">(</span><span class="n">clk</span><span class="p">,</span> <span class="n">din</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">variable</span> <span class="n">last_d_change</span>  <span class="o">:</span> <span class="kt">time</span>      <span class="o">:=</span> <span class="mi">0</span> <span class="n">ns</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">variable</span> <span class="n">last_d_value</span>   <span class="o">:</span> <span class="kt">std_logic</span> <span class="o">:=</span> <span class="sc">&#39;X&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">variable</span> <span class="n">last_clk_value</span> <span class="o">:</span> <span class="kt">std_logic</span> <span class="o">:=</span> <span class="sc">&#39;X&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">last_d_value</span> <span class="o">/=</span> <span class="n">din</span><span class="p">)</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="n">last_d_change</span> <span class="o">:=</span> <span class="n">NOW</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">last_d_value</span>  <span class="o">:=</span> <span class="n">din</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">last_clk_value</span> <span class="o">/=</span> <span class="n">clk</span><span class="p">)</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="n">last_clk_value</span> <span class="o">:=</span> <span class="n">clk</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">clk</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">)</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">-- 断言语句</span>
+</span></span><span class="line"><span class="cl">      <span class="k">assert</span> <span class="p">(</span><span class="n">NOW</span> <span class="o">-</span> <span class="n">last_d_change</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="n">ns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">report</span> <span class="s">&#34;setup violation&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">severity</span> <span class="n">warning</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="条件语句">条件语句</h4>
 <!--list-separator-->
@@ -1339,14 +1339,14 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">IF</span> <span class="err">表达式</span> <span class="k">THEN</span>
-  <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]</span>
-    <span class="p">[</span><span class="k">ELSIF</span> <span class="err">表达式</span> <span class="k">THEN</span>
-    <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]</span>
-      <span class="k">ELSE</span>
-      <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]]</span>
-  <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">IF</span> <span class="err">表达式</span> <span class="k">THEN</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="k">ELSIF</span> <span class="err">表达式</span> <span class="k">THEN</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="k">ELSE</span>
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1365,14 +1365,14 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">CASE</span> <span class="err">表达式</span> <span class="k">IS</span>
-  <span class="k">WHEN</span> <span class="err">值</span><span class="o">|</span><span class="err">值</span><span class="o">|</span><span class="p">...</span> <span class="o">=&gt;</span>
-    <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]</span>
-      <span class="p">...</span>
-      <span class="k">WHEN</span> <span class="k">OTHERS</span> <span class="o">=&gt;</span>
-    <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]</span>
-<span class="k">END</span> <span class="k">CASE</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">CASE</span> <span class="err">表达式</span> <span class="k">IS</span>
+</span></span><span class="line"><span class="cl">  <span class="k">WHEN</span> <span class="err">值</span><span class="o">|</span><span class="err">值</span><span class="o">|</span><span class="p">...</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">      <span class="k">WHEN</span> <span class="k">OTHERS</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="err">顺序处理语句</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">END</span> <span class="k">CASE</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1384,10 +1384,10 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="p">[</span><span class="err">循环标示</span> <span class="o">:</span><span class="p">]</span> <span class="p">[</span><span class="err">循环条件</span><span class="p">]</span> <span class="k">LOOP</span>
-  <span class="err">顺序处理语句</span>
-<span class="k">END</span> <span class="k">LOOP</span><span class="err">[循环标示]</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="p">[</span><span class="err">循环标示</span> <span class="o">:</span><span class="p">]</span> <span class="p">[</span><span class="err">循环条件</span><span class="p">]</span> <span class="k">LOOP</span>
+</span></span><span class="line"><span class="cl">  <span class="err">顺序处理语句</span>
+</span></span><span class="line"><span class="cl"><span class="k">END</span> <span class="k">LOOP</span><span class="err">[循环标示]</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><!--list-separator-->
 <ul>
@@ -1401,10 +1401,10 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">while</span> <span class="p">(</span><span class="n">day</span> <span class="o">=</span> <span class="n">weekday</span><span class="p">)</span> <span class="k">loop</span>
-  <span class="n">day</span> <span class="o">:=</span> <span class="n">get_next_day</span><span class="p">(</span><span class="n">day</span><span class="p">);</span>
-<span class="k">end</span> <span class="k">loop</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">day</span> <span class="o">=</span> <span class="n">weekday</span><span class="p">)</span> <span class="k">loop</span>
+</span></span><span class="line"><span class="cl">  <span class="n">day</span> <span class="o">:=</span> <span class="n">get_next_day</span><span class="p">(</span><span class="n">day</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="k">loop</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1430,20 +1430,20 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">process</span> <span class="p">(</span><span class="n">clk</span><span class="p">)</span>
-  <span class="k">type</span> <span class="n">day_of_week</span> <span class="k">is</span> <span class="p">(</span><span class="n">sun</span><span class="p">,</span> <span class="n">mon</span><span class="p">,</span> <span class="n">tue</span><span class="p">,</span> <span class="n">wed</span><span class="p">,</span> <span class="n">thur</span><span class="p">,</span> <span class="n">fri</span><span class="p">,</span> <span class="n">sat</span><span class="p">);</span>
-<span class="k">begin</span>
-  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">day_of_week</span> <span class="k">loop</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">=</span> <span class="n">sat</span> <span class="k">then</span>
-      <span class="n">son</span> <span class="o">&lt;=</span> <span class="n">mow_lawn</span><span class="p">;</span>
-    <span class="k">elsif</span> <span class="n">i</span> <span class="o">=</span> <span class="n">sun</span> <span class="k">then</span>
-      <span class="n">church</span> <span class="o">&lt;=</span> <span class="n">family</span><span class="p">;</span>
-    <span class="k">else</span>
-      <span class="n">dad</span> <span class="o">&lt;=</span> <span class="n">go_to_work</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">process</span> <span class="p">(</span><span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">type</span> <span class="n">day_of_week</span> <span class="k">is</span> <span class="p">(</span><span class="n">sun</span><span class="p">,</span> <span class="n">mon</span><span class="p">,</span> <span class="n">tue</span><span class="p">,</span> <span class="n">wed</span><span class="p">,</span> <span class="n">thur</span><span class="p">,</span> <span class="n">fri</span><span class="p">,</span> <span class="n">sat</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">day_of_week</span> <span class="k">loop</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">i</span> <span class="o">=</span> <span class="n">sat</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">      <span class="n">son</span> <span class="o">&lt;=</span> <span class="n">mow_lawn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elsif</span> <span class="n">i</span> <span class="o">=</span> <span class="n">sun</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">      <span class="n">church</span> <span class="o">&lt;=</span> <span class="n">family</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">      <span class="n">dad</span> <span class="o">&lt;=</span> <span class="n">go_to_work</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1470,21 +1470,21 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">process</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-  <span class="k">constant</span> <span class="n">max_limit</span> <span class="o">:</span> <span class="kt">integer</span> <span class="o">:=</span> <span class="mi">255</span><span class="p">;</span>
-  <span class="k">type</span> <span class="n">d_type</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="mi">0</span> <span class="k">to</span> <span class="n">max_limit</span><span class="p">)</span> <span class="k">of</span> <span class="kt">boolean</span><span class="p">;</span>
-  <span class="k">variable</span> <span class="n">done</span>      <span class="o">:</span> <span class="n">d_type</span><span class="p">;</span>
-<span class="k">begin</span>
-  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">max_limit</span> <span class="k">loop</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">done</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span> <span class="k">then</span>
-      <span class="k">next</span><span class="p">;</span>
-    <span class="k">else</span>
-      <span class="n">done</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">:=</span> <span class="n">true</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-    <span class="n">q</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">and</span> <span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-  <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">process</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">constant</span> <span class="n">max_limit</span> <span class="o">:</span> <span class="kt">integer</span> <span class="o">:=</span> <span class="mi">255</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">type</span> <span class="n">d_type</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="mi">0</span> <span class="k">to</span> <span class="n">max_limit</span><span class="p">)</span> <span class="k">of</span> <span class="kt">boolean</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">variable</span> <span class="n">done</span>      <span class="o">:</span> <span class="n">d_type</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">max_limit</span> <span class="k">loop</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">done</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">      <span class="k">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">      <span class="n">done</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">:=</span> <span class="n">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">q</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">and</span> <span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1508,18 +1508,18 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">process</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="k">begin</span>
-  <span class="n">first_loop</span> <span class="o">:</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">100</span> <span class="k">loop</span>
-    <span class="n">second_loop</span> <span class="o">:</span> <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span> <span class="k">to</span> <span class="mi">10</span> <span class="k">loop</span>
-      <span class="p">......</span>
-      <span class="k">exit</span> <span class="n">second_loop</span><span class="p">;</span>
-      <span class="p">......</span>
-        <span class="k">exit</span> <span class="n">first_loop</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">process</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="n">first_loop</span> <span class="o">:</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">100</span> <span class="k">loop</span>
+</span></span><span class="line"><span class="cl">    <span class="n">second_loop</span> <span class="o">:</span> <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span> <span class="k">to</span> <span class="mi">10</span> <span class="k">loop</span>
+</span></span><span class="line"><span class="cl">      <span class="p">......</span>
+</span></span><span class="line"><span class="cl">      <span class="k">exit</span> <span class="n">second_loop</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">......</span>
+</span></span><span class="line"><span class="cl">        <span class="k">exit</span> <span class="n">first_loop</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1547,20 +1547,20 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">demo</span> <span class="k">is</span>
-<span class="k">begin</span>
-<span class="c1">-- 并行赋值</span>
-  <span class="n">d1</span> <span class="o">&lt;=</span> <span class="n">din</span><span class="p">;</span>
-  <span class="n">d2</span> <span class="o">&lt;=</span> <span class="n">din</span><span class="p">;</span>
-<span class="c1">-- 进程</span>
-  <span class="k">process</span><span class="p">(</span><span class="n">din</span><span class="p">)</span>
-  <span class="k">begin</span>
-<span class="c1">-- 顺序赋值</span>
-    <span class="n">c1</span> <span class="o">&lt;=</span> <span class="n">din</span><span class="p">;</span>
-    <span class="n">c2</span> <span class="o">&lt;=</span> <span class="n">din</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">arch</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">demo</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl"><span class="c1">-- 并行赋值</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d1</span> <span class="o">&lt;=</span> <span class="n">din</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d2</span> <span class="o">&lt;=</span> <span class="n">din</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">-- 进程</span>
+</span></span><span class="line"><span class="cl">  <span class="k">process</span><span class="p">(</span><span class="n">din</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">begin</span>
+</span></span><span class="line"><span class="cl"><span class="c1">-- 顺序赋值</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c1</span> <span class="o">&lt;=</span> <span class="n">din</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c2</span> <span class="o">&lt;=</span> <span class="n">din</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">arch</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1572,10 +1572,10 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="err">目的信号</span> <span class="o">&lt;=</span>  <span class="err">表达式</span> <span class="k">WHEN</span> <span class="err">条件</span> <span class="k">ELSE</span>
-             <span class="p">...</span>
-             <span class="err">表达式</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="err">目的信号</span> <span class="o">&lt;=</span>  <span class="err">表达式</span> <span class="k">WHEN</span> <span class="err">条件</span> <span class="k">ELSE</span>
+</span></span><span class="line"><span class="cl">             <span class="p">...</span>
+</span></span><span class="line"><span class="cl">             <span class="err">表达式</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>例：</p>
 <div class="highlight"><div class="chroma">
@@ -1598,23 +1598,23 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">entity</span> <span class="nc">mux4</span> <span class="k">is</span>
-  <span class="k">port</span> <span class="p">(</span>
-    <span class="n">din0</span><span class="p">,</span> <span class="n">din1</span><span class="p">,</span> <span class="n">din2</span><span class="p">,</span> <span class="n">din3</span><span class="p">,</span> <span class="n">sel0</span><span class="p">,</span> <span class="n">sel1</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">dout</span>                               <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span><span class="p">);</span>
-<span class="k">end</span> <span class="nc">mux4</span><span class="p">;</span>
-
-<span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">mux4</span> <span class="k">is</span>
-  <span class="k">signal</span> <span class="n">sel</span> <span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-<span class="k">begin</span>
-  <span class="n">sel</span>  <span class="o">&lt;=</span> <span class="n">sel1</span> <span class="o">&amp;</span> <span class="n">sel0</span><span class="p">;</span>
-  <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din0</span> <span class="k">when</span> <span class="n">sel</span> <span class="o">=</span> <span class="err">“</span><span class="mi">00</span><span class="err">”</span> <span class="k">else</span>
-          <span class="n">din1</span> <span class="k">when</span> <span class="n">sel</span> <span class="o">=</span> <span class="err">“</span><span class="mi">01</span><span class="err">”</span> <span class="k">else</span>
-          <span class="n">din2</span> <span class="k">when</span> <span class="n">sel</span> <span class="o">=</span> <span class="err">“</span><span class="mi">10</span><span class="err">”</span> <span class="k">else</span>
-          <span class="n">din3</span> <span class="k">when</span> <span class="n">sel</span> <span class="o">=</span> <span class="err">“</span><span class="mi">11</span><span class="err">”</span> <span class="k">else</span>
-          <span class="err">‘</span><span class="n">X</span><span class="err">’</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">mux4</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">entity</span> <span class="nc">mux4</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="k">port</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">din0</span><span class="p">,</span> <span class="n">din1</span><span class="p">,</span> <span class="n">din2</span><span class="p">,</span> <span class="n">din3</span><span class="p">,</span> <span class="n">sel0</span><span class="p">,</span> <span class="n">sel1</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dout</span>                               <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">mux4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">mux4</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="k">signal</span> <span class="n">sel</span> <span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sel</span>  <span class="o">&lt;=</span> <span class="n">sel1</span> <span class="o">&amp;</span> <span class="n">sel0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din0</span> <span class="k">when</span> <span class="n">sel</span> <span class="o">=</span> <span class="err">“</span><span class="mi">00</span><span class="err">”</span> <span class="k">else</span>
+</span></span><span class="line"><span class="cl">          <span class="n">din1</span> <span class="k">when</span> <span class="n">sel</span> <span class="o">=</span> <span class="err">“</span><span class="mi">01</span><span class="err">”</span> <span class="k">else</span>
+</span></span><span class="line"><span class="cl">          <span class="n">din2</span> <span class="k">when</span> <span class="n">sel</span> <span class="o">=</span> <span class="err">“</span><span class="mi">10</span><span class="err">”</span> <span class="k">else</span>
+</span></span><span class="line"><span class="cl">          <span class="n">din3</span> <span class="k">when</span> <span class="n">sel</span> <span class="o">=</span> <span class="err">“</span><span class="mi">11</span><span class="err">”</span> <span class="k">else</span>
+</span></span><span class="line"><span class="cl">          <span class="err">‘</span><span class="n">X</span><span class="err">’</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">mux4</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1626,10 +1626,10 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">WITH</span> <span class="err">表达式</span> <span class="k">SELECT</span>
-  <span class="err">目的信号量</span> <span class="o">&lt;=</span>  <span class="err">表达式</span> <span class="k">WHEN</span> <span class="err">条件</span><span class="p">;</span>
-<span class="p">...</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">WITH</span> <span class="err">表达式</span> <span class="k">SELECT</span>
+</span></span><span class="line"><span class="cl">  <span class="err">目的信号量</span> <span class="o">&lt;=</span>  <span class="err">表达式</span> <span class="k">WHEN</span> <span class="err">条件</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>例：</p>
 <div class="highlight"><div class="chroma">
@@ -1652,23 +1652,23 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="k">entity</span> <span class="nc">mux4</span> <span class="k">is</span>
-  <span class="k">port</span> <span class="p">(</span>
-    <span class="n">din0</span><span class="p">,</span> <span class="n">din1</span><span class="p">,</span> <span class="n">din2</span><span class="p">,</span> <span class="n">din3</span><span class="p">,</span> <span class="n">sel0</span><span class="p">,</span> <span class="n">sel1</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">dout</span>                               <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span><span class="p">);</span>
-<span class="k">end</span> <span class="nc">mux4</span><span class="p">;</span>
-<span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">mux4</span> <span class="k">is</span>
-  <span class="k">signal</span> <span class="n">sel</span> <span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-<span class="k">begin</span>
-  <span class="n">sel</span> <span class="o">&lt;=</span> <span class="n">sel1</span> <span class="o">&amp;</span> <span class="n">sel0</span><span class="p">;</span>
-  <span class="k">with</span> <span class="n">sel</span> <span class="k">select</span>
-    <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din1</span> <span class="k">when</span> <span class="err">“</span><span class="mi">00</span><span class="err">”</span><span class="p">,</span>
-    <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din1</span> <span class="k">when</span> <span class="err">“</span><span class="mi">01</span><span class="err">”</span><span class="p">,</span>
-    <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din2</span> <span class="k">when</span> <span class="err">“</span><span class="mi">10</span><span class="err">”</span><span class="p">,</span>
-    <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din3</span> <span class="k">when</span> <span class="err">“</span><span class="mi">1</span><span class="err">”</span><span class="p">,</span>
-    <span class="err">‘</span><span class="n">X</span><span class="err">”</span>          <span class="k">when</span> <span class="k">others</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">mux4</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="k">entity</span> <span class="nc">mux4</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="k">port</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">din0</span><span class="p">,</span> <span class="n">din1</span><span class="p">,</span> <span class="n">din2</span><span class="p">,</span> <span class="n">din3</span><span class="p">,</span> <span class="n">sel0</span><span class="p">,</span> <span class="n">sel1</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dout</span>                               <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">mux4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">mux4</span> <span class="k">is</span>
+</span></span><span class="line"><span class="cl">  <span class="k">signal</span> <span class="n">sel</span> <span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sel</span> <span class="o">&lt;=</span> <span class="n">sel1</span> <span class="o">&amp;</span> <span class="n">sel0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">with</span> <span class="n">sel</span> <span class="k">select</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din1</span> <span class="k">when</span> <span class="err">“</span><span class="mi">00</span><span class="err">”</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din1</span> <span class="k">when</span> <span class="err">“</span><span class="mi">01</span><span class="err">”</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din2</span> <span class="k">when</span> <span class="err">“</span><span class="mi">10</span><span class="err">”</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dout</span> <span class="o">&lt;=</span> <span class="n">din3</span> <span class="k">when</span> <span class="err">“</span><span class="mi">1</span><span class="err">”</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">‘</span><span class="n">X</span><span class="err">”</span>          <span class="k">when</span> <span class="k">others</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span> <span class="nc">mux4</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1686,14 +1686,14 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="err">块名</span><span class="o">:</span><span class="k">BLOCK</span><span class="p">(</span><span class="err">条件</span><span class="p">)</span>
-  <span class="p">[</span><span class="err">参数</span> <span class="k">GENERIC</span> <span class="err">说明</span><span class="p">;</span> <span class="p">[</span><span class="err">参数映射</span><span class="p">;]</span> <span class="p">]</span>
-    <span class="p">[</span><span class="err">端口说明</span><span class="p">;</span> <span class="err">端口映射</span><span class="p">;]]</span>
-    <span class="p">[</span><span class="err">块说明语句</span><span class="p">]</span>
-<span class="k">BEGIN</span>
-    <span class="err">并发语句组</span><span class="p">;</span>
-<span class="k">END</span> <span class="k">BLOCK</span> <span class="err">块名</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="err">块名</span><span class="o">:</span><span class="k">BLOCK</span><span class="p">(</span><span class="err">条件</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="err">参数</span> <span class="k">GENERIC</span> <span class="err">说明</span><span class="p">;</span> <span class="p">[</span><span class="err">参数映射</span><span class="p">;]</span> <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="err">端口说明</span><span class="p">;</span> <span class="err">端口映射</span><span class="p">;]]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="err">块说明语句</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">BEGIN</span>
+</span></span><span class="line"><span class="cl">    <span class="err">并发语句组</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">END</span> <span class="k">BLOCK</span> <span class="err">块名</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>放在结构体的并行语句中，相当于一个子电路原理图，里面内的语句是并发执行的。只要右边的条件满足就被执行，如果省略条件则表示无条件执行。</p>
 <h4 id="process"><code>process</code></h4>
@@ -1705,11 +1705,11 @@ ASIC 的逻辑门库，存放着与逻辑门对应的实体。</li>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="p">[</span><span class="err">进程名</span><span class="p">]</span> <span class="o">:</span> <span class="k">process</span> <span class="p">(</span><span class="err">信号</span><span class="mi">1</span><span class="p">,</span> <span class="err">信号</span><span class="mi">2</span><span class="p">,</span> <span class="p">...)</span>
-           <span class="k">BEGIN</span>
-             <span class="p">...</span>
-           <span class="k">END</span> <span class="k">PROCESS</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vhdl" data-lang="vhdl"><span class="line"><span class="cl"><span class="p">[</span><span class="err">进程名</span><span class="p">]</span> <span class="o">:</span> <span class="k">process</span> <span class="p">(</span><span class="err">信号</span><span class="mi">1</span><span class="p">,</span> <span class="err">信号</span><span class="mi">2</span><span class="p">,</span> <span class="p">...)</span>
+</span></span><span class="line"><span class="cl">           <span class="k">BEGIN</span>
+</span></span><span class="line"><span class="cl">             <span class="p">...</span>
+</span></span><span class="line"><span class="cl">           <span class="k">END</span> <span class="k">PROCESS</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>进程语句是一种并发处理语句，在一个结构体中多个进行可以同时并行运行，是VHDL语言中描述硬件系统并发行为的最基本语句。括号内的信号是此进程的敏感信号，这些信号的变化会激活过程的执行。</p>
 <ul>

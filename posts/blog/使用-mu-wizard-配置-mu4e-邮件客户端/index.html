@@ -155,8 +155,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">gpg --gen-key
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gpg --gen-key
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后使用 <code>pass</code> 命令初始化密码储存，邮箱需要与刚才输入的一致：</p>
 <div class="highlight"><div class="chroma">
@@ -164,8 +164,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">pass init 1281299809@qq.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pass init 1281299809@qq.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="配置邮箱">配置邮箱</h3>
 <p>接着使用 <code>muw</code> 命令添加邮箱地址（这里以 QQ 邮箱为例）：</p>
@@ -174,8 +174,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">muw add -a <span class="s2">&#34;1281299809@qq.com&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">muw add -a <span class="s2">&#34;1281299809@qq.com&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>对于 QQ 邮箱而言需要确保 IMAP/SMTP 服务已经开启，并两次输入授权码：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-05%2019-40-48.png"/>
@@ -204,25 +204,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Your domain information was found!&#39;
-The following information will be used:
-
-Domain: qq.com
-IMAP:   imap.qq.com:993
-SMTP:   smtp.qq.com:587
-Enter your full name you want to be identified on this account.
-Real name: 1281299809@qq.com
-Enter a short, one-word identifier for this email account that will
-distinguish them from any other accounts you add
-Account name: qq
-If your account has a special username different from your address,
-insert it now. Otherwise leave this blank.
-Login: 1281299809
-mkdir: 已创建目录 &#39;/home/coco24/.password-store/muw&#39;
-Enter password for muw/1281299809@qq.com:
-Retype password for muw/1281299809@qq.com:
-All done. You can now run &#39;muw sync qq&#39; in order to sync this account.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Your domain information was found!&#39;
+</span></span><span class="line"><span class="cl">The following information will be used:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Domain: qq.com
+</span></span><span class="line"><span class="cl">IMAP:   imap.qq.com:993
+</span></span><span class="line"><span class="cl">SMTP:   smtp.qq.com:587
+</span></span><span class="line"><span class="cl">Enter your full name you want to be identified on this account.
+</span></span><span class="line"><span class="cl">Real name: 1281299809@qq.com
+</span></span><span class="line"><span class="cl">Enter a short, one-word identifier for this email account that will
+</span></span><span class="line"><span class="cl">distinguish them from any other accounts you add
+</span></span><span class="line"><span class="cl">Account name: qq
+</span></span><span class="line"><span class="cl">If your account has a special username different from your address,
+</span></span><span class="line"><span class="cl">insert it now. Otherwise leave this blank.
+</span></span><span class="line"><span class="cl">Login: 1281299809
+</span></span><span class="line"><span class="cl">mkdir: 已创建目录 &#39;/home/coco24/.password-store/muw&#39;
+</span></span><span class="line"><span class="cl">Enter password for muw/1281299809@qq.com:
+</span></span><span class="line"><span class="cl">Retype password for muw/1281299809@qq.com:
+</span></span><span class="line"><span class="cl">All done. You can now run &#39;muw sync qq&#39; in order to sync this account.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在运行 <code>muw sync</code> 之前，需要先执行 <code>muw mu-init</code> 刷新缓存，否则会出现文件缺失的错误：</p>
 <div class="highlight"><div class="chroma">
@@ -230,8 +230,8 @@ All done. You can now run &#39;muw sync qq&#39; in order to sync this account.
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">muw mu-init
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">muw mu-init
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -245,15 +245,15 @@ All done. You can now run &#39;muw sync qq&#39; in order to sync this account.
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">maildir           : /home/coco24/.local/share/mail
-database-path     : /home/coco24/.cache/mu/xapian
-schema-version    : 452
-max-message-size  : 100000000
-batch-size        : 250000
-messages in store : 0
-created           : 2022年03月05日 星期六 19时15分22秒
-personal-address  : 1281299809@qq.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">maildir           : /home/coco24/.local/share/mail
+</span></span><span class="line"><span class="cl">database-path     : /home/coco24/.cache/mu/xapian
+</span></span><span class="line"><span class="cl">schema-version    : 452
+</span></span><span class="line"><span class="cl">max-message-size  : 100000000
+</span></span><span class="line"><span class="cl">batch-size        : 250000
+</span></span><span class="line"><span class="cl">messages in store : 0
+</span></span><span class="line"><span class="cl">created           : 2022年03月05日 星期六 19时15分22秒
+</span></span><span class="line"><span class="cl">personal-address  : 1281299809@qq.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后执行（这里的 <code>qq</code> 是之前设置的 Account Name）：</p>
 <div class="highlight"><div class="chroma">
@@ -261,8 +261,8 @@ personal-address  : 1281299809@qq.com
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">muw sync qq
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">muw sync qq
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果没有出现错误，那么邮箱就配置完成了。</p>
 <h3 id="配置-mu4e">配置 <code>mu4e</code></h3>
@@ -284,20 +284,20 @@ personal-address  : 1281299809@qq.com
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">mu4e</span>
-  <span class="nb">:when</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">boundp</span> <span class="ss">&#39;use-mu4e</span><span class="p">)</span> <span class="nv">use-mu4e</span><span class="p">)</span>
-  <span class="nb">:defer</span> <span class="no">t</span>
-  <span class="nb">:commands</span> <span class="p">(</span><span class="nv">mu4e</span><span class="p">)</span>
-  <span class="nb">:config</span>
-  <span class="p">(</span><span class="nb">setq</span> <span class="nv">mu4e-get-mail-command</span>       <span class="s">&#34;mbsync -a&#34;</span>
-        <span class="nv">mail-user-agent</span>             <span class="ss">&#39;mu4e-user-agent</span>
-        <span class="nv">message-send-mail-function</span>  <span class="ss">&#39;message-send-mail-with-sendmail</span>
-        <span class="nv">sendmail-program</span>            <span class="p">(</span><span class="nv">executable-find</span> <span class="s">&#34;msmtp&#34;</span><span class="p">))</span>
-  <span class="p">(</span><span class="nb">setq</span> <span class="nv">mu4e-contexts</span> <span class="no">nil</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">file</span> <span class="p">(</span><span class="nf">directory-files</span>
-                 <span class="p">(</span><span class="nf">expand-file-name</span> <span class="s">&#34;mu4e/accounts&#34;</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">getenv</span> <span class="s">&#34;XDG_CONFIG_HOME&#34;</span><span class="p">)</span> <span class="s">&#34;~/.config&#34;</span><span class="p">))</span> <span class="no">t</span> <span class="s">&#34;\\.el$&#34;</span> <span class="no">nil</span><span class="p">))</span>
-    <span class="p">(</span><span class="nf">load</span> <span class="nv">file</span><span class="p">)))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">mu4e</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:when</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">boundp</span> <span class="ss">&#39;use-mu4e</span><span class="p">)</span> <span class="nv">use-mu4e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:defer</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:commands</span> <span class="p">(</span><span class="nv">mu4e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">mu4e-get-mail-command</span>       <span class="s">&#34;mbsync -a&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">mail-user-agent</span>             <span class="ss">&#39;mu4e-user-agent</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">message-send-mail-function</span>  <span class="ss">&#39;message-send-mail-with-sendmail</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">sendmail-program</span>            <span class="p">(</span><span class="nv">executable-find</span> <span class="s">&#34;msmtp&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">mu4e-contexts</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">file</span> <span class="p">(</span><span class="nf">directory-files</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nf">expand-file-name</span> <span class="s">&#34;mu4e/accounts&#34;</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">getenv</span> <span class="s">&#34;XDG_CONFIG_HOME&#34;</span><span class="p">)</span> <span class="s">&#34;~/.config&#34;</span><span class="p">))</span> <span class="no">t</span> <span class="s">&#34;\\.el$&#34;</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">load</span> <span class="nv">file</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>需要注意的是 <code>mu4e</code> 无法使用 ELPA 安装，它是随着系统的包管理器安装 <code>mu</code> 时一起被安装进 Emacs 的 <code>load-path</code> 中的，因此为了保证配置文件的通用性，我使用 <code>use-mu4e</code> 这个变量控制 <code>mu4e</code> 的加载。然后在 Emacs 中运行：</p>
 <div class="highlight"><div class="chroma">
@@ -305,8 +305,8 @@ personal-address  : 1281299809@qq.com
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">M-x mu4e
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">M-x mu4e
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>就可以使用配置好的 <code>mu4e</code> 了。</p>
 </div>

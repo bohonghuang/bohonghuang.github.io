@@ -31,7 +31,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/elisp\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "编程语言, Emacs","wordcount":  3740 ,
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "编程语言, Emacs","wordcount":  3745 ,
         "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/elisp\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T18:23:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
@@ -117,7 +117,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3740 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3745 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/posts/notes/elisp/" class="leancloud_visitors" data-flag-title="Emacs Lisp">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -277,8 +277,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1">;  I am a comment</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1">;  I am a comment</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="基本数据类型">基本数据类型</h2>
 <h3 id="字符串">字符串</h3>
@@ -288,8 +288,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="s">&#34;He&#39;s said: \&#34;Emacs Rules\&#34; one time too many.&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="s">&#34;He&#39;s said: \&#34;Emacs Rules\&#34; one time too many.&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>一个字符串中一个包括多行。</p>
 <div class="highlight"><div class="chroma">
@@ -299,13 +299,13 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="s">&#34;Oh Argentina!
-</span><span class="s">Your little tin of pink meat
-</span><span class="s">Soars o&#39;er the Pampas&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="s">&#34;Oh Argentina!
+</span></span></span><span class="line"><span class="cl"><span class="s">Your little tin of pink meat
+</span></span></span><span class="line"><span class="cl"><span class="s">Soars o&#39;er the Pampas&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="字符">字符</h3>
-<p><code>?x</code> 代表 <code>x</code> 的ASCII字符（ <code>?a</code> 代表ASCII码为97的&rsquo;a'）。涉及到Elisp语法的字符需要转义（ <code>?\(</code> 、 <code>?\)</code> 、 <code>?\\</code> ）。Unicode字符不在讨论的范畴。这些的字符在内部的表示均为ASCII码（整数），因此可以对它们进行数学运算。</p>
+<p><code>?x</code> 代表 <code>x</code> 的ASCII字符（ <code>?a</code> 代表ASCII码为97的&rsquo;a&rsquo;）。涉及到Elisp语法的字符需要转义（ <code>?\(</code> 、 <code>?\)</code> 、 <code>?\\</code> ）。Unicode字符不在讨论的范畴。这些的字符在内部的表示均为ASCII码（整数），因此可以对它们进行数学运算。</p>
 <h3 id="数字">数字</h3>
 <h4 id="整数">整数</h4>
 <p>整数的精度为 29-bit 。</p>
@@ -347,9 +347,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">[</span><span class="mi">-2</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
-<span class="p">[</span><span class="s">&#34;No&#34;</span> <span class="s">&#34;Sir&#34;</span> <span class="s">&#34;I&#34;</span> <span class="s">&#34;am&#34;</span> <span class="s">&#34;a&#34;</span> <span class="s">&#34;real&#34;</span> <span class="s">&#34;horse&#34;</span><span class="p">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">[</span><span class="mi">-2</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s">&#34;No&#34;</span> <span class="s">&#34;Sir&#34;</span> <span class="s">&#34;I&#34;</span> <span class="s">&#34;am&#34;</span> <span class="s">&#34;a&#34;</span> <span class="s">&#34;real&#34;</span> <span class="s">&#34;horse&#34;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>数组可以嵌套，也可以包含不同类型的元素。</p>
 <div class="highlight"><div class="chroma">
@@ -357,8 +357,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">[</span><span class="s">&#34;hi&#34;</span> <span class="mi">22</span> <span class="mi">120</span> <span class="mf">89.6</span> <span class="mi">2748</span> <span class="p">[</span><span class="mi">3</span> <span class="s">&#34;a&#34;</span><span class="p">]]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">[</span><span class="s">&#34;hi&#34;</span> <span class="mi">22</span> <span class="mi">120</span> <span class="mf">89.6</span> <span class="mi">2748</span> <span class="p">[</span><span class="mi">3</span> <span class="s">&#34;a&#34;</span><span class="p">]]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>也可以使用 <code>make-vector</code> 来创建数组。</p>
 <h3 id="列表-list">列表（List）</h3>
@@ -371,8 +371,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">quote</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">quote</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>或简写成</p>
 <div class="highlight"><div class="chroma">
@@ -380,8 +380,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -391,8 +391,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>或简写成</p>
 <div class="highlight"><div class="chroma">
@@ -400,8 +400,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="o">`</span><span class="p">(</span><span class="mi">1</span> <span class="o">,</span><span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="o">`</span><span class="p">(</span><span class="mi">1</span> <span class="o">,</span><span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -420,13 +420,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">-flatmap</span> <span class="p">(</span><span class="nv">fn</span> <span class="nf">list</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">pcase</span> <span class="nf">list</span>
-    <span class="p">(</span><span class="o">`</span><span class="no">nil</span> <span class="no">nil</span><span class="p">)</span>
-    <span class="p">(</span><span class="nv">_</span> <span class="p">(</span><span class="nv">-concat</span>
-        <span class="p">(</span><span class="nf">apply</span> <span class="nv">fn</span> <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nv">-first-item</span> <span class="nf">list</span><span class="p">)))</span>
-        <span class="p">(</span><span class="nv">-flatmap</span> <span class="nv">fn</span> <span class="p">(</span><span class="nf">cdr</span> <span class="nf">list</span><span class="p">))))))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">-flatmap</span> <span class="p">(</span><span class="nv">fn</span> <span class="nf">list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">pcase</span> <span class="nf">list</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="o">`</span><span class="no">nil</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">_</span> <span class="p">(</span><span class="nv">-concat</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nf">apply</span> <span class="nv">fn</span> <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nv">-first-item</span> <span class="nf">list</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">-flatmap</span> <span class="nv">fn</span> <span class="p">(</span><span class="nf">cdr</span> <span class="nf">list</span><span class="p">))))))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="remove"><code>remove</code></h4>
 <p>返回删除元素后的新列表。</p>
@@ -441,8 +441,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>或简写成</p>
 <div class="highlight"><div class="chroma">
@@ -450,8 +450,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -465,9 +465,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="nv">foo</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">cons</span> <span class="mi">1</span> <span class="nv">foo</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -498,10 +498,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="o">&#39;</span><span class="p">(</span> <span class="p">(</span><span class="nv">apple</span> <span class="o">.</span> <span class="s">&#34;red&#34;</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">banana</span> <span class="o">.</span> <span class="s">&#34;yellow&#34;</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">orange</span> <span class="o">.</span> <span class="s">&#34;orange&#34;</span><span class="p">)</span> <span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="o">&#39;</span><span class="p">(</span> <span class="p">(</span><span class="nv">apple</span> <span class="o">.</span> <span class="s">&#34;red&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nv">banana</span> <span class="o">.</span> <span class="s">&#34;yellow&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nv">orange</span> <span class="o">.</span> <span class="s">&#34;orange&#34;</span><span class="p">)</span> <span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="assoc"><code>assoc</code></h4>
 <p>通过键查找键对。</p>
@@ -522,16 +522,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">my-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;a&#34;</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&#34;b&#34;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&#34;c&#34;</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))))</span>
-  <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;a&#34;</span> <span class="nv">my-alist</span><span class="p">)</span>
-  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;b&#34;</span> <span class="nv">my-alist</span><span class="p">)</span>
-  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;c&#34;</span> <span class="nv">my-alist</span><span class="p">)</span>
-  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">my-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;a&#34;</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="s">&#34;b&#34;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="s">&#34;c&#34;</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;a&#34;</span> <span class="nv">my-alist</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;b&#34;</span> <span class="nv">my-alist</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;c&#34;</span> <span class="nv">my-alist</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>而是应当：</p>
 <div class="highlight"><div class="chroma">
@@ -547,16 +547,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">my-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;a&#34;</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&#34;b&#34;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&#34;c&#34;</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))))</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="nv">my-alist</span> <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;a&#34;</span> <span class="nv">my-alist</span><span class="p">))</span>
-  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="nv">my-alist</span> <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;b&#34;</span> <span class="nv">my-alist</span><span class="p">))</span>
-  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="nv">my-alist</span> <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;c&#34;</span> <span class="nv">my-alist</span><span class="p">))</span>
-  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">my-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;a&#34;</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="s">&#34;b&#34;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="s">&#34;c&#34;</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setf</span> <span class="nv">my-alist</span> <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;a&#34;</span> <span class="nv">my-alist</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setf</span> <span class="nv">my-alist</span> <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;b&#34;</span> <span class="nv">my-alist</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setf</span> <span class="nv">my-alist</span> <span class="p">(</span><span class="nv">assoc-delete-all</span> <span class="s">&#34;c&#34;</span> <span class="nv">my-alist</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">print</span> <span class="nv">my-alist</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="运算符">运算符</h2>
 <p>运算符就像函数，进行运算的元素就像函数的参数，因此运算符都是前置的。</p>
@@ -565,8 +565,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">%</span> <span class="p">(</span><span class="nf">*</span> <span class="mh">#x15</span> <span class="p">(</span><span class="nf">+</span> <span class="mf">8.2</span> <span class="p">(</span><span class="nf">lsh</span> <span class="mi">7</span> <span class="mi">3</span><span class="p">)))</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">%</span> <span class="p">(</span><span class="nf">*</span> <span class="mh">#x15</span> <span class="p">(</span><span class="nf">+</span> <span class="mf">8.2</span> <span class="p">(</span><span class="nf">lsh</span> <span class="mi">7</span> <span class="mi">3</span><span class="p">)))</span> <span class="mi">2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="相等性">相等性</h3>
 <ul>
@@ -577,8 +577,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">=</span> <span class="mi">2</span> <span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">=</span> <span class="mi">2</span> <span class="p">(</span><span class="nf">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -588,8 +588,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">/=</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">/=</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -599,8 +599,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">eq</span> <span class="ss">&#39;foo</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">eq</span> <span class="ss">&#39;foo</span> <span class="mi">2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -610,8 +610,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">eql</span> <span class="p">(</span><span class="nf">/</span> <span class="mf">6.28</span> <span class="mi">2</span><span class="p">)</span> <span class="mf">3.14</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">eql</span> <span class="p">(</span><span class="nf">/</span> <span class="mf">6.28</span> <span class="mi">2</span><span class="p">)</span> <span class="mf">3.14</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -621,8 +621,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">equal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="nf">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="nf">list</span> <span class="mi">3</span> <span class="p">(</span><span class="nf">*</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">))))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">equal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="nf">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="nf">list</span> <span class="mi">3</span> <span class="p">(</span><span class="nf">*</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">))))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -635,8 +635,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;foo&#34;</span> <span class="s">&#34;bar&#34;</span> <span class="s">&#34;baz&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;foo&#34;</span> <span class="s">&#34;bar&#34;</span> <span class="s">&#34;baz&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -646,8 +646,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nv">string=</span> <span class="s">&#34;foo&#34;</span> <span class="s">&#34;baz&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">string=</span> <span class="s">&#34;foo&#34;</span> <span class="s">&#34;baz&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -657,8 +657,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">substring</span> <span class="s">&#34;foobar&#34;</span> <span class="mi">0</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">substring</span> <span class="s">&#34;foobar&#34;</span> <span class="mi">0</span> <span class="mi">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -668,8 +668,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">upcase</span> <span class="s">&#34;foobar&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">upcase</span> <span class="s">&#34;foobar&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -830,9 +830,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">&gt;=</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;hello there&#34;</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">&gt;=</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;hello there&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -844,10 +844,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">today-is-friday</span><span class="p">)</span>         <span class="c1">; test-expr</span>
-    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;yay, friday&#34;</span><span class="p">)</span>   <span class="c1">; then-expr</span>
-  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;boo, other day&#34;</span><span class="p">))</span> <span class="c1">; else-expr</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">today-is-friday</span><span class="p">)</span>         <span class="c1">; test-expr</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;yay, friday&#34;</span><span class="p">)</span>   <span class="c1">; then-expr</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;boo, other day&#34;</span><span class="p">))</span> <span class="c1">; else-expr</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -861,12 +861,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="ss">&#39;sunday</span>
-    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;sunday!&#34;</span><span class="p">)</span>      <span class="c1">; then-expr</span>
-  <span class="p">(</span><span class="nb">if</span> <span class="ss">&#39;saturday</span>              <span class="c1">; else-if</span>
-      <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;saturday!&#34;</span><span class="p">)</span>  <span class="c1">; next then-expr</span>
-    <span class="p">(</span><span class="nf">message</span> <span class="p">(</span><span class="s">&#34;weekday!&#34;</span><span class="p">))))</span> <span class="c1">; final else</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">if</span> <span class="ss">&#39;sunday</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;sunday!&#34;</span><span class="p">)</span>      <span class="c1">; then-expr</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">if</span> <span class="ss">&#39;saturday</span>              <span class="c1">; else-if</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;saturday!&#34;</span><span class="p">)</span>  <span class="c1">; next then-expr</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">message</span> <span class="p">(</span><span class="s">&#34;weekday!&#34;</span><span class="p">))))</span> <span class="c1">; final else</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -882,11 +882,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">&gt;</span> <span class="mi">5</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">blah</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">blah-blah</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">blah</span> <span class="nv">blah</span> <span class="nv">blah</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">&gt;</span> <span class="mi">5</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">blah</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">blah-blah</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">blah</span> <span class="nv">blah</span> <span class="nv">blah</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -899,10 +899,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">weekend-p</span><span class="p">)</span>
-  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;another day at work&#34;</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">get-back-to-work</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">weekend-p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;another day at work&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">get-back-to-work</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -924,14 +924,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">cond</span>
- <span class="p">(</span><span class="nv">test-1</span>             <span class="c1">; branch 1</span>
-  <span class="nv">do-stuff-1</span><span class="p">)</span>
- <span class="p">(</span><span class="nv">test-2</span>             <span class="c1">; branch 2</span>
-  <span class="nv">do-stuff-2</span><span class="p">)</span>
- <span class="p">(</span><span class="no">t</span>                  <span class="c1">; default branch</span>
-  <span class="nv">do-default-stuff</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">cond</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="nv">test-1</span>             <span class="c1">; branch 1</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">do-stuff-1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="nv">test-2</span>             <span class="c1">; branch 2</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">do-stuff-2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="no">t</span>                  <span class="c1">; default branch</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">do-default-stuff</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在条件后面可以跟任意数量的语句，不用括号包裹。并且当一个分支只有条件而没有语句时，如果该条件不为 <code>nil</code> 则进入分支直接把条件作为整个表达的值。</p>
 </li>
@@ -947,13 +947,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">case</span> <span class="mi">12</span>
-      <span class="p">(</span><span class="mi">5</span> <span class="s">&#34;five&#34;</span><span class="p">)</span>
-      <span class="p">(</span><span class="mi">1</span> <span class="s">&#34;one&#34;</span><span class="p">)</span>
-      <span class="p">(</span><span class="mi">12</span> <span class="s">&#34;twelve&#34;</span><span class="p">)</span>
-      <span class="p">(</span><span class="nv">otherwise</span>
-       <span class="s">&#34;I only know five, one and twelve.&#34;</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">case</span> <span class="mi">12</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="mi">5</span> <span class="s">&#34;five&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="mi">1</span> <span class="s">&#34;one&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="mi">12</span> <span class="s">&#34;twelve&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">otherwise</span>
+</span></span><span class="line"><span class="cl">       <span class="s">&#34;I only know five, one and twelve.&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -970,12 +970,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">10</span>
-      <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nv">plusp</span> <span class="nv">x</span><span class="p">)</span>  <span class="c1">; while x is positive</span>
-  <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">)</span>  <span class="c1">; add x to total</span>
-  <span class="p">(</span><span class="nb">decf</span> <span class="nv">x</span><span class="p">))</span>       <span class="c1">; subtract 1 from x</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nv">plusp</span> <span class="nv">x</span><span class="p">)</span>  <span class="c1">; while x is positive</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">)</span>  <span class="c1">; add x to total</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">decf</span> <span class="nv">x</span><span class="p">))</span>       <span class="c1">; subtract 1 from x</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -991,11 +991,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">loop</span> <span class="nb">do</span>
-      <span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="p">(</span><span class="nf">1+</span> <span class="nv">x</span><span class="p">))</span>
-      <span class="nb">while</span>
-      <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">x</span> <span class="mi">10</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">loop</span> <span class="nb">do</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="p">(</span><span class="nf">1+</span> <span class="nv">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">while</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">x</span> <span class="mi">10</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1012,15 +1012,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">loop</span> <span class="nv">with</span> <span class="nv">result</span> <span class="nf">=</span> <span class="o">&#39;</span><span class="p">()</span>         <span class="c1">; one-time initialization</span>
-      <span class="nv">for</span> <span class="nv">i</span> <span class="nv">downfrom</span> <span class="mi">10</span>         <span class="c1">; count i down from 10</span>
-      <span class="nv">for</span> <span class="nv">j</span> <span class="nv">from</span> <span class="mi">0</span> <span class="nv">by</span> <span class="mi">2</span>         <span class="c1">; count j up from 0 by 2</span>
-      <span class="nb">while</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">j</span> <span class="mi">10</span><span class="p">)</span>            <span class="c1">; stop when j &gt;= 10</span>
-      <span class="nb">do</span>
-      <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">i</span> <span class="nv">j</span><span class="p">)</span> <span class="nv">result</span><span class="p">)</span>     <span class="c1">; fast-accumulate i+j</span>
-      <span class="nv">finally</span>
-      <span class="nb">return</span> <span class="p">(</span><span class="nf">nreverse</span> <span class="nv">result</span><span class="p">))</span> <span class="c1">; reverse and return result</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">loop</span> <span class="nv">with</span> <span class="nv">result</span> <span class="nf">=</span> <span class="o">&#39;</span><span class="p">()</span>         <span class="c1">; one-time initialization</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">for</span> <span class="nv">i</span> <span class="nv">downfrom</span> <span class="mi">10</span>         <span class="c1">; count i down from 10</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">for</span> <span class="nv">j</span> <span class="nv">from</span> <span class="mi">0</span> <span class="nv">by</span> <span class="mi">2</span>         <span class="c1">; count j up from 0 by 2</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">while</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">j</span> <span class="mi">10</span><span class="p">)</span>            <span class="c1">; stop when j &gt;= 10</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">do</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">push</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">i</span> <span class="nv">j</span><span class="p">)</span> <span class="nv">result</span><span class="p">)</span>     <span class="c1">; fast-accumulate i+j</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">finally</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">return</span> <span class="p">(</span><span class="nf">nreverse</span> <span class="nv">result</span><span class="p">))</span> <span class="c1">; reverse and return result</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>等价的JavaScript代码</p>
 <div class="highlight"><div class="chroma">
@@ -1031,11 +1031,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">,</span> <span class="nx">j</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="nx">j</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">,</span> <span class="nx">j</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="nx">j</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1046,9 +1046,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
-      <span class="nv">collect</span> <span class="p">(</span><span class="nf">*</span> <span class="nv">i</span> <span class="nv">i</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">collect</span> <span class="p">(</span><span class="nf">*</span> <span class="nv">i</span> <span class="nv">i</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1069,13 +1069,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">0</span> <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;break</span>
-  <span class="p">(</span><span class="nb">while</span> <span class="no">t</span>
-    <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">&gt;</span> <span class="p">(</span><span class="nb">incf</span> <span class="nv">x</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span>
-        <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;break</span> <span class="nv">total</span><span class="p">))))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">0</span> <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;break</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">while</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">&gt;</span> <span class="p">(</span><span class="nb">incf</span> <span class="nv">x</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;break</span> <span class="nv">total</span><span class="p">))))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1091,14 +1091,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">0</span> <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">x</span> <span class="mi">100</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;continue</span>
-    <span class="p">(</span><span class="nb">incf</span> <span class="nv">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">zerop</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">5</span><span class="p">))</span>
-        <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;continue</span> <span class="no">nil</span><span class="p">))</span>
-    <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">)))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">0</span> <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">x</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;continue</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">incf</span> <span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">zerop</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;continue</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>用于 <code>catch</code> 和 <code>throw</code> 的标识符可以自定义以作区分。</p>
 <div class="highlight"><div class="chroma">
@@ -1115,17 +1115,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">0</span> <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;break</span>
-  <span class="p">(</span><span class="nb">while</span> <span class="no">t</span>
-    <span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;continue</span>
-      <span class="p">(</span><span class="nb">incf</span> <span class="nv">x</span><span class="p">)</span>
-      <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">&gt;=</span> <span class="nv">x</span> <span class="mi">100</span><span class="p">)</span>
-          <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;break</span> <span class="no">nil</span><span class="p">))</span>
-      <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">zerop</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">5</span><span class="p">))</span>
-          <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;continue</span> <span class="no">nil</span><span class="p">))</span>
-      <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">))))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">0</span> <span class="nv">total</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;break</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">while</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">catch</span> <span class="ss">&#39;continue</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">incf</span> <span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">&gt;=</span> <span class="nv">x</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;break</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">zerop</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">throw</span> <span class="ss">&#39;continue</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">incf</span> <span class="nv">total</span> <span class="nv">x</span><span class="p">))))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1198,10 +1198,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">square</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
-  <span class="s">&#34;Return X squared.&#34;</span>
-  <span class="p">(</span><span class="nf">*</span> <span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">square</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Return X squared.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">*</span> <span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1213,10 +1213,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">hello</span> <span class="p">()</span>
-  <span class="s">&#34;Print the string </span><span class="ss">`hello&#39;</span><span class="s"> to the minibuffer.&#34;</span>
-  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;hello!&#34;</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">hello</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Print the string </span><span class="ss">`hello&#39;</span><span class="s"> to the minibuffer.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;hello!&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>函数体可以有任意个表达式，以最后一个表达式作为返回值。也可以手动使用 <code>return</code> 表达式来返回。</p>
 <p>如果要定义一个可以通过 <code>M-x</code> 调用的函数，需要以 <code>(interactive)</code> 作为函数的第一个表达式。</p>
@@ -1230,10 +1230,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
-  <span class="s">&#34;Return the hyperbolic cosine of X.&#34;</span>
-  <span class="p">(</span><span class="nf">*</span> <span class="mf">0.5</span> <span class="p">(</span><span class="nf">+</span> <span class="p">(</span><span class="nf">exp</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nf">exp</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">x</span><span class="p">)))))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Return the hyperbolic cosine of X.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">*</span> <span class="mf">0.5</span> <span class="p">(</span><span class="nf">+</span> <span class="p">(</span><span class="nf">exp</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nf">exp</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">x</span><span class="p">)))))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="常用函数">常用函数</h3>
 <h4 id="save-excursion"><code>save-excursion</code></h4>
@@ -1254,12 +1254,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">name1</span> <span class="nv">value1</span><span class="p">)</span>
-      <span class="p">(</span><span class="nv">name2</span> <span class="nv">value2</span><span class="p">)</span>
-      <span class="nv">name3</span>
-      <span class="nv">name4</span>
-      <span class="p">(</span><span class="nv">name5</span> <span class="nv">value5</span><span class="p">)))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">name1</span> <span class="nv">value1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">name2</span> <span class="nv">value2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">name3</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">name4</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">name5</span> <span class="nv">value5</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果在一个 <code>let</code> 表达式里后面定义的变量需要用到前面定义的变量，需要使用 <code>let*</code> 。</p>
 <div class="highlight"><div class="chroma">
@@ -1268,9 +1268,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">1</span><span class="p">)</span>
-       <span class="p">(</span><span class="nv">y</span> <span class="nv">x</span><span class="p">)))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="nv">y</span> <span class="nv">x</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="全局变量">全局变量</h3>
 <h4 id="声明">声明</h4>
@@ -1284,8 +1284,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defvar</span> <span class="nv">i</span> <span class="mi">1</span> <span class="s">&#34;This is a variable.&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defvar</span> <span class="nv">i</span> <span class="mi">1</span> <span class="s">&#34;This is a variable.&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1299,8 +1299,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">pi</span> <span class="mf">3.14159</span> <span class="s">&#34;A gross approximation of pi.&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">pi</span> <span class="mf">3.14159</span> <span class="s">&#34;A gross approximation of pi.&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1313,10 +1313,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nf">list</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nf">nth</span> <span class="mi">0</span> <span class="nf">list</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-  <span class="nf">list</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nf">list</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nf">nth</span> <span class="mi">0</span> <span class="nf">list</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">list</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="设置">设置</h4>
 <p>使用 <code>setq</code> （“set quote”的缩写）来声明全局变量。</p>
@@ -1325,8 +1325,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">foo</span> <span class="s">&#34;bar&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">foo</span> <span class="s">&#34;bar&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="动态作用域">动态作用域</h3>
 <p>C++有引用类型，因此可以在函数中修改函数调用方中的值。Elisp中的动态作用域也可以实现类似的功能。</p>
@@ -1343,16 +1343,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">foo</span> <span class="p">()</span>
-  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1">; define a local (i.e., stack) variable x initialized to 6</span>
-    <span class="p">(</span><span class="nv">bar</span><span class="p">)</span>       <span class="c1">; call bar</span>
-    <span class="nv">x</span><span class="p">))</span>         <span class="c1">; return x</span>
-
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">bar</span> <span class="p">()</span>
-  <span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">7</span><span class="p">))</span>   <span class="c1">; finds and modifies x in the caller&#39;s stack frame</span>
-
-<span class="p">(</span><span class="nv">foo</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">foo</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1">; define a local (i.e., stack) variable x initialized to 6</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">bar</span><span class="p">)</span>       <span class="c1">; call bar</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">x</span><span class="p">))</span>         <span class="c1">; return x</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">bar</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">7</span><span class="p">))</span>   <span class="c1">; finds and modifies x in the caller&#39;s stack frame</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">foo</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="异常">异常</h2>
 <ul>
@@ -1370,14 +1370,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">condition-case</span> <span class="no">nil</span>
-    <span class="p">(</span><span class="nb">progn</span>                              <span class="c1">; try</span>
-      <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>
-      <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>
-  <span class="p">(</span><span class="ne">error</span>                                <span class="c1">; catch</span>
-   <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;oh no!&#34;</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">do-recovery-stuff</span><span class="p">)))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">condition-case</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">progn</span>                              <span class="c1">; try</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ne">error</span>                                <span class="c1">; catch</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;oh no!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nv">do-recovery-stuff</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>progn</code> 用于多个表达式的执行。</p>
 </li>
@@ -1391,10 +1391,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">ignore-errors</span>
-  <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">ignore-errors</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1410,13 +1410,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">unwind-protect</span>
-    <span class="p">(</span><span class="nb">progn</span>                              <span class="c1">; try</span>
-      <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>
-      <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>
-  <span class="p">(</span><span class="nv">first-finally-expr</span><span class="p">)</span>                  <span class="c1">; finally</span>
-  <span class="p">(</span><span class="nv">second-finally-expr</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">unwind-protect</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">progn</span>                              <span class="c1">; try</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">first-finally-expr</span><span class="p">)</span>                  <span class="c1">; finally</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">second-finally-expr</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>把它与 <code>condition-case</code> 进行结合，就可以实现完整的 <code>try-catch-finally</code> 的功能。</p>
 <div class="highlight"><div class="chroma">
@@ -1433,17 +1433,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">unwind-protect</span>                 <span class="c1">; finally</span>
-    <span class="p">(</span><span class="nb">condition-case</span> <span class="no">nil</span>         <span class="c1">; try</span>
-        <span class="p">(</span><span class="nb">progn</span>                  <span class="c1">; {</span>
-          <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>        <span class="c1">;   body-1</span>
-          <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>  <span class="c1">;   body-2 }</span>
-      <span class="p">(</span><span class="ne">error</span>                    <span class="c1">; catch</span>
-       <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;oh no!&#34;</span><span class="p">)</span>       <span class="c1">; { catch 1</span>
-       <span class="p">(</span><span class="nv">poop-pants</span><span class="p">)))</span>           <span class="c1">;   catch 2 }</span>
-  <span class="p">(</span><span class="nv">first-finally-expr</span><span class="p">)</span>          <span class="c1">; { finally 1</span>
-  <span class="p">(</span><span class="nv">second-finally-expr</span><span class="p">))</span>        <span class="c1">;   finally 2 }</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">unwind-protect</span>                 <span class="c1">; finally</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">condition-case</span> <span class="no">nil</span>         <span class="c1">; try</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">progn</span>                  <span class="c1">; {</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">do-something</span><span class="p">)</span>        <span class="c1">;   body-1</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">do-something-else</span><span class="p">))</span>  <span class="c1">;   body-2 }</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="ne">error</span>                    <span class="c1">; catch</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;oh no!&#34;</span><span class="p">)</span>       <span class="c1">; { catch 1</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="nv">poop-pants</span><span class="p">)))</span>           <span class="c1">;   catch 2 }</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">first-finally-expr</span><span class="p">)</span>          <span class="c1">; { finally 1</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">second-finally-expr</span><span class="p">))</span>        <span class="c1">;   finally 2 }</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1462,14 +1462,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;cl</span><span class="p">)</span>  <span class="c1">; top of file</span>
-
-<span class="p">(</span><span class="nb">defstruct</span> <span class="nv">person</span>
-  <span class="s">&#34;A person structure.&#34;</span>
-  <span class="nv">name</span>
-  <span class="p">(</span><span class="nv">age</span> <span class="mi">0</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">height</span> <span class="mf">0.0</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;cl</span><span class="p">)</span>  <span class="c1">; top of file</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defstruct</span> <span class="nv">person</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;A person structure.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">name</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">age</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">height</span> <span class="mf">0.0</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用 <code>make-&lt;结构体名&gt;</code> 来创建结构体。</p>
 <div class="highlight"><div class="chroma">
@@ -1477,14 +1477,12 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nv">make-person</span><span class="p">)</span>  <span class="c1">; new Person()</span>
-<span class="p">(</span><span class="nv">make-person</span> <span class="nb">:age</span> <span class="mi">39</span><span class="p">)</span>  <span class="c1">; new Person(39)</span>
-<span class="p">(</span><span class="nv">make-person</span> <span class="nb">:name</span> <span class="s">&#34;Steve&#34;</span> <span class="nb">:height</span> <span class="mf">5.83</span> <span class="nb">:age</span> <span class="mi">39</span><span class="p">)</span>  <span class="c1">; new Person(&#34;Steve&#34;, 39, 5.83)</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">make-person</span><span class="p">)</span>  <span class="c1">; new Person()</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">make-person</span> <span class="nb">:age</span> <span class="mi">39</span><span class="p">)</span>  <span class="c1">; new Person(39)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">make-person</span> <span class="nb">:name</span> <span class="s">&#34;Steve&#34;</span> <span class="nb">:height</span> <span class="mf">5.83</span> <span class="nb">:age</span> <span class="mi">39</span><span class="p">)</span>  <span class="c1">; new Person(&#34;Steve&#34;, 39, 5.83)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用 <code>&lt;结构体名-成员变量名&gt;</code> 来访问结构体中的成员变量。使用 <code>setf</code> 来设置成员变量。</p>
 <div class="highlight"><div class="chroma">
@@ -1496,12 +1494,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">e</span> <span class="p">(</span><span class="nv">make-employee</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nv">employee-name</span> <span class="nv">e</span><span class="p">)</span> <span class="s">&#34;Steve&#34;</span>
-      <span class="p">(</span><span class="nv">employee-age</span> <span class="nv">e</span><span class="p">)</span> <span class="mi">39</span>
-      <span class="p">(</span><span class="nv">employee-company</span> <span class="nv">e</span><span class="p">)</span> <span class="s">&#34;Google&#34;</span>
-      <span class="p">(</span><span class="nv">employee-title</span> <span class="nv">e</span><span class="p">)</span> <span class="s">&#34;Janitor&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">e</span> <span class="p">(</span><span class="nv">make-employee</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nv">employee-name</span> <span class="nv">e</span><span class="p">)</span> <span class="s">&#34;Steve&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">employee-age</span> <span class="nv">e</span><span class="p">)</span> <span class="mi">39</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">employee-company</span> <span class="nv">e</span><span class="p">)</span> <span class="s">&#34;Google&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">employee-title</span> <span class="nv">e</span><span class="p">)</span> <span class="s">&#34;Janitor&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="继承">继承</h4>
 <p>可以使用单继承来扩展一个结构体。</p>
@@ -1515,13 +1513,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defstruct</span> <span class="p">(</span><span class="nv">employee</span>
-            <span class="p">(</span><span class="nb">:include</span> <span class="nv">person</span><span class="p">))</span>
-  <span class="s">&#34;An employee structure.&#34;</span>
-  <span class="nv">company</span>
-  <span class="p">(</span><span class="nv">level</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">title</span> <span class="s">&#34;n00b&#34;</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defstruct</span> <span class="p">(</span><span class="nv">employee</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="nb">:include</span> <span class="nv">person</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;An employee structure.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">company</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">level</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">title</span> <span class="s">&#34;n00b&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>defstruct</code> 宏会自动生成 <code>&lt;结构体名&gt;-p</code> 的函数用于判断一个变量是不是该结构体类型。</p>
 </div>

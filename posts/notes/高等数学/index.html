@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
     <title class="pjax-title">高等数学 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="高等数学" />
-<meta property="og:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 函数 初等函数 定义 在定义域上可以用一个解析式来表示。也就是说\(\sum\limits_{i=1}" />
+<meta property="og:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 函数 极限 定义 \[x\to x_0 \Rightarrow \begin{cases} x \neq x_0 \\ x \to x_0^&#43; \\ x \to x_0^- \\ \end{cases}\] \[\lim_{x\to x_0}f(x)=A\] 左极限：\(\lim_{x\to x_0^-}f(x)=A\) 右极限：\(" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bohonghuang.github.io/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-03T19:44:16+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta property="article:modified_time" content="2022-03-29T21:53:15+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="高等数学"/>
-<meta name="twitter:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 函数 初等函数 定义 在定义域上可以用一个解析式来表示。也就是说\(\sum\limits_{i=1}"/>
+<meta name="twitter:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 函数 极限 定义 \[x\to x_0 \Rightarrow \begin{cases} x \neq x_0 \\ x \to x_0^&#43; \\ x \to x_0^- \\ \end{cases}\] \[\lim_{x\to x_0}f(x)=A\] 左极限：\(\lim_{x\to x_0^-}f(x)=A\) 右极限：\("/>
 <meta name="application-name" content="黄博宏的个人笔记">
 <meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
 
@@ -31,8 +31,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "数学","wordcount":  767 ,
-        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T19:44:16+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "数学","wordcount":  4378 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-29T21:53:15+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
                 "@type": "Person",
@@ -117,8 +117,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 767 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" class="leancloud_visitors" data-flag-title="高等数学">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-29">2022-03-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4378 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/posts/notes/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" class="leancloud_visitors" data-flag-title="高等数学">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -130,21 +130,38 @@
   <ul>
     <li><a href="#函数">函数</a>
       <ul>
+        <li><a href="#极限">极限</a>
+          <ul>
+            <li><a href="#重要极限公式">重要极限公式</a></li>
+            <li><a href="#无穷小">无穷小</a></li>
+            <li><a href="#洛必达法则">洛必达法则</a></li>
+          </ul>
+        </li>
+        <li><a href="#单调性">单调性</a>
+          <ul>
+            <li><a href="#极值点">极值点</a></li>
+            <li><a href="#驻点">驻点</a></li>
+            <li><a href="#拐点">拐点</a></li>
+          </ul>
+        </li>
+        <li><a href="#凹凸性">凹凸性</a></li>
+        <li><a href="#连续">连续</a></li>
+        <li><a href="#间断点">间断点</a>
+          <ul>
+            <li><a href="#第一类间断点">第一类间断点</a></li>
+            <li><a href="#第二类间断点">第二类间断点</a></li>
+          </ul>
+        </li>
         <li><a href="#初等函数">初等函数</a>
           <ul>
             <li><a href="#基本初等函数">基本初等函数</a></li>
-          </ul>
-        </li>
-        <li><a href="#极限">极限</a>
-          <ul>
-            <li><a href="#重要极限">重要极限</a></li>
-            <li><a href="#无穷小量">无穷小量</a></li>
           </ul>
         </li>
       </ul>
     </li>
     <li><a href="#微分">微分</a>
       <ul>
+        <li><a href="#导数">导数</a></li>
         <li><a href="#微分形式不变性">微分形式不变性</a></li>
         <li><a href="#全微分">全微分</a>
           <ul>
@@ -155,9 +172,17 @@
     </li>
     <li><a href="#积分">积分</a>
       <ul>
+        <li><a href="#积分表">积分表</a></li>
         <li><a href="#第一换元法">第一换元法</a></li>
         <li><a href="#第二换元法">第二换元法</a></li>
         <li><a href="#分部积分法">分部积分法</a></li>
+        <li><a href="#特殊函数的积分">特殊函数的积分</a>
+          <ul>
+            <li><a href="#有理函数的积分">有理函数的积分</a></li>
+            <li><a href="#无理函数的积分">无理函数的积分</a></li>
+            <li><a href="#三角函数的积分">三角函数的积分</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#级数">级数</a>
@@ -193,6 +218,135 @@
         </div>
     </div>
 <h2 id="函数">函数</h2>
+<h3 id="极限">极限</h3>
+<ul>
+<li>定义 <br />
+\[x\to x_0 \Rightarrow \begin{cases}  x \neq x_0 \\  x \to x_0^+ \\  x \to x_0^- \\  \end{cases}\]
+\[\lim_{x\to x_0}f(x)=A\]
+<ul>
+<li>左极限：\(\lim_{x\to x_0^-}f(x)=A\)</li>
+<li>右极限：\(\lim_{x\to x_0^+}f(x)=A\)</li>
+</ul>
+</li>
+<li>条件 <br />
+极限存在充要条件：
+\[\lim_{x\to x_0^-}f(x)=\lim_{x\to x_0^+}f(x)\]</li>
+</ul>
+<h4 id="重要极限公式">重要极限公式</h4>
+<ul>
+<li>\(\lim_{\Delta\to 0}\frac{\sin\Delta}{\Delta}=1\)</li>
+<li>\(\lim_{\Delta\to\infty}\frac{\sin\Delta}{\Delta}=0\)</li>
+<li>\(\lim_{\Delta\to 0}\left( 1+\Delta \right)^{\frac{1}{\Delta}}=\lim_{\Delta\to\infty}\left( 1+\frac{1}{\Delta} \right)^{\Delta}=e\)</li>
+</ul>
+<h4 id="无穷小">无穷小</h4>
+<ul>
+<li>定义 <br />
+以 \(0\) 为极限的函数称为无穷小。</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>高阶无穷小</p>
+<p>\[\lim \frac{\beta}{\alpha}=0\]
+则\(\beta\)为\(\alpha\)的高阶无穷小。</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>同阶无穷小</p>
+<p>\[\lim \frac{\beta}{\alpha}=k \left( k\neq 0 \right)\]
+则\(\beta\)为\(\alpha\)的同阶无穷小。</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>等价无穷小</p>
+<p>\[\lim \frac{\beta}{\alpha}=1\]
+则\(\beta\)为\(\alpha\)的等价无穷小。</p>
+<ul>
+<li>代换公式
+<ul>
+<li>三角/反三角函数
+<ul>
+<li>\(\sin x\sim \arcsin x\sim\tan x\sim \arctan x\sim x\)</li>
+</ul>
+</li>
+<li>指数/对数
+<ul>
+<li>\(e^x-1\sim\ln(x+1)\sim x\)</li>
+</ul>
+</li>
+<li>其他
+<ul>
+<li>\(\left( 1+x \right)^a-1\sim ax\)</li>
+<li>\(\sqrt[n]{1+x}-1\sim\frac{x}{n}\)</li>
+<li>\(1-\cos^a x\sim\frac{ax^2}{2}\)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="洛必达法则">洛必达法则</h4>
+<p>若满足以下形式：</p>
+<ul>
+<li>\(\frac{0}{0}\) 型</li>
+<li>\(\frac{\infty}{\infty}\) 型</li>
+</ul>
+<p>则：
+\[\lim \frac{f(x)}{g(x)}=\lim \frac{f^{\prime}(x)}{g^{\prime}(x)}\]</p>
+<ul>
+<li>变式
+<ul>
+<li>\(\infty-\infty\)型：通分</li>
+<li>\(0\cdot\infty\)型：取倒数</li>
+<li>\(1^{\infty}\)型：取对数</li>
+<li>\(0^0\)：取对数</li>
+<li>\(\infty^0\)：取对数</li>
+</ul>
+</li>
+</ul>
+<h3 id="单调性">单调性</h3>
+<h4 id="极值点">极值点</h4>
+<p>可能存在于：</p>
+<ul>
+<li>一阶导数为\(0\)的点（驻点） <br />
+同时要一阶导数左右异号。</li>
+<li>一阶导数不存在的点</li>
+</ul>
+<h4 id="驻点">驻点</h4>
+<p>一阶导数为\(0\)的点</p>
+<h4 id="拐点">拐点</h4>
+<p>可能存在于：</p>
+<ul>
+<li>二阶导数为\(0\)的点 <br />
+同时要二阶导数左右异号。</li>
+<li>二阶导数不存在的点</li>
+</ul>
+<h3 id="凹凸性">凹凸性</h3>
+<h3 id="连续">连续</h3>
+<p>\[\lim_{x\to x_0}=f(x_0)\]</p>
+<h3 id="间断点">间断点</h3>
+<h4 id="第一类间断点">第一类间断点</h4>
+<!--list-separator-->
+<ul>
+<li>
+<p>可去间断点</p>
+<p>\[\lim_{x\to x_0^+}f(x)=\lim_{x\to x_o^+}\neq f(x_o)\]</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>跳跃间断点</p>
+<p>\[\lim_{x\to x_0^-}f(x)\neq \lim_{x\to x_0^+}f(x)\]</p>
+</li>
+</ul>
+<h4 id="第二类间断点">第二类间断点</h4>
+<p>\[\lim_{x\to x_0^-}f(x),\lim_{x\to x_0^-}f(x)\text{至少一个不存在}\]</p>
 <h3 id="初等函数">初等函数</h3>
 <ul>
 <li>定义 <br />
@@ -237,34 +391,43 @@
 <ul>
 <li>\(y=\arctan x\) <br />
 反函数为\(y=\tan x, x\in(\frac{\pi}{2},\frac{\pi}{2})\)</li>
-<li>\(y=\arccot x\) <br />
+<li>\(y=\operatorname{arccot} x\) <br />
 反函数为\(y=\cot x, x\in(\frac{\pi}{2},\frac{\pi}{2})\)</li>
 </ul>
 </li>
 </ul>
-<h3 id="极限">极限</h3>
-<h4 id="重要极限">重要极限</h4>
+<h2 id="微分">微分</h2>
+<h3 id="导数">导数</h3>
 <ul>
-<li>\(\lim\limits_{x\to0}\frac{\sin x}{x}=\lim\limits_{x\to\infty}x\sin\frac{1}{x}=1\)</li>
-<li>\(\lim\limits_{x\to0}(1+x)^\frac{1}{x}=\lim\limits_{x\to\infty}(1+\frac{1}{x})^x=e\)</li>
-</ul>
-<h4 id="无穷小量">无穷小量</h4>
+<li>定义 <br />
+\[f^{\prime}(x_0)=\lim_{\Delta x\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}\]
 <ul>
-<li>三角/反三角函数：\(\sin x\sim \arcsin x\sim\tan x\sim \arctan x\sim x\)</li>
-<li>指数/对数：\(e^x-1\sim\ln(x+1)\sim x\)</li>
-<li>其他
-<ul>
-<li>\(\sqrt{1+x}-1\sim\frac{x}{2}\)</li>
-<li>\(1-\cos x\sim\frac{x^2}{2}\)</li>
+<li>左导数：\(f^{\prime}_-(x_0)=\lim_{\Delta x\to 0^-}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}\)</li>
+<li>右导数：\(f^{\prime}_+(x_0)=\lim_{\Delta x\to 0^+}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}\)</li>
 </ul>
 </li>
+<li>条件 <br />
+函数在\(x_0\)可导的充要条件：
+\[f^{\prime}_-f(x_0)=f^{\prime}_+f(x_0)\]
+即左导数等于右导数。</li>
+<li>求法
+<ul>
+<li>参数方程 <br />
+\[\begin{cases}
+\frac{\mathrm{d}x}{\mathrm{d}t} \\
+\frac{\mathrm{d}y}{\mathrm{d}t} \\
+\end{cases} \Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\frac{\mathrm{d}y}{\mathrm{d}t}}{\frac{\mathrm{d}x}{\mathrm{d}t}}
+\Rightarrow \frac{\mathrm{d}\left( \frac{\mathrm{d}y}{\mathrm{d}x} \right)}{\mathrm{d}t}\Rightarrow \frac{\mathrm{d}^2y}{\mathrm{d}x^2}=\frac{\frac{\mathrm{d}\left( \frac{\mathrm{d}y}{\mathrm{d}x} \right)}{\mathrm{d}t}}{\frac{\mathrm{d}x}{\mathrm{d}t}}\]</li>
 </ul>
-<h2 id="微分">微分</h2>
+</li>
+<li>关系 <br />
+可导\(\begin{aligned}  \Rightarrow \\  \Leftarrow \end{aligned} \)可微\(\begin{aligned} \Rightarrow \\ \nLeftarrow \end{aligned} \)连续</li>
+</ul>
 <h3 id="微分形式不变性">微分形式不变性</h3>
 <ul>
 <li>法则：
 <ul>
-<li>\(\mathrm d(u\pm v)=\mathrm du\pm\mathrm \mathrm dv\)</li>
+<li>\(\mathrm d(u\pm v)=\mathrm du\pm \mathrm dv\)</li>
 <li>\(\mathrm d(uv)=v\mathrm du+u\mathrm dv\)</li>
 </ul>
 </li>
@@ -273,14 +436,268 @@
 <h4 id="全微分形式不变性">全微分形式不变性</h4>
 <p>\[z=f(u,v)\Rightarrow \mathrm dz=\frac{\partial f}{\partial u}\mathrm du+\frac{\partial f}{\partial v}\mathrm dv\]</p>
 <h2 id="积分">积分</h2>
+<h3 id="积分表">积分表</h3>
+<ol>
+<li>\(\int k\mathrm{d}x=k x+C\)</li>
+<li>
+<ol>
+<li>\(\int x^{a}\mathrm{d}x=\frac{x^{a+1}}{a+1}+C \quad(a \neq-1)\)</li>
+<li>\(\int \frac{d x}{x}=\ln |x|+C\)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>\(\int a^{x}\mathrm{d}x=\frac{a^{x}}{\ln a}+C\)</li>
+<li>\(\int e^{x}\mathrm{d}x=e^{x}+C\)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>\(\int \sin x\mathrm{d}x=-\cos x+C\)</li>
+<li>\(\int \cos x\mathrm{d}x=\sin x+C\)</li>
+<li>\(\int \tan x\mathrm{d}x=-\ln |\cos x|+C\)</li>
+<li>\(\int \cot x\mathrm{d}x=\ln |\sin x|+C\)</li>
+<li>\(\int \sec x\mathrm{d}x=\ln |\sec x+\tan x|+C\)</li>
+<li>\(\int \csc x\mathrm{d}x=\ln |\csc x-\cot x|+C\)</li>
+<li>\(\int \sec ^{2} x\mathrm{d}x=\tan x+C\)</li>
+<li>\(\int \csc ^{2} x\mathrm{d}x=-\cot x+C\)</li>
+<li>\(\int \sec x \tan x\mathrm{d}x=\sec x+C\)</li>
+<li>\(\int \csc x \cot x\mathrm{d}x=-\csc x+C\)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>\(\int \frac{1}{\sqrt{1-x^{2}}}\mathrm{d}x=\arcsin x+C\)</li>
+<li>\(\int \frac{d x}{\sqrt{a^{2}-x^{2}}}=\arcsin \frac{x}{a}+C(a&gt;0)\)</li>
+<li>\(\int \frac{1}{1+x^{2}}\mathrm{d}x=\arctan x+C\)</li>
+<li>\(\int \frac{d x}{a^{2}+x^{2}}=\frac{1}{a} \arctan \frac{x}{a}+C\)</li>
+<li>\(\int \frac{d x}{x^{2}-a^{2}}=\frac{1}{2 a} \ln \left|\frac{x-a}{x+a}\right|+C\)</li>
+<li>\(\int \frac{d x}{\sqrt{x^{2}+a^{2}}}=\ln \left|x+\sqrt{x^{2}+a^{2}}\right|+C\)</li>
+<li>\(\int \frac{d x}{\sqrt{x^{2}-a^{2}}}=\ln \left|x+\sqrt{x^{2}-a^{2}}\right|+C\)</li>
+<li>\(\int \frac{d x}{\sqrt{a^{2}-x^{2}}}=\frac{a^{2}}{2} \arcsin \frac{x}{a}+\frac{x}{2} \sqrt{x^{2}-a^{2}}+C\)</li>
+</ol>
+</li>
+</ol>
 <h3 id="第一换元法">第一换元法</h3>
+<p>即凑微分法。</p>
+<ul>
+<li>
+<p>定义 <br />
+也就是把\(\mathrm{d}\)左边的式子写成一个微分的形式：
+\[\int f(x)\mathrm dx=F(x)+C,\varphi(x)\text{可导}\\ \Rightarrow \int f(\varphi(x))\varphi&rsquo;(x)\mathrm dx=F(\varphi(x))+C\]</p>
+</li>
+<li>
+<p>步骤 <br />
+移动微分，使前面的式子正好为\(\varphi(x)\)的可积表达式：</p>
+<p>\[\int f(\varphi(x))\varphi^{\prime}(x)\mathrm dx \\ = \int f(\varphi(x))\frac{\mathrm d\varphi(x)}{\mathrm dx}\mathrm dx \\ = \int f(\varphi(x))\mathrm d\varphi(x)\]</p>
+<ul>
+<li>\(\int {f( ax + b){\rm{d}}x = }\frac{1}{a}\int {f(ax+b){\mathrm{d}}(ax + b)\;(a \neq 0)}\)</li>
+<li>\(\int {f(a{x^{m + 1}} + b){x^m}{\rm{d}}x} = \frac{1}{{a(m + 1)}}\int {f(a{x^{m + 1}} + b){\rm{d}}(a{x^{m + 1}} + b)}\)</li>
+<li>\(\int {f\left( \frac{1}{x}\right) \frac{{{\rm{d}}x}}{{{x^2}}}\;}  =  - \int {f\left( \frac{1}{x}\right) {\rm{d}}\left( \frac{{\rm{1}}}{x}\right) \;}\)</li>
+<li>\(\int {f(\ln x)\frac{1}{x}} {\rm{d}}x = \int {f(\ln x){\rm{d(}}\ln x)}\)</li>
+<li>\(\int {f({\mathrm{e}^x})} {\mathrm{e}^x}{\rm{d}}x = \int {f({\mathrm{e}^x}} ){\rm{d(}}{\mathrm{e}^x})\)</li>
+<li>\(\int {f(\sqrt x } )\frac{{{\rm{d}}x}}{{\sqrt x }} = 2\int {f(\sqrt x } ){\rm{d}}(\sqrt x )\)</li>
+<li>\(\int {f(\sin x)\cos x{\rm{d}}x = } \int {f(\sin x){\rm{d}}\sin x}\)</li>
+<li>\(\int {f(\cos x)\sin x{\rm{d}}x = }  - \int {f(\cos x){\rm{d}}\cos x}\)</li>
+<li>\(\int {f(\tan x){{\sec }^2}} x{\rm{d}}x = \int {f(\tan x){\rm{d}}\tan x}\)</li>
+<li>\(\int {f(\cot x){{\csc }^2}} x{\rm{d}}x =  - \int {f(\cot x){\rm{d}}\cot x}\)</li>
+<li>\(\int {f(\arcsin x)\frac{1}{{\sqrt {1 - {x^2}} }}} {\rm{d}}x = \int {f(\arcsin x){\rm{d}}\arcsin x}\)</li>
+<li>\(\int {f(\arctan x)\frac{1}{{1 + {x^2}}}} {\rm{d}}x = \int {f(\arctan x){\rm{d}}\arctan x}\)</li>
+<li>\(\int {\frac{{f&rsquo;(x)}}{{f(x)}}} {\rm{d}}x = \int {\frac{{{\rm{d}}f(x)}}{{f(x)}}}  = \ln \left| f(x)\right| + C\)</li>
+</ul>
+</li>
+<li>
+<p>技巧</p>
+<ul>
+<li>裂项</li>
+<li>放一次或常数到\(\mathrm{d}\)后面去，在积分号前面补常数 <br />
+看上去就一个函数，如：
+<ul>
+<li>\(\int(2x+3)^{10}\mathrm dx=\frac{1}{2}\int(2x+3)^{10}\mathrm d(2x+3)\)</li>
+</ul>
+</li>
+<li>只要分母关于\(\mathrm{d}\)后面式子的二次函数，就一定能求出积分 <br />
+分母配方，\(\mathrm{d}\)后补常数</li>
+<li>\(\mathrm{d}\)后的表达式与被积函数的相差常数不影响</li>
+<li>\(\sin x\)与\(\cos x\)可通过平方互换 <br />
+如：
+<ul>
+<li>\(\int \frac{\mathrm dx}{\cos x}\stackrel{\text{同乘}\cos x}=\int\frac{\mathrm d\sin x}{1-\sin^2x}=\frac{1}{2}\ln|\frac{\sin x+1}{\sin x-1}|\)</li>
+</ul>
+</li>
+<li>构造无一次项的完全平方
+<ul>
+<li>\(x^\alpha\pm\frac{1}{x^\alpha}\)</li>
+<li>\(a^x\pm a^{-x}\)</li>
+</ul>
+</li>
+<li>凑完全平方</li>
+<li>分子凑成分母的导数 <br />
+用于无法裂项的真分式：
+\[\int\frac{\varphi&rsquo;(x)}{\varphi(x)}\mathrm dx=\int\frac{\mathrm d\varphi(x)}{\varphi(x)}\]</li>
+</ul>
+</li>
+<li>
+<p>易错</p>
+<ul>
+<li>移动只能移动因子（和等价无穷小相同） <br />
+在构造d中的式子时遇到需要常数项可以随意增减，但非常数项就得往原式里加上一些式子，相应的后面就要减去它们。如果是非因子则须拆成两个式子写两个积分号再移动。</li>
+<li>\(\mathrm d\)里原有非\(x^1\)因子则不能直接放入 <br />
+必须考虑d中因子相乘求导后能不能得到原式，如：
+\[\int\frac{\sin x\cos x}{1+\sin^4x}\mathrm dx=\int\frac{\sin x}{1+\sin^4x}\mathrm d\sin x=\frac{1}{2}\int\frac{\mathrm d\sin^2x}{1+\sin^4x}\]
+其中\((\sin^2 x)&rsquo;=2\sin x\cos x=\sin 2x\)。</li>
+</ul>
+</li>
+</ul>
 <h3 id="第二换元法">第二换元法</h3>
+<p>\[\int f(\psi(t))\psi&rsquo;(t)\mathrm dt=F(t)+C\text{且}\psi\text{单调可导}, \psi&rsquo;\neq0\Rightarrow \int f(x)\mathrm dx=F(\psi^{-1}(x))+C\]</p>
+<ul>
+<li>步骤
+<ol>
+<li>变量代换
+<ul>
+<li>\(x=\psi(t)\) <br />
+看上去是把x复杂化了，但是可以消除求积分的障碍。有以下几种情况：
+<ul>
+<li>根号
+<ul>
+<li>三角变换 <br />
+这种情况往往根号里有二次。思路是，要把根号去掉，说明要某个函数的平方加上一个常数（可以不是\(1\)，换元式子里可以包含这个常数）能得到另一个函数的平方，这个函数就是\(\tan x\)，如：
+<ul>
+<li>\(\int\frac{\mathrm dx}{\sqrt{x^2+a^2}}\stackrel{x=a\tan t}=\int\frac{a\sec^2t\mathrm dt}{a\sqrt{\sec^2t}}=\int\frac{\mathrm dt}{\cos t}=\frac{1}{2}\ln|\frac{\sin t+1}{\sin t-1}|+C=\ln|\sqrt{\frac{x^2}{a}+1}+\frac{x}{a}|+C,(a&gt;0)\) <br />
+最后\(a\)可以提出来利用对数函数的性质把因式变成加数最后归入常数</li>
+<li>\(\sqrt{a^2-x^2}\mathrm dt=\frac{a^2}{2}(\arcsin\frac{x}{a}+\frac{x}{a^2}\sqrt{a^2-x^2})+C,(a&gt;0)\)</li>
+</ul>
+</li>
+<li>倒变换 <br />
+取\(x\)的倒数变换，这种情况往往根号旁边还有\(x\)，如：
+<ul>
+<li>\(\int\frac{\mathrm dx}{x\sqrt{4x^2+2x-1}}\stackrel{t=\frac{1}{x}}=\int\frac{(-t)^2\mathrm dt}{t^2\sqrt{4+2t+t^2}}\stackrel{\text{凑完全平方}}=\dots\stackrel{\text{积分表}}=\dots, (x&gt;0)\)
+利用\(d \left( \frac{1}{t} \right)\)的副产物消去不必要的因子。</li>
+</ul>
+</li>
+<li>整体代换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>\(\int f(x)\mathrm dx=\int f(\psi(t))\psi&rsquo;(t)\mathrm dt\) <br />
+换元后的函数需要可积。</li>
+</ul>
+</li>
+<li>求出原函数：\(F(t)+C\)</li>
+<li>回代原函数：\(t=\psi^{-1}(x)\)</li>
+</ol>
+</li>
+</ul>
 <h3 id="分部积分法">分部积分法</h3>
 <p>\[\begin{aligned}
-&amp;(uv)'=u&rsquo;v+uv'\Rightarrow uv'=(uv)'-u&rsquo;v \\
-\Rightarrow &amp;\int uv'\mathrm dx=uv-\int u&rsquo;v\mathrm dx \\
+&amp;(uv)&rsquo;=u&rsquo;v+uv&rsquo;\Rightarrow uv&rsquo;=(uv)&rsquo;-u&rsquo;v \\
+\Rightarrow &amp;\int uv&rsquo;\mathrm dx=uv-\int u&rsquo;v\mathrm dx \\
 \Rightarrow &amp;\int u\mathrm dv=uv-\int v\mathrm du
 \end{aligned}\]</p>
+<ul>
+<li>例
+<ul>
+<li>简单情况 <br />
+保证左边积分号后面为纯\(x\)，微分号后面为可积的简单式子，这样右边就能把\(x\)放在微分号后面：
+\[\int x\sin x\mathrm dx=-\int x\mathrm d\cos x\=-(x\cos x-\int\cos x\mathrm dx)=\sin x-x\cos x+C\]</li>
+<li>再来一次 <br />
+通常用在指数函数扔进去的情况中，可以降低幂函数的次数：
+\[\int x^2e^x\mathrm dx=x^2e^x-\int2xe^x\mathrm dx\=x^2e^x-(xe^x-\int e^x\mathrm dx)\]</li>
+<li>\(\ln x\) <br />
+\[\int x\ln x\mathrm dx=\frac{1}{2}x^2\ln x-\frac{1}{2}\int\frac{x^2}{x}\mathrm dx=\frac{1}{2}x^2\ln x-\frac{x^2}{4}+C\]</li>
+<li>“1”的代换：\(x_0=1\) <br />
+\[\int \arctan x\mathrm dx^1=x\arctan x-\int\frac{x}{x^2+1}\mathrm dx=\dots\]</li>
+<li>解方程（循环相消） <br />
+\[I=\int e^{2x}\sin x\mathrm dx\stackrel{2\text{次分部积分}}=\frac{1}{2}e^{2x}\sin x-\frac{1}{4}e^{2x}-\frac{1}{4}\int e^{2x}\sin x\mathrm dx\Rightarrow I=\dots\]</li>
+<li>放部分 <br />
+部分是积分表里有的：
+\[I=\int \sec^3x\mathrm dx\\stackrel{(tan x)&rsquo;=\sec^2x}=\int\sec x\mathrm d\tan x=\sec x\tan x-\int\tan^2x\sec x\mathrm dx\\stackrel{\tan^x=\sec^2x-1}=\sec x\tan x-I+\int\sec x\mathrm dx\\stackrel{\int\sec x\mathrm dx=\int\frac{\mathrm d\sin x}{1-\sin^2x}=\ln|\sec x+\tan x|}\Longrightarrow I=\dots\]</li>
+</ul>
+</li>
+</ul>
+<h3 id="特殊函数的积分">特殊函数的积分</h3>
+<h4 id="有理函数的积分">有理函数的积分</h4>
+<ul>
+<li>\(\int\frac{P(x)}{Q(x)}\mathrm dx\) <br />
+其中\(P(x)\)、\(Q(x)\)均为多项式。
+<ul>
+<li>步骤
+<ul>
+<li>假分式\(\rightarrow\)多项式\(\rightarrow\)真分式</li>
+<li>分母\(\rightarrow\)一次式/二次三项式</li>
+<li>分式\(\rightarrow\)最简分式之和\(\rightarrow\)逐个积分</li>
+</ul>
+</li>
+<li>情况
+<ul>
+<li>\(\frac{A}{(x-a)^k}\)</li>
+<li>\(\frac{Cx+D}{(x^2+px+q)^k}\)</li>
+<li>\(\int\frac{Cx+D}{(x^2+px+q)^k}\mathrm dx=\frac{C}{2}\int\frac{\mathrm d(x^2+px+q)}{(x^2+px+q)^k}+\int\frac{D-\frac{Cp}{2}}{(x^2+px+q)^k}\mathrm dx\)</li>
+</ul>
+</li>
+<li>例
+<ul>
+<li>\(\frac{x^5-x^3-2x^2+7x}{x^4-x^2-2x+2}\stackrel{\text{化为真分式}}=x+\frac{5x}{x^4-x^2-2x+2}\stackrel{\text{因式分解}}=x+\frac{5x}{(x-1)^2(x^2+2x+2)}\stackrel{\text{拆（猜）项}}=x+\frac{A}{x-1}+\frac{B}{(x-1)^2}+\frac{Cx+D}{x^2+2x+2}\stackrel{\text{待定系数}}=\dots\) <br />
+左右均为等式，\(x\)取任何值都能使等式成立（前提是形式能猜出来）。</li>
+<li>\(\int\frac{x^{11}}{x^8+3x^4+2}\mathrm dx\stackrel{\text{凑}x^4}=\frac{x^8\mathrm dx^4}{4(x^8+3x^4+2)}\stackrel{x^4=u}=\dots\)</li>
+<li>\(I_k=\int\frac{\mathrm dx}{(x^2+a)^k}\) <br />
+递推式：
+\[I_1-aI_2\stackrel{\text{凑纯}x^2}=\int\frac{x^2+a-a}{(x^2+a)^2}\mathrm dx\stackrel{\text{凑}x^2+a}=\frac{1}{2}\int\frac{x\mathrm d(x^2+a)}{(x^2+a)^2}\stackrel{\text{把分母放到}\mathrm d\text{里}}=-\frac{1}{2}\int x\mathrm d{\frac{1}{x^2+a}}\stackrel{\text{分部积分}}=\frac{1}{2}\frac{1}{x^2+a}\mathrm dx-\frac{x}{2(x^2+a)}=\frac{I_1}{2}-\frac{x}{2(x^2+a)}\]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="无理函数的积分">无理函数的积分</h4>
+<ul>
+<li>方法
+<ul>
+<li>三角变换（第二换元法）</li>
+<li>根式整体代换</li>
+</ul>
+</li>
+<li>例
+<ul>
+<li>\(\int\frac{\mathrm dx}{\sqrt[3]{(x-1)(x+1)^2}}\stackrel{\text{简化分式}}=\int\frac{1}{x+1}\sqrt[3]{\frac{x+1}{x-1}}\mathrm dx\xrightarrow{t=\sqrt[3]{\frac{x+1}{x-1}}\Rightarrow x=\frac{t^3+1}{t^3-1}}-\int\frac{3}{t^3-1}\mathrm dt=-3\int\frac{\mathrm dt}{(t-1)(t^2+t+1)}\stackrel{\text{裂项}}=\dots\)</li>
+</ul>
+</li>
+</ul>
+<h4 id="三角函数的积分">三角函数的积分</h4>
+<ul>
+<li>情况
+<ul>
+<li>函数各项含\(\sin x\)、\(\cos x\)的奇数幂</li>
+<li>函数各项含\(\sin x\)、\(\cos x\)的幂的和为偶数</li>
+</ul>
+</li>
+<li>原则 <br />
+尽量用凑微分法（第一换元法）</li>
+<li>例
+<ul>
+<li>\(\int\sin^2x\cos^3x\mathrm dx\stackrel{\text{放一个}\cos x}=\int\sin^2x(1-\sin^2x)\mathrm d\sin x=\dots\) <br />
+谁是奇数次幂，就把谁放一部分到后面去。</li>
+<li>\(\int\frac{\mathrm dx}{\sin^2x\cos x}\stackrel{\text{同乘}\cos x}=\int\frac{\mathrm d\sin x}{\sin^2x(1-\sin^2x)}\stackrel{\text{拆项}}=\int(\frac{1}{\sin^2x}-\frac{1}{1-\sin^2x})\mathrm dx=\dots\)</li>
+<li>\(\int\frac{\mathrm dx}{\sin x\cos^3x}\stackrel{\text{放}\sec^2x}=\int\frac{\mathrm d\tan x}{\sin x\cos x}\stackrel{\text{同除}\cos^2x}=\int\frac{(\tan^2x+1)\mathrm d\tan x}{\tan x}=\dots\)</li>
+</ul>
+</li>
+<li>万能代换公式 <br />
+将三角函数转化为有理函数：
+\[t=\tan\frac{x}{2}\Rightarrow \mathrm dx=\frac{2\mathrm dt}{t^2+1}\]
+<ul>
+<li>万能公式
+<ul>
+<li>\(\sin\alpha=2\sin\frac{\alpha}{2}\cos\frac{\alpha}{2}=\frac{2\sin\frac{\alpha}{2}\cos\frac{\alpha}{2}}{\sin^2\frac{\alpha}{2}+\cos^2\frac{\alpha}{2}}=\frac{2\tan\frac{\alpha}{2}}{1+\tan^2\frac{\alpha}{2}}\)</li>
+<li>\(\cos\alpha=\cos^2\frac{\alpha}{2}-\sin^2\frac{\alpha}{2}=\frac{\cos^2\frac{\alpha}{2}-\sin^2\frac{\alpha}{2}}{\sin^2\frac{\alpha}{2}+\cos^2\frac{\alpha}{2}}=\frac{1-\tan^2\frac{\alpha}{2}}{1+\tan^2\frac{\alpha}{2}}\)</li>
+<li>\(\tan\alpha=\frac{\sin\alpha}{\cos\alpha}=\frac{2\tan\frac{\alpha}{2}}{1-\tan^2\frac{\alpha}{2}}\)</li>
+</ul>
+</li>
+<li>例 <br />
+\(\int\frac{\mathrm dx}{4-3\sin x}\stackrel{\text{万能公式}}=\int\frac{\mathrm dt}{2+2t^2-3t}\stackrel{\text{配方}}=\dots\stackrel{\frac{1}{x^2+a^2}\text{的积分}}=\dots\)</li>
+</ul>
+</li>
+</ul>
 <h2 id="级数">级数</h2>
 <h3 id="和函数">和函数</h3>
 <table>
@@ -335,9 +752,9 @@
 </ul>
 <p>范数是一种强化了的距离概念（只要满足非负、自反、<a href="#%e4%b8%89%e8%a7%92%e4%b8%8d%e7%ad%89%e5%bc%8f" rel="">三角不等式</a>就可以称之为距离），它在定义上比距离多了一条数乘的运算法则。便于理解，可以把范数当作距离来理解。</p>
 <h4 id="l-p范数">L-P范数</h4>
-<p>不是一个范数，而是不同\(P\)取值的一组范数：
-\[L_{p}=\|\mathbf{x}\|_{p}=\sqrt[p]{\sum_{i=1}^{n} x_{i}^{p}}, \mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)\]
-随着\(P\)的不同：</p>
+<p>不是一个范数，而是不同\(P\)取值的一组范数：</p>
+<p>\[L_{p}=\|\mathbf{x}\|_{p}=\sqrt[p]{\sum_{i=1}^{n} x_{i}^{p}}, \mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)\]</p>
+<p>随着\(P\)的不同：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-30_15-56-11_v2-715ee105f46adf614ab33700f06cca23_b.jpg"/>
 </figure>
 
@@ -379,7 +796,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-03</span>
+                <span>更新于 2022-03-29</span>
             </div>
             <div class="post-info-license"></div>
         </div>

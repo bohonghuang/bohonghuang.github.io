@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">8051 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="8051" />
+<meta property="og:description" content="硬件资源 CPU 微控制器的核心，包括运算器和控制器两大部分： 运算器 运算器的任务是数据的处理和加工。由以下几个部分通过内部总线连接而成： 算术逻辑单元" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/notes/8051/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-29T21:54:37+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="8051"/>
+<meta name="twitter:description" content="硬件资源 CPU 微控制器的核心，包括运算器和控制器两大部分： 运算器 运算器的任务是数据的处理和加工。由以下几个部分通过内部总线连接而成： 算术逻辑单元"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/notes/8051/" /><link rel="prev" href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "8051",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/8051\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "单片机, 汇编语言","wordcount":  7766 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/8051\/","datePublished": "2022-03-29T00:00:00+00:00","dateModified": "2022-03-29T21:54:37+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">8051</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-29">2022-03-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-29">2022-03-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7766 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 16 分钟&nbsp;<span id="/posts/notes/8051/" class="leancloud_visitors" data-flag-title="8051">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#硬件资源">硬件资源</a>
+      <ul>
+        <li><a href="#cpu--微机原理与接口技术-dot-md"><a href="HAHAHUGOSHORTCODE-s0-HBHB">CPU</a></a></li>
+        <li><a href="#存储器--微机原理与接口技术-dot-md"><a href="HAHAHUGOSHORTCODE-s4-HBHB">存储器</a></a></li>
+        <li><a href="#引脚">引脚</a></li>
+      </ul>
+    </li>
+    <li><a href="#时钟">时钟</a>
+      <ul>
+        <li><a href="#时钟周期">时钟周期</a></li>
+        <li><a href="#状态周期">状态周期</a></li>
+        <li><a href="#机器周期">机器周期</a></li>
+        <li><a href="#指令周期">指令周期</a></li>
+      </ul>
+    </li>
+    <li><a href="#指令系统">指令系统</a>
+      <ul>
+        <li><a href="#寻址方式">寻址方式</a>
+          <ul>
+            <li><a href="#立即寻址">立即寻址</a></li>
+            <li><a href="#直接寻址">直接寻址</a></li>
+            <li><a href="#寄存器寻址">寄存器寻址</a></li>
+            <li><a href="#寄存器间接寻址">寄存器间接寻址</a></li>
+            <li><a href="#变址寻址">变址寻址</a></li>
+            <li><a href="#相对寻址">相对寻址</a></li>
+            <li><a href="#位寻址">位寻址</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据写入指令">数据写入指令</a>
+          <ul>
+            <li><a href="#mov"><code>MOV</code></a></li>
+            <li><a href="#movx"><code>MOVX</code></a></li>
+            <li><a href="#movc"><code>MOVC</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#栈操作指令">栈操作指令</a>
+          <ul>
+            <li><a href="#push"><code>PUSH</code></a></li>
+            <li><a href="#pop"><code>POP</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#数据交换指令">数据交换指令</a>
+          <ul>
+            <li><a href="#xch"><code>XCH</code></a></li>
+            <li><a href="#xchd"><code>XCHD</code></a></li>
+            <li><a href="#swap"><code>SWAP</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#算术运算指令">算术运算指令</a>
+          <ul>
+            <li><a href="#add"><code>ADD</code></a></li>
+            <li><a href="#addc"><code>ADDC</code></a></li>
+            <li><a href="#subb"><code>SUBB</code></a></li>
+            <li><a href="#inc"><code>INC</code></a></li>
+            <li><a href="#dec"><code>DEC</code></a></li>
+            <li><a href="#mul"><code>MUL</code></a></li>
+            <li><a href="#da"><code>DA</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#逻辑运算指令">逻辑运算指令</a>
+          <ul>
+            <li><a href="#anl"><code>ANL</code></a></li>
+            <li><a href="#orl"><code>ORL</code></a></li>
+            <li><a href="#xrl"><code>XRL</code></a></li>
+            <li><a href="#clr"><code>CLR</code></a></li>
+            <li><a href="#cpl"><code>CPL</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#移位运算指令">移位运算指令</a>
+          <ul>
+            <li><a href="#rl"><code>RL</code></a></li>
+            <li><a href="#rr"><code>RR</code></a></li>
+            <li><a href="#rlc"><code>RLC</code></a></li>
+            <li><a href="#rrc"><code>RRC</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#无条件跳转指令">无条件跳转指令</a>
+          <ul>
+            <li><a href="#ljmp"><code>LJMP</code></a></li>
+            <li><a href="#ajmp"><code>AJMP</code></a></li>
+            <li><a href="#sjmp"><code>SJMP</code></a></li>
+            <li><a href="#jmp"><code>JMP</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#条件跳转指令">条件跳转指令</a>
+          <ul>
+            <li><a href="#jz"><code>JZ</code></a></li>
+            <li><a href="#jnz"><code>JNZ</code></a></li>
+            <li><a href="#cjne"><code>CJNE</code></a></li>
+            <li><a href="#djnz"><code>DJNZ</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#子程序指令">子程序指令</a>
+          <ul>
+            <li><a href="#lcall"><code>LCALL</code></a></li>
+            <li><a href="#acall"><code>ACALL</code></a></li>
+            <li><a href="#ret"><code>RET</code></a></li>
+            <li><a href="#reti"><code>RETI</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#空指令">空指令</a>
+          <ul>
+            <li><a href="#nop"><code>NOP</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#低功耗">低功耗</a>
+      <ul>
+        <li><a href="#空闲模式">空闲模式</a></li>
+        <li><a href="#掉电模式">掉电模式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="硬件资源">硬件资源</h2>
+<h3 id="cpu--微机原理与接口技术-dot-md"><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#central-process-unit" rel="">CPU</a></h3>
+<p>微控制器的核心，包括运算器和控制器两大部分：</p>
+<ul>
+<li>运算器 <br />
+运算器的任务是数据的处理和加工。由以下几个部分通过内部总线连接而成：
+<ul>
+<li>算术逻辑单元 ALU (Arithmetic Logic Unit) <br />
+完成算术运算及与、或 、非、异或等逻辑操作，并通过对运算结果的判断，影响程序状态寄存器 <code>PSW</code> 相关位的内容。</li>
+<li>累加器 <code>ACC</code></li>
+<li>暂存寄存器</li>
+<li>程序状态寄存器 <code>PSW</code></li>
+<li>位处理器（布尔处理器） <br />
+能直接处理位，在位逻辑和位功能上有独到优势。位处理器中功能最强、使用最频繁的位是 <code>C</code> ，也称其为位累加器。</li>
+<li><a href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/#bcd-码" rel="">BCD 码</a>运算调整电路</li>
+</ul>
+</li>
+<li>控制器 <br />
+控制器是 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#central-process-unit" rel="">CPU</a> 的大脑中枢，处理指令的读出、译码和执行，对指令的执行过程进行定时控制，并根据指令含义，完成指令规定的操作。
+<ul>
+<li>指令部件
+<ul>
+<li><a href="#org-target------" rel="">程序计数器</a> <code>PC</code></li>
+<li>指令寄存器 <code>IR</code> <br />
+存放当前正在执行的指令代码，等待译码。</li>
+<li>指令译码器 <code>ID</code> <br />
+对当前指令操作码进行解析，并通过控制电路产生执行该指令需要的控制信号，完成指令规定的操作。</li>
+</ul>
+</li>
+<li>时序部件 <br />
+时序部件由时钟电路和脉冲分频器组成，用于产生操作控制部件所需的时序信号，包括：
+<ul>
+<li><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#central-process-unit" rel="">CPU</a> 工作的时钟基准（称为振荡周期或时钟周期）</li>
+<li>状态周期</li>
+<li>机器周期</li>
+</ul>
+</li>
+<li>操作控制部件 <br />
+操作控制部件为指令译码器的输出信号配上节拍电位和节拍脉冲，形成执行指令需要的操作控制序列信号，以完成规定的操作。</li>
+</ul>
+</li>
+</ul>
+<p>其他部分：</p>
+<ul>
+<li>布尔处理器 <br />
+具有较强的位寻址、位处理能力。</li>
+<li>时钟电路 <br />
+产生微控制器工作所需要的时钟脉冲（需要外接晶体振荡器和微调电容）。</li>
+<li>中断系统 <br />
+5 个中断源 、2 个中断优先权。</li>
+</ul>
+<h3 id="存储器--微机原理与接口技术-dot-md"><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#memory" rel="">存储器</a></h3>
+<p><a href="https://bohonghuang.github.io/posts/notes/8051/" rel="">8051</a> 微控制器的存储器采用哈佛结构，<a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 和 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 是分开寻址的：</p>
+<table>
+<thead>
+<tr>
+<th><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#memory" rel="">存储器</a></th>
+<th>大小</th>
+<th>地址范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a></td>
+<td>256B</td>
+<td><code>00H</code> 至 <code>FFH</code></td>
+</tr>
+<tr>
+<td>特殊寄存器 SFR</td>
+<td>21 个</td>
+<td><code>80H</code> 至 <code>FFH</code> （专用内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 区）</td>
+</tr>
+<tr>
+<td>外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a></td>
+<td>64KB</td>
+<td><code>0000H</code> 至 <code>FFFFH</code></td>
+</tr>
+<tr>
+<td>内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a></td>
+<td>8KB （增强型 8051 为 64KB）</td>
+<td><code>0000H</code> 至 <code>1FFFH</code></td>
+</tr>
+<tr>
+<td>外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a></td>
+<td>64KB</td>
+<td><code>0000H</code> 至 <code>FFFFH</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>程序存储器 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> <br /></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>入口地址</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>复位</td>
+<td><code>0000H</code></td>
+<td>系统复位后 <code>PC</code> 所在位置</td>
+</tr>
+<tr>
+<td>外部中断0</td>
+<td><code>0003H</code></td>
+<td>外部中断0 响应时程序跳转位置</td>
+</tr>
+<tr>
+<td>定时器0 溢出</td>
+<td><code>000BH</code></td>
+<td>定时器0 中断响应时程序跳转位置</td>
+</tr>
+<tr>
+<td>外部中断1</td>
+<td><code>0013H</code></td>
+<td>外部中断1 响应时程序跳转位置</td>
+</tr>
+<tr>
+<td>定时器1 溢出</td>
+<td><code>001BH</code></td>
+<td>定时器1 中断响应时程序跳转位置</td>
+</tr>
+<tr>
+<td>串行口中断</td>
+<td><code>0023H</code></td>
+<td>串行口中断响应时程序跳转位置</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>数据存储器 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a></p>
+<ul>
+<li>内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a>
+<ul>
+<li>
+<p>寻址方式</p>
+<ul>
+<li><code>00H</code>-<code>7FH</code> 的内存区域
+<ul>
+<li>直接寻址</li>
+<li>间接寻址</li>
+</ul>
+</li>
+<li><code>80H</code>-<code>FFH</code> 的特殊功能寄存器
+<ul>
+<li>直接寻址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>区域 <br /></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>入口地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工作寄存器区</td>
+<td><code>00H</code></td>
+</tr>
+<tr>
+<td>位寻址区</td>
+<td><code>20F</code></td>
+</tr>
+<tr>
+<td>用户 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 区</td>
+<td><code>30H</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>工作寄存器区 <span class="org-target" id="org-target-------"></span> <br />
+工作寄存器区位于内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 的 <code>00H</code>-<code>1FH</code> 单元，分成 4 组，每组 8 个字节（共 32 字节），均记作 <code>R0</code>-<code>R7</code> 。工作寄存器区是寄存器寻址区域，对该区域操作的指令数量最多，均为单周期指令，执行的速度最快。 <span class="org-target" id="org-target-------"></span></p>
+<table>
+<thead>
+<tr>
+<th>工作寄存器组</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工作寄存器 0 组</td>
+<td><code>00H</code>-<code>07H</code></td>
+</tr>
+<tr>
+<td>工作寄存器 1 组</td>
+<td><code>08H</code>-<code>0FH</code></td>
+</tr>
+<tr>
+<td>工作寄存器 2 组</td>
+<td><code>10H</code>-<code>17H</code></td>
+</tr>
+<tr>
+<td>工作寄存器 3 组</td>
+<td><code>18H</code>-<code>1FH</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>选择 <br />
+任一时刻，只能使用一个寄存器组，<a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#central-process-unit" rel="">CPU</a> 复位后，默认选择第 0 组。之后由 <code>PSW</code> 寄存器中的 <code>RS1</code> 、 <code>RS0</code> 来选择四组工作寄存器区的哪一组作为 <code>R0</code>-<code>R7</code> 。</li>
+</ul>
+</li>
+<li>
+<p>位寻址区 <span class="org-target" id="org-target-----"></span> <br />
+位寻址区中的寄存器可 <strong>按位</strong> 进行寻址。由于在汇编中，操作数是 16 进制的，因此无法直接对某个数进行按位运算（无法一个寄存器的某一个位进行寻址）。而位寻址区中的寄存器具有位地址，1 个寄存器地址对应 8 个位地址，寄存器地址 <code>20H</code>-<code>2FH</code> 对应位地址 <code>00H</code>-<code>7FH</code> 。当操作码是位指令时，会使用的是位地址（而不是寄存器地址），操作位地址对应寄存器中某一位的值。要对其他内存区域中储存的数进行位运算时，应先将这个数移动至位寻址区，进行位运算后再移动回来：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">BIT</span><span class="p">,</span> <span class="no">C</span>
+</span></span><span class="line"><span class="cl"><span class="nf">SETB</span> <span class="no">BIT</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">C</span><span class="p">,</span> <span class="no">BIT</span>
+</span></span><span class="line"><span class="cl"><span class="nf">CLR</span> <span class="no">BIT</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>BIT</code> 是位地址， <code>C</code> 是位累加器。</p>
+<ul>
+<li>位指令
+<ul>
+<li>置位</li>
+<li>复位</li>
+<li>位逻辑操作</li>
+<li>位条件转移</li>
+</ul>
+</li>
+<li>位累加器 <code>C</code> <br />
+<code>PSW</code> 寄存器的最高位。</li>
+<li>位寻址空间
+<ul>
+<li>通用内部 RAM 中的 128 bit</li>
+<li>特殊功能寄存器中的 83 bit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>用户 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 区 <br />
+处于内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 的 <code>30H</code>-<code>7FH</code> ，以及没有使用的<a href="#org-target-------" rel="">工作寄存器区</a>和<a href="#org-target-----" rel="">位寻址区</a>，通常作为：</p>
+<ul>
+<li>数据缓冲区 <br />
+存放各种变量。</li>
+<li>堆栈区 <br />
+暂存数据和地址，通常在子程序和中断服务程序中，用于保护断点、现场。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> <br />
+外部数据存储器的寻址空间为 <code>0000H</code>-<code>FFFFH</code> (64K)，只能使用 <code>MOVX</code> 等指令，通过累加器 <code>ACC</code> 与片外 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 进行数据传输。</li>
+</ul>
+</li>
+<li>
+<p>特殊功能寄存器 <code>SFR</code> <span class="org-target" id="org-target--------"></span> <br />
+也称专用寄存器， <code>SFR</code> 主要用于内部硬件功能模块（定时器/计数器、串行口、中断系统等）的管理和控制，用来存放功能模块的控制命令、状态或数据。离散分布于 <code>80H</code>-<code>FFH</code> 的专用寄存器区，未定义的访问无效，部分可以位寻址。除程序计数器 <code>PC</code> 指针和 <code>R0</code>-<code>R7</code> 工作寄存器外，其余所有定义的寄存器均属于特殊功能寄存器。</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>符号</th>
+<th>名称</th>
+<th>作用</th>
+<th>地址</th>
+<th>位地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>P0</code></td>
+<td>Port 0</td>
+<td>并行口 <code>P0</code></td>
+<td><code>80H</code></td>
+<td><code>80H</code>-<code>87H</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>SP</code></td>
+<td>Stack Pointer</td>
+<td>堆栈指针</td>
+<td><code>81H</code></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>DPL</code></td>
+<td>Data Pointer Low</td>
+<td>数据指针 <code>DPTR</code> 低8位</td>
+<td><code>82H</code></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>DPH</code></td>
+<td>Data Pointer High</td>
+<td>数据指针 <code>DPTR</code> 高8位</td>
+<td><code>83H</code></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>PCON</code></td>
+<td>Power Control</td>
+<td>电源控制寄存器</td>
+<td><code>87H</code></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>TCON</code></td>
+<td>Timer Control</td>
+<td>定时器控制寄存器</td>
+<td><code>88H</code></td>
+<td><code>88H</code>-<code>8FH</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>TMOD</code></td>
+<td>Timer Mode</td>
+<td>定时方式选择寄存器</td>
+<td><code>89H</code></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>TL0</code></td>
+<td>Timer Low 0</td>
+<td>定时器0 低8位</td>
+<td><code>8AH</code></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>TL1</code></td>
+<td>Timer Low 1</td>
+<td>定时器1 低8位</td>
+<td><code>8BH</code></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>TH0</code></td>
+<td>Timer High 0</td>
+<td>定时器0 高8位</td>
+<td><code>8CH</code></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>TH1</code></td>
+<td>Timer High 1</td>
+<td>定时器1 高8位</td>
+<td><code>8DH</code></td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>P1</code></td>
+<td>Port 1</td>
+<td>并行口 <code>P1</code></td>
+<td><code>90H</code></td>
+<td><code>90H</code>-<code>97H</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>SCON</code></td>
+<td>Serial Control</td>
+<td>串行口控制寄存器</td>
+<td><code>98H</code></td>
+<td><code>98H</code>-<code>9FH</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>SBUF</code></td>
+<td>Serial Data Buffer</td>
+<td>串行口数据寄存器</td>
+<td><code>99H</code></td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>P2</code></td>
+<td>Port 2</td>
+<td>并行口 <code>P2</code></td>
+<td><code>A0H</code></td>
+<td><code>A0H</code>-<code>A7H</code></td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>IE</code></td>
+<td>Interrupt Enable</td>
+<td>中断使能寄存器</td>
+<td><code>A8H</code></td>
+<td><code>A8H</code>-<code>AFH</code></td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>P3</code></td>
+<td>Port 3</td>
+<td>并行口 <code>P3</code></td>
+<td><code>B0H</code></td>
+<td><code>B0H</code>-<code>B7H</code></td>
+</tr>
+<tr>
+<td>18</td>
+<td><code>IP</code></td>
+<td>Interrupt Priority</td>
+<td>中断优先级寄存器</td>
+<td><code>B8H</code></td>
+<td><code>B8H</code>-<code>BFH</code></td>
+</tr>
+<tr>
+<td>19</td>
+<td><code>PSW</code></td>
+<td>Program Status Workd</td>
+<td>程序状态字</td>
+<td><code>D0H</code></td>
+<td><code>D0H</code>-<code>D7H</code></td>
+</tr>
+<tr>
+<td>20</td>
+<td><code>A</code></td>
+<td>Accumulator</td>
+<td>累加器</td>
+<td><code>E0H</code></td>
+<td><code>E0H</code>-<code>E7H</code></td>
+</tr>
+<tr>
+<td>21</td>
+<td><code>B</code></td>
+<td></td>
+<td>乘除指令中使用</td>
+<td><code>F0H</code></td>
+<td><code>F0H</code>-<code>F7H</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>位寻址 <br />
+字节地址的低位为 <code>0H</code> 或 <code>8H</code> 的特殊功能寄存器，是可以进行位寻址的。与通用 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 中的<a href="#org-target-----" rel="">位寻址区</a>构成<a href="https://bohonghuang.github.io/posts/notes/8051/" rel="">8051</a>的位寻址空间。</p>
+</li>
+<li>
+<p>程序计数器 <code>PC</code> <span class="org-target" id="org-target------"></span> <br />
+<code>PC</code> 是一个 16 位的专用寄存器，作为程序指针则其寻址范围为 0-65535 字节，用于存放下一条要执行的指令地址，复位后为 <code>0000H</code> 。由于其不属于<a href="#org-target--------" rel="">特殊功能寄存器</a>，因此不占用 <code>SFR</code> 地址空间，是不可寻址的，在程序中不能直接访问，但可以通过 <code>LJMP</code> 、 <code>SJMP</code> 等转移指令来间接修改 <code>PC</code> 的值。</p>
+</li>
+<li>
+<p>累加器 <code>A</code> 和 <code>ACC</code> <span class="org-target" id="org-target----"></span> <br />
+可作一般 8 位寄存器，也可作外部和内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 数据交换的中转站。</p>
+</li>
+<li>
+<p>寄存器 <code>B</code> <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">AB</span>                          <span class="c">; A*B=BA
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">DIV</span> <span class="no">AB</span>                          <span class="c">; A/B=A...B
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>电源控制寄存器 <span class="org-target" id="org-target--------"></span> <br /></p>
+<table>
+<thead>
+<tr>
+<th>位</th>
+<th>7</th>
+<th>6</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>位符号</td>
+<td><code>SMOD</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td><code>GF1</code></td>
+<td><code>GF0</code></td>
+<td><code>PD</code></td>
+<td><code>IDL</code></td>
+</tr>
+<tr>
+<td>英文注释</td>
+<td>Serial Mode</td>
+<td></td>
+<td></td>
+<td></td>
+<td>General Flag 1</td>
+<td>General Flag 0</td>
+<td>Power down bit</td>
+<td>Idle mode bit</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>程序状态字 <span class="org-target" id="org-target------"></span> <br /></p>
+<table>
+<thead>
+<tr>
+<th>位地址</th>
+<th><code>D7H</code></th>
+<th><code>D6H</code></th>
+<th><code>D5H</code></th>
+<th><code>D4H</code></th>
+<th><code>D3H</code></th>
+<th><code>D2H</code></th>
+<th><code>D1H</code></th>
+<th><code>D0H</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>位符号</td>
+<td><code>CY</code></td>
+<td><code>AC</code></td>
+<td><code>F0</code></td>
+<td><code>RS1</code></td>
+<td><code>RS0</code></td>
+<td><code>OV</code></td>
+<td><code>F1</code></td>
+<td><code>P</code></td>
+</tr>
+<tr>
+<td>注释</td>
+<td>Carry</td>
+<td>Assistant</td>
+<td>Flag 0</td>
+<td>Register Bank Selector Bit 1</td>
+<td>Register Bank Selector Bit 0</td>
+<td>Overflow</td>
+<td>Flag 1</td>
+<td>Parity Flag</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<ul>
+<li>状态位：由指令执行结果由硬件进行置位或清除
+<ul>
+<li><code>C</code> (<code>CY</code>)：进位标志 <span class="org-target" id="org-target------"></span> <br />
+在加减法运算时，最高位发生进位或借位会被置位，否则被复位。</li>
+<li><code>AC</code> ：辅助进位标志 <span class="org-target" id="org-target--------"></span> <br />
+在加减法运算时，低 4 位向高 4 位发生进位或借位会被置位，否则被复位。</li>
+<li><code>OV</code> ：溢出标志 <span class="org-target" id="org-target------"></span>
+<ul>
+<li>加减运算 <br />
+运算结果超出 8 位有符号整数范围时置位。</li>
+<li>乘法 <br />
+运算结果超出 255 时置位。</li>
+<li>除法 <br />
+除数为 0 时置位。</li>
+</ul>
+</li>
+<li><code>P</code> ：奇偶标志 <span class="org-target" id="org-target------"></span> <br />
+<a href="#org-target----" rel="">累加器</a>中 1 的个数的奇偶性（奇数为 1 ，偶数为 0），会随着 <code>ACC</code> 的变化而变化。</li>
+</ul>
+</li>
+<li>控制位：根据使用需要，用指令设定
+<ul>
+<li><code>RS0</code>, <code>RS1</code> ：<a href="#org-target-------" rel="">工作寄存器组</a>选择。</li>
+<li><code>F0</code>, <code>F1</code> ：用户自定义。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>堆栈指针 <code>SP</code> <br />
+存放当前堆栈栈顶地址的 8 位寄存器。8051 的堆栈是向上生成的，即进栈时 <code>SP</code> 增加，出栈时 <code>SP</code> 减小。复位后， <code>SP</code> 为 <code>07H</code> ，即默认堆栈区为 <code>08H</code> 以上的内存区域。</p>
+<ul>
+<li>操作
+<ul>
+<li>直接赋值 <br />
+因为 <code>08H</code>-<code>1FH</code> 单元为<a href="#org-target-------" rel="">工作寄存器区</a>， <code>20H</code>-<code>2FH</code> 为<a href="#org-target-----" rel="">位寻址区</a>，通常直接对 <code>SP</code> 赋值，将堆栈区设置到用户 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 区。</li>
+<li>指令操作 <br />
+使用堆栈操作指令进行数据的“进栈”和“出栈”，实现一些数据的暂存，以及对现场的保护和恢复。</li>
+<li>自动操作
+<ul>
+<li>调用子程序或响应中断时， <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#central-process-unit" rel="">CPU</a> 会自动将返回地址或断点地址，压入堆栈保护</li>
+<li>程序返回时，自动将断点地址弹回<a href="#org-target------" rel="">程序计数器</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>数据指针 <code>DPTR</code> <br />
+作为外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 地址的 16 位指针。</p>
+</li>
+<li>
+<p>端口寄存器 <br />
+对于端口即引脚的操作实际上是对这些寄存器的操作，其端口引脚与端口寄存器的位具有映射关系，复位后为 <code>FFH</code> 。</p>
+<ul>
+<li>
+<p>结构 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-29_06-30-47_7.svg"/>
+</figure>
+
+<ul>
+<li>位输出 <a href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/#d-触发器" rel="">D 触发器</a></li>
+<li>输出场效应管</li>
+<li>读锁存器数据缓冲器</li>
+<li>读引脚三态输入缓冲器</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="引脚">引脚</h3>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-28_08-18-32_Microcontroller%208051%20Pinout%20Diagram.png"/>
+</figure>
+
+<ul>
+<li>
+<p>外部晶振接口 <br />
+外接晶体振荡器、电容，为时钟电路提供振荡源，产生时钟信号：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-29_07-21-25_67.png"/>
+</figure>
+
+<ul>
+<li><code>XTAL1</code> <br />
+接外部晶振一端。是片内振荡电路反相放大器的输入端。</li>
+<li><code>XTAL2</code> <br />
+接外部晶振另一端。是片内振荡电路反相放大器的输出端，振荡电路的振荡频率为晶振频率。</li>
+</ul>
+</li>
+<li>
+<p><code>ALE</code> (Address Latch Enable) <br />
+地址锁存允许信号输出端。在访问片外<a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#memory" rel="">存储器</a>或 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#input-output-interface" rel="">I/O 接口</a>时，用于锁存低 8 位地址，以实现低 8 位地址与数据的隔离。</p>
+</li>
+<li>
+<p><code>PSEN</code> (Program Store Enable) <br />
+外部<a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">程序存储器</a>选通信号输出端，低电平有效。从外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 取指令时有效，连接到外扩 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 芯片的输出使能端。</p>
+</li>
+<li>
+<p><code>EA</code> (External Access Enable) <br />
+片内外程序存储器 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 选择信号输入端。为 <code>1</code> 时从内部开始执行程序，为 <code>0</code> 时只访问外程序存储器。</p>
+</li>
+<li>
+<p><code>RST</code> (Reset) <br />
+复位信号输入端，高电平有效。传统的 <a href="https://bohonghuang.github.io/posts/notes/8051/" rel="">8051</a> 微控制器没有内置复位电路，因此需引入外部复位电路：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-29_07-21-55_72.png"/>
+</figure>
+
+<p>该电路有两种复位方式：</p>
+<ul>
+<li>上电复位（冷启动） <br />
+上电时，电容的充电过程产生复位信号，高脉冲需要维持 10ms 以上。上电复位后 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 的内容随机。</li>
+<li>按键复位（热启动） <br />
+高脉冲需要维持 2 个机器周期以上。按键复位后 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 的内容保持不变。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#input-output-interface" rel="">I/O 接口</a> <br />
+4 个 8 位 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#input-output-interface" rel="">I/O 接口</a>：</p>
+<ul>
+<li><code>P0</code> <br />
+双功能的 8 位并行端口：
+<ul>
+<li>功能 1 <br />
+准双向 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#input-output-interface" rel="">I/O 端口</a>，无内部上拉电阻，因此做输出口使用时，需要外接上拉电阻。</li>
+<li>功能 2 <br />
+分时复用的 8 位数据线 <code>D7H</code>-<code>D0H</code> 和低 8 位地址线 <code>A7H</code>-<code>A0H</code> ，在扩展外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#memory" rel="">存储器</a> 或 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#input-output-interface" rel="">I/O 端口</a> 时使用。</li>
+</ul>
+</li>
+<li><code>P1</code> <br />
+带有内部上拉电阻的 8 位准双向 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#input-output-interface" rel="">I/O 端口</a> 。</li>
+<li><code>P2</code> <br />
+双功能的 8 位并行端口：
+<ul>
+<li>功能 1 <br />
+准双向 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#input-output-interface" rel="">I/O 端口</a>，带有内部上拉电阻。</li>
+<li>功能 2 <br />
+在扩展外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a>/<a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 时，用作高 8 位地址线 <code>A15H</code>-<code>A8H</code> 。</li>
+</ul>
+</li>
+<li><code>P3</code> <br />
+多功能端口：
+<ul>
+<li>功能 1 <br />
+准双向 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#input-output-interface" rel="">I/O 端口</a>，带有内部上拉电阻。</li>
+<li>功能 2  <br />
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>引脚名</th>
+<th>英文名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>P3.0</code></td>
+<td><code>RXD</code></td>
+<td>Receive eXternal Data</td>
+<td>串行口输入</td>
+</tr>
+<tr>
+<td><code>P3.1</code></td>
+<td><code>TXD</code></td>
+<td>Transmitted eXternal Data</td>
+<td>串行口输出</td>
+</tr>
+<tr>
+<td><code>P3.2</code></td>
+<td><code>INT0</code></td>
+<td>Interrupt 0</td>
+<td>外部中断0 输入</td>
+</tr>
+<tr>
+<td><code>P3.3</code></td>
+<td><code>INT1</code></td>
+<td>Interrupt 1</td>
+<td>外部中断1 输入</td>
+</tr>
+<tr>
+<td><code>P3.4</code></td>
+<td><code>T0</code></td>
+<td>Timer 0</td>
+<td>定时器0 计数输入</td>
+</tr>
+<tr>
+<td><code>P3.5</code></td>
+<td><code>T1</code></td>
+<td>Timer 1</td>
+<td>定时器1 计数输入</td>
+</tr>
+<tr>
+<td><code>P3.6</code></td>
+<td><code>WR</code></td>
+<td>Write</td>
+<td>外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 写选通</td>
+</tr>
+<tr>
+<td><code>P3.7</code></td>
+<td><code>RD</code></td>
+<td>Read</td>
+<td>外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 读选通</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="时钟">时钟</h2>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-29_07-20-50_70.png"/>
+</figure>
+
+<h3 id="时钟周期">时钟周期</h3>
+<p>也称为振荡周期，是晶振频率的倒数，是 MCU 中最基本、最小的时间单位。</p>
+<h3 id="状态周期">状态周期</h3>
+<p>是<a href="#%e6%97%b6%e9%92%9f%e5%91%a8%e6%9c%9f" rel="">时钟周期</a>的两倍，即由连续的 2 个节拍 <code>P1</code> 和 <code>P2</code> 组成。</p>
+<h3 id="机器周期">机器周期</h3>
+<p><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#central-process-unit" rel="">CPU</a> 执行一个基本操作所需要的时间，1 个机器周期由 6 个<a href="#%e7%8a%b6%e6%80%81%e5%91%a8%e6%9c%9f" rel="">状态周期</a>（即 12个时钟周期）组成。</p>
+<h3 id="指令周期">指令周期</h3>
+<p>执行一条指令所需要的时间。通常每条指令的执行可划分为 1-4 个基本操作，因此指令周期由 1-4 个<a href="#%e6%9c%ba%e5%99%a8%e5%91%a8%e6%9c%9f" rel="">机器周期</a>组成。</p>
+<h2 id="指令系统">指令系统</h2>
+<p>属于 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#complex-instruction-set-computer" rel="">CISC</a> ，有 5 大功能，111 条指令。</p>
+<ul>
+<li>
+<p>执行过程</p>
+<ul>
+<li>
+<p>程序 <br />
+完成一个特定功能的一系列指令集。</p>
+</li>
+<li>
+<p>指令 <br />
+是微控制器指挥各功能部件工作的指示和命令。指令是一组二进制数，其编码格式及功能、类别和数量因 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#central-process-unit" rel="">CPU</a> 的不同而不同，是芯片设计者设定的。 一条指令包括两部分内容：</p>
+<ul>
+<li>操作码 <br />
+指令的功能。</li>
+<li>操作数 <br />
+指令执行的数据或数据存放的地址。</li>
+</ul>
+<p>计算机每执行一条指令，都可以分为三个阶段：</p>
+<ol>
+<li>取指令 <br />
+根据程序计数器（程序指针） <code>PC</code> 中的值，从 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 读出现行指令，送到指令寄存器 <code>IR</code> 。</li>
+<li>分析指令 <br />
+由指令译码器对现行指令进行译码，分析该指令要求实现什么操作，如执行数据传送，还是加、减等运算等。</li>
+<li>执行指令 <br />
+取出操作数，由控制逻辑电路发出相应的控制信号，完成操作码规定的操作。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>分类</p>
+<ul>
+<li>长度分类
+<ul>
+<li>单字节 <br />
+指令的操作数隐含在操作码中。</li>
+<li>双字节</li>
+<li>三字节</li>
+</ul>
+</li>
+<li>耗时分类
+<ul>
+<li>单机器周期</li>
+<li>双机器周期</li>
+<li>四机器周期</li>
+</ul>
+</li>
+<li>功能分类
+<ul>
+<li>数据传送</li>
+<li>算术运算</li>
+<li>逻辑运算</li>
+<li>控制转移</li>
+<li>位操作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>格式 <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nl">LOOP:</span>   <span class="nf">OPER</span> <span class="no">DIST</span><span class="p">,</span><span class="no">SRC</span>                <span class="c">; COMMENT
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><code>LOOP</code> ：标号 <br />
+首字母必须为字母。</p>
+</li>
+<li>
+<p><code>OPER</code> ：助记符 <br />
+指令的功能。</p>
+</li>
+<li>
+<p><code>DIST,SRC</code> ：操作数 <br /></p>
+<ul>
+<li>对象
+<ul>
+<li>立即数</li>
+<li>地址</li>
+<li>寄存器</li>
+<li>标号</li>
+</ul>
+</li>
+<li>符号
+<ul>
+<li><code>#</code> ：立即数</li>
+<li><code>@</code> ：间接寻址</li>
+<li><code>+</code> ：变址寻址</li>
+</ul>
+</li>
+</ul>
+<p>如果有两个操作数：</p>
+<ul>
+<li><code>DIST</code> ：目的操作数 <br /></li>
+<li><code>SRC</code> ：源操作数 <br /></li>
+</ul>
+</li>
+<li>
+<p><code>COMMENT</code> ：注释</p>
+<ul>
+<li><code>Rn</code> (<code>R0</code>-<code>R7</code>) <br />
+当前选中的<a href="#org-target-------" rel="">工作寄存器组</a>，其地址<a href="#org-target------" rel="">程序状态字</a>中的 <code>RS1</code>, <code>RS0</code> 确定。
+<ul>
+<li><code>Ri</code> (<code>R0</code>-<code>R1</code>) <br />
+当前选中的<a href="#org-target-------" rel="">工作寄存器组</a>中可作为地址指针的两个工作寄存器 <code>R0</code>, <code>R1</code> 。</li>
+</ul>
+</li>
+<li><code>#data</code> <br />
+8 位立即数，即指令中给出的 8 位常数。</li>
+<li><code>#data16</code> <br />
+16 位立即数，即指令中给出的 16 位常数。</li>
+<li><code>direct</code> <br />
+8 位片内 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 单元（包括<a href="#org-target--------" rel="">特殊功能寄存器</a>）的直接地址。</li>
+<li><code>addr16</code> <br />
+16 位目的地址，用于 <code>LCALL</code> 和 <code>LJMP</code> 指令中，目的地址在 64KB 的 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 空间中。</li>
+<li><code>addr11</code> <br />
+11 位目的地址，用于 <code>ACALL</code> 和 <code>AJMP</code> 指令中，目的地址必须与下一条指令的第一字节在同一个 2KB 的 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 空间之内（很少使用）。</li>
+<li><code>rel</code> <br />
+8 位带符号的偏移字节，用于 <code>SJMP</code> 和所有的条件转移指令中。偏移量以下一条指令第一字节地址为基址，范围为 <code>-128</code>-<code>127</code> 。</li>
+<li><code>bit</code> <br />
+片内 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 或<a href="#org-target--------" rel="">特殊功能寄存器</a>的直接寻址的位地址。</li>
+<li><code>@</code> <br />
+间接寻址方式，表示间址寄存器的符号。</li>
+<li><code>/</code> <br />
+在位操作指令中，表示对该位先求反再参与操作，不影响原始值。</li>
+<li><code>(x)</code> <br />
+表示 <code>x</code> 中内容。</li>
+<li><code>((x))</code> <br />
+表示以 <code>x</code> 中的内容为地址寻址。</li>
+<li><code>&lt;-</code> <br />
+指令操作流程，将箭头右边的内容送到箭头左边的单元中。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="寻址方式">寻址方式</h3>
+<table>
+<thead>
+<tr>
+<th>寻址方式</th>
+<th>使用的变量</th>
+<th>寻址空间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#%e7%9b%b4%e6%8e%a5%e5%af%bb%e5%9d%80" rel="">直接寻址</a></td>
+<td><code>direct</code></td>
+<td>内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 的 <code>00H</code>-<code>7FH</code>, <code>SFR</code></td>
+</tr>
+<tr>
+<td><a href="#%e5%af%84%e5%ad%98%e5%99%a8%e5%af%bb%e5%9d%80" rel="">寄存器寻址</a></td>
+<td><code>R0</code>-<code>R7</code>, <code>A</code></td>
+<td><code>R0</code>-<code>R7</code>, <code>A</code></td>
+</tr>
+<tr>
+<td><a href="#%e5%af%84%e5%ad%98%e5%99%a8%e9%97%b4%e6%8e%a5%e5%af%bb%e5%9d%80" rel="">寄存器间接寻址</a></td>
+<td><code>@R0</code>-<code>R1</code>, <code>SP</code></td>
+<td>内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 的 <code>00H</code>-<code>FFH</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>@R0</code>-<code>R1</code>, <code>@DPTR</code></td>
+<td>外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a></td>
+</tr>
+<tr>
+<td><a href="#%e7%ab%8b%e5%8d%b3%e5%af%bb%e5%9d%80" rel="">立即寻址</a></td>
+<td><code>#data</code>, <code>#data16</code></td>
+<td><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a></td>
+</tr>
+<tr>
+<td><a href="#%e5%8f%98%e5%9d%80%e5%af%bb%e5%9d%80" rel="">变址寻址</a></td>
+<td>基址寄存器 <code>DPTR</code>, <code>PC</code> 、变址寄存器 <code>A</code></td>
+<td><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a></td>
+</tr>
+<tr>
+<td><a href="#%e7%9b%b8%e5%af%b9%e5%af%bb%e5%9d%80" rel="">相对寻址</a></td>
+<td>偏移量</td>
+<td><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a></td>
+</tr>
+<tr>
+<td><a href="#%e4%bd%8d%e5%af%bb%e5%9d%80" rel="">位寻址</a></td>
+<td><code>C</code></td>
+<td>位寻址空间</td>
+</tr>
+</tbody>
+</table>
+<h4 id="立即寻址">立即寻址</h4>
+<p>直接给出操作数作为 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 地址。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="c">#50H            ; (Rn) &lt;- data
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="直接寻址">直接寻址</h4>
+<p>给出操作数的内存地址，其中的内容作为操作数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="mi">30</span><span class="no">H</span><span class="p">,</span> <span class="mi">50</span><span class="no">H</span>            <span class="c">; (direct) &lt;- (direct)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="寄存器寻址">寄存器寻址</h4>
+<p>给出操作数的寄存器名称，其中的内容作为操作数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="no">R1</span>               <span class="c">; (A) &lt;- (Rn)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="寄存器间接寻址">寄存器间接寻址</h4>
+<p>给出操作数地址所在的寄存器，其中的地址的内容作为操作数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">R1</span>              <span class="c">; (A) &lt;- ((Ri))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于 <code>80H</code>-<code>FFH</code> 的内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 区域，只能使用寄存器间接寻址，先将地址赋值给一个寄存器，然后使用该寄存器进行寻址。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="c">#80H            ; (Ri) &lt;- data
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">R0</span>              <span class="c">; (A) &lt;- ((Ri))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="变址寻址">变址寻址</h4>
+<p>以 <code>DPTR</code> 或 <code>PC</code> （均为 16 位寄存器）作基址寄存器， <code>A</code> 作变址寄存器（存放 8 位无符号数），两者相加得到的 16 位 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 地址（寻址空间为 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a>），其中的内容作为操作数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">DPTR</span>         <span class="c">; (A) &lt;- ((A)+(DPTR))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="相对寻址">相对寻址</h4>
+<p>用于程序控制，利用指令修改 <code>PC</code> 指针内容实现跳转，操作数为执行完这条指令后的 <code>PC</code> 偏移量。
+\[\text{目的地址} = \text{转移指令所在地址} + \text{转移指令字节数} + \text{偏移量}\]</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SJMP</span> <span class="c">#01H
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="位寻址">位寻址</h4>
+<p>位寻址与直接寻址（字节）的地址形式完全相同，通过操作码来区分，当指令为位指令或使用了位寄存器时，地址会被当作位地址。</p>
+<h3 id="数据写入指令">数据写入指令</h3>
+<h4 id="mov"><code>MOV</code></h4>
+<p>MOVe</p>
+<ul>
+<li>
+<p>写入<a href="#org-target----" rel="">累加器</a> <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- data
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>写入<a href="#%e7%9b%b4%e6%8e%a5%e5%af%bb%e5%9d%80" rel="">直接地址</a> <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; (direct) &lt;- (A)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="no">Rn</span>          <span class="c">; (direct) &lt;- (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">direct1</span><span class="p">,</span> <span class="no">direct2</span>    <span class="c">; (direct1) &lt;- (direct2)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>         <span class="c">; (direct) &lt;- ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="c">#data       ; (direct) &lt;- data
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>写入当前的<a href="#org-target-------" rel="">工作寄存器组</a> <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">Rn</span><span class="p">,</span> <span class="no">A</span>               <span class="c">; (Rn) &lt;- (A)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">Rn</span><span class="p">,</span> <span class="no">direct</span>          <span class="c">; (Rn) &lt;- (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">Rn</span><span class="p">,</span> <span class="c">#data           ; (Rn) &lt;- data
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>写入<a href="#%e5%af%84%e5%ad%98%e5%99%a8%e9%97%b4%e6%8e%a5%e5%af%bb%e5%9d%80" rel="">间接地址</a> <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="no">A</span>              <span class="c">; ((Ri)) &lt;- (A)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="no">direct</span>         <span class="c">; ((Ri)) &lt;- (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="c">#data          ; ((Ri)) &lt;- data
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>写入 16 位寄存器 <br />
+只能将立即数传送给 16 位寄存器。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">DPTR</span><span class="p">,</span> <span class="c">#data16       ; (DPTR) &lt;- data16
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>注意，<a href="https://bohonghuang.github.io/posts/notes/8051/" rel="">8051</a> 的指令系统没有 <code>MOV @R0, R1</code> 这类指令，可以看作 <a href="https://bohonghuang.github.io/posts/notes/8051/" rel="">8051</a> 无法同时进行两次除了<a href="#org-target----" rel="">累加器</a>之外<a href="#%e5%af%84%e5%ad%98%e5%99%a8%e5%af%bb%e5%9d%80" rel="">寄存器寻址</a>（包括<a href="#%e5%af%84%e5%ad%98%e5%99%a8%e9%97%b4%e6%8e%a5%e5%af%bb%e5%9d%80" rel="">寄存器间接寻址</a>这种相当于连续做了两次<a href="#%e5%af%84%e5%ad%98%e5%99%a8%e5%af%bb%e5%9d%80" rel="">寄存器寻址</a>的寻址方式）。</p>
+<h4 id="movx"><code>MOVX</code></h4>
+<p>MOVe eXternal RAM</p>
+<p>对外部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 读写必须通过<a href="#org-target----" rel="">累加器</a>并且使用<a href="#%e5%af%84%e5%ad%98%e5%99%a8%e9%97%b4%e6%8e%a5%e5%af%bb%e5%9d%80" rel="">寄存器间接寻址</a>（16 位）来完成。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVX</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">DPTR</span>           <span class="c">; (A) &lt;- ((DPTR))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOVX</span> <span class="err">@</span><span class="no">DPTR</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; ((DPTR)) &lt;- (A)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOVX</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c">; (A) &lt;- ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOVX</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="no">A</span>             <span class="c">; ((Ri)) &lt;- (A)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="movc"><code>MOVC</code></h4>
+<p>MOVe Code</p>
+<p>使用<a href="#%e5%8f%98%e5%9d%80%e5%af%bb%e5%9d%80" rel="">变址寻址</a>，将 <code>DPTR</code> 或 <code>PC</code> 的内容与<a href="#org-target----" rel="">累加器</a> <code>A</code> 的内容相加后形成一个 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 单元地址，将其中的内容赋值给累加器 <code>A</code> ，根据使用 <code>DPTR</code> 或 <code>PC</code> 分为：</p>
+<ul>
+<li>
+<p>远程查表指令 <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">DPTR</span>         <span class="c">; (A) &lt;- ((A) + (DPTR))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>近程查表指令 <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">PC</span>           <span class="c">; (PC) &lt;- (PC) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (A) &lt;- ((A) + (PC))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="栈操作指令">栈操作指令</h3>
+<h4 id="push"><code>PUSH</code></h4>
+<p>PUSH onto stack</p>
+<p>先修改 <code>SP</code> 指针，再使用<a href="#%e7%9b%b4%e6%8e%a5%e5%af%bb%e5%9d%80" rel="">直接寻址</a>将内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 的指定单元的内容压入堆栈。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">PUSH</span> <span class="no">direct</span>             <span class="c">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- (direct)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="pop"><code>POP</code></h4>
+<p>POP from stack</p>
+<p>先将堆栈栈顶的内容弹出，在使用<a href="#%e7%9b%b4%e6%8e%a5%e5%af%bb%e5%9d%80" rel="">直接寻址</a>送到内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 的指定单元，再修改 <code>SP</code> 指针。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">POP</span> <span class="no">direct</span>              <span class="c">; (direct) &lt;- ((SP))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) - 1
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="数据交换指令">数据交换指令</h3>
+<h4 id="xch"><code>XCH</code></h4>
+<p>eXCHange</p>
+<p>将<a href="#org-target----" rel="">累加器</a> <code>A</code> 与其他单元进行字节交换。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">XCH</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;-&gt; (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XCH</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;-&gt; (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XCH</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;-&gt; ((Ri))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="xchd"><code>XCHD</code></h4>
+<p>eXCHange low-order Digit</p>
+<p>将<a href="#org-target----" rel="">累加器</a> <code>A</code> 与 <code>R0</code>-<code>R1</code> 进行半字节交换。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">XCHD</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c">; (A)3~0 &lt;-&gt; ((Ri))3~0
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="swap"><code>SWAP</code></h4>
+<p>SWAP</p>
+<p>将<a href="#org-target----" rel="">累加器</a>的低四位与高四位进行交换。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SWAP</span> <span class="no">A</span>                  <span class="c">; (A)3~0 &lt;-&gt; (A)7~4
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="算术运算指令">算术运算指令</h3>
+<h4 id="add"><code>ADD</code></h4>
+<p>将源操作数与目的操作数（<a href="#org-target----" rel="">累加器</a> <code>A</code> ）不带进位地相加后，存放至<a href="#org-target----" rel="">累加器</a> <code>A</code> 中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- (A) + #data
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (A) + (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- (A) + ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (A) + (Rn)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="addc"><code>ADDC</code></h4>
+<p>将源操作数与目的操作数（<a href="#org-target----" rel="">累加器</a> <code>A</code> ）带进位地相加后，存放至<a href="#org-target----" rel="">累加器</a> <code>A</code> 中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data           ; (A) &lt;- (A) + #data + (C)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>          <span class="c">; (A) &lt;- (A) + (direct) + (C)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c">; (A) &lt;- (A) + ((Ri)) + (C)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>              <span class="c">; (A) &lt;- (A) + (Rn) + (C)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="subb"><code>SUBB</code></h4>
+<p>将源操作数与目的操作数（<a href="#org-target----" rel="">累加器</a> <code>A</code> ）带借位地相减后，存放至<a href="#org-target----" rel="">累加器</a> <code>A</code> 中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data           ; (A) &lt;- (A) - #data - (C)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>          <span class="c">; (A) &lt;- (A) - (direct) - (C)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c">; (A) &lt;- (A) - ((Ri)) - (C)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>              <span class="c">; (A) &lt;- (A) - (Rn) - (C)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="inc"><code>INC</code></h4>
+<p>将指令中的操作数加 1 ，不影响标志位。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">INC</span>  <span class="no">Rn</span>                 <span class="c">; (Rn) &lt;- (Rn) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">INC</span>  <span class="no">direct</span>             <span class="c">; (direct) &lt;- (direct) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">INC</span>  <span class="err">@</span><span class="no">Ri</span>                <span class="c">; ((Ri)) &lt;- ((Ri)) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">INC</span>  <span class="no">A</span>                  <span class="c">; (A) &lt;- (A) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">INC</span>  <span class="no">DPTR</span>               <span class="c">; (DPTR) &lt;-(DPTR) + 1
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="dec"><code>DEC</code></h4>
+<p>将指令中的操作数减 1 ，不影响标志位。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">DEC</span>  <span class="no">Rn</span>                 <span class="c">; (Rn) &lt;- (Rn) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">DEC</span>  <span class="no">direct</span>             <span class="c">; (direct) &lt;- (direct) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">DEC</span>  <span class="err">@</span><span class="no">Ri</span>                <span class="c">; ((Ri)) &lt;- ((Ri)) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">DEC</span>  <span class="no">A</span>                  <span class="c">; (A) &lt;- (A) - 1
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意，该指令不能对 <code>DPTR</code> 实现减 1 。</p>
+<h4 id="mul"><code>MUL</code></h4>
+<p>将 <code>A</code> 和 <code>B</code> 中两个 <strong>无符号</strong> 8 位二进制数相乘，所得的 16 位积：</p>
+<ul>
+<li>低 8 位存至 <code>A</code> 中</li>
+<li>高 8 位存至 <code>B</code> 中</li>
+</ul>
+<p>如果乘积大于 255 时（高位 <code>B</code> 不为 0 时）， <code>OV</code> 置位，否则 <code>OV</code> 复位，而 <code>C</code> 总是为 0 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">AB</span>                  <span class="c">; (B)(A) &lt;- (A) * (B)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="da"><code>DA</code></h4>
+<p>对两个压缩 <a href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/#bcd-码" rel="">BCD 码</a>（即 1 个字节存放 2 个 BCD 码）相加的结果进行十进制调整。只能用在 <a href="#add" rel=""><code>ADD</code></a> 和 <a href="#addc" rel=""><code>ADDC</code></a> 指令之后，对 <code>A</code> 中的结果进行修正。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">DA</span> <span class="no">A</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="逻辑运算指令">逻辑运算指令</h3>
+<p>不影响标志位，仅当其目的操作数为<a href="#org-target----" rel="">累加器</a> <code>A</code> 时，对<a href="#org-target------" rel="">奇偶标志位</a> <code>P</code> 有影响。</p>
+<h4 id="anl"><code>ANL</code></h4>
+<p>将目的操作数和源操作数按位相与，结果存放到目的操作数单元中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (A) and (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (A) and (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- (A) and ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- (A) and #data
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; (direct) &lt;- (direct) and (A)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">direct</span><span class="p">,</span> <span class="c">#data       ; (direct) &lt;- (direct) and #data
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="orl"><code>ORL</code></h4>
+<p>将目的操作数和源操作数按位相或，结果存放到目的操作数单元中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (A) or (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (A) or (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- (A) or ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- (A) or #data
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; (direct) &lt;- (direct) or (A)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">direct</span><span class="p">,</span> <span class="c">#data       ; (direct) &lt;- (direct) or #data
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="xrl"><code>XRL</code></h4>
+<p>将目的操作数和源操作数按位相异或，结果存放到目的操作数单元中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (A) xor (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (A) xor (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- (A) xor ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- (A) xor #data
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; (direct) &lt;- (direct) xor (A)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">direct</span><span class="p">,</span> <span class="c">#data       ; (direct) &lt;- (direct) xor #data
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="clr"><code>CLR</code></h4>
+<ul>
+<li>
+<p>当操作数是<a href="#org-target----" rel="">累加器</a> <code>A</code> 时，对字节清零 <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CLR</span> <span class="no">A</span>                   <span class="c">; (A) &lt;- 0
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="cpl"><code>CPL</code></h4>
+<p>对<a href="#org-target----" rel="">累加器</a> <code>A</code> 的内容逐位取反。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CPL</span> <span class="no">A</span>                   <span class="c">; (A) &lt;- /(A)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="移位运算指令">移位运算指令</h3>
+<h4 id="rl"><code>RL</code></h4>
+<p>循环左移指令，将 <code>A</code> 的内容循环左移一位。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RL</span> <span class="no">A</span>                    <span class="c">; (A) &lt;- (A) &lt;&lt; 1
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="rr"><code>RR</code></h4>
+<p>循环右移指令，将 <code>A</code> 的内容循环右移一位。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RL</span> <span class="no">A</span>                    <span class="c">; (A) &lt;- (A) &gt;&gt; 1
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="rlc"><code>RLC</code></h4>
+<p>带<a href="#org-target------" rel="">进位标志位</a> <code>C</code> 的循环左移，将 <code>A</code> 的内容和 <code>C</code> 的内容整个左移一位。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RLC</span> <span class="no">A</span>                   <span class="c">; (C)(A) &lt;- (C)(A) &lt;&lt; 1
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="rrc"><code>RRC</code></h4>
+<p>带<a href="#org-target------" rel="">进位标志位</a> <code>C</code> 的循环右移，将 <code>A</code> 的内容和 <code>C</code> 的内容整个右移一位。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RRC</span> <span class="no">A</span>                   <span class="c">; (C)(A) &lt;- (C)(A) &gt;&gt; 1
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="无条件跳转指令">无条件跳转指令</h3>
+<h4 id="ljmp"><code>LJMP</code></h4>
+<p>长跳转指令，跳转范围为 <code>0000H</code>-<code>FFFFH</code> 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">LJMP</span> <span class="no">addr16</span>             <span class="c">; (PC) &lt;- addr16
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="ajmp"><code>AJMP</code></h4>
+<p>绝对跳转指令，跳转范围为相同 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 的 2KB 区域 (<code>000H</code>-<code>7FFH</code>) 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">AJMP</span> <span class="no">addr11</span>             <span class="c">; (PC) &lt;- (PC) + 2
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (PC)[0..11] &lt;- addr11
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于地址是 11 位的，作为无符号整型时最大可表示 2047 ，对 <code>PC</code> 赋值时高 5 位不变，仅对低 11 位进行赋值，如果不在同一个 2KB 区域中，就会跳转至错误的位置。</p>
+<h4 id="sjmp"><code>SJMP</code></h4>
+<p>短跳转指令，跳转范围为 <code>80H</code>-<code>7FH</code> （有符号）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SJMP</span> <span class="no">rel</span>                <span class="c">; (PC) &lt;- (PC) + 2 + rel
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="jmp"><code>JMP</code></h4>
+<p>散转指令或间接跳转指令。跳转位置取决于 <code>DPTR</code> 与<a href="#org-target----" rel="">累加器</a> <code>A</code> 的值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JMP</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">DPTR</span>             <span class="c">; (PC) &lt;- (A) + (DPTR)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="条件跳转指令">条件跳转指令</h3>
+<h4 id="jz"><code>JZ</code></h4>
+<p>Jump if <code>ACC</code> equal Zero</p>
+<p>当累加器 <code>A</code> 为 0 时跳转，否则继续执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JZ</span> <span class="no">rel</span>                  <span class="c">; (A) == 0 =&gt; (PC) &lt;- (PC) + 2 + rel
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="jnz"><code>JNZ</code></h4>
+<p>Jump if <code>ACC</code> Not equal Zero</p>
+<p>当累加器 <code>A</code> 不为 0 时跳转，否则继续执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JNZ</span> <span class="no">rel</span>                 <span class="c">; (A) != 0 =&gt; (PC) &lt;- (PC) + 2 + rel
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="cjne"><code>CJNE</code></h4>
+<p>Compare and Jump if Not Equal</p>
+<p>对前两个操作数进行比较，如果不相等则进行跳转。并且比较结果将影响标志位 <code>C</code> ：</p>
+<ul>
+<li>操作数1 &gt; 操作数2： <code>C</code> 为 0</li>
+<li>操作数1 &lt; 操作数2： <code>C</code> 为 1</li>
+</ul>
+<!--listend-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CJNE</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span><span class="p">,</span> <span class="no">rel</span>     <span class="c">; (A) != (direct) =&gt; (PC) &lt;- (PC) + 3 + rel
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">CJNE</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data, rel      ; (A) != data =&gt; (PC) &lt;- (PC) + 3 + rel
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">CJNE</span> <span class="no">Rn</span><span class="p">,</span> <span class="c">#data, rel     ; (Rn) != data =&gt; (PC) &lt;- (PC) + 3 + rel
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">CJNE</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="c">#data, rel    ; ((Ri)) != data =&gt; (PC) &lt;- (PC) + 3 + rel
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="djnz"><code>DJNZ</code></h4>
+<p>Decrement and Jump if Not equal Zero</p>
+<p>将工作寄存器 <code>Rn</code> 的值减去 1 ，若相减后 <code>Rn</code> 不为 0 则进行跳转 ，否则继续执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">DJNZ</span> <span class="no">Rn</span><span class="p">,</span> <span class="no">rel</span>            <span class="c">; (Rn) &lt;- (Rn) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (Rn) != 0 =&gt; (PC) &lt;- (PC) + 2 + rel
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="子程序指令">子程序指令</h3>
+<h4 id="lcall"><code>LCALL</code></h4>
+<p>该指令可调用存放在 64KB <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 空间任何位置的子程序，跳转前会分别将 <code>PCL</code> （ <code>PC</code> 的低 8 位）与 <code>PCH</code> （ <code>PC</code> 的高 8 位）入栈，便于退出子程序后进行恢复。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">LCALL</span> <span class="no">addr16</span>            <span class="c">; (PC) &lt;- (PC) + 3
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- PCL
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- PCH
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (PC) &lt;- addr16
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="acall"><code>ACALL</code></h4>
+<p>与 <a href="#ajmp" rel=""><code>AJMP</code></a> 一样，跳转的子程序必须位于相同 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 的 2KB 区域 (<code>000H</code>-<code>7FFH</code>) 内。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ACALL</span> <span class="no">addr11</span>            <span class="c">; (PC) &lt;- (PC) + 2
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- PCL
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- PCH
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (PC)[0..10] &lt;- addr11
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于 MCU 的 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 容量不再是问题，所以这条指令很少使用。</p>
+<h4 id="ret"><code>RET</code></h4>
+<p>从堆栈顶部的弹出子程序调用时，压入保护的断点地址到 <code>PC</code> 。子程序的最后一条指令必须是 <code>RET</code> 指令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RET</span>                     <span class="c">; (PCH) &lt;- ((SP))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (PCL) &lt;- ((SP))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) - 1
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="reti"><code>RETI</code></h4>
+<p>除具有 <a href="#ret" rel=""><code>RET</code></a> 的功能外,还可以恢复中断逻辑（不能互换使用），中断子程序的最后一条指令，必须是 <code>RETI</code> 指令。</p>
+<h3 id="空指令">空指令</h3>
+<h4 id="nop"><code>NOP</code></h4>
+<p>无实际作用，占用一个<a href="#%e6%9c%ba%e5%99%a8%e5%91%a8%e6%9c%9f" rel="">机器周期</a>时间。常用于软件延时。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">NOP</span>                     <span class="c">; (PC) &lt;- (PC) + 1
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="低功耗">低功耗</h2>
+<p><a href="https://bohonghuang.github.io/posts/notes/8051/" rel="">8051</a> 具有两种低功耗方式，通过<a href="#org-target--------" rel="">电源控制寄存器</a> 中的 <code>IDL</code> 位和 <code>PD</code> 位进行选择。</p>
+<table>
+<thead>
+<tr>
+<th>运行方式</th>
+<th>电源电压 (V)</th>
+<th>时钟频率 (Mhz)</th>
+<th>电源电流 (mA)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常运行</td>
+<td>5</td>
+<td>12</td>
+<td>20</td>
+</tr>
+<tr>
+<td><a href="#%e7%a9%ba%e9%97%b2%e6%a8%a1%e5%bc%8f" rel="">空闲模式</a></td>
+<td>5</td>
+<td>12</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="#%e6%8e%89%e7%94%b5%e6%a8%a1%e5%bc%8f" rel="">掉电模式</a></td>
+<td>5</td>
+<td>12</td>
+<td>0.075</td>
+</tr>
+</tbody>
+</table>
+<h3 id="空闲模式">空闲模式</h3>
+<p>当 <code>IDL</code> 为 1 且 <code>PD</code> 为 0 时，进入空闲模式。</p>
+<ul>
+<li>特点 <br />
+内部时钟电路正常工作，但关闭了 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#central-process-unit" rel="">CPU</a> 的时钟，<a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#central-process-unit" rel="">CPU</a> 停止工作，中断系统、串行口与定时器/计数器继续工作。</li>
+<li>唤醒方式
+<ul>
+<li>复位</li>
+<li>触发中断</li>
+</ul>
+</li>
+</ul>
+<h3 id="掉电模式">掉电模式</h3>
+<p>只要 <code>PD</code> 为 1 ，即进入掉电模式。</p>
+<ul>
+<li>特点 <br />
+内部时钟电路不工作，内部所有功能单元停止工作。</li>
+<li>唤醒方式
+<ul>
+<li>复位</li>
+</ul>
+</li>
+</ul>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">未完待续 ……</div>
+        </div>
+    </div>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-29</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/notes/8051/" data-title="8051" data-hashtags="单片机,汇编语言"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/notes/8051/" data-hashtag="单片机"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/notes/8051/" data-title="8051"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/notes/8051/" data-title="8051"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/notes/8051/" data-title="8051"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>,&nbsp;<a href="https://bohonghuang.github.io/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/" class="prev" rel="prev" title="微机原理"><i class="fas fa-angle-left fa-fw"></i>微机原理</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>
