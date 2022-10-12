@@ -683,12 +683,12 @@
 <p>小波变换</p>
 <p><a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e5%8f%98%e6%8d%a2" rel="">傅里叶变换</a>无法很好的分析不平稳的信号（频率随着时间变化的信号），即缺乏频率在时间上的信息（什么时候出现什么样的频率）：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-21-21_def600cea95fa10e3872e88dc8059d6c_b.jpg"/>
-</figure>
+    </figure>
 
 <p>而小波变换更换了<a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e5%8f%98%e6%8d%a2" rel="">傅里叶变换</a>的无限长三角函数（\(e^{j\omega t}\)）的作为基，换成了幅值随时间衰减的小波（\(\psi\left(\frac{t-\tau}{a}\right)\)）作为基：
 \[W T(a, \tau)=\frac{1}{\sqrt{a}} \int_{-\infty}^{\infty} f(t) * \psi\left(\frac{t-\tau}{a}\right) \mathrm{d} t\]</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-35-16_c4aa4c1cc6fdc1feb47be1001fa67301_b.jpg"/>
-</figure>
+    </figure>
 
 <p>不同于变量只有频率的<a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e5%8f%98%e6%8d%a2" rel="">傅里叶变换</a>，小波变换有两个变量：</p>
 <ul>
@@ -697,7 +697,7 @@
 </ul>
 <p>因此小波变换让除突变处的小波系数为\(0\)，即可克服<a href="#%e5%90%89%e5%b8%83%e6%96%af%e7%8e%b0%e8%b1%a1" rel="">吉布斯现象</a>：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-41-01_d03e5344001f6fb2dc10be4a7bd2af92_b.jpg"/>
-</figure>
+    </figure>
 
 <p>不同于<a href="#%e5%82%85%e9%87%8c%e5%8f%b6%e5%8f%98%e6%8d%a2" rel="">傅里叶变换</a>得到频谱，<a href="#%e5%b0%8f%e6%b3%a2%e5%8f%98%e6%8d%a2" rel="">小波变换</a>得到时频谱。</p>
 </li>
@@ -707,7 +707,7 @@
 <li>
 <p>傅里叶变换</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-08-13_13-45-48_Fourier_series_and_transform.gif"/>
-</figure>
+    </figure>
 
 <p>傅里叶变换\(\mathcal{F}\)，实现时域到频域的变换：
 \[F(\omega)=\int_{-\infty}^{+ \infty} f(t) e^{-j \omega t} \mathrm{d} t=\mathcal{F}[f(t)]\]</p>
@@ -719,7 +719,7 @@
 <p>\(f(t)e^{-j\omega t}\)：即\(\frac{f(t)}{e^{j\omega t}}\) <br />
 很好地体现出了\(F(\omega)\)作为系数意义 —— 信号变量（复平面上的图形）与三角函数（复平面上转动的点）的相关性：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-29-36_8fbc3a5f07a5ab0f0a90b65bc621ae21_b.jpg"/>
-</figure>
+        </figure>
 
 <ul>
 <li>\(e^{j\omega t}=\left( i\sin\omega t+\cos\omega t\right)\) <br />
@@ -848,7 +848,7 @@
 <li>
 <p>吉布斯现象</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-01-20_10-19-01_v2-7cd6d24f553079a8aaebf5b4b8b56ac4_720w.jpg.png"/>
-</figure>
+        </figure>
 
 <p>吉布斯现象（又叫吉布斯效应），将具有不连续点的周期函数（如矩形脉冲）进行傅立叶级数展开后，选取有限项进行合成。当选取的项数越多，在所合成的波形中出现的峰起越靠近原信号的不连续点。当选取的项数很大时，该峰起值趋于一个常数，大约等于总跳变值的9%。</p>
 </li>

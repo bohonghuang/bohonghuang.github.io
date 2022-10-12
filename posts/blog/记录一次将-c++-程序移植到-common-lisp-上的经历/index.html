@@ -5,34 +5,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title class="pjax-title">播放游戏音乐的正确姿势 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="播放游戏音乐的正确姿势" />
-<meta property="og:description" content="前言 不知道有多少人的童年是在游戏机的陪伴下度过的，对于我个人而言，以前玩过 GBA、NDS、PSP、3DS ，游戏机无疑是童年的一大快乐源泉。虽" />
+    <title class="pjax-title">记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历" />
+<meta property="og:description" content="最近将一个 C&#43;&#43; 的音频处理库（大概 3600 行的代码）花了 5 天的时间成功移植到了 Common Lisp 上。 背景 事情的起因是这样的，最近在做一个项目，主要使用 Common Lisp 进行开发，" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-19T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-19T20:08:50+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-01T17:22:21+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="播放游戏音乐的正确姿势"/>
-<meta name="twitter:description" content="前言 不知道有多少人的童年是在游戏机的陪伴下度过的，对于我个人而言，以前玩过 GBA、NDS、PSP、3DS ，游戏机无疑是童年的一大快乐源泉。虽"/>
+<meta name="twitter:title" content="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历"/>
+<meta name="twitter:description" content="最近将一个 C&#43;&#43; 的音频处理库（大概 3600 行的代码）花了 5 天的时间成功移植到了 Common Lisp 上。 背景 事情的起因是这样的，最近在做一个项目，主要使用 Common Lisp 进行开发，"/>
 <meta name="application-name" content="黄博宏的个人笔记">
 <meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" /><link rel="prev" href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-luks-%E5%9C%A8-linux-%E4%B8%8B%E5%88%9B%E5%BB%BA%E5%8A%A0%E5%AF%86%E7%A3%81%E7%9B%98%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6/" /><link rel="next" href="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" /><link rel="prev" href="https://bohonghuang.github.io/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" /><link rel="next" href="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-emacs-%E7%9A%84%E4%BB%BB%E6%84%8F-buffer-%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8C%BA%E5%9F%9F%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "播放游戏音乐的正确姿势",
+        "headline": "记录一次将 C++ 程序移植到 Common Lisp 上的经历",
         "inLanguage": "zh-cn",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "音乐","wordcount":  1150 ,
-        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF\/","datePublished": "2022-05-19T00:00:00+00:00","dateModified": "2022-05-19T20:08:50+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c\u002b\u002b-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Lisp","wordcount":  1281 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c\u002b\u002b-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86\/","datePublished": "2022-09-01T00:00:00+00:00","dateModified": "2022-09-01T17:22:21+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
                 "@type": "Person",
@@ -113,12 +113,12 @@
             <div class="container"><div class="toc" id="toc-auto">
         <h2 class="toc-title">目录</h2>
         <div class="toc-content" id="toc-content-auto"></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">播放游戏音乐的正确姿势</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-19">2022-05-19</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-19">2022-05-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1150 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" class="leancloud_visitors" data-flag-title="播放游戏音乐的正确姿势">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-01">2022-09-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-09-01">2022-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1281 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" class="leancloud_visitors" data-flag-title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -128,82 +128,60 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#前言">前言</a></li>
     <li><a href="#背景">背景</a></li>
-    <li><a href="#播放方式">播放方式</a></li>
-    <li><a href="#音乐资源">音乐资源</a></li>
+    <li><a href="#代码翻译">代码翻译</a></li>
+    <li><a href="#性能">性能</a></li>
+    <li><a href="#总结">总结</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="前言">前言</h2>
-<p>不知道有多少人的童年是在游戏机的陪伴下度过的，对于我个人而言，以前玩过 GBA、NDS、PSP、3DS ，游戏机无疑是童年的一大快乐源泉。虽然我本人现在已经没时间玩了，但是偶尔能听一听之前玩过游戏中的音乐怀旧一下，还是能回忆起小时候玩游戏的时光。本文就给大家简单地介绍一下游戏音乐的背景以及分享一下我个人播放游戏音乐的方式，希望对于有相关需求的朋友能够有所帮助。</p>
+            </div><div class="content" id="content"><p>最近将一个 C++ 的音频处理库（大概 3600 行的代码）花了 5 天的时间成功移植到了 Common Lisp 上。</p>
 <h2 id="背景">背景</h2>
-<p>需要说明的是，游戏音乐 (Video Game Music) 算是一种专有名词，不同的游戏机平台，具有不同的音频系统，对应游戏的音乐也具有<a href="http://www.vgmpf.com/Wiki/index.php?title=Formats" target="_blank" rel="noopener noreffer">多种格式</a>。游戏音乐的发展基本可以代表计算机音乐技术的发展，在<a href="https://wikipedia.org/wiki/Video_game_music" target="_blank" rel="noopener noreffer">维基百科</a>上有详细的介绍，不过大致可以分为以下两大类型：</p>
-<ul>
-<li>音序型 <br />
-相当于录制或定义好每个乐器的采样，播放音乐就相当于让计算机现场根据乐谱演奏乐器并合成发出声音。这种方式的优点是占用的空间小，缺点是一般合成出来的音色单薄、听感较差，同时发声数量和乐器数目也有限制。早期由于性能与存储介质的成本问题，很多游戏都采用这种方案。</li>
-<li>录制型 <br />
-直接录制并保存演奏或合成的音乐。优点是在录制阶段可以随意地使用各种乐器和效果器，听者的得到的效果基本就是音乐在制作时的效果，缺点是占用的体积较大。随着计算机性能的提升以及存储介质成本的降低，现在大部分游戏机和电脑上的游戏基本都使用这种方案以提升玩家的游戏体验。</li>
-</ul>
-<h2 id="播放方式">播放方式</h2>
-<p>相信大部分人听游戏音乐，都会去寻找游戏原声带下载下来用本地播放器播放或者通过网易云音乐、QQ 音乐等在线音乐平台在线播放，但我个人认为这些方式并不是最优的收听方式，原因如下：</p>
-<ul>
-<li>原声带里的音乐一般是已经经过录制、采样率转换、压缩，音质一般会有损失（基本就是有损压缩音乐和无损压缩音乐的区别）。</li>
-<li>游戏机专用的音频一般都支持无缝循环（游戏音乐在制作过程中会特地留有循环点，游戏机只要在循环点间循环播放，音乐一直持续播放，玩家感觉不到音乐的间断），常用的播放器不支持这种功能。</li>
-<li>对于早期音序型的游戏音乐，如果将其录制成文件进行存储是比较低效的（如对 8-bit 音乐进行录制需要占用几 M 的空间，而使用音序进行存储就只需要几 K 的空间）。</li>
-</ul>
-<p>所以推荐使用专用播放器播放游戏音乐，通过模拟游戏机音频系统的方式实时演奏这些游戏音乐。</p>
-<h2 id="音乐资源">音乐资源</h2>
-<p>目前，有大量不同的开源软件提供了对不同格式游戏机音乐播放，也有播放器对这些开源的软件进行了整合，使得只需要安装一个软件即可播放多种格式的游戏音乐，这里推荐：</p>
-<ul>
-<li><a href="https://droidsounde.herokuapp.com/" target="_blank" rel="noopener noreffer">Droidsound-E</a> (Android)</li>
-<li><a href="https://zxtune.bitbucket.io/" target="_blank" rel="noopener noreffer">ZXTune</a> (Windows/MacOS/Linux/Android)</li>
-</ul>
-<p>此外，大家可以在<a href="https://www.zophar.net/music" target="_blank" rel="noopener noreffer">这个网站</a>上找到大量游戏音乐，通过上面推荐的软件直接打开即可播放。这里以 ZXTune 为例，除了可以使用图形化界面进行播放以外，还可以通过命令行播放：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">zxtune123 <span class="s2">&#34;./01 Title Screen.mini2sf&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>此外，可以添加选项 <code>--loop</code> 进行无缝循环播放：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">zxtune123 --loop <span class="s2">&#34;./01 Title Screen.mini2sf&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这样除非我们手动终止程序，播放器就会持续无缝地循环播放这个当前文件，这就与打开游戏听背景音乐的效果一样了。</p>
+<p>事情的起因是这样的，最近在做一个项目，主要使用 Common Lisp 进行开发，但发现需要使用到一个 C++ 实时音频处理库提供的功能，这种情况一般是使用 CFFI 通过 C ABI 与 C++ 进行互操作，但该方案麻烦的地方在于：</p>
+<ol>
+<li>与 C++ 进行 FFI 通过 C 的 ABI 交互，需要手写不少接口函数，并且做好内存管理。</li>
+<li>每换一个平台都需要先安装对应的 C/C++ 环境进行编译动态链接库，然后才能编译 Lisp 程序，不然 CFFI 会报错。</li>
+<li>每进行一次修改都需要编译然后重启程序才能看到更改的内容，而在 Lisp 中，程序运行时在 Emacs 下通过一次 <code>C-c C-c</code> 当场就可以看到修改的结果。</li>
+</ol>
+<p>因此索性将这个 C++ 项目直接移植到 CL 上，顺便比较一下在算法与程序结构相同的前提下，CL 与 C++ 的性能差距以及 CL 在计算密集应用场景的实用性。</p>
+<h2 id="代码翻译">代码翻译</h2>
+<p>C++ 的很多代码可以很方便地移植到 CL 上，大部分的特性都可以在 CL 找到对应的实现方式，如指针可以表示为 Displaced Array ，模板这些也有专门的库来实现，
+CLOS  灵活性又比 C++ 的对象系统高得多，所以将 C++ 翻译成 CLOS 没啥障碍。由于不用手动管理内存，少了不少语法噪音，但 CL 访问类/结构体成员时与有 <code>.</code> 运算符的 C++ 的相比，代码没那么简洁。</p>
+<p>CL 在 Lisp 方言中已经算比较接近底层的了，但肯定还是比不上 C/C++ ，比如没办法进行直接内存转译（通过 <code>union</code> 或指针强转），没法直接将 IEEE 浮点类型转换为对应的二进制表示。由于 CL 对结构体/列表/哈希表默认传引用， <code>cl:fill</code> 函数不对拷贝的元素进行复制，会出现改一个元素的属性导致整个数组的元素发生变化的情况，C/C++ 默认传值则没有这个问题，不过解决方法很简单，自己写一个 <code>fill</code> 函数/宏即可，但在 CL 中修改数组元素时确实需要格外谨慎。总之这些都是小问题，不过多少会引入一些性能开销。</p>
+<h2 id="性能">性能</h2>
+<p>只能说 SBCL 不论是成熟度还是性能确实都是 CL 的实现里（甚至是所有 Lisp 方言里）首屈一指的。</p>
+<p>对于实时音频处理这种计算密集的应用场景，SBCL 开 <code>(speed 3)</code> 加上 <code>(safety 0)</code> ，根据编译器的提示一步步加类型声明，并且根据 <code>sb-sprof</code> 采样的函数开销进行内联声明，某些模块的性能可以直接追平开 <code>-O3</code> 的 C++。而程序整体的性能 SBCL 与不开优化的 C++差不多，
+C++ 如果开了 <code>-O3</code> 优化，SBCL 的整体性能大概只有 C++ 的四分之一左右，当然 CL 上我也只优化了调用比较频繁的代码，但是已经可以达到实时处理的效果。</p>
+<p>其他的实现就没有这么乐观了，主要还是由于音频和其他媒体不一样，如果说视频与游戏帧率减半勉强能看能玩，音频速率减半的效果基本可以说是惨不忍睹。我这里测了 ECL、CCL、CLASP、ABCL ，其中 ABCL 和 ECL 的结果没问题，但性能连 SBCL 的十分之一都到不了，尤其是 ABCL 在 Java 18 下的性能比 ECL 还差；
+CCL 总体有 SBCL 三分之一左右的性能，不过 CCL 加类型声明且开启安全检查时居然可能导致简单数值计算得到错误的结果；CLASP 通过 CFFI  调用 API 播放音频采样时报 Memory Fault，不过它的性能基本与 ECL 一个水平；其他专有的实现像 ACL 和 LispWorks 这样的买不起，也不考虑用于项目上了。</p>
+<h2 id="总结">总结</h2>
+<p>个人觉得这次的移植还是比较成功的，毕竟在我的应用场景里，修改、调试与维护 CL 代码要比 C++ 方便得多，性能也还过得去，确实验证了 CL 可以在一些性能敏感的场景取代 C/C++ 的使用，不过还是改变不了 Lisp 没什么人用的事实，哈哈。</p>
 </div>
 
         <div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-19</span>
+                <span>更新于 2022-09-01</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" data-title="播放游戏音乐的正确姿势" data-hashtags="音乐"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" data-hashtag="音乐"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" data-title="播放游戏音乐的正确姿势"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" data-title="播放游戏音乐的正确姿势"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" data-title="播放游戏音乐的正确姿势"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" data-title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历" data-hashtags="Lisp"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" data-hashtag="Lisp"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" data-title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" data-title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" data-title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/%E9%9F%B3%E4%B9%90/">音乐</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/lisp/">Lisp</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-luks-%E5%9C%A8-linux-%E4%B8%8B%E5%88%9B%E5%BB%BA%E5%8A%A0%E5%AF%86%E7%A3%81%E7%9B%98%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6/" class="prev" rel="prev" title="使用 LUKS 在 Linux 下创建加密磁盘镜像文件"><i class="fas fa-angle-left fa-fw"></i>使用 LUKS 在 Linux 下创建加密磁盘镜像文件</a>
-            <a href="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" class="next" rel="next" title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历">记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/blog/%E6%92%AD%E6%94%BE%E6%B8%B8%E6%88%8F%E9%9F%B3%E4%B9%90%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" class="prev" rel="prev" title="播放游戏音乐的正确姿势"><i class="fas fa-angle-left fa-fw"></i>播放游戏音乐的正确姿势</a>
+            <a href="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-emacs-%E7%9A%84%E4%BB%BB%E6%84%8F-buffer-%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8C%BA%E5%9F%9F%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" class="next" rel="next" title="在 Emacs 的任意 Buffer 中进行区域代码高亮">在 Emacs 的任意 Buffer 中进行区域代码高亮<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

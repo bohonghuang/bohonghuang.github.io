@@ -5,34 +5,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title class="pjax-title">Org 经验分享（一） 使用 org-agenda 实现课程表 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="Org 经验分享（一） 使用 org-agenda 实现课程表" />
+    <title class="pjax-title">使用 Org-agenda 实现课程表 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="使用 Org-agenda 实现课程表" />
 <meta property="og:description" content="序言 最近学校查看近期的课程很不方便，干脆就直接用 org-mode 来录入学校的课程表，然后用 org-agenda 来进行显示和时间规划，顺便分享一下自己的一点经验。 问题 录入课程" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-03T18:23:59+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta property="article:modified_time" content="2022-10-12T21:42:56+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Org 经验分享（一） 使用 org-agenda 实现课程表"/>
+<meta name="twitter:title" content="使用 Org-agenda 实现课程表"/>
 <meta name="twitter:description" content="序言 最近学校查看近期的课程很不方便，干脆就直接用 org-mode 来录入学校的课程表，然后用 org-agenda 来进行显示和时间规划，顺便分享一下自己的一点经验。 问题 录入课程"/>
 <meta name="application-name" content="黄博宏的个人笔记">
 <meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" /><link rel="next" href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8/" /><link rel="next" href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-mu-wizard-%E9%85%8D%E7%BD%AE-mu4e-%E9%82%AE%E4%BB%B6%E5%AE%A2%E6%88%B7%E7%AB%AF/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Org 经验分享（一） 使用 org-agenda 实现课程表",
+        "headline": "使用 Org-agenda 实现课程表",
         "inLanguage": "zh-cn",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "org-mode, Emacs","wordcount":  1771 ,
-        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8\/","datePublished": "2022-03-03T00:00:00+00:00","dateModified": "2022-03-03T18:23:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "org-mode, Emacs","wordcount":  1772 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8\/","datePublished": "2022-03-03T00:00:00+00:00","dateModified": "2022-10-12T21:42:56+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
                 "@type": "Person",
@@ -113,12 +113,12 @@
             <div class="container"><div class="toc" id="toc-auto">
         <h2 class="toc-title">目录</h2>
         <div class="toc-content" id="toc-content-auto"></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Org 经验分享（一） 使用 org-agenda 实现课程表</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">使用 Org-agenda 实现课程表</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1771 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" class="leancloud_visitors" data-flag-title="Org 经验分享（一） 使用 org-agenda 实现课程表">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-10-12">2022-10-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1772 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/posts/blog/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8/" class="leancloud_visitors" data-flag-title="使用 Org-agenda 实现课程表">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -506,14 +506,14 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-03</span>
+                <span>更新于 2022-10-12</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="Org 经验分享（一） 使用 org-agenda 实现课程表" data-hashtags="org-mode,Emacs"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-hashtag="org-mode"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="Org 经验分享（一） 使用 org-agenda 实现课程表"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="Org 经验分享（一） 使用 org-agenda 实现课程表"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/blog/%E7%94%A8org-mode%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="Org 经验分享（一） 使用 org-agenda 实现课程表"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="使用 Org-agenda 实现课程表" data-hashtags="org-mode,Emacs"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-hashtag="org-mode"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="使用 Org-agenda 实现课程表"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="使用 Org-agenda 实现课程表"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-org-agenda-%E5%AE%9E%E7%8E%B0%E8%AF%BE%E7%A8%8B%E8%A1%A8/" data-title="使用 Org-agenda 实现课程表"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>

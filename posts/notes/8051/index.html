@@ -775,8 +775,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">AB</span>                          <span class="c">; A*B=BA
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">DIV</span> <span class="no">AB</span>                          <span class="c">; A/B=A...B
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">AB</span>                          <span class="c1">; A*B=BA
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">DIV</span> <span class="no">AB</span>                          <span class="c1">; A/B=A...B
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -915,7 +915,7 @@
 <li>
 <p>结构 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-29_06-30-47_7.svg"/>
-</figure>
+            </figure>
 
 <ul>
 <li>位输出 <a href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/#d-触发器" rel="">D 触发器</a></li>
@@ -938,7 +938,7 @@
 <p>外部晶振接口 <br />
 外接晶体振荡器、电容，为时钟电路提供振荡源，产生时钟信号：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-29_07-21-25_67.png"/>
-</figure>
+    </figure>
 
 <ul>
 <li><code>XTAL1</code> <br />
@@ -963,7 +963,7 @@
 <p><code>RST</code> (Reset) <br />
 复位信号输入端，高电平有效。传统的 <a href="https://bohonghuang.github.io/posts/notes/8051/" rel="">8051</a> 微控制器没有内置复位电路，因此需引入外部复位电路：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-03-29_07-21-55_72.png"/>
-</figure>
+    </figure>
 
 <p>该电路有两种复位方式：</p>
 <ul>
@@ -1192,36 +1192,36 @@ CPU 在每个机器周期的 <code>S6</code> 状态查询各中断源，并按�
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl">        <span class="nf">ORG</span> <span class="mi">0000</span><span class="no">H</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">LJMP</span> <span class="no">MAIN</span>    <span class="c">; 跳转到主程序
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">ORG</span> <span class="mi">0003</span><span class="no">H</span>    <span class="c">; INT0 中断入口地址
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">LJMP</span> <span class="no">INT0SUB</span> <span class="c">; 跳转到实际 INT0 中断服务程序存放空间
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="c">;; ...
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">ORG</span> <span class="mi">001</span><span class="no">BH</span>    <span class="c">; T1 中断入口地址
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">LJMP</span> <span class="no">T1SUB</span>   <span class="c">; 跳转到实际 T1 中断服务程序存放空间
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="c">;; ...
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">ORG</span> <span class="mi">0030</span><span class="no">H</span>    <span class="c">; 实际主程序存放区
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MAIN</span><span class="p">:</span>   <span class="no">MOV</span> <span class="no">SP</span><span class="p">,</span><span class="c">#5FH  ; 设置堆栈区
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">SETB</span> <span class="no">IT0</span>     <span class="c">; 选择 INT0 为下降沿触发方式
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">SETB</span> <span class="no">EA</span>      <span class="c">; CPU 开中断
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">SETB</span> <span class="no">EX0</span>     <span class="c">; INT0 开中断
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">SETB</span> <span class="no">ET1</span>     <span class="c">; T1 开中断
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">SETB</span> <span class="no">PX0</span>     <span class="c">; 设置 INT0 为高优先级
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="c">;; ...
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">SJMP</span> <span class="no">$</span>       <span class="c">; 模拟主程序
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">ORG</span> <span class="mi">0800</span><span class="no">H</span>    <span class="c">; INT0 中断服务程序存放区
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">INT0SUB</span><span class="p">:</span><span class="no">PUSH</span> <span class="no">ACC</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">LJMP</span> <span class="no">MAIN</span>    <span class="c1">; 跳转到主程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">ORG</span> <span class="mi">0003</span><span class="no">H</span>    <span class="c1">; INT0 中断入口地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">LJMP</span> <span class="no">INT0SUB</span> <span class="c1">; 跳转到实际 INT0 中断服务程序存放空间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">;; ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">ORG</span> <span class="mi">001</span><span class="no">BH</span>    <span class="c1">; T1 中断入口地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">LJMP</span> <span class="no">T1SUB</span>   <span class="c1">; 跳转到实际 T1 中断服务程序存放空间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">;; ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">ORG</span> <span class="mi">0030</span><span class="no">H</span>    <span class="c1">; 实际主程序存放区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">MAIN:</span>   <span class="nf">MOV</span> <span class="no">SP</span><span class="p">,</span><span class="c1">#5FH  ; 设置堆栈区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">SETB</span> <span class="no">IT0</span>     <span class="c1">; 选择 INT0 为下降沿触发方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">SETB</span> <span class="no">EA</span>      <span class="c1">; CPU 开中断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">SETB</span> <span class="no">EX0</span>     <span class="c1">; INT0 开中断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">SETB</span> <span class="no">ET1</span>     <span class="c1">; T1 开中断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">SETB</span> <span class="no">PX0</span>     <span class="c1">; 设置 INT0 为高优先级
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">;; ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">SJMP</span> <span class="no">$</span>       <span class="c1">; 模拟主程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">ORG</span> <span class="mi">0800</span><span class="no">H</span>    <span class="c1">; INT0 中断服务程序存放区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">INT0SUB:</span><span class="nf">PUSH</span> <span class="no">ACC</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">PUSH</span> <span class="no">PSW</span>
-</span></span><span class="line"><span class="cl">        <span class="c">;; ...
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl">        <span class="c1">;; ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl">        <span class="nf">POP</span> <span class="no">PSW</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">POP</span> <span class="no">ACC</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">RETI</span> 	     <span class="c">; 中断返回
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">T1SUB</span><span class="p">:</span>  <span class="no">PUSH</span> <span class="no">ACC</span>     <span class="c">; 定时器 T1 中断服务程序
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="no">PUSH</span> <span class="no">PSW</span>
-</span></span><span class="line"><span class="cl">        <span class="c">;; ...
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="nf">POP</span> <span class="no">PSW</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">RETI</span> 	     <span class="c1">; 中断返回
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">T1SUB:</span>  <span class="nf">PUSH</span> <span class="no">ACC</span>     <span class="c1">; 定时器 T1 中断服务程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">PUSH</span> <span class="no">PSW</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">;; ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">POP</span> <span class="no">PSW</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">POP</span> <span class="no">ACC</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">RETI</span>         <span class="c">; 中断返回
+</span></span><span class="line"><span class="cl">        <span class="nf">RETI</span>         <span class="c1">; 中断返回
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1231,14 +1231,14 @@ CPU 在每个机器周期的 <code>S6</code> 状态查询各中断源，并按�
 <li>
 <p>扩展外部中断源 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-23_21-56-31_image.IQQ8K1.png"/>
-</figure>
+        </figure>
 
 <p>与门（相当于负逻辑的或）的输入端，当其中一个或几个按键按下时，与门输出的下降沿触发 MCU 的 <code>INT0</code> 。在中断服务程序中，轮询四个 I/O 口的状态，确定是哪个按键被按下。</p>
 </li>
 <li>
 <p>电平方式外部中断请求的撤销 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-23_21-59-37_image.UVSCL1.png"/>
-</figure>
+        </figure>
 
 <p>电路的功能是，通过 <a href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/#d-触发器" rel="">D 触发器</a>将外部中断请求信号的下降沿（可以是非常快速的，短于 8051 的机器周期）转换为稳定的低电平，外部中断设置为低电平触发，等到 CPU 处理中断后，在中断服务程序里给基于 <code>P1.0</code> 一个负脉冲给触发器置位，使得触发器输出高电平，使得中断不再触发，实现请求的撤销。</p>
 </li>
@@ -1247,13 +1247,13 @@ CPU 在每个机器周期的 <code>S6</code> 状态查询各中断源，并按�
 <li>
 <p>结构 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-23_20-07-05_image.UAXYK1.png"/>
-</figure>
+    </figure>
 
 <ul>
 <li>
 <p>中断源（5 个） <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-23_20-12-09_image.USI7K1.png"/>
-</figure>
+        </figure>
 
 <p>5 个中断源的中断入口地址是固定的：</p>
 <table>
@@ -1292,7 +1292,7 @@ CPU 在每个机器周期的 <code>S6</code> 状态查询各中断源，并按�
 <li>
 <p>外部中断 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-23_20-10-46_image.GM49K1.png"/>
-</figure>
+            </figure>
 
 <p>外部中断请求信号分别从引脚 <code>INT0</code> (<code>P3.2</code>) 和 <code>INT1</code> (<code>P3.3</code>) 引入。</p>
 <ul>
@@ -1309,7 +1309,7 @@ CPU 在每个机器周期的 <code>S6</code> 状态查询各中断源，并按�
 <li>
 <p>定时器 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-23_20-11-47_image.L9ECL1.png"/>
-</figure>
+            </figure>
 
 <p>当 <code>T0</code>, <code>T1</code> 发生溢出（定时时间到）时，向 CPU 请求中断。</p>
 <ul>
@@ -1343,7 +1343,7 @@ CPU 在每个机器周期的 <code>S6</code> 状态查询各中断源，并按�
 <li>
 <p>串行中断 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-23_20-12-00_image.SNBGL1.png"/>
-</figure>
+            </figure>
 
 <p>当串行口发送完一个字节数据或接收到一个字节数据时，产生中断请求。</p>
 <table>
@@ -1464,7 +1464,7 @@ CPU 在每个机器周期的 <code>S6</code> 状态查询各中断源，并按�
 <li>
 <p>结构 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-25_20-50-25_image4_5_rId2_10248.png"/>
-</figure>
+    </figure>
 
 <ul>
 <li>加法计数器
@@ -1637,7 +1637,7 @@ CPU 在每个机器周期的 <code>S6</code> 状态查询各中断源，并按�
 <li>
 <p>工作模式 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-25_20-50-59_image5.png"/>
-</figure>
+    </figure>
 
 <ul>
 <li>定时模式 <br />
@@ -1780,7 +1780,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <li>
 <p>方式 0 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-05-04_11-05-04_image12.png"/>
-</figure>
+        </figure>
 
 <p>8 位同步通信方式，通常用于 I/O 端口扩展。</p>
 <ul>
@@ -1789,13 +1789,13 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <li>
 <p>发送 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-05-04_11-01-21_image13_23_rId2_28677.png"/>
-</figure>
+                </figure>
 
 </li>
 <li>
 <p>接收 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-05-04_11-03-26_image14.png"/>
-</figure>
+                </figure>
 
 </li>
 </ul>
@@ -1806,7 +1806,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <li>
 <p>方式 1 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-05-04_11-05-25_image17_26_rId2_31749.png"/>
-</figure>
+        </figure>
 
 <p>10 位（包含 1 位起始位与 1 位停止位）异步通信方式，发送与接收的是 8 位二进制数（LSB 优先）。波特率可编程为\(\frac{2^\texttt{SMOD}}{32}\times \text{T1 溢出速率}\)。对于常用波特率：</p>
 <table>
@@ -1868,13 +1868,13 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <li>
 <p>引脚 <code>P3.0</code> (<code>TXD</code>) 同时作为数据输出端 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-05-04_11-10-17_image18.png"/>
-</figure>
+            </figure>
 
 </li>
 <li>
 <p>引脚 <code>P3.1</code> (<code>RXD</code>) 同时作为数据输入端 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-05-04_11-11-36_image19_28_rId2_33796.png"/>
-</figure>
+            </figure>
 
 <p>位检测采样以波特率的 16 倍速率对每个位进行检测，把半数以上的结果作为最终的采样结果。第 8 位（停止位）被自动送入 <code>RB8</code> 中。</p>
 </li>
@@ -1883,7 +1883,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <li>
 <p>方式 2 / 方式 3 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-05-04_11-15-22_image20.png"/>
-</figure>
+        </figure>
 
 <p>11 位（包含 1 位起始位、 1 位停止位与 1 位奇偶校验位）异步通信方式，发送与接收的是 8 位二进制数（LSB 优先）。方式 2 与方式 3 仅在波特率的设置上有区别：</p>
 <ul>
@@ -1895,13 +1895,13 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <li>
 <p>引脚 <code>P3.0</code> (<code>TXD</code>) 同时作为数据输出端 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-05-04_11-21-30_image21.png"/>
-</figure>
+            </figure>
 
 </li>
 <li>
 <p>引脚 <code>P3.1</code> (<code>RXD</code>) 同时作为数据输入端 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2022-05-04_11-21-48_image22.png"/>
-</figure>
+            </figure>
 
 </li>
 </ul>
@@ -2031,7 +2031,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nl">LOOP:</span>   <span class="nf">OPER</span> <span class="no">DIST</span><span class="p">,</span><span class="no">SRC</span>                <span class="c">; COMMENT
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nl">LOOP:</span>   <span class="nf">OPER</span> <span class="no">DIST</span><span class="p">,</span><span class="no">SRC</span>                <span class="c1">; COMMENT
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -2166,7 +2166,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="c">#50H            ; (Rn) &lt;- data
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="c1">#50H            ; (Rn) &lt;- data
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="直接寻址">直接寻址</h4>
@@ -2176,7 +2176,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="mi">30</span><span class="no">H</span><span class="p">,</span> <span class="mi">50</span><span class="no">H</span>            <span class="c">; (direct) &lt;- (direct)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="mi">30</span><span class="no">H</span><span class="p">,</span> <span class="mi">50</span><span class="no">H</span>            <span class="c1">; (direct) &lt;- (direct)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="寄存器寻址">寄存器寻址</h4>
@@ -2186,7 +2186,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="no">R1</span>               <span class="c">; (A) &lt;- (Rn)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="no">R1</span>               <span class="c1">; (A) &lt;- (Rn)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="寄存器间接寻址">寄存器间接寻址</h4>
@@ -2196,7 +2196,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">R1</span>              <span class="c">; (A) &lt;- ((Ri))
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">R1</span>              <span class="c1">; (A) &lt;- ((Ri))
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>对于 <code>80H</code>-<code>FFH</code> 的内部 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#random-access-memory" rel="">RAM</a> 区域，只能使用寄存器间接寻址，先将地址赋值给一个寄存器，然后使用该寄存器进行寻址。</p>
@@ -2206,8 +2206,8 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="c">#80H            ; (Ri) &lt;- data
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">R0</span>              <span class="c">; (A) &lt;- ((Ri))
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="c1">#80H            ; (Ri) &lt;- data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">R0</span>              <span class="c1">; (A) &lt;- ((Ri))
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="变址寻址">变址寻址</h4>
@@ -2217,7 +2217,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">DPTR</span>         <span class="c">; (A) &lt;- ((A)+(DPTR))
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">DPTR</span>         <span class="c1">; (A) &lt;- ((A)+(DPTR))
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="相对寻址">相对寻址</h4>
@@ -2228,7 +2228,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SJMP</span> <span class="c">#01H
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SJMP</span> <span class="c1">#01H
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="位寻址">位寻址</h4>
@@ -2246,10 +2246,10 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (Rn)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (direct)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- ((Ri))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- data
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c1">; (A) &lt;- (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c1">; (A) &lt;- (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c1">; (A) &lt;- ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">A</span><span class="p">,</span> <span class="c1">#data            ; (A) &lt;- data
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2263,11 +2263,11 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; (direct) &lt;- (A)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="no">Rn</span>          <span class="c">; (direct) &lt;- (Rn)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">direct1</span><span class="p">,</span> <span class="no">direct2</span>    <span class="c">; (direct1) &lt;- (direct2)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>         <span class="c">; (direct) &lt;- ((Ri))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="c">#data       ; (direct) &lt;- data
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c1">; (direct) &lt;- (A)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="no">Rn</span>          <span class="c1">; (direct) &lt;- (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">direct1</span><span class="p">,</span> <span class="no">direct2</span>    <span class="c1">; (direct1) &lt;- (direct2)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>         <span class="c1">; (direct) &lt;- ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">direct</span><span class="p">,</span> <span class="c1">#data       ; (direct) &lt;- data
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2279,9 +2279,9 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">Rn</span><span class="p">,</span> <span class="no">A</span>               <span class="c">; (Rn) &lt;- (A)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">Rn</span><span class="p">,</span> <span class="no">direct</span>          <span class="c">; (Rn) &lt;- (direct)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="no">Rn</span><span class="p">,</span> <span class="c">#data           ; (Rn) &lt;- data
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">Rn</span><span class="p">,</span> <span class="no">A</span>               <span class="c1">; (Rn) &lt;- (A)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">Rn</span><span class="p">,</span> <span class="no">direct</span>          <span class="c1">; (Rn) &lt;- (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">Rn</span><span class="p">,</span> <span class="c1">#data           ; (Rn) &lt;- data
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2293,9 +2293,9 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="no">A</span>              <span class="c">; ((Ri)) &lt;- (A)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="no">direct</span>         <span class="c">; ((Ri)) &lt;- (direct)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOV</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="c">#data          ; ((Ri)) &lt;- data
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="no">A</span>              <span class="c1">; ((Ri)) &lt;- (A)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="no">direct</span>         <span class="c1">; ((Ri)) &lt;- (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="c1">#data          ; ((Ri)) &lt;- data
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2306,7 +2306,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">DPTR</span><span class="p">,</span> <span class="c">#data16       ; (DPTR) &lt;- data16
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">DPTR</span><span class="p">,</span> <span class="c1">#data16       ; (DPTR) &lt;- data16
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2323,10 +2323,10 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVX</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">DPTR</span>           <span class="c">; (A) &lt;- ((DPTR))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOVX</span> <span class="err">@</span><span class="no">DPTR</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; ((DPTR)) &lt;- (A)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOVX</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c">; (A) &lt;- ((Ri))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">MOVX</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="no">A</span>             <span class="c">; ((Ri)) &lt;- (A)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVX</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">DPTR</span>           <span class="c1">; (A) &lt;- ((DPTR))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOVX</span> <span class="err">@</span><span class="no">DPTR</span><span class="p">,</span> <span class="no">A</span>           <span class="c1">; ((DPTR)) &lt;- (A)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOVX</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c1">; (A) &lt;- ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOVX</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="no">A</span>             <span class="c1">; ((Ri)) &lt;- (A)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="movc"><code>MOVC</code></h4>
@@ -2339,7 +2339,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">DPTR</span>         <span class="c">; (A) &lt;- ((A) + (DPTR))
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">DPTR</span>         <span class="c1">; (A) &lt;- ((A) + (DPTR))
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2350,8 +2350,8 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">PC</span>           <span class="c">; (PC) &lt;- (PC) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (A) &lt;- ((A) + (PC))
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOVC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">PC</span>           <span class="c1">; (PC) &lt;- (PC) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (A) &lt;- ((A) + (PC))
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2366,8 +2366,8 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">PUSH</span> <span class="no">direct</span>             <span class="c">; (SP) &lt;- (SP) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- (direct)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">PUSH</span> <span class="no">direct</span>             <span class="c1">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; ((SP)) &lt;- (direct)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="pop"><code>POP</code></h4>
@@ -2379,8 +2379,8 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">POP</span> <span class="no">direct</span>              <span class="c">; (direct) &lt;- ((SP))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) - 1
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">POP</span> <span class="no">direct</span>              <span class="c1">; (direct) &lt;- ((SP))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (SP) &lt;- (SP) - 1
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="数据交换指令">数据交换指令</h3>
@@ -2394,9 +2394,9 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">XCH</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;-&gt; (Rn)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XCH</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;-&gt; (direct)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XCH</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;-&gt; ((Ri))
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">XCH</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c1">; (A) &lt;-&gt; (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">XCH</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c1">; (A) &lt;-&gt; (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">XCH</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c1">; (A) &lt;-&gt; ((Ri))
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="xchd"><code>XCHD</code></h4>
@@ -2407,7 +2407,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">XCHD</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c">; (A)3~0 &lt;-&gt; ((Ri))3~0
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">XCHD</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c1">; (A)3~0 &lt;-&gt; ((Ri))3~0
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="swap"><code>SWAP</code></h4>
@@ -2418,7 +2418,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SWAP</span> <span class="no">A</span>                  <span class="c">; (A)3~0 &lt;-&gt; (A)7~4
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SWAP</span> <span class="no">A</span>                  <span class="c1">; (A)3~0 &lt;-&gt; (A)7~4
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="算术运算指令">算术运算指令</h3>
@@ -2432,10 +2432,10 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- (A) + #data
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (A) + (direct)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- (A) + ((Ri))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (A) + (Rn)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="c1">#data            ; (A) &lt;- (A) + #data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c1">; (A) &lt;- (A) + (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c1">; (A) &lt;- (A) + ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADD</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c1">; (A) &lt;- (A) + (Rn)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="addc"><code>ADDC</code></h4>
@@ -2448,10 +2448,10 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data           ; (A) &lt;- (A) + #data + (C)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>          <span class="c">; (A) &lt;- (A) + (direct) + (C)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c">; (A) &lt;- (A) + ((Ri)) + (C)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>              <span class="c">; (A) &lt;- (A) + (Rn) + (C)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="c1">#data           ; (A) &lt;- (A) + #data + (C)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>          <span class="c1">; (A) &lt;- (A) + (direct) + (C)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c1">; (A) &lt;- (A) + ((Ri)) + (C)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADDC</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>              <span class="c1">; (A) &lt;- (A) + (Rn) + (C)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="subb"><code>SUBB</code></h4>
@@ -2464,10 +2464,10 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data           ; (A) &lt;- (A) - #data - (C)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>          <span class="c">; (A) &lt;- (A) - (direct) - (C)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c">; (A) &lt;- (A) - ((Ri)) - (C)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>              <span class="c">; (A) &lt;- (A) - (Rn) - (C)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="c1">#data           ; (A) &lt;- (A) - #data - (C)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>          <span class="c1">; (A) &lt;- (A) - (direct) - (C)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>             <span class="c1">; (A) &lt;- (A) - ((Ri)) - (C)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUBB</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>              <span class="c1">; (A) &lt;- (A) - (Rn) - (C)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="inc"><code>INC</code></h4>
@@ -2481,11 +2481,11 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">INC</span>  <span class="no">Rn</span>                 <span class="c">; (Rn) &lt;- (Rn) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">INC</span>  <span class="no">direct</span>             <span class="c">; (direct) &lt;- (direct) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">INC</span>  <span class="err">@</span><span class="no">Ri</span>                <span class="c">; ((Ri)) &lt;- ((Ri)) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">INC</span>  <span class="no">A</span>                  <span class="c">; (A) &lt;- (A) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">INC</span>  <span class="no">DPTR</span>               <span class="c">; (DPTR) &lt;-(DPTR) + 1
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">INC</span>  <span class="no">Rn</span>                 <span class="c1">; (Rn) &lt;- (Rn) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">INC</span>  <span class="no">direct</span>             <span class="c1">; (direct) &lt;- (direct) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">INC</span>  <span class="err">@</span><span class="no">Ri</span>                <span class="c1">; ((Ri)) &lt;- ((Ri)) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">INC</span>  <span class="no">A</span>                  <span class="c1">; (A) &lt;- (A) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">INC</span>  <span class="no">DPTR</span>               <span class="c1">; (DPTR) &lt;-(DPTR) + 1
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="dec"><code>DEC</code></h4>
@@ -2498,10 +2498,10 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">DEC</span>  <span class="no">Rn</span>                 <span class="c">; (Rn) &lt;- (Rn) - 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">DEC</span>  <span class="no">direct</span>             <span class="c">; (direct) &lt;- (direct) - 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">DEC</span>  <span class="err">@</span><span class="no">Ri</span>                <span class="c">; ((Ri)) &lt;- ((Ri)) - 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">DEC</span>  <span class="no">A</span>                  <span class="c">; (A) &lt;- (A) - 1
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">DEC</span>  <span class="no">Rn</span>                 <span class="c1">; (Rn) &lt;- (Rn) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">DEC</span>  <span class="no">direct</span>             <span class="c1">; (direct) &lt;- (direct) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">DEC</span>  <span class="err">@</span><span class="no">Ri</span>                <span class="c1">; ((Ri)) &lt;- ((Ri)) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">DEC</span>  <span class="no">A</span>                  <span class="c1">; (A) &lt;- (A) - 1
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意，该指令不能对 <code>DPTR</code> 实现减 1 。</p>
@@ -2517,7 +2517,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">AB</span>                  <span class="c">; (B)(A) &lt;- (A) * (B)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">AB</span>                  <span class="c1">; (B)(A) &lt;- (A) * (B)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="div"><code>DIV</code></h4>
@@ -2528,8 +2528,8 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">DIV</span> <span class="no">A</span><span class="p">,</span> <span class="no">B</span>                <span class="c">; (A) &lt;- (A) / (B)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (B) &lt;- (A) % (B)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">DIV</span> <span class="no">A</span><span class="p">,</span> <span class="no">B</span>                <span class="c1">; (A) &lt;- (A) / (B)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (B) &lt;- (A) % (B)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="da"><code>DA</code></h4>
@@ -2556,12 +2556,12 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (A) and (Rn)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (A) and (direct)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- (A) and ((Ri))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- (A) and #data
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; (direct) &lt;- (direct) and (A)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ANL</span> <span class="no">direct</span><span class="p">,</span> <span class="c">#data       ; (direct) &lt;- (direct) and #data
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c1">; (A) &lt;- (A) and (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c1">; (A) &lt;- (A) and (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c1">; (A) &lt;- (A) and ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ANL</span> <span class="no">A</span><span class="p">,</span> <span class="c1">#data            ; (A) &lt;- (A) and #data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ANL</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c1">; (direct) &lt;- (direct) and (A)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ANL</span> <span class="no">direct</span><span class="p">,</span> <span class="c1">#data       ; (direct) &lt;- (direct) and #data
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="orl"><code>ORL</code></h4>
@@ -2576,12 +2576,12 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (A) or (Rn)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (A) or (direct)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- (A) or ((Ri))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- (A) or #data
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; (direct) &lt;- (direct) or (A)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">ORL</span> <span class="no">direct</span><span class="p">,</span> <span class="c">#data       ; (direct) &lt;- (direct) or #data
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c1">; (A) &lt;- (A) or (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c1">; (A) &lt;- (A) or (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c1">; (A) &lt;- (A) or ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ORL</span> <span class="no">A</span><span class="p">,</span> <span class="c1">#data            ; (A) &lt;- (A) or #data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ORL</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c1">; (direct) &lt;- (direct) or (A)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ORL</span> <span class="no">direct</span><span class="p">,</span> <span class="c1">#data       ; (direct) &lt;- (direct) or #data
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="xrl"><code>XRL</code></h4>
@@ -2596,12 +2596,12 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c">; (A) &lt;- (A) xor (Rn)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c">; (A) &lt;- (A) xor (direct)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c">; (A) &lt;- (A) xor ((Ri))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data            ; (A) &lt;- (A) xor #data
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c">; (direct) &lt;- (direct) xor (A)
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">XRL</span> <span class="no">direct</span><span class="p">,</span> <span class="c">#data       ; (direct) &lt;- (direct) xor #data
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="no">Rn</span>               <span class="c1">; (A) &lt;- (A) xor (Rn)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span>           <span class="c1">; (A) &lt;- (A) xor (direct)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="err">@</span><span class="no">Ri</span>              <span class="c1">; (A) &lt;- (A) xor ((Ri))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">XRL</span> <span class="no">A</span><span class="p">,</span> <span class="c1">#data            ; (A) &lt;- (A) xor #data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">XRL</span> <span class="no">direct</span><span class="p">,</span> <span class="no">A</span>           <span class="c1">; (direct) &lt;- (direct) xor (A)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">XRL</span> <span class="no">direct</span><span class="p">,</span> <span class="c1">#data       ; (direct) &lt;- (direct) xor #data
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="clr"><code>CLR</code></h4>
@@ -2612,7 +2612,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CLR</span> <span class="no">A</span>                   <span class="c">; (A) &lt;- 0
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CLR</span> <span class="no">A</span>                   <span class="c1">; (A) &lt;- 0
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2624,7 +2624,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CPL</span> <span class="no">A</span>                   <span class="c">; (A) &lt;- /(A)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CPL</span> <span class="no">A</span>                   <span class="c1">; (A) &lt;- /(A)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="移位运算指令">移位运算指令</h3>
@@ -2635,7 +2635,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RL</span> <span class="no">A</span>                    <span class="c">; (A) &lt;- (A) &lt;&lt; 1
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RL</span> <span class="no">A</span>                    <span class="c1">; (A) &lt;- (A) &lt;&lt; 1
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="rr"><code>RR</code></h4>
@@ -2645,7 +2645,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RR</span> <span class="no">A</span>                    <span class="c">; (A) &lt;- (A) &gt;&gt; 1
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RR</span> <span class="no">A</span>                    <span class="c1">; (A) &lt;- (A) &gt;&gt; 1
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="rlc"><code>RLC</code></h4>
@@ -2655,7 +2655,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RLC</span> <span class="no">A</span>                   <span class="c">; (C)(A) &lt;- (C)(A) &lt;&lt; 1
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RLC</span> <span class="no">A</span>                   <span class="c1">; (C)(A) &lt;- (C)(A) &lt;&lt; 1
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="rrc"><code>RRC</code></h4>
@@ -2665,7 +2665,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RRC</span> <span class="no">A</span>                   <span class="c">; (C)(A) &lt;- (C)(A) &gt;&gt; 1
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RRC</span> <span class="no">A</span>                   <span class="c1">; (C)(A) &lt;- (C)(A) &gt;&gt; 1
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="无条件跳转指令">无条件跳转指令</h3>
@@ -2676,7 +2676,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">LJMP</span> <span class="no">addr16</span>             <span class="c">; (PC) &lt;- addr16
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">LJMP</span> <span class="no">addr16</span>             <span class="c1">; (PC) &lt;- addr16
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="ajmp"><code>AJMP</code></h4>
@@ -2687,8 +2687,8 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">AJMP</span> <span class="no">addr11</span>             <span class="c">; (PC) &lt;- (PC) + 2
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (PC)[0..11] &lt;- addr11
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">AJMP</span> <span class="no">addr11</span>             <span class="c1">; (PC) &lt;- (PC) + 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (PC)[0..11] &lt;- addr11
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>由于地址是 11 位的，作为无符号整型时最大可表示 2047 ，对 <code>PC</code> 赋值时高 5 位不变，仅对低 11 位进行赋值，如果不在同一个 2KB 区域中，就会跳转至错误的位置。</p>
@@ -2699,7 +2699,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SJMP</span> <span class="no">rel</span>                <span class="c">; (PC) &lt;- (PC) + 2 + rel
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SJMP</span> <span class="no">rel</span>                <span class="c1">; (PC) &lt;- (PC) + 2 + rel
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="jmp"><code>JMP</code></h4>
@@ -2709,7 +2709,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JMP</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">DPTR</span>             <span class="c">; (PC) &lt;- (A) + (DPTR)
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JMP</span> <span class="err">@</span><span class="no">A</span><span class="err">+</span><span class="no">DPTR</span>             <span class="c1">; (PC) &lt;- (A) + (DPTR)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="条件跳转指令">条件跳转指令</h3>
@@ -2721,7 +2721,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JZ</span> <span class="no">rel</span>                  <span class="c">; (A) == 0 =&gt; (PC) &lt;- (PC) + 2 + rel
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JZ</span> <span class="no">rel</span>                  <span class="c1">; (A) == 0 =&gt; (PC) &lt;- (PC) + 2 + rel
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="jnz"><code>JNZ</code></h4>
@@ -2732,7 +2732,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JNZ</span> <span class="no">rel</span>                 <span class="c">; (A) != 0 =&gt; (PC) &lt;- (PC) + 2 + rel
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JNZ</span> <span class="no">rel</span>                 <span class="c1">; (A) != 0 =&gt; (PC) &lt;- (PC) + 2 + rel
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="cjne"><code>CJNE</code></h4>
@@ -2751,10 +2751,10 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CJNE</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span><span class="p">,</span> <span class="no">rel</span>     <span class="c">; (A) != (direct) =&gt; (PC) &lt;- (PC) + 3 + rel
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">CJNE</span> <span class="no">A</span><span class="p">,</span> <span class="c">#data, rel      ; (A) != data =&gt; (PC) &lt;- (PC) + 3 + rel
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">CJNE</span> <span class="no">Rn</span><span class="p">,</span> <span class="c">#data, rel     ; (Rn) != data =&gt; (PC) &lt;- (PC) + 3 + rel
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="no">CJNE</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="c">#data, rel    ; ((Ri)) != data =&gt; (PC) &lt;- (PC) + 3 + rel
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CJNE</span> <span class="no">A</span><span class="p">,</span> <span class="no">direct</span><span class="p">,</span> <span class="no">rel</span>     <span class="c1">; (A) != (direct) =&gt; (PC) &lt;- (PC) + 3 + rel
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CJNE</span> <span class="no">A</span><span class="p">,</span> <span class="c1">#data, rel      ; (A) != data =&gt; (PC) &lt;- (PC) + 3 + rel
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CJNE</span> <span class="no">Rn</span><span class="p">,</span> <span class="c1">#data, rel     ; (Rn) != data =&gt; (PC) &lt;- (PC) + 3 + rel
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CJNE</span> <span class="err">@</span><span class="no">Ri</span><span class="p">,</span> <span class="c1">#data, rel    ; ((Ri)) != data =&gt; (PC) &lt;- (PC) + 3 + rel
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="djnz"><code>DJNZ</code></h4>
@@ -2766,8 +2766,8 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">DJNZ</span> <span class="no">Rn</span><span class="p">,</span> <span class="no">rel</span>            <span class="c">; (Rn) &lt;- (Rn) - 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (Rn) != 0 =&gt; (PC) &lt;- (PC) + 2 + rel
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">DJNZ</span> <span class="no">Rn</span><span class="p">,</span> <span class="no">rel</span>            <span class="c1">; (Rn) &lt;- (Rn) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (Rn) != 0 =&gt; (PC) &lt;- (PC) + 2 + rel
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="jbn"><code>JBN</code></h4>
@@ -2778,7 +2778,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JNB</span> <span class="no">bit</span><span class="p">,</span> <span class="no">rel</span>            <span class="c">; (bit) == 0 =&gt; (PC) &lt;- (PC) + rel
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JNB</span> <span class="no">bit</span><span class="p">,</span> <span class="no">rel</span>            <span class="c1">; (bit) == 0 =&gt; (PC) &lt;- (PC) + rel
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="jbc"><code>JBC</code></h4>
@@ -2790,8 +2790,8 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JBC</span> <span class="no">bit</span><span class="p">,</span> <span class="no">rel</span>            <span class="c">; (bit) == 1 =&gt; (PC) &lt;- (PC) + rel
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">;               (bit) &lt;- 0
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JBC</span> <span class="no">bit</span><span class="p">,</span> <span class="no">rel</span>            <span class="c1">; (bit) == 1 =&gt; (PC) &lt;- (PC) + rel
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">;               (bit) &lt;- 0
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="jc"><code>JC</code></h4>
@@ -2800,7 +2800,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JC</span> <span class="no">rel</span>                  <span class="c">; (C) == 1 =&gt; (PC) &lt;- (PC) + rel
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JC</span> <span class="no">rel</span>                  <span class="c1">; (C) == 1 =&gt; (PC) &lt;- (PC) + rel
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="jnc"><code>JNC</code></h4>
@@ -2809,7 +2809,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JNC</span> <span class="no">rel</span>                 <span class="c">; (C) == 0 =&gt; (PC) &lt;- (PC) + rel
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">JNC</span> <span class="no">rel</span>                 <span class="c1">; (C) == 0 =&gt; (PC) &lt;- (PC) + rel
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="子程序指令">子程序指令</h3>
@@ -2825,12 +2825,12 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">LCALL</span> <span class="no">addr16</span>            <span class="c">; (PC) &lt;- (PC) + 3
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- PCL
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- PCH
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (PC) &lt;- addr16
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">LCALL</span> <span class="no">addr16</span>            <span class="c1">; (PC) &lt;- (PC) + 3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; ((SP)) &lt;- PCL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; ((SP)) &lt;- PCH
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (PC) &lt;- addr16
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="acall"><code>ACALL</code></h4>
@@ -2845,12 +2845,12 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ACALL</span> <span class="no">addr11</span>            <span class="c">; (PC) &lt;- (PC) + 2
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- PCL
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) + 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; ((SP)) &lt;- PCH
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (PC)[0..10] &lt;- addr11
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ACALL</span> <span class="no">addr11</span>            <span class="c1">; (PC) &lt;- (PC) + 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; ((SP)) &lt;- PCL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (SP) &lt;- (SP) + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; ((SP)) &lt;- PCH
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (PC)[0..10] &lt;- addr11
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>由于 MCU 的 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#read-only-memory" rel="">ROM</a> 容量不再是问题，所以这条指令很少使用。</p>
@@ -2864,10 +2864,10 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RET</span>                     <span class="c">; (PCH) &lt;- ((SP))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) - 1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (PCL) &lt;- ((SP))
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>                        <span class="c">; (SP) &lt;- (SP) - 1
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">RET</span>                     <span class="c1">; (PCH) &lt;- ((SP))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (SP) &lt;- (SP) - 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (PCL) &lt;- ((SP))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">; (SP) &lt;- (SP) - 1
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="reti"><code>RETI</code></h4>
@@ -2880,7 +2880,7 @@ CPU 读取计数器值的期间，若计数器是 16 位的，则需要花费多
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">NOP</span>                     <span class="c">; (PC) &lt;- (PC) + 1
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">NOP</span>                     <span class="c1">; (PC) &lt;- (PC) + 1
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="伪指令">伪指令</h3>

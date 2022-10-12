@@ -331,7 +331,7 @@
 <li>
 <p><code>heap2.c</code> ：使用<a href="https://bohonghuang.github.io/posts/notes/%E7%AE%97%E6%B3%95/#最佳匹配算法" rel="">最佳匹配算法</a>，它允许释放之前分配的内存块。它不会把相邻的空闲块合成一个更大的块，导致可能无法继续分配连续的内存。</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_22-43-43_v2-63457a1507fdf572ba9d40db4f498032_720w.jpg"/>
-</figure>
+    </figure>
 
 <ul>
 <li>特点
@@ -361,7 +361,7 @@
 <li>
 <p><code>heap4.c</code> ：使用一个最佳匹配算法，但不像 <code>heap2.c</code> 那样。它会将相邻的空闲内存块合并成一个更大的块（包含一个合并算法）。</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_22-43-50_v2-661ebd582b870013f1b1d255301df0f2_720w.jpg"/>
-</figure>
+    </figure>
 
 <ul>
 <li>特点
@@ -377,7 +377,7 @@
 <li>
 <p><code>heap5.c</code> ：同样实现了 <code>heap_4.c</code> 中的合并算法，并且允许堆栈跨越多个非连续的内存区（如外挂SRAM）。</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_18-33-24_20200614170021798.png"/>
-</figure>
+    </figure>
 
 </li>
 </ul>
@@ -528,13 +528,13 @@
 <li>
 <p>不使用 <code>vTaskDelay()</code> 和 <code>vTaskDelayUntil()</code> ：在SysTick中断中切换任务。</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_22-51-29_v2-c7d5f13934c3174c9c720452df05f2cb_720w.jpg"/>
-</figure>
+        </figure>
 
 </li>
 <li>
 <p>使用 <code>vTaskDelay()</code> ：不用等到 SysTick 中断后才切换到下一个任务，更加高效</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_22-51-41_v2-c21ff65989aaf9fcd3f629e761e9d99e_720w.jpg"/>
-</figure>
+        </figure>
 
 </li>
 <li>
@@ -548,7 +548,7 @@
 <li>
 <p>状态</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_18-53-38_20151215111938789.png"/>
-</figure>
+    </figure>
 
  <!--list-separator-->
 <ul>
@@ -690,7 +690,7 @@
 <li>
 <p>发送通知：发送通知API函数可以用于任务和中断服务函数。</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_10-03-21_20160610223334328.png"/>
-</figure>
+    </figure>
 
 <ul>
 <li>
@@ -717,7 +717,7 @@
 <li>
 <p><code>eAction</code> ：枚举类型，指明更新通知值的方法</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_09-03-27_20160125111115637.png"/>
-</figure>
+            </figure>
 
 </li>
 <li>
@@ -832,7 +832,7 @@
 <li>
 <p>入队发送到队列的消息是通过拷贝实现的，这意味着队列存储的数据是原数据，而不是原数据的引用。</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_00-50-16_20160526205214852.png"/>
-</figure>
+    </figure>
 
 <ul>
 <li>
@@ -903,7 +903,7 @@
 <li>
 <p>出队</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_00-55-04_20160526205754285.png"/>
-</figure>
+    </figure>
 
 <ul>
 <li>
@@ -963,7 +963,7 @@
 </div>
 </div><p>实际上是一次并且阻塞时间为0的入队操作（宏 <code>semGIVE_BLOCK_TIME</code> 定义为0）</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_10-36-03_20160530132805357.png"/>
-</figure>
+            </figure>
 
 </li>
 </ul>
@@ -975,7 +975,7 @@
 <p>计数信号量</p>
 <p>实现了对事件发生的次数或者对资源数量的计数。当计数为0时，要获取该信号量只能阻塞。</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_15-11-28_20181030211845946.png.png"/>
-</figure>
+        </figure>
 
 <ul>
 <li>
@@ -1000,7 +1000,7 @@
 <li>
 <p>结构</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_10-45-46_20160530133103561.png"/>
-</figure>
+            </figure>
 
 </li>
 </ul>
@@ -1041,7 +1041,7 @@
 <li>
 <p>结构</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_10-41-04_20160530132910498.png"/>
-</figure>
+            </figure>
 
 </li>
 </ul>
@@ -1069,7 +1069,7 @@
 <li>
 <p>结构</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-21_10-52-26_20160530133248328.png"/>
-</figure>
+            </figure>
 
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

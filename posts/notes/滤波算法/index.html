@@ -326,10 +326,10 @@
 <li>
 <p>\(\begin{array}{rlr}p_{k} &amp; = p_{k-1}+&amp; \Delta t v_{k-1} \\v_{k} &amp; = &amp;v_{k-1}\end{array}\Rightarrow\begin{aligned} \hat{\mathbf{x}}_{k} &amp;=\left[\begin{array}{cc} 1 &amp; \Delta t \\ 0 &amp; 1 \end{array}\right] \hat{\mathbf{x}}_{k-1} \\ &amp;=\mathbf{F}_{k} \hat{\mathbf{x}}_{k-1} \end{aligned}\) <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-08-56_8170a6981244e9aa2f60d093e0d20a4e_720w.jpg"/>
-</figure>
+                    </figure>
 
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-09-20_5810ceee40fd2cf52478551e156ec773_720w.jpg"/>
-</figure>
+                    </figure>
 
 </li>
 </ul>
@@ -379,11 +379,11 @@
 <li>
 <p>\(Q_k\)：表示方差为\(Q_k\)的高斯噪声，作为不确定性因素把上一个分布用于预测的每一个点都移动到预测后符合方差为\(Q_K\)的高斯分布里：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-07-28_1736dbc6bac349f1fd86de3c9e2cc76f_720w.jpg"/>
-</figure>
+                        </figure>
 
 <p>产生一个新的高斯分布：</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-07-52_63b04b1e1330df6d2248f9272618ba8b_720w.jpg"/>
-</figure>
+                        </figure>
 
 </li>
 </ul>
@@ -407,10 +407,10 @@
 <li>
 <p>推测 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-02-59_b7e5edbd408b664a2ec07e95d0794227_720w.jpg"/>
-</figure>
+    </figure>
 
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-03-33_e014690db550baa5baaf62d1d6c21e55_720w.jpg"/>
-</figure>
+    </figure>
 
 <ul>
 <li>\(\begin{aligned} \vec{\mu}_{\text {expected }} &amp;=\mathbf{H}_{k} \hat{\mathbf{x}}_{k} \\ \mathbf{\Sigma}_{\text {expected }} &amp;=\mathbf{H}_{k} \mathbf{P}_{k} \mathbf{H}_{k}^{T} \end{aligned}\)
@@ -426,7 +426,7 @@
 <li>
 <p>观测 <br /></p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-04-05_8f86b40e297d206f439c2c3653357c77_720w.jpg"/>
-</figure>
+    </figure>
 
 <ul>
 <li>
@@ -435,15 +435,15 @@
 <li>
 <p>\(R_k\)：读数的方差</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-05-13_aaa22652895229c41402d46df09359b9_720w.jpg"/>
-</figure>
+        </figure>
 
 <p>如果有两个相互独立的获取系统状态的方式，并且得到两者都准确的概率值，只需要将两者相乘</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-05-42_5872b13eb9fc87370a8decd02cdf0012_720w.jpg"/>
-</figure>
+        </figure>
 
 <p>相乘后得到新的均值和协方差</p>
 <figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-20_03-06-38_3c5dcbb045192ae881e94e732d29eadc_720w.jpg"/>
-</figure>
+        </figure>
 
 <p>使用高斯乘法得到新的分布
 \[\mathcal{N}\left(x, \mu_{0}, \sigma_{0}\right) \cdot \mathcal{N}\left(x, \mu_{1}, \sigma_{1}\right) \stackrel{?}{ = } \mathcal{N}\left(x, \mu^{\prime}, \sigma^{\prime}\right)\]
