@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-emacs-%E7%9A%84%E4%BB%BB%E6%84%8F-buffer-%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8C%BA%E5%9F%9F%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-12T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-10-12T21:41:59+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在 Emacs 的任意 Buffer 中进行区域代码高亮"/>
 <meta name="twitter:description" content="在 Emacs 里一边用 EWW （Emacs 内置的浏览器）阅读博客文章或技术文档，一边用 Org-mode 记笔记和运行代码十分方便，不过个人认为使用 EWW 在文章里阅读代码时，比较"/>
@@ -20,7 +19,7 @@
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-emacs-%E7%9A%84%E4%BB%BB%E6%84%8F-buffer-%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8C%BA%E5%9F%9F%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" /><link rel="prev" href="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-emacs-%E7%9A%84%E4%BB%BB%E6%84%8F-buffer-%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8C%BA%E5%9F%9F%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" /><link rel="prev" href="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" /><link rel="next" href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -172,7 +171,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" class="prev" rel="prev" title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历"><i class="fas fa-angle-left fa-fw"></i>记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历</a></div>
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" class="prev" rel="prev" title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历"><i class="fas fa-angle-left fa-fw"></i>记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历</a>
+            <a href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" class="next" rel="next" title="使用 SBCL 构建静态链接的 Lisp 可执行文件">使用 SBCL 构建静态链接的 Lisp 可执行文件<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://bohonghuang.github.io/posts/notes/freertos/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-03-03T19:36:47+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="FreeRTOS"/>
 <meta name="twitter:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 优点 用户无需关心时间信息：内核负责计时，并由相关的API完成，从而使得用户的应用程序代码结构更简"/>
@@ -209,13 +208,13 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">task</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="n">portTickType</span> <span class="n">xDelay</span> <span class="o">=</span> <span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="n">portTickType</span> <span class="n">xDelay</span> <span class="o">=</span> <span class="nf">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span> <span class="p">;;</span> <span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="cm">/****************/</span>
 </span></span><span class="line"><span class="cl">      <span class="cm">/* 任务主体代码 */</span>
 </span></span><span class="line"><span class="cl">      <span class="cm">/****************/</span>
-</span></span><span class="line"><span class="cl">      <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">xDelay</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">vTaskDelay</span><span class="p">(</span><span class="n">xDelay</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
@@ -257,12 +256,12 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">task</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pvParameters</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">portTickType</span> <span class="n">xLastWakeTime</span><span class="p">;</span>  <span class="c1">//注意是静态变量，只会被初始化一次
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">const</span> <span class="n">portTickType</span> <span class="n">xDelay</span> <span class="o">=</span> <span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">const</span> <span class="n">portTickType</span> <span class="n">xDelay</span> <span class="o">=</span> <span class="nf">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">xLastWakeTime</span> <span class="o">=</span> <span class="n">xTaskGetTickCount</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">xLastWakeTime</span> <span class="o">=</span> <span class="nf">xTaskGetTickCount</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span> <span class="p">;;</span> <span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">vTaskDelayUntil</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xLastWakeTime</span><span class="p">,</span> <span class="n">xDelay</span><span class="p">);</span> <span class="c1">//注意取地址
+</span></span><span class="line"><span class="cl">    <span class="nf">vTaskDelayUntil</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xLastWakeTime</span><span class="p">,</span> <span class="n">xDelay</span><span class="p">);</span> <span class="c1">//注意取地址
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="cm">/****************/</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/* 任务主体代码 */</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/****************/</span>
@@ -404,7 +403,7 @@
 </span></span><span class="line"><span class="cl">    <span class="cm">/* 任务主体代码 */</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/****************/</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="n">vTaskDelete</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span> <span class="c1">//如果要退出任务都必须要调用该函数，而不能直接返回
+</span></span><span class="line"><span class="cl">  <span class="nf">vTaskDelete</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span> <span class="c1">//如果要退出任务都必须要调用该函数，而不能直接返回
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -702,7 +701,7 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">Basetype_t</span> <span class="n">xTaskNotify</span><span class="p">(</span><span class="n">TaskHandle_txTaskToNotify</span><span class="p">,</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">Basetype_t</span> <span class="nf">xTaskNotify</span><span class="p">(</span><span class="n">TaskHandle_txTaskToNotify</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                       <span class="kt">uint32_t</span> <span class="n">ulValue</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                       <span class="n">eNotifyAction</span> <span class="n">eAction</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
@@ -745,7 +744,7 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">uint32_t</span> <span class="n">ulTaskNotifyTake</span><span class="p">(</span><span class="n">BaseType_t</span> <span class="n">xClearCountOnExit</span><span class="p">,</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">uint32_t</span> <span class="nf">ulTaskNotifyTake</span><span class="p">(</span><span class="n">BaseType_t</span> <span class="n">xClearCountOnExit</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                          <span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -768,7 +767,7 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="n">xTaskNotifyWait</span><span class="p">(</span><span class="n">uint32_tulBitsToClearOnEntry</span><span class="p">,</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="nf">xTaskNotifyWait</span><span class="p">(</span><span class="n">uint32_tulBitsToClearOnEntry</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                           <span class="n">uint32_tulBitsToClearOnExit</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                           <span class="kt">uint32_t</span><span class="o">*</span><span class="n">pulNotificationValue</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                           <span class="n">TickType_txTicksToWait</span><span class="p">)</span>
@@ -803,7 +802,7 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">QueueHandle_t</span> <span class="n">xQueueGenericCreate</span><span class="p">(</span><span class="k">const</span> <span class="n">UBaseType_t</span> <span class="n">uxQueueLength</span><span class="p">,</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">QueueHandle_t</span> <span class="nf">xQueueGenericCreate</span><span class="p">(</span><span class="k">const</span> <span class="n">UBaseType_t</span> <span class="n">uxQueueLength</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                  <span class="k">const</span> <span class="n">UBaseType_t</span> <span class="n">uxItemSize</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                  <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">pucQueueStorage</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                  <span class="n">StaticQueue_t</span> <span class="o">*</span><span class="n">pxStaticQueue</span><span class="p">,</span>
@@ -845,7 +844,7 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="n">xQueueGenericSendFromISR</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="nf">xQueueGenericSendFromISR</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                    <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pvItemToQueue</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                    <span class="n">BaseType_t</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pxHigherPriorityTaskWoken</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                    <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xCopyPosition</span><span class="p">)</span>
@@ -879,7 +878,7 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="n">xQueueGenericSend</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">BaseType_t</span> <span class="nf">xQueueGenericSend</span><span class="p">(</span><span class="n">QueueHandle_t</span> <span class="n">xQueue</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                             <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="k">const</span> <span class="n">pvItemToQueue</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                             <span class="n">TickType_t</span> <span class="n">xTicksToWait</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                             <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xCopyPosition</span><span class="p">)</span>
@@ -1161,7 +1160,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroupCreate</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventGroupHandle_t</span> <span class="nf">xEventGroupCreate</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1172,7 +1171,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroupCreateStatic</span><span class="p">(</span><span class="n">StaticEventGroup_t</span> <span class="o">*</span><span class="n">pxEventGroupBuffer</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventGroupHandle_t</span> <span class="nf">xEventGroupCreateStatic</span><span class="p">(</span><span class="n">StaticEventGroup_t</span> <span class="o">*</span><span class="n">pxEventGroupBuffer</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1192,7 +1191,7 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="n">xEventGroupClearBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="nf">xEventGroupClearBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                 <span class="k">const</span> <span class="n">EventBits_t</span> <span class="n">uxBitsToClear</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -1212,7 +1211,7 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="n">xEventGroupSetBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="nf">xEventGroupSetBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                               <span class="k">const</span> <span class="n">EventBits_t</span> <span class="n">uxBitsToSet</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -1236,7 +1235,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="n">xEventGroupGetBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="nf">xEventGroupGetBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1259,7 +1258,7 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="n">xEventGroupWaitBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">EventBits_t</span> <span class="nf">xEventGroupWaitBits</span><span class="p">(</span><span class="n">EventGroupHandle_t</span> <span class="n">xEventGroup</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                <span class="k">const</span> <span class="n">EventBits_t</span> <span class="n">uxBitsToWaitFor</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xClearOnExit</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                                <span class="k">const</span> <span class="n">BaseType_t</span> <span class="n">xWaitForAllBits</span><span class="p">,</span>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">使用 SBCL 构建静态链接的 Lisp 可执行文件 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="使用 SBCL 构建静态链接的 Lisp 可执行文件" />
+<meta property="og:description" content="前言 Common Lisp 虽然是动态语言，但分发可执行的应用程序是比较方便的，因为大多数 Lisp 实现支持将运行环境 Dump 出镜像，可以实现几乎无外部依赖（如 SBCL 生成的镜像只" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-25T13:35:57+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用 SBCL 构建静态链接的 Lisp 可执行文件"/>
+<meta name="twitter:description" content="前言 Common Lisp 虽然是动态语言，但分发可执行的应用程序是比较方便的，因为大多数 Lisp 实现支持将运行环境 Dump 出镜像，可以实现几乎无外部依赖（如 SBCL 生成的镜像只"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" /><link rel="prev" href="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-emacs-%E7%9A%84%E4%BB%BB%E6%84%8F-buffer-%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8C%BA%E5%9F%9F%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "使用 SBCL 构建静态链接的 Lisp 可执行文件",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Lisp, SBCL","wordcount":  1852 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6\/","datePublished": "2022-12-24T00:00:00+00:00","dateModified": "2022-12-25T13:35:57+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">使用 SBCL 构建静态链接的 Lisp 可执行文件</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-12-24">2022-12-24</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-12-25">2022-12-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1852 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" class="leancloud_visitors" data-flag-title="使用 SBCL 构建静态链接的 Lisp 可执行文件">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#步骤">步骤</a></li>
+    <li><a href="#后记">后记</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="前言">前言</h2>
+<p>Common Lisp 虽然是动态语言，但分发可执行的应用程序是比较方便的，因为大多数 Lisp 实现支持将运行环境 Dump 出镜像，可以实现几乎无外部依赖（如 SBCL 生成的镜像只依赖于 <code>libm</code> 、 <code>libc</code> 与 <code>libzstd</code> 等具有很强向后兼容性的库）的可执行文件分发，也就是在一台系统足够旧的计算机上生成的可执行文件直接扔到大多数同平台、同架构的计算机上往往可以直接运行，无需进行编译、安装或解压，这一点是大部分动态语言无法做到的。</p>
+<p>但如果需要使用 C 来编写一些性能敏感的代码或通过 FFI 使用基于 C ABI 的外部库，发布应用程序时一般就需要带上不少动态库，一定程度上破坏了这种 Image-based 分发方式的便携性。虽然 Lisp 镜像实际上可以存放各种数据，包括图片、音乐等，理论上只要能加载进内存的内容，就可以将他们存入 Lisp 镜像，理论上是可以将这些动态链接库“打包”在 Lisp 镜像里，然后程序运行时将他们“解包”到磁盘上再进行加载的，但对于一些从设计上就用于静态链接的库（如 <code>stb</code> 、 <code>raylib</code> ），这些库一般只包括一个存有声明与实现的头文件，在 C 里直接 <code>#include</code> 即可使用，而在 Lisp 这边，则需要先手动编写一个 C 的源文件 <code>#include</code> 想要使用的静态库，然后调用编译器将其编译为动态连接库，然后才可以在 Lisp 程序里加载这些库然后运行，显然整个应用程序的构建过程是相对比较繁琐的。</p>
+<p>好在 CFFI 提供了对于<a href="https://cffi.common-lisp.dev/manual/html_node/Static-Linking.html" target="_blank" rel="noopener noreffer">静态链接的支持</a>，在 ASDF 的系统定义文件里声明好需要使用或手动编写的 C 文件， 那么在构建时， ASDF 就可以自动调用 C 编译器输出对应的目标文件，然后将它们静态链接到 Lisp 的运行环境里。值得一提的是目前只有 SBCL 、 ECL 、 Clisp 支持这种静态链接的构建方式，并且相关的文档资料十分不完善。本人折腾了很久，实测只有带 <code>--with-sb-linkable-runtime</code> 编译的 SBCL 才可以正常地进行静态链接与加载，这里以一个示例应用程序记录一下整个过程。</p>
+<h2 id="步骤">步骤</h2>
+<ol>
+<li>
+<p>下载 SBCL 的源代码并进行编译安装 <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">SBCL_VERSION</span><span class="o">=</span><span class="s2">&#34;2.2.11&#34;</span>
+</span></span><span class="line"><span class="cl">curl -L <span class="s2">&#34;http://downloads.sourceforge.net/project/sbcl/sbcl/</span><span class="nv">$SBCL_VERSION</span><span class="s2">/sbcl-</span><span class="nv">$SBCL_VERSION</span><span class="s2">-source.tar.bz2&#34;</span> -o <span class="s2">&#34;sbcl-</span><span class="nv">$SBCL_VERSION</span><span class="s2">-source.tar.bz2&#34;</span>
+</span></span><span class="line"><span class="cl">tar -xvjf <span class="s2">&#34;sbcl-</span><span class="nv">$SBCL_VERSION</span><span class="s2">-source.tar.bz2&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="s2">&#34;sbcl-</span><span class="nv">$SBCL_VERSION</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">sh ./make.sh --fancy --with-sb-linkable-runtime --prefix<span class="o">=</span>~/.local/
+</span></span><span class="line"><span class="cl">sh ./install.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>示例 ASDF 项目 <br />
+在 Quicklisp 的 <code>local-projects</code> 目录下创建示例项目：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── my-lib.c
+</span></span><span class="line"><span class="cl">├── package.lisp
+</span></span><span class="line"><span class="cl">└── test-static.asd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<ul>
+<li>
+<p><code>my-lib.c</code> <br />
+简单起见，这里只定义了一个用于测试的函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">plus_one</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>package.lisp</code> <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defpackage</span> <span class="nv">test-static</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:use</span> <span class="ss">#:cl</span> <span class="ss">#:alexandria</span> <span class="ss">#:cffi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:nicknames</span> <span class="ss">#:test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:export</span> <span class="ss">#:main</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">in-package</span> <span class="ss">#:test-static</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">cffi:defcfun</span> <span class="s">&#34;plus_one&#34;</span> <span class="ss">:int</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">i</span> <span class="ss">:int</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">main</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">format</span> <span class="no">t</span> <span class="s">&#34;~d&#34;</span> <span class="p">(</span><span class="nv">plus-one</span> <span class="mi">3</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Lisp 程序也很简单，就是调用刚刚定义的 <code>plus_one</code> 函数，看一下能不能输出正确的结果 <code>4</code> 。</p>
+</li>
+<li>
+<p><code>test-static.asd</code> <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="o">#+</span><span class="nv">sb-core-compression</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defmethod</span> <span class="nv">asdf:perform</span> <span class="p">((</span><span class="nv">o</span> <span class="nv">asdf:image-op</span><span class="p">)</span> <span class="p">(</span><span class="nv">c</span> <span class="nv">asdf:system</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">uiop:dump-image</span> <span class="p">(</span><span class="nv">asdf:output-file</span> <span class="nv">o</span> <span class="nv">c</span><span class="p">)</span> <span class="ss">:executable</span> <span class="no">t</span> <span class="ss">:compression</span> <span class="no">t</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">defsystem</span> <span class="nv">test-static</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:version</span> <span class="s">&#34;1.0.0&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:defsystem-depends-on</span> <span class="p">(</span><span class="ss">:cffi-grovel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:build-operation</span> <span class="s">&#34;static-program-op&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:build-pathname</span> <span class="s">&#34;test-static&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:entry-point</span> <span class="s">&#34;test-static:main&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:components</span> <span class="p">((</span><span class="ss">:c-file</span> <span class="s">&#34;my-lib&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">               <span class="p">(</span><span class="ss">:file</span> <span class="s">&#34;package&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:depends-on</span> <span class="p">(</span><span class="ss">#:asdf</span> <span class="ss">#:cffi</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<ul>
+<li><code>build-operation</code> 指定了调用 <code>asdf:make</code> 是默认进行的构建操作，根据 CFFI 的手册，这里使用 <code>static-program-op</code> 。</li>
+<li><code>build-pathname</code> 是构建的可执行文件的相对路径。</li>
+<li><code>entry-point</code> 指定应用程序的入口函数。</li>
+<li><code>c-file</code> 需要编译并静态链接的 C 源文件名。如果只是想静态链接已有的 C 库，也可以使用 CFFI-Grovel 语法包含现有  C 文件。</li>
+</ul>
+<p>值得一提的是 SBCL 的核心压缩似乎会将静态链接的库也一起进行压缩，这意味着当静态链接的库比较多的时候， SBCL 输出的可执行文件与 C/C++ 相比可能还具有体积的优势。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>构建可执行文件 <br />
+进入到刚刚构建完成 SBCL 的库目录（即带有 <code>sbcl.core</code> 与 <code>contrib</code> 的目录，上面的构建命令对应的目录是 <code>~/.local/lib/sbcl</code> ，如果不是在这个目录下进行构建，那么可能在构建时会出现 <code>(require &quot;asdf&quot;)</code> 失败的情况），运行 SBCL ，在 REPL 里输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">asdf:load-system</span> <span class="ss">:cffi-grovel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">:static-program-op</span> <span class="ss">:test-static</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">This is SBCL 2.2.11, an implementation of ANSI Common Lisp.
+</span></span><span class="line"><span class="cl">More information about SBCL is available at &lt;http://www.sbcl.org/&gt;.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SBCL is free software, provided as is, with absolutely no warranty.
+</span></span><span class="line"><span class="cl">It is mostly in the public domain; some portions are provided under
+</span></span><span class="line"><span class="cl">BSD-style licenses.  See the CREDITS and COPYING files in the
+</span></span><span class="line"><span class="cl">distribution for more information.
+</span></span><span class="line"><span class="cl">​* (asdf:make :test-static)
+</span></span><span class="line"><span class="cl">WARNING: redefining PERFORM (#&lt;STANDARD-CLASS ASDF/BUNDLE:IMAGE-OP&gt; #&lt;STANDARD-CLASS ASDF/SYSTEM:SYSTEM&gt;) in DEFMETHOD
+</span></span><span class="line"><span class="cl">; compiling file &#34;/home/coco24/.quicklisp/local-projects/test-static/package.lisp&#34; (written 24 DEC 2022 12:38:04 PM):
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">; wrote /home/coco24/.cache/common-lisp/sbcl-2.2.11-linux-x64/home/coco24/.quicklisp/local-projects/test-static/package-tmpGHU3ALSV.fasl
+</span></span><span class="line"><span class="cl">; compilation finished in 0:00:00.010
+</span></span><span class="line"><span class="cl">; ar rcsDT /home/coco24/.cache/common-lisp/sbcl-2.2.11-linux-x64/home/coco24/.quicklisp/local-projects/test-static/test-static-tmpAAURSO1.a /home/coco24/.cache/common-lisp/sbcl-2.2.11-linux-x64/home/coco24/.quicklisp/local-projects/test-static/test_static__my_lib.o
+</span></span><span class="line"><span class="cl">; cc -o /home/coco24/.cache/common-lisp/sbcl-2.2.11-linux-x64/home/coco24/.quicklisp/local-projects/test-static/test-static-runtime-tmp5GEXGEG5 -g -Wl,--export-dynamic /home/coco24/.local/bin/../lib/sbcl/sbcl.o -Wl,--whole-archive /home/coco24/.cache/common-lisp/sbcl-2.2.11-linux-x64/home/coco24/.quicklisp/local-projects/test-static/test-static.a -Wl,--no-whole-archive -ldl -lpthread -lzstd -lm -lm
+</span></span><span class="line"><span class="cl">; /home/coco24/.cache/common-lisp/sbcl-2.2.11-linux-x64/home/coco24/.quicklisp/local-projects/test-static/test-static-runtime --core /home/coco24/.local/bin/../lib/sbcl/sbcl.core --noinform --non-interactive --no-sysinit --no-userinit --eval &#34;&#39;(#.(require \&#34;asdf\&#34;) #.(in-package :asdf) #.(progn (setf *central-registry* (quote (#P\&#34;/home/coco24/.quicklisp/quicklisp/\&#34;))) (initialize-source-registry (quote nil)) (initialize-output-translations (quote nil)) (upgrade-asdf) (load #P\&#34;/home/coco24/.quicklisp/setup.lisp\&#34;) (load-system \&#34;cffi-grovel\&#34;) (defmethod operation-done-p ((operation program-op) (system (eql (find-system \&#34;test-static\&#34;)))) nil) (defmethod output-files ((operation program-op) (system (eql (find-system \&#34;test-static\&#34;)))) (values (list #P\&#34;/home/coco24/.quicklisp/local-projects/test-static/test-static-tmpAR3FSGEY\&#34;) t)) (operate (quote program-op) \&#34;test-static\&#34;) (quit)))&#34;
+</span></span><span class="line"><span class="cl">WARNING: redefining PERFORM (#&lt;STANDARD-CLASS ASDF/BUNDLE:IMAGE-OP&gt; #&lt;STANDARD-CLASS ASDF/SYSTEM:SYSTEM&gt;) in DEFMETHOD
+</span></span><span class="line"><span class="cl">compressed 32768 bytes into 463 at level 9
+</span></span><span class="line"><span class="cl">compressed 28573696 bytes into 5021793 at level 9
+</span></span><span class="line"><span class="cl">compressed 7831552 bytes into 2498619 at level 9
+</span></span><span class="line"><span class="cl">compressed 2129920 bytes into 528062 at level 9
+</span></span><span class="line"><span class="cl">compressed 13434880 bytes into 3357919 at level 9
+</span></span><span class="line"><span class="cl">#&lt;CFFI-TOOLCHAIN:STATIC-PROGRAM-OP &gt;
+</span></span><span class="line"><span class="cl">#&lt;ASDF/PLAN:SEQUENTIAL-PLAN {1003318DD3}&gt;
+</span></span><span class="line"><span class="cl">​*
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果没有报错，那么应该能在刚刚的示例项目目录下 ，找到名为 <code>test-static</code> 的可执行文件，运行它将得到：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">4
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>说明静态链接 C 的函数被成功调用并返回了正确结果。</p>
+</li>
+</ol>
+<h2 id="后记">后记</h2>
+<p>前面也提到了， SBCL 运行时本身就依赖了一些兼容性较好的动态链接库，而如果要将运行时也完全地进行静态链接，可以参考<a href="https://www.timmons.dev/posts/static-executables-with-sbcl-v2.html" target="_blank" rel="noopener noreffer">这篇文章</a>。一般对于开发而言，还是推荐使用动态链接的方式通过 CFFI 调用外部库，这样可以动态地加载与更新这些库，而不需要像静态链接那样反复 Dump 镜像然后重启会话，破坏 Lisp 交互式开发的体验。而 CFFI 显然也是考虑了这一点，在加载 ASDF 系统时会将依赖的 C 源文件编译两次，一次编译为动态链接库文件，一次编译为目标文件，并在 <strong>当前会话</strong> 里自动加载这个动态链接库，可以使用 <code>(cffi:list-foreign-libraries)</code> 进行查看已经加载的动态链接库。在应用程序发布时，在开源协议允许的情况下，使用静态链接可能是个不错的选择，不过需要记得将这些静态链接库对应的 <code>cffi:use-foreign-library</code> 语句删掉，否则发布的应用程序在运行时还是会尝试去加载这些动态链接库。</p>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-12-25</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" data-title="使用 SBCL 构建静态链接的 Lisp 可执行文件" data-hashtags="Lisp,SBCL"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" data-hashtag="Lisp"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" data-title="使用 SBCL 构建静态链接的 Lisp 可执行文件"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" data-title="使用 SBCL 构建静态链接的 Lisp 可执行文件"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" data-title="使用 SBCL 构建静态链接的 Lisp 可执行文件"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/lisp/">Lisp</a>,&nbsp;<a href="https://bohonghuang.github.io/tags/sbcl/">SBCL</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-emacs-%E7%9A%84%E4%BB%BB%E6%84%8F-buffer-%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8C%BA%E5%9F%9F%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" class="prev" rel="prev" title="在 Emacs 的任意 Buffer 中进行区域代码高亮"><i class="fas fa-angle-left fa-fw"></i>在 Emacs 的任意 Buffer 中进行区域代码高亮</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>
