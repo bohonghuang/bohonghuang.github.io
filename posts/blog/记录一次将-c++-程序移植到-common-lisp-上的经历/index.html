@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-09-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-09-01T17:22:21+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta property="article:modified_time" content="2022-12-25T14:59:44+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历"/>
 <meta name="twitter:description" content="最近将一个 C&#43;&#43; 的音频处理库（大概 3600 行的代码）花了 5 天的时间成功移植到了 Common Lisp 上。 背景 事情的起因是这样的，最近在做一个项目，主要使用 Common Lisp 进行开发，"/>
@@ -30,8 +30,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c\u002b\u002b-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Lisp","wordcount":  1281 ,
-        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c\u002b\u002b-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86\/","datePublished": "2022-09-01T00:00:00+00:00","dateModified": "2022-09-01T17:22:21+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Lisp","wordcount":  1880 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c\u002b\u002b-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86\/","datePublished": "2022-09-01T00:00:00+00:00","dateModified": "2022-12-25T14:59:44+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
                 "@type": "Person",
@@ -116,8 +116,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-01">2022-09-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-09-01">2022-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1281 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" class="leancloud_visitors" data-flag-title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-01">2022-09-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-12-25">2022-12-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1880 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/posts/blog/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%B0%86-c&#43;&#43;-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D%E5%88%B0-common-lisp-%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%8E%86/" class="leancloud_visitors" data-flag-title="记录一次将 C&#43;&#43; 程序移植到 Common Lisp 上的经历">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -144,12 +144,19 @@
 <p>因此索性将这个 C++ 项目直接移植到 CL 上，顺便比较一下在算法与程序结构相同的前提下，CL 与 C++ 的性能差距以及 CL 在计算密集应用场景的实用性。</p>
 <h2 id="代码翻译">代码翻译</h2>
 <p>C++ 的很多代码可以很方便地移植到 CL 上，大部分的特性都可以在 CL 找到对应的实现方式，如指针可以表示为 Displaced Array ，模板这些也有专门的库来实现，
-CLOS  灵活性又比 C++ 的对象系统高得多，所以将 C++ 翻译成 CLOS 没啥障碍。由于不用手动管理内存，少了不少语法噪音，但 CL 访问类/结构体成员时与有 <code>.</code> 运算符的 C++ 的相比，代码没那么简洁。</p>
+CLOS  灵活性又比 C++ 的对象系统高得多，所以将 C++ 代码翻译成 CL 的代码没啥障碍。由于不用手动管理内存，少了不少语法噪音，但 CL 访问类/结构体成员时与有 <code>.</code> 运算符的 C++ 的相比，代码没那么简洁。</p>
 <p>CL 在 Lisp 方言中已经算比较接近底层的了，但肯定还是比不上 C/C++ ，比如没办法进行直接内存转译（通过 <code>union</code> 或指针强转），没法直接将 IEEE 浮点类型转换为对应的二进制表示。由于 CL 对结构体/列表/哈希表默认传引用， <code>cl:fill</code> 函数不对拷贝的元素进行复制，会出现改一个元素的属性导致整个数组的元素发生变化的情况，C/C++ 默认传值则没有这个问题，不过解决方法很简单，自己写一个 <code>fill</code> 函数/宏即可，但在 CL 中修改数组元素时确实需要格外谨慎。总之这些都是小问题，不过多少会引入一些性能开销。</p>
 <h2 id="性能">性能</h2>
 <p>只能说 SBCL 不论是成熟度还是性能确实都是 CL 的实现里（甚至是所有 Lisp 方言里）首屈一指的。</p>
-<p>对于实时音频处理这种计算密集的应用场景，SBCL 开 <code>(speed 3)</code> 加上 <code>(safety 0)</code> ，根据编译器的提示一步步加类型声明，并且根据 <code>sb-sprof</code> 采样的函数开销进行内联声明，某些模块的性能可以直接追平开 <code>-O3</code> 的 C++。而程序整体的性能 SBCL 与不开优化的 C++差不多，
-C++ 如果开了 <code>-O3</code> 优化，SBCL 的整体性能大概只有 C++ 的四分之一左右，当然 CL 上我也只优化了调用比较频繁的代码，但是已经可以达到实时处理的效果。</p>
+<p>对于实时音频处理这种计算密集的应用场景，SBCL 开 <code>(speed 3)</code> 加上 <code>(safety 0)</code> ，根据编译器的提示一步步加类型声明，并且根据 <code>sb-sprof</code> 采样的函数开销进行内联声明，某些模块的性能可以直接追平开 <code>-O3</code> 的 C++。 <del>而程序整体的性能 SBCL 与不开优化的 C​+​+​ 差不多，C​+​+ 如果开了 <code>-O3</code> 优化，SBCL 的整体性能大概只有 C​+​+ 的四分之一左右，当然 CL 上我也只优化了调用比较频繁的代码，但是已经可以达到实时处理的效果。</del>
+经过大量优化后（对热点函数使用内联汇编代替、对更多的函数进行声明内联、尽可能地使用 <code>simple-array</code> 、添加更多的类型声明、将部分对象改为在栈上分配内存）， SBCL 达到了开 <code>-O3</code> C++ 一半的性能，考虑到 C++ 编译器在高优化等级下会进行各种优化，如重排、虚函数消除、循环向量化等，而这些优化在 SBCL 都是没有的，而且 SBCL 还有 GC 的压力，这样的结果其实已经很不错了。不过顺便吐槽一下 SBCL ，直到 2.2.11 版本，依旧无法对最基本的算术运算进行化简，如将 <code>(+ (* (+ a b) c) (* (+ a b) d))</code> 优化为 <code>(* (+ a b) (+ c d))</code> ，因此如果需要提高性能，则需要手动对算术运算进行化简，有时候会导致代码可读性的下降，而且目前 SBCL 的寄存器分配个人感觉十分不稳定，有时候 <code>let</code> 里声明的顺序改一改也能多几次寄存器的 spill/reload 。对于 SBCL ，如果还要再往下优化，我能想到的方法还有：</p>
+<ul>
+<li>对剩余的 <code>displaced-array</code> 使用指针（取地址使用 <code>sb-kernel:get-lisp-obj-address</code> ，解引用使用 <code>sb-kernel:make-lisp-obj</code>  ）来代替，并使用 <code>sb-sys::with-pinned-objects</code> 防止垃圾回收器对这些对象进行移动。</li>
+<li>使用 <code>sb-simd</code> 手动进行循环 SIMD 向量化。</li>
+<li>对于部分数据，使用手动内存管理（通过 <code>sb-alien</code> 或 CFFI 手动进行内存的申请与释放），能够减小 GC 压力的同时，使得在 CL 中无法特化的结构体数组也变成了连续的内存，可以直接进行内存转译和向量化，要知道 SBCL 的 FFI 调用甚至能做到比 C/C++ 还要快的。</li>
+<li>使用 SBCL 的<a href="https://cmucl.org/docs/cmu-user/html/Block-Compilation.html" target="_blank" rel="noopener noreffer">块编译</a>避免函数的调用与返回时进行的对象拆装箱。</li>
+</ul>
+<p>不过这样的话一来工作量不小，二来优化后的代码完全不具备（实现间的）可移植性，就暂时不去做了，目前 C++ 一半的性能完全可以接受。</p>
 <p>其他的实现就没有这么乐观了，主要还是由于音频和其他媒体不一样，如果说视频与游戏帧率减半勉强能看能玩，音频速率减半的效果基本可以说是惨不忍睹。我这里测了 ECL、CCL、CLASP、ABCL ，其中 ABCL 和 ECL 的结果没问题，但性能连 SBCL 的十分之一都到不了，尤其是 ABCL 在 Java 18 下的性能比 ECL 还差；
 CCL 总体有 SBCL 三分之一左右的性能，不过 CCL 加类型声明且开启安全检查时居然可能导致简单数值计算得到错误的结果；CLASP 通过 CFFI  调用 API 播放音频采样时报 Memory Fault，不过它的性能基本与 ECL 一个水平；其他专有的实现像 ACL 和 LispWorks 这样的买不起，也不考虑用于项目上了。</p>
 <h2 id="总结">总结</h2>
@@ -160,7 +167,7 @@ CCL 总体有 SBCL 三分之一左右的性能，不过 CCL 加类型声明且�
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-09-01</span>
+                <span>更新于 2022-12-25</span>
             </div>
             <div class="post-info-license"></div>
         </div>
