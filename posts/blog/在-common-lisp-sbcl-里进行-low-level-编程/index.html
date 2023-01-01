@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">在 Common Lisp (SBCL) 里进行 Low-level 编程 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="在 Common Lisp (SBCL) 里进行 Low-level 编程" />
+<meta property="og:description" content="前言 在很多系统级编程语言，如 C/C&#43;&#43; 、 Rust 里，编译器往往会提供一些语法与机制用于内联汇编，能够允许程序员直接操作寄存器或执行机器码，达到更高的执行效" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-01T23:56:03+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在 Common Lisp (SBCL) 里进行 Low-level 编程"/>
+<meta name="twitter:description" content="前言 在很多系统级编程语言，如 C/C&#43;&#43; 、 Rust 里，编译器往往会提供一些语法与机制用于内联汇编，能够允许程序员直接操作寄存器或执行机器码，达到更高的执行效"/>
+<meta name="application-name" content="黄博宏的个人笔记">
+<meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="https://bohonghuang.github.io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://bohonghuang.github.io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://bohonghuang.github.io/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://bohonghuang.github.io/apple-touch-icon.png"><link rel="mask-icon" href="https://bohonghuang.github.io/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B/" /><link rel="prev" href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="https://bohonghuang.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "在 Common Lisp (SBCL) 里进行 Low-level 编程",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B\/"
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Lisp, SBCL","wordcount":  5494 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/blog\/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B\/","datePublished": "2023-01-01T00:00:00+00:00","dateModified": "2023-01-01T23:56:03+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "黄博宏"},"author": {
+                "@type": "Person",
+                "name": "黄博宏"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客"> 博客 </a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记"> 笔记 </a><a class="menu-item" href="https://bohonghuang.github.io/tags/"> 标签 </a><a class="menu-item" href="https://bohonghuang.github.io/categories/"> 分类 </a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="https://bohonghuang.github.io/" title="黄博宏的个人主页">黄博宏的个人主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="https://bohonghuang.github.io/posts/blog/" title="我的个人博客">博客</a><a class="menu-item" href="https://bohonghuang.github.io/posts/notes/" title="我的个人笔记">笔记</a><a class="menu-item" href="https://bohonghuang.github.io/tags/" title="">标签</a><a class="menu-item" href="https://bohonghuang.github.io/categories/" title="">分类</a><a class="menu-item" href="https://github.com/BohongHuang/bohonghuang.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">在 Common Lisp (SBCL) 里进行 Low-level 编程</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-01-01">2023-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-01-01">2023-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5494 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/posts/blog/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B/" class="leancloud_visitors" data-flag-title="在 Common Lisp (SBCL) 里进行 Low-level 编程">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#sbcl-的优化机制">SBCL 的优化机制</a>
+      <ul>
+        <li><a href="#defknown-与-define-vop-宏"><code>DEFKNOWN</code> 与 <code>DEFINE-VOP</code> 宏</a></li>
+      </ul>
+    </li>
+    <li><a href="#示例">示例</a>
+      <ul>
+        <li><a href="#优化-sbcl-的-float-sign">优化 SBCL 的 <code>float-sign</code></a></li>
+        <li><a href="#实现-cpuid">实现 <code>CPUID</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="前言">前言</h2>
+<p>在很多系统级编程语言，如 C/C++ 、 Rust 里，编译器往往会提供一些语法与机制用于内联汇编，能够允许程序员直接操作寄存器或执行机器码，达到更高的执行效率或进行更细粒度的底层控制。想象一下，如果动态语言能够做到这一点会是什么样呢？ SBCL 作为 Common Lisp 直接到机器码的编译器实现，可以说十分擅长在 Lisp 程序里插入汇编程序段，这样除了可以获得上述的好处之外，个人认为最大好处莫过于能在进行底层编程的同时，享受交互式的编程编程体验，也就是说修改代码后不再需要等待漫长的编译过程（这里点名批评 Rust）与重复地进行数据输入，即可得到代码的运行结果并检验其正确性。</p>
+<p>国外也有一些<a href="https://pvk.ca/Blog/2014/03/15/sbcl-the-ultimate-assembly-code-breadboard/" target="_blank" rel="noopener noreffer">文章</a>介绍了在 SBCL 里进行内联汇编的方法，但我认为其中的讲解过于复杂且脱离实际用途，并且用到的 SBCL 内部 API 很多已经被弃用了，我这里以实际的开发案例，演示一下在 SBCL 里面向机器编程的方法。</p>
+<h2 id="sbcl-的优化机制">SBCL 的优化机制</h2>
+<p>这里以 Common Lisp 中 <code>float-sign</code> 这个函数为例，为什么以它为例呢？因为本人之前文章提到的工程里，通过内联汇编优化 <code>float-sign</code> 这个热点函数，实现了显著的性能提升。</p>
+<p>这个函数做的事情很简单，如果传入一个浮点数，返回这个浮点数的符号，如果传入两个参数，则返回第一个参数的符号赋给第二个参数后的结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">float-sign</span> <span class="mf">-3.14</span><span class="p">)</span>                                     <span class="c1">; =&gt; -1.0</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">float-sign</span> <span class="mf">-3.14</span> <span class="mf">1.592</span><span class="p">)</span>                               <span class="c1">; =&gt; -1.592</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">float-sign</span> <span class="mf">1.0</span> <span class="nv">sb-ext:single-float-negative-infinity</span><span class="p">)</span> <span class="c1">; =&gt; #.SINGLE-FLOAT-POSITIVE-INFINITY</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在  C++ 里，该函数对应于 <code>std::copysignf</code> 。</p>
+<p>首先，我们试着通过 Emacs 的 Sly 查找这个函数的定义，SBCL 给出了以下结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="nv">/usr/share/sbcl-source/src/code/float.lisp</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="nv">DEFUN</span> <span class="nv">FLOAT-SIGN</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">/usr/share/sbcl-source/src/compiler/float-tran.lisp</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="ss">:DEFTRANSFORM</span> <span class="nv">FLOAT-SIGN</span> <span class="p">(</span><span class="nv">DOUBLE-FLOAT</span> <span class="nv">&amp;OPTIONAL</span> <span class="nv">DOUBLE-FLOAT</span><span class="p">)</span> <span class="s">&#34;optimize&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="ss">:DEFTRANSFORM</span> <span class="nv">FLOAT-SIGN</span> <span class="p">(</span><span class="nv">SINGLE-FLOAT</span> <span class="nv">&amp;OPTIONAL</span> <span class="nv">SINGLE-FLOAT</span><span class="p">)</span> <span class="s">&#34;optimize&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">/usr/share/sbcl-source/src/compiler/fndb.lisp</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="ss">:DEFOPTIMIZER</span> <span class="nv">FLOAT-SIGN</span> <span class="nv">DERIVE-TYPE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="nv">DECLAIM</span> <span class="nv">FLOAT-SIGN</span> <span class="nv">DEFKNOWN</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为什么一个函数会有多处定义呢？这里其实可以类比一下 CLOS 的 <code>DEFGENERIC</code> 与 <code>DEFMETHOD</code> 的关系，前者定义声明，后者定义实现，并且一条声明根据规则可以实际调用不同的实现。在 SBCL 里，对于 Common Lisp 的内置函数，一旦被声明为 <code>DEFKNOWN</code> ， SBCL 会认为这个函数可以被优化，并可能会提供多种编译方案：</p>
+<ul>
+<li>如果对应的函数有使用 <code>DEFINE-VOP</code> 定义的虚拟操作符存在且参数与返回值满足条件，则在函数的调用处进行寄存器分配并生成汇编代码段，将其嵌入到程序中。在 SBCL 里，这种生成汇编代码段的对象被称为虚拟操作符 (Virtual OPerator) ，它可以被看作是一种底层的函数，其主体是带有寄存器、参数/返回值类型的约束与分配规则的汇编代码生成器。如 <code>+</code> 在 C/C++ 里的运算符，在 Common Lisp 中虽然是函数，但它们对于不同的 Lisp 类型（如 <code>fixnum</code>, <code>single-float</code> ）， SBCL 也中具有不同的 VOP 与之对应，使得两个 <code>fixnum</code> 相加就是一条 <code>ADD</code> 指令，提高了效率。对于 <code>float-sign</code> 而言，如果传入了两个参数均为 <code>single-float</code> ， SBCL 实际上会调用这个 VOP ：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">define-vop</span> <span class="p">(</span><span class="nv">single-float-copysign</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:translate</span> <span class="nv">single-float-copysign</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:args</span> <span class="p">(</span><span class="nv">x</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">descriptor-reg</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">y</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">descriptor-reg</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:arg-types</span> <span class="kt">single-float</span> <span class="kt">single-float</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:results</span> <span class="p">(</span><span class="nv">res</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">descriptor-reg</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:temporary</span> <span class="p">(</span><span class="ss">:sc</span> <span class="nv">unsigned-reg</span> <span class="ss">:from</span> <span class="p">(</span><span class="ss">:argument</span> <span class="mi">0</span><span class="p">))</span> <span class="nv">temp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:policy</span> <span class="ss">:fast-safe</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:generator</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">move</span> <span class="nv">temp</span> <span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">move</span> <span class="nv">res</span> <span class="nv">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">inst</span> <span class="nv">shl</span> <span class="nv">res</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1">; discard result&#39;s sign bit</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">inst</span> <span class="nv">shl</span> <span class="nv">temp</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1">; copy X&#39;s sign bit into the carry flag</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">inst</span> <span class="nv">rcr</span> <span class="nv">res</span> <span class="mi">1</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><code>DEFINE-VOP</code> 的基本语法稍后会提到，这里大家可以将其看作一个黑箱，它能够将第一个参数的浮点数符号复制给传入的第二个浮点数并返回。</li>
+<li>如果对应的函数有使用 <code>DEFTRANSFORM</code> 定义的变换规则存在且满足变换条件（通常包括参数类型、是否可折叠为常量、是否为指定的平台等）， SBCL 会使用这个变换规则，将函数的调用变换为一个或多个 VOP 的组合。还是以 <code>float-sign</code> 为例， SBCL 里存在这样一个 <code>DEFTRANSFORM</code> ：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">deftransform</span> <span class="nf">float-sign</span> <span class="p">((</span><span class="nc">float</span> <span class="k">&amp;optional</span> <span class="nv">float2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                          <span class="p">(</span><span class="kt">single-float</span> <span class="k">&amp;optional</span> <span class="kt">single-float</span><span class="p">)</span> <span class="nf">*</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nv">vop-existsp</span> <span class="ss">:translate</span> <span class="nv">single-float-copysign</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="k">if</span> <span class="nv">float2</span>
+</span></span><span class="line"><span class="cl">          <span class="o">`</span><span class="p">(</span><span class="nv">single-float-copysign</span> <span class="nc">float</span> <span class="nv">float2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="o">`</span><span class="p">(</span><span class="nv">single-float-sign</span> <span class="nc">float</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="k">if</span> <span class="nv">float2</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">temp</span> <span class="p">(</span><span class="nf">gensym</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">            <span class="o">`</span><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="o">,</span><span class="nv">temp</span> <span class="p">(</span><span class="nf">abs</span> <span class="nv">float2</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">               <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">minusp</span> <span class="p">(</span><span class="nv">single-float-bits</span> <span class="nc">float</span><span class="p">))</span> <span class="p">(</span><span class="nf">-</span> <span class="o">,</span><span class="nv">temp</span><span class="p">)</span> <span class="o">,</span><span class="nv">temp</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">          <span class="o">&#39;</span><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">minusp</span> <span class="p">(</span><span class="nv">single-float-bits</span> <span class="nc">float</span><span class="p">))</span> <span class="nv">$-1f0</span> <span class="nv">$1f0</span><span class="p">))))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>其实这里稍微熟悉 Lisp 语法的大概都能看出这里是什么意思了，如果传入了两个参数均为 <code>single-float</code> 类型 ，并且有为平台定义 <code>single-float-copysign</code> 这个 VOP ，那么将函数调用变换为上面提到的 <code>single-float-copysign</code> 。</li>
+<li>如果对应的函数参数类型是未知的、或者不满足所有 VOP 与变换规则的条件，此时 SBCL 就会使用 <code>DEFUN</code> 定义的备用 (Fallback) 函数，它们的地位与用户定义的函数是相当的，调用时不会进行寄存器级别的优化，也就是在函数的调用位置会真的产生了一次函数的调用，效率相对是比较低的。此时，在大部分情况下 SBCL 会给出优化提示，使得对应的 VOP 或变换规则能被应用。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nf">float-sign</span> <span class="p">(</span><span class="nv">float1</span> <span class="k">&amp;optional</span> <span class="p">(</span><span class="nv">float2</span> <span class="p">(</span><span class="nc">float</span> <span class="mi">1</span> <span class="nv">float1</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Return a floating-point number that has the same sign as
+</span></span></span><span class="line"><span class="cl"><span class="s">   FLOAT1 and, if FLOAT2 is given, has the same absolute value
+</span></span></span><span class="line"><span class="cl"><span class="s">   as FLOAT2.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="k">declare</span> <span class="p">(</span><span class="nc">float</span> <span class="nv">float1</span> <span class="nv">float2</span><span class="p">)</span> <span class="p">(</span><span class="nv">explicit-check</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">*</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">etypecase</span> <span class="nv">float1</span>
+</span></span><span class="line"><span class="cl">           <span class="p">(</span><span class="kt">single-float</span> <span class="p">(</span><span class="nf">minusp</span> <span class="p">(</span><span class="nv">single-float-bits</span> <span class="nv">float1</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">           <span class="c1">;; If 64-bits words, use all the bits. No need to right-shift them.</span>
+</span></span><span class="line"><span class="cl">           <span class="p">(</span><span class="kt">double-float</span> <span class="p">(</span><span class="nf">minusp</span> <span class="o">#+</span><span class="nv">64-bit</span> <span class="p">(</span><span class="nv">double-float-bits</span> <span class="nv">float1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                 <span class="o">#-</span><span class="nv">64-bit</span> <span class="p">(</span><span class="nv">double-float-high-bits</span> <span class="nv">float1</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">           <span class="o">#+</span><span class="kt">long-float</span>
+</span></span><span class="line"><span class="cl">           <span class="p">(</span><span class="kt">long-float</span> <span class="p">(</span><span class="nf">minusp</span> <span class="p">(</span><span class="nv">long-float-exp-bits</span> <span class="nv">float1</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nc">float</span> <span class="mi">-1</span> <span class="nv">float1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nc">float</span> <span class="mi">1</span> <span class="nv">float1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="nf">abs</span> <span class="nv">float2</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>SBCL 引入这样优化机制的好处也是显而易见的：</p>
+<ul>
+<li>不同指令集的 CPU 显然不可能原生提供相同的功能集合，因此定义的 VOP 的数量与内容一定是与 CPU 架构相关的。如在 x86 上， <code>POPCNT</code> 指令可以直接计算一个二进制数中 <code>1</code> 的数量，使得 Common Lisp 的 <code>logcount</code> 函数在 SBCL 上可以被编译为一条汇编指令，但这个在 ARM 上是无法做到的。</li>
+<li>在移植 SBCL 到不同指令集的 CPU 时，只需要定义少量的 VOP （基本上就是 C/C++ 里的那些原生运算符对应的汇编表示），即可使得 SBCL 以较低的效率（其余未被定义的 VOP 与变换规则全部变成了函数的调用）运行在这个新的平台上。</li>
+</ul>
+<p>所以这里大家应该就能明白为什么给 SBCL 加上类型声明能够显著提高程序的执行效率了，添加的类型声明配合 SBCL 类型推断器的辅助，可以使得更多的 VOP 或变换规则被应用，使得用户定义的函数编译后输出高效的机器码。</p>
+<h3 id="defknown-与-define-vop-宏"><code>DEFKNOWN</code> 与 <code>DEFINE-VOP</code> 宏</h3>
+<p>回到 <code>float-sign</code> 中来， 通过其 <code>single-float</code> 版本的变换规则我们可以得知，传入两个参数均为 <code>single-float</code> 时，调用的实际上是 <code>single-float-copysign</code> 这个函数，那我们先来看一下 <code>single-float-copysign</code> 的 <code>DEFKNOWN</code> 定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">defknown</span> <span class="nv">single-float-copysign</span> <span class="p">(</span><span class="kt">single-float</span> <span class="kt">single-float</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">single-float</span> <span class="p">(</span><span class="nv">movable</span> <span class="nv">foldable</span> <span class="nv">flushable</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中按照顺序：</p>
+<ul>
+<li><code>single-float-copysign</code> 就是其对应的函数名称，在 x86-64 平台上， SBCL 没有为其定义备用函数，因为 <code>float-sign</code> 的变换规则保证了这个函数传入的一定是单精度浮点，其备用函数是这样定义的：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">single-float-copysign</span> <span class="p">(</span><span class="nc">float</span> <span class="nv">float2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">single-float-copysign</span> <span class="nc">float</span> <span class="nv">float2</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>有人可能会说这不是无限递归了吗？其实不然， <code>single-float-copysign</code> 这个函数在编译时，函数体内的 <code>single-float-copysign</code> 就会被定义好的 VOP 取代，因此该函数的反编译结果如下：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="c1">; disassembly for SINGLE-FLOAT-COPYSIGN</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; Size: 23 bytes. Origin: #x53449882                          ; SINGLE-FLOAT-COPYSIGN</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 82:       488BC6           MOV RAX, RSI</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 85:       488BD7           MOV RDX, RDI</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 88:       48D1E2           SHL RDX, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 8B:       48D1E0           SHL RAX, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 8E:       48D1DA           RCR RDX, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 91:       488BE5           MOV RSP, RBP</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 94:       F8               CLC</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 95:       5D               POP RBP</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 96:       C3               RET</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 97:       CC10             INT3 16                          ; Invalid argument count trap</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li><code>(single-float single-float)</code> 定义了传入参数的类型，只有实际（断言的）类型符合这个类型要求，为这个 <code>DEFKNOWN</code> 定义的 VOP 与变换规则才可能被应用。</li>
+<li><code>single-float</code> 定义了为 <code>DEFKNOWN</code> 定义的 VOP 与规则的返回值类型。</li>
+<li><code>(movable foldable flushable)</code> 定义了允许编译器应用的优化，其中：
+<ul>
+<li><code>movable</code> : 允许指令重排。</li>
+<li><code>foldable</code> : 允许常量折叠以减少相同的指令执行。</li>
+<li><code>flushable</code> : 允许删除不必要的指令以减小代码的体积并提高其效率。</li>
+</ul>
+</li>
+</ul>
+<p>我们继续看一下对应的 VOP 定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">define-vop</span> <span class="p">(</span><span class="nv">single-float-copysign</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="ss">:translate</span> <span class="nv">single-float-copysign</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="ss">:args</span> <span class="p">(</span><span class="nv">x</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">descriptor-reg</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">             <span class="p">(</span><span class="nv">y</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">descriptor-reg</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="ss">:arg-types</span> <span class="kt">single-float</span> <span class="kt">single-float</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="ss">:results</span> <span class="p">(</span><span class="nv">res</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">descriptor-reg</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="ss">:temporary</span> <span class="p">(</span><span class="ss">:sc</span> <span class="nv">unsigned-reg</span> <span class="ss">:from</span> <span class="p">(</span><span class="ss">:argument</span> <span class="mi">0</span><span class="p">))</span> <span class="nv">temp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="ss">:policy</span> <span class="ss">:fast-safe</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="ss">:generator</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">move</span> <span class="nv">temp</span> <span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">move</span> <span class="nv">res</span> <span class="nv">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">inst</span> <span class="nv">shl</span> <span class="nv">res</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1">; discard result&#39;s sign bit</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">inst</span> <span class="nv">shl</span> <span class="nv">temp</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1">; copy X&#39;s sign bit into the carry flag</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">inst</span> <span class="nv">rcr</span> <span class="nv">res</span> <span class="mi">1</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中按照顺序：</p>
+<ul>
+<li>
+<p><code>single-float-copysign</code> 是这个 VOP 的名称，不同的 VOP 可以继承，但必须具有不同名称，否则会被视为 VOP 重定义。</p>
+</li>
+<li>
+<p><code>:translate</code> 指定要转换的目标函数，也就是之前 <code>DEFKNOWN</code> 的名称。</p>
+</li>
+<li>
+<p><code>:args</code> 指定传入的参数与需要分配的寄存器，使用 <code>:scs</code> 参数指定一个或多个寄存器类型，使用 <code>:target</code> 指定目标寄存器。</p>
+</li>
+<li>
+<p><code>:arg-types</code> 指定参数类型，这里的类型可以是 <code>DEFKNOWN</code> 参数里的子类型。</p>
+</li>
+<li>
+<p><code>:results</code> 指定为返回值分配寄存器，参数与 <code>:args</code> 类似。注意由于 Common Lisp 支持多值返回，这里与 <code>:args</code> 一样也可以分配多个寄存器。</p>
+</li>
+<li>
+<p><code>:result-types</code> 这里没出现，但还是提一下，与 <code>:arg-types</code> 是类似的。</p>
+</li>
+<li>
+<p><code>:temporary</code> 用于指定中间寄存器，可以使用 <code>:sc</code> 指定寄存器的类型，使用 <code>:from</code> 与 <code>:to</code> 指定寄存器中的值来源与去向。</p>
+</li>
+<li>
+<p><code>:generator</code> 的第一个参数指定开销，有多个 VOP 满足条件时， SBCL 选择开销最小的 VOP 使用，其余参数是汇编代码的生成器：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">move</span> <span class="nv">temp</span> <span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">move</span> <span class="nv">res</span> <span class="nv">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">inst</span> <span class="nv">shl</span> <span class="nv">res</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">inst</span> <span class="nv">shl</span> <span class="nv">temp</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">inst</span> <span class="nv">rcr</span> <span class="nv">res</span> <span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以 <code>inst</code> 后的汇编代码将被原封不动地释放，而 <code>move</code> 可以让 SBCL 根据寄存器类型自动选用合适的移动指令，这里等价于 <code>(inst mov ...)</code> 。</p>
+<p>根据 IEEE 754 浮点数标准：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"> 1位           8位                                       23位
+</span></span><span class="line"><span class="cl">.---.-----------------------.--------------------------------------------------------------.
+</span></span><span class="line"><span class="cl">+---+-----------------------+--------------------------------------------------------------+
+</span></span><span class="line"><span class="cl">| S |           e           |                               f                              |
+</span></span><span class="line"><span class="cl">+---+-----------------------+--------------------------------------------------------------+
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这一段汇编代码的作用是将第一个参数的符号位复制给第二个参数并返回。</p>
+</li>
+</ul>
+<h2 id="示例">示例</h2>
+<h3 id="优化-sbcl-的-float-sign">优化 SBCL 的 <code>float-sign</code></h3>
+<p>我们可以尝试优化一下 SBCL 的 <code>single-float-copysign</code> 。这里先给出在一般场景下调用 <code>float-sign</code> 的测试函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">test-float-sign</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="k">declare</span> <span class="p">(</span><span class="k">optimize</span> <span class="p">(</span><span class="nv">speed</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nv">debug</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nv">safety</span> <span class="mi">0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">           <span class="p">(</span><span class="k">type</span> <span class="kt">single-float</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="p">(</span><span class="nf">values</span> <span class="kt">single-float</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">+</span> <span class="p">(</span><span class="nf">float-sign</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nf">float-sign</span> <span class="nv">y</span> <span class="nv">x</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后我们对其汇编代码进行分析：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="c1">; disassembly for TEST-FLOAT-SIGN</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; Size: 69 bytes. Origin: #x535D7AE6                          ; TEST-FLOAT-SIGN</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AE6:       488BC2           MOV RAX, RDX</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AE9:       488BCF           MOV RCX, RDI</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AEC:       48D1E1           SHL RCX, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AEF:       48D1E0           SHL RAX, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AF2:       48D1D9           RCR RCX, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AF5:       66480F6EC9       MOVQ XMM1, RCX</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AFA:       0FC6C9FD         SHUFPS XMM1, XMM1, #4r3331</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AFE:       488BC7           MOV RAX, RDI</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B01:       488BCA           MOV RCX, RDX</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B04:       48D1E1           SHL RCX, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B07:       48D1E0           SHL RAX, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B0A:       48D1D9           RCR RCX, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B0D:       66480F6ED1       MOVQ XMM2, RCX</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B12:       0FC6D2FD         SHUFPS XMM2, XMM2, #4r3331</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B16:       F30F58D1         ADDSS XMM2, XMM1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B1A:       660F7ED2         MOVD EDX, XMM2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B1E:       48C1E220         SHL RDX, 32</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B22:       80CA19           OR DL, 25</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B25:       488BE5           MOV RSP, RBP</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B28:       F8               CLC</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B29:       5D               POP RBP</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; B2A:       C3               RET</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>很显然，这里调用的就是 <code>single-float-copysign</code> 这个 VOP ，不过大家发现问题了吗？由于 SBCL 的 <code>single-float-copysign</code> 这个 VOP 是针对描述符寄存器的，使用的是整数的位运算，而浮点运算使用的是 SSE 浮点数寄存器 <code>XMM</code> ，所以会产生不必要的寄存器移动与 CPU 状态切换，这里显然是比较低效的。我们可以为 SBCL 的 <code>single-float-copysign</code> 定义一个基于 SSE 指令集的高效版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="o">#+</span><span class="p">(</span><span class="nb">and</span> <span class="nv">sbcl</span> <span class="nv">x86-64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">sb-c:define-vop</span> <span class="p">(</span><span class="nv">single-float-copysign-sse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:translate</span> <span class="nv">sb-kernel:single-float-copysign</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:args</span> <span class="p">(</span><span class="nv">xmm3</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">sb-vm::single-reg</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">xmm1</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">sb-vm::single-reg</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:arg-types</span> <span class="kt">single-float</span> <span class="kt">single-float</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:temporary</span> <span class="p">(</span><span class="ss">:sc</span> <span class="nv">sb-vm::single-reg</span> <span class="ss">:target</span> <span class="nv">r</span> <span class="ss">:to</span> <span class="ss">:result</span><span class="p">)</span> <span class="nv">xmm0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:temporary</span> <span class="p">(</span><span class="ss">:sc</span> <span class="nv">sb-vm::single-reg</span><span class="p">)</span> <span class="nv">xmm2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:results</span> <span class="p">(</span><span class="nv">r</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">sb-vm::single-reg</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:result-types</span> <span class="kt">single-float</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:policy</span> <span class="ss">:fast-safe</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:generator</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="nv">sb-vm::inst</span> <span class="nv">movss</span> <span class="nv">xmm2</span> <span class="p">(</span><span class="nv">sb-vm::constantize</span> <span class="mh">#x80000000</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="nv">sb-vm::inst</span> <span class="nv">movaps</span> <span class="nv">xmm0</span> <span class="nv">xmm2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="nv">sb-vm::inst</span> <span class="nv">andnps</span> <span class="nv">xmm0</span> <span class="nv">xmm1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="nv">sb-vm::inst</span> <span class="nv">andps</span> <span class="nv">xmm2</span> <span class="nv">xmm3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="nv">sb-vm::inst</span> <span class="nv">orps</span> <span class="nv">xmm0</span> <span class="nv">xmm2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">sb-c:location=</span> <span class="nv">r</span> <span class="nv">xmm0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="nv">sb-vm::inst</span> <span class="nv">movss</span> <span class="nv">r</span> <span class="nv">xmm0</span><span class="p">))))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里通过一些逻辑运算可以将 <code>xmm3</code> 寄存器中符号位与 <code>xmm1</code> 中的非符号位结合，结果存入 <code>xmm0</code> 寄存器中，其中用到的还有两个其他的 SBCL 内置函数：</p>
+<ul>
+<li><code>sb-vm::constantize</code> 用于插入一个常量，这里的 <code>#x80000000</code> 是二进制下最高位为 <code>1</code> 的掩码，用于处理符号位。</li>
+<li><code>sb-c:location=</code> 用于判断两个分配后的寄存器的相等性，在这里，如果没法将寄存器 <code>xmm0</code> 与返回值寄存器 <code>r</code> 分配为同一个寄存器，则需要将 <code>xmm0</code> 的内容移动至返回值寄存器 <code>r</code> 中。</li>
+</ul>
+<p>注意我们定义的 <code>single-float-copysign-sse</code> 中， <code>:generator</code> 后的开销需要小于原来 SBCL 定义的 <code>single-float-copysign</code> 的开销，否则编译器不会选用我们定义的 VOP 。</p>
+<p>对这段代码进行编译后，下面还是编译相同函数进行测试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">test-float-sign</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="k">declare</span> <span class="p">(</span><span class="k">optimize</span> <span class="p">(</span><span class="nv">speed</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                       <span class="p">(</span><span class="nv">debug</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                       <span class="p">(</span><span class="nv">safety</span> <span class="mi">0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">             <span class="p">(</span><span class="k">type</span> <span class="kt">single-float</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="p">(</span><span class="nf">values</span> <span class="kt">single-float</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">+</span> <span class="p">(</span><span class="nf">float-sign</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nf">float-sign</span> <span class="nv">y</span> <span class="nv">x</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>反编译后的结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="c1">; disassembly for TEST-FLOAT-SIGN</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; Size: 69 bytes. Origin: #x536BE968                          ; TEST-FLOAT-SIGN</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 68:       F30F100DC8FFFFFF MOVSS XMM1, [RIP-56]             ; [#x536BE938]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 70:       0F28C1           MOVAPS XMM0, XMM1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 73:       0F55C3           ANDNPS XMM0, XMM3</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 76:       0F54CA           ANDPS XMM1, XMM2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 79:       0F56C1           ORPS XMM0, XMM1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 7C:       F30F10E0         MOVSS XMM4, XMM0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 80:       F30F100DB0FFFFFF MOVSS XMM1, [RIP-80]             ; [#x536BE938]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 88:       0F28C1           MOVAPS XMM0, XMM1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 8B:       0F55C2           ANDNPS XMM0, XMM2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 8E:       0F54CB           ANDPS XMM1, XMM3</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 91:       0F56C1           ORPS XMM0, XMM1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 94:       F30F10D0         MOVSS XMM2, XMM0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 98:       F30F58D4         ADDSS XMM2, XMM4</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 9C:       660F7ED2         MOVD EDX, XMM2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; A0:       48C1E220         SHL RDX, 32</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; A4:       80CA19           OR DL, 25</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; A7:       488BE5           MOV RSP, RBP</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AA:       F8               CLC</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AB:       5D               POP RBP</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; AC:       C3               RET</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们来测试一下 <code>float-sign</code> 的正确性：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">float-sign</span> <span class="mf">-1.0</span> <span class="mf">22.0</span><span class="p">)</span>                  <span class="c1">; =&gt; -22.0</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">float-sign</span> <span class="mf">3.0</span> <span class="mf">22.0</span><span class="p">)</span>                   <span class="c1">; =&gt; 22.0</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">float-sign</span> <span class="mf">-1.0</span> <span class="nv">sb-ext:single-float-positive-infinity</span><span class="p">)</span> <span class="c1">; =&gt; #.SINGLE-FLOAT-NEGATIVE-INFINITY</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果都是正确的。优化前后汇编代码减少了两行，但实际考虑到 CPU 的状态切换，产生的性能差距应该会更大一些。下面我们将这个函数内联，在循环里实测一下性能：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">performance-test</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="k">declare</span> <span class="p">(</span><span class="k">optimize</span> <span class="p">(</span><span class="nv">speed</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nv">debug</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nv">safety</span> <span class="mi">0</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">trivial-benchmark:with-timing</span> <span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">loop</span> <span class="ss">:for</span> <span class="nv">x</span> <span class="ss">:of-type</span> <span class="kt">single-float</span> <span class="ss">:=</span> <span class="mf">1.0</span> <span class="ss">:then</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">x</span> <span class="p">(</span><span class="nv">test-float-sign</span> <span class="mf">-1.0</span> <span class="nv">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">:repeat</span> <span class="mi">100000000</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">:finally</span> <span class="p">(</span><span class="nb">return</span> <span class="nv">x</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">performance-test</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 <code>trivial-benchmark</code> 对循环进行 10 次采样的结果如下：</p>
+<ul>
+<li>SBCL 原始版本 <br />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">​-                SAMPLES  TOTAL     MINIMUM   MAXIMUM   MEDIAN    AVERAGE   DEVIATION
+</span></span><span class="line"><span class="cl">REAL-TIME        10       4.873373  0.486669  0.493337  0.486671  0.487337  0.002
+</span></span><span class="line"><span class="cl">RUN-TIME         10       4.86349   0.484148  0.490104  0.485853  0.486349  0.001473
+</span></span><span class="line"><span class="cl">USER-RUN-TIME    10       4.856902  0.480859  0.490097  0.485855  0.48569   0.0024
+</span></span><span class="line"><span class="cl">SYSTEM-RUN-TIME  10       0.006596  0         0.003302  0         0.00066   0.001318
+</span></span><span class="line"><span class="cl">PAGE-FAULTS      10       0         0         0         0         0         0.0
+</span></span><span class="line"><span class="cl">GC-RUN-TIME      10       0         0         0         0         0         0.0
+</span></span><span class="line"><span class="cl">BYTES-CONSED     10       0         0         0         0         0         0.0
+</span></span><span class="line"><span class="cl">EVAL-CALLS       10       0         0         0         0         0         0.0
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>自定义的 SSE 指令集版本 <br />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">​-                SAMPLES  TOTAL     MINIMUM   MAXIMUM   MEDIAN    AVERAGE   DEVIATION
+</span></span><span class="line"><span class="cl">REAL-TIME        10       3.166692  0.313335  0.326669  0.316669  0.316669  0.003651
+</span></span><span class="line"><span class="cl">RUN-TIME         10       3.163733  0.31455   0.327258  0.314947  0.316373  0.003683
+</span></span><span class="line"><span class="cl">USER-RUN-TIME    10       3.163736  0.314551  0.327247  0.314949  0.316374  0.003679
+</span></span><span class="line"><span class="cl">SYSTEM-RUN-TIME  10       0.000009  0         0.000009  0         0.000001  0.000003
+</span></span><span class="line"><span class="cl">PAGE-FAULTS      10       0         0         0         0         0         0.0
+</span></span><span class="line"><span class="cl">GC-RUN-TIME      10       0         0         0         0         0         0.0
+</span></span><span class="line"><span class="cl">BYTES-CONSED     10       0         0         0         0         0         0.0
+</span></span><span class="line"><span class="cl">EVAL-CALLS       10       0         0         0         0         0         0.0
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>使用 SSE 指令集的版本快了 35% ，是个比较可观的性能提升。</p>
+<h3 id="实现-cpuid">实现 <code>CPUID</code></h3>
+<p>CPUID 是 x86 架构中的一条指令，它允许软件访问 CPU 的信息和功能。该指令可用于检索有关 CPU 的各种信息，例如型号、功能、支持的指令集以及操作系统和应用程序可以使用的特性。</p>
+<p>要使用 CPUID 指令，我们需要将所需信息的编号放入 <code>EAX</code> 寄存器，然后执行 <code>CPUID</code> 指令。执行后， <code>EAX</code> 、 <code>EBX</code> 、 <code>ECX</code> 和 <code>EDX</code> 寄存器将包含所请求的信息，这在高级语言里不通过内联汇编或一些内置函数 (Intrinsics Function) 是无法做到的。下面我们就在 SBCL 里实现一下获取 <code>CPUID</code> 的返回的信息，为了方便起见，我们定义一个包用于导入 SBCL 的一些内部符号：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defpackage</span> <span class="nv">sb-asm-test</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:use</span> <span class="ss">#:cl</span> <span class="ss">#:sb-c</span> <span class="ss">#:sb-vm</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:nicknames</span> <span class="ss">#:asm-bench</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:import-from</span> <span class="ss">#:sb-vm</span> <span class="ss">#:inst</span> <span class="ss">#:function-raw-address</span>
+</span></span><span class="line"><span class="cl">                <span class="ss">#:any-reg</span> <span class="ss">#:unsigned-reg</span> <span class="ss">#:unsigned-num</span> <span class="ss">#:positive-fixnum</span> <span class="ss">#:tagged-num</span> <span class="o">.</span>
+</span></span><span class="line"><span class="cl">                <span class="o">#+</span><span class="nv">x86-64</span>
+</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="ss">#:rax-offset</span> <span class="ss">#:rcx-offset</span> <span class="ss">#:rdx-offset</span> <span class="ss">#:rbx-offset</span> <span class="ss">#:rsp-offset</span> <span class="ss">#:rbp-offset</span> <span class="ss">#:rsi-offset</span> <span class="ss">#:rdi-offset</span>
+</span></span><span class="line"><span class="cl">                              <span class="ss">#:r8-offset</span>  <span class="ss">#:r9-offset</span> <span class="ss">#:r10-offset</span> <span class="ss">#:r11-offset</span> <span class="ss">#:r12-offset</span> <span class="ss">#:r13-offset</span> <span class="ss">#:r14-offset</span> <span class="ss">#:r15-offset</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:import-from</span> <span class="ss">#:sb-x86-64-asm</span> <span class="ss">#:ea</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>先给出 <code>DEFKNOWN</code> 定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">in-package</span> <span class="ss">#:sb-asm-test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">defknown</span> <span class="nv">cpuid</span> <span class="p">((</span><span class="kt">unsigned-byte</span> <span class="mi">32</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">values</span> <span class="p">(</span><span class="kt">unsigned-byte</span> <span class="mi">32</span><span class="p">)</span> <span class="p">(</span><span class="kt">unsigned-byte</span> <span class="mi">32</span><span class="p">)</span> <span class="p">(</span><span class="kt">unsigned-byte</span> <span class="mi">32</span><span class="p">)</span> <span class="p">(</span><span class="kt">unsigned-byte</span> <span class="mi">32</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">flushable</span> <span class="nv">movable</span><span class="p">))</span>             <span class="c1">; 不能将这个函数标注为 `foldable&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里需要注意一下，由于 <code>CPUID</code> 在不同的机器上的结果可能不一样，所以我们不应该让编译器在传入常量时优化掉这条指令。下面是 <code>DEFINE-VOP</code> 的定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">in-package</span> <span class="ss">#:sb-asm-test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">define-vop</span> <span class="p">(</span><span class="nv">cpuid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:policy</span> <span class="ss">:fast-safe</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:translate</span> <span class="nv">cpuid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:args</span> <span class="p">(</span><span class="nv">arg-rax</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">unsigned-reg</span><span class="p">)</span> <span class="ss">:target</span> <span class="nv">rax</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:arg-types</span> <span class="nv">unsigned-num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:temporary</span> <span class="p">(</span><span class="ss">:sc</span> <span class="nv">unsigned-reg</span> <span class="ss">:offset</span> <span class="nv">rax-offset</span><span class="p">)</span> <span class="nv">rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:temporary</span> <span class="p">(</span><span class="ss">:sc</span> <span class="nv">unsigned-reg</span> <span class="ss">:offset</span> <span class="nv">rbx-offset</span><span class="p">)</span> <span class="nv">rbx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:temporary</span> <span class="p">(</span><span class="ss">:sc</span> <span class="nv">unsigned-reg</span> <span class="ss">:offset</span> <span class="nv">rcx-offset</span><span class="p">)</span> <span class="nv">rcx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:temporary</span> <span class="p">(</span><span class="ss">:sc</span> <span class="nv">unsigned-reg</span> <span class="ss">:offset</span> <span class="nv">rdx-offset</span><span class="p">)</span> <span class="nv">rdx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:results</span> <span class="p">(</span><span class="nv">res-1</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">unsigned-reg</span><span class="p">))</span> <span class="p">(</span><span class="nv">res-2</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">unsigned-reg</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="nv">res-3</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">unsigned-reg</span><span class="p">))</span> <span class="p">(</span><span class="nv">res-4</span> <span class="ss">:scs</span> <span class="p">(</span><span class="nv">unsigned-reg</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:result-types</span> <span class="nv">unsigned-num</span> <span class="nv">unsigned-num</span> <span class="nv">unsigned-num</span> <span class="nv">unsigned-num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="ss">:generator</span>
+</span></span><span class="line"><span class="cl">   <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">location=</span> <span class="nv">arg-rax</span> <span class="nv">rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="nv">move</span> <span class="nv">rax</span> <span class="nv">arg-rax</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nv">inst</span> <span class="nv">cpuid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nb">loop</span> <span class="ss">:for</span> <span class="nv">reg</span> <span class="ss">:in</span> <span class="p">(</span><span class="nc">list</span> <span class="nv">rax</span> <span class="nv">rbx</span> <span class="nv">rcx</span> <span class="nv">rdx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="ss">:for</span> <span class="nv">res</span> <span class="ss">:in</span> <span class="p">(</span><span class="nc">list</span> <span class="nv">res-1</span> <span class="nv">res-2</span> <span class="nv">res-3</span> <span class="nv">res-4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="ss">:unless</span> <span class="p">(</span><span class="nv">location=</span> <span class="nv">reg</span> <span class="nv">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="ss">:do</span> <span class="p">(</span><span class="nv">move</span> <span class="nv">res</span> <span class="nv">reg</span><span class="p">))))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后我们需要定义一个同名函数作为入口。前面也提到了，函数体在编译的过程中会展开为我们上面编写的 <code>cpuid</code> 这个 VOP ，所以不用担心无限递归的问题，但需要注意类型声明，使得这个 VOP 能被应用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">in-package</span> <span class="ss">#:sb-asm-test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">cpuid</span> <span class="p">(</span><span class="nv">eax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="k">declare</span> <span class="p">(</span><span class="k">type</span> <span class="p">(</span><span class="kt">unsigned-byte</span> <span class="mi">32</span><span class="p">)</span> <span class="nv">eax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="p">(</span><span class="k">optimize</span> <span class="p">(</span><span class="nv">speed</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nv">safety</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nv">debug</span> <span class="mi">0</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">cpuid</span> <span class="nv">eax</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面我们反编译这个函数看看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="c1">; disassembly for CPUID</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; Size: 61 bytes. Origin: #x536F14FA                          ; CPUID</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 4FA:       48D1FE           SAR RSI, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 4FD:       488BC6           MOV RAX, RSI</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 500:       0FA2             CPUID</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 502:       4C8BC0           MOV R8, RAX</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 505:       488BFB           MOV RDI, RBX</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 508:       488BF1           MOV RSI, RCX</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 50B:       4C8BCA           MOV R9, RDX</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 50E:       49D1E0           SHL R8, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 511:       48D1E7           SHL RDI, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 514:       48D1E6           SHL RSI, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 517:       49D1E1           SHL R9, 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 51A:       498BD0           MOV RDX, R8</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 51D:       4C894DF0         MOV [RBP-16], R9</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 521:       488D5D10         LEA RBX, [RBP+16]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 525:       B908000000       MOV ECX, 8</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 52A:       F9               STC</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 52B:       488D65F0         LEA RSP, [RBP-16]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 52F:       488B6D00         MOV RBP, [RBP]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 533:       FF73F8           PUSH QWORD PTR [RBX-8]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; 536:       C3               RET</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到， <code>CPUID</code> 这条汇编指令成功地出现在我们的 <code>cpuid</code> 这个函数体里。值得一提的是由于 <code>cpuid</code> 的参数与返回值是 32 位无符号整数，可以被 <code>fixnum</code> 容纳，因此 SBCL 自动将参数与返回值均视为 <code>fixnum</code> 而进行了移位操作，这意味着对于整数、浮点数这些，我们通常不需要考虑 VOP 的参数、返回值与 Lisp 对象的转换问题，像 <code>(unsigned-byte 64)</code> 这样无法被 <code>fixnum</code> 容纳的类型，
+SBCL 也会进行自动的拆装箱操作。</p>
+<p>下面我们可以实际地运用一下我们编写的这个 <code>cpuid</code> 函数，获取 CPU 的制造商信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">in-package</span> <span class="ss">#:sb-asm-test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">cpu-vendor</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="k">declare</span> <span class="p">(</span><span class="k">optimize</span> <span class="p">(</span><span class="nv">speed</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nv">debug</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nv">safety</span> <span class="mi">0</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">multiple-value-bind</span> <span class="p">(</span><span class="nv">eax</span> <span class="nv">ebx</span> <span class="nv">ecx</span> <span class="nv">edx</span><span class="p">)</span> <span class="p">(</span><span class="nv">cpuid</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="k">declare</span> <span class="p">(</span><span class="k">ignore</span> <span class="nv">eax</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">loop</span> <span class="ss">:for</span> <span class="nv">reg</span> <span class="ss">:of-type</span> <span class="p">(</span><span class="kt">unsigned-byte</span> <span class="mi">32</span><span class="p">)</span> <span class="ss">:in</span> <span class="p">(</span><span class="nc">list</span> <span class="nv">ebx</span> <span class="nv">edx</span> <span class="nv">ecx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">:nconc</span> <span class="p">(</span><span class="nb">loop</span> <span class="ss">:for</span> <span class="nv">i</span> <span class="ss">:below</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">                       <span class="ss">:collect</span> <span class="p">(</span><span class="nf">code-char</span> <span class="p">(</span><span class="nf">ldb</span> <span class="p">(</span><span class="nf">byte</span> <span class="mi">8</span> <span class="p">(</span><span class="nf">*</span> <span class="nv">i</span> <span class="mi">8</span><span class="p">))</span> <span class="nv">reg</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">:into</span> <span class="nv">result</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">:finally</span> <span class="p">(</span><span class="nb">return</span> <span class="p">(</span><span class="nf">coerce</span> <span class="nv">result</span> <span class="ss">&#39;string</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">cpu-vendor</span><span class="p">)</span>                            <span class="c1">; =&gt; &#34;GenuineIntel&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="总结">总结</h2>
+<p>SBCL 中的 VOP 可以看作是一般的 Lisp 程序与汇编程序的桥梁，当 Lisp 程序中函数的调用类型能够确定且满足条件时， SBCL 会尝试使用 VOP 或一系列变换规则对其进行优化，利用这一点，我们可以比较容易地在 SBCL 里内联汇编，实现提高性能或进行一些硬件操作。作为动态语言实现的 SBCL （前身为 CMUCL ），其具有极高的上限（指动态性），也具有极高的下限（指底层编程的能力），加上 Lisp 的表达能力与交互性， 世界上很难有第二门语言能在这几个方面 <strong>同时</strong> 与之媲美的，但可惜的是 SBCL 没有为其底层编程的能力对外开放一套较为稳定的 API 并且缺乏对应的文档，因此本文中的所有代码仅保证在 x86-64 的 SBCL 2.2.11 上能够正常运行，希望以后 SBCL 开发者能在这方面下一点功夫。这里也安利给学习汇编或做底层开发的朋友，不妨可以试一下 SBCL ，秒编译秒运行的体验确实相当地棒！</p>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B/" data-title="在 Common Lisp (SBCL) 里进行 Low-level 编程" data-hashtags="Lisp,SBCL"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B/" data-hashtag="Lisp"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B/" data-title="在 Common Lisp (SBCL) 里进行 Low-level 编程"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Line" data-sharer="line" data-url="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B/" data-title="在 Common Lisp (SBCL) 里进行 Low-level 编程"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://bohonghuang.github.io/posts/blog/%E5%9C%A8-common-lisp-sbcl-%E9%87%8C%E8%BF%9B%E8%A1%8C-low-level-%E7%BC%96%E7%A8%8B/" data-title="在 Common Lisp (SBCL) 里进行 Low-level 编程"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="https://bohonghuang.github.io/tags/lisp/">Lisp</a>,&nbsp;<a href="https://bohonghuang.github.io/tags/sbcl/">SBCL</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://bohonghuang.github.io/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://bohonghuang.github.io/posts/blog/%E4%BD%BF%E7%94%A8-sbcl-%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84-lisp-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" class="prev" rel="prev" title="使用 SBCL 构建静态链接的 Lisp 可执行文件"><i class="fas fa-angle-left fa-fw"></i>使用 SBCL 构建静态链接的 Lisp 可执行文件</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/BohongHuang" target="_blank" rel="noopener noreferrer">黄博宏</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/topbar@1.0.1/topbar.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@sliphua/pjax@2.4.0/dist/pjax.min.js"></script><script type="text/javascript" src="https://bohonghuang.github.io/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-221867158-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-221867158-1" async></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"VNmzG0eMncQlMctEkgmdt3Bm-gzGzoHsz","appKey":"g02JnVghlriklkak3Tum8f2q","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://bohonghuang.github.io/lib/valine/valine.min.css">
+    <noscript><link rel="stylesheet" href="https://bohonghuang.github.io/lib/valine/valine.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"></noscript></div>
+</body>
+
+</html>
