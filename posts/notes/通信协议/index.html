@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
     <title class="pjax-title">通信协议 - 黄博宏的个人主页</title><meta name="Description" content=""><meta property="og:title" content="通信协议" />
-<meta property="og:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 I2S 接口 SD(Serial Data)：串行数据线，用于发送或接收两个时分复用的数据通道上的数据（仅半双工模式），如" />
+<meta property="og:description" content="c:PROPERTIES: :ID: 7e266be3-c67b-46b6-8106-17359e38cd8e :END: 警告 该部分尚未完成，可能会影响您的阅读体验。 I2C https://blog.csdn.net/as480133937/article/details/105366932 \(\text{I}^{\text{2}}\text{C}\) (Inter Integrated Circuit) 总线是一种由 NXP（原 PHILIPS）公司开发的两线式串行总线，用于连接微控" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bohonghuang.github.io/posts/notes/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-03T19:38:01+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
+<meta property="article:modified_time" content="2023-01-10T19:10:38+08:00" /><meta property="og:site_name" content="黄博宏的个人主页" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="通信协议"/>
-<meta name="twitter:description" content="警告 该部分尚未完成，可能会影响您的阅读体验。 I2S 接口 SD(Serial Data)：串行数据线，用于发送或接收两个时分复用的数据通道上的数据（仅半双工模式），如"/>
+<meta name="twitter:description" content="c:PROPERTIES: :ID: 7e266be3-c67b-46b6-8106-17359e38cd8e :END: 警告 该部分尚未完成，可能会影响您的阅读体验。 I2C https://blog.csdn.net/as480133937/article/details/105366932 \(\text{I}^{\text{2}}\text{C}\) (Inter Integrated Circuit) 总线是一种由 NXP（原 PHILIPS）公司开发的两线式串行总线，用于连接微控"/>
 <meta name="application-name" content="黄博宏的个人笔记">
 <meta name="apple-mobile-web-app-title" content="黄博宏的个人笔记">
 
@@ -30,8 +30,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE\/"
-        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "嵌入式","wordcount":  617 ,
-        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-03T19:38:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/bohonghuang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "嵌入式","wordcount":  8938 ,
+        "url": "https:\/\/bohonghuang.github.io\/posts\/notes\/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2023-01-10T19:10:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "黄博宏"},"author": {
                 "@type": "Person",
@@ -116,8 +116,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/BohongHuang" title="Author" target="_blank" rel="noopener noreffer author" class="author">黄博宏</a>
                 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 617 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/posts/notes/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="leancloud_visitors" data-flag-title="通信协议">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-01-10">2023-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8938 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 18 分钟&nbsp;<span id="/posts/notes/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="leancloud_visitors" data-flag-title="通信协议">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -127,24 +127,42 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
+    <li><a href="#i2c">I2C</a></li>
+    <li><a href="#spi">SPI</a></li>
     <li><a href="#i2s">I2S</a>
       <ul>
         <li><a href="#接口">接口</a></li>
-        <li><a href="#时序图">时序图</a>
-          <ul>
-            <li><a href="#i2s-philips标准">I2S Philips标准</a></li>
-            <li><a href="#左对齐标准">左对齐标准</a></li>
-            <li><a href="#右对齐标准">右对齐标准</a></li>
-            <li><a href="#pcm--org2b96237--标准"><a href="#pcm-%E8%84%89%E5%86%B2%E7%BC%96%E7%A0%81%E8%B0%83%E5%88%B6">PCM</a>标准</a></li>
-          </ul>
-        </li>
-        <li><a href="#奈奎斯特采样定理">奈奎斯特采样定理</a></li>
-        <li><a href="#pcm-脉冲编码调制">PCM（脉冲编码调制）</a></li>
+        <li><a href="#时序图">时序图</a></li>
+        <li><a href="#脉冲编码调制">脉冲编码调制</a></li>
       </ul>
     </li>
+    <li><a href="#rs-232">RS-232</a>
+      <ul>
+        <li><a href="#硬件流量控制">硬件流量控制</a></li>
+      </ul>
+    </li>
+    <li><a href="#rs-485">RS-485</a>
+      <ul>
+        <li><a href="#半双工通信">半双工通信</a></li>
+      </ul>
+    </li>
+    <li><a href="#uart">UART</a></li>
+    <li><a href="#can">CAN</a></li>
+    <li><a href="#usb">USB</a></li>
+    <li><a href="#校验方式">校验方式</a>
+      <ul>
+        <li><a href="#奇偶校验">奇偶校验</a></li>
+        <li><a href="#校验和">校验和</a></li>
+        <li><a href="#循环冗余校验--cyclic-redundancy-check">循环冗余校验 (Cyclic Redundancy Check)</a></li>
+      </ul>
+    </li>
+    <li><a href="#1-wire">1-Wire</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><div class="details admonition warning open">
+            </div><div class="content" id="content"><p>c:PROPERTIES:
+:ID:       7e266be3-c67b-46b6-8106-17359e38cd8e</p>
+<p>:END:</p>
+<div class="details admonition warning open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-exclamation-triangle fa-fw"></i>警告<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
@@ -152,58 +170,1108 @@
             <div class="admonition-content">该部分尚未完成，可能会影响您的阅读体验。</div>
         </div>
     </div>
-<h2 id="i2s">I2S</h2>
-<h3 id="接口">接口</h3>
+<h2 id="i2c">I2C</h2>
 <ul>
-<li>SD(Serial Data)：串行数据线，用于发送或接收两个时分复用的数据通道上的数据（仅半双工模式），如果是全双工模式，该信号仅用于发送数据。</li>
-<li>WS(Word Select)：字段选择线，也称帧时钟（LRC）线，表明当前传输数据的声道，不同标准有不同的定义。WS线的频率等于采样频率(FS)。</li>
-<li>CK(Serial Clock)：串行时钟线，也称位时钟(BCLK)，数字音频的每一位数据都对应有一个CK脉冲，它的频率为：2*采样频率*量化位数，2代表左右两个通道数据。</li>
-<li>ext_SD(extend Serial Data)：扩展串行数据线，用于全双工传输的数据接收。</li>
+<li><a href="https://blog.csdn.net/as480133937/article/details/105366932" target="_blank" rel="noopener noreffer">https://blog.csdn.net/as480133937/article/details/105366932</a></li>
 </ul>
-<h3 id="时序图">时序图</h3>
-<h4 id="i2s-philips标准">I2S Philips标准</h4>
-<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-30_08-57-15_896704-20160825110521272-1566197347.png"/>
-</figure>
+<p>\(\text{I}^{\text{2}}\text{C}\) (Inter Integrated Circuit) 总线是一种由 NXP（原 PHILIPS）公司开发的两线式串行总线，用于连接微控制器及其外围设备。多用于主控制器和从器件间的主从通信，有如下特点：</p>
+<ul>
+<li>小数据量场合使用 <br />
+IIC是为了与低速设备通信而发明的，所以IIC的传输速率比不上SPI</li>
+<li>传输距离短，</li>
+<li>任意时刻只能有一个主机</li>
+</ul>
+<p>在 CPU 与被控芯片之间、芯片与芯片之间进行双向传送，高速 <a href="#i2c" rel="">I2C</a> 总线一般可达 400kbps 以上，
+<a href="https://bohonghuang.github.io/posts/notes/stm32/" rel="">STM32</a> 上的增强版高速 <a href="#i2c" rel="">I2C</a> 总线速度可达 1MHz 。</p>
+<ul>
+<li>
+<p>结构 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-09-15_20200411104019985.png"/>
+    </figure>
 
+<p><a href="#i2c" rel="">I2C</a> 总线在物理连接上非常简单，分别由 <code>SDA</code> （串行数据线）和 <code>SCL</code> （串行时钟线）及上拉电阻组成。通信原理是通过对 <code>SCL</code> 和 <code>SDA</code> 线高低电平时序的控制，来产生 <a href="#i2c" rel="">I2C</a> 总线协议所需要的信号进行数据的传递。</p>
 <ul>
-<li>有效位：MSB（高位在前）</li>
-<li>发送：在SCK的下降沿改变SD或WS的值。</li>
-<li>接收：在SCK的上升沿读取SD或WS的值。</li>
-<li>声道：一个WS线周期包括发送左声道和右声道数据。</li>
-<li>填充：24bit信号放入32bit的帧中需要向左对齐，后面多余的8bit置零。该信号从当前通道数据的 <strong>第一个位（MSB）之前的一个时钟</strong> 开始有效。
+<li>
+<p>主设备 <br />
+负责整个系统的任务协调与分配，<a href="#i2c" rel="">I2C</a> 的一个优点是它支持多主控， 其中任何一个能够进行发送和接收的设备都可以成为主总线，控制信号的传输和时钟频率，但在任何时间点上只能有一个主控。</p>
 <ul>
-<li>WS为0：左声道</li>
-<li>WS为1：右声道</li>
+<li>功能
+<ul>
+<li>主要产生时钟</li>
+<li>产生起始信号和停止信号</li>
 </ul>
 </li>
 </ul>
-<h4 id="左对齐标准">左对齐标准</h4>
-<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-30_08-57-32_896704-20160825110522866-384498530.png"/>
-</figure>
-
-<p>WS为1时，传输的是左声道数据，这刚好与I2S Philips标准相反。在WS电平改变的那一刻便开始传输。</p>
-<h4 id="右对齐标准">右对齐标准</h4>
-<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-30_08-56-24_896704-20160825110523991-1294081593.png"/>
-</figure>
-
-<h4 id="pcm--org2b96237--标准"><a href="#pcm-%e8%84%89%e5%86%b2%e7%bc%96%e7%a0%81%e8%b0%83%e5%88%b6" rel="">PCM</a>标准</h4>
-<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-30_09-02-07_896704-20160825110524632-443621874.png"/>
-</figure>
-
-<p>WS不再作为声道数据选择（左声道的数据紧跟着右声道的数据），而是以高电平保持时间为判别依据作为两种模式的选择：</p>
+</li>
+<li>
+<p>从设备 <br />
+从机一般是通过接收主机的指令从而完成某些特定的任务，主机和从机之间通过总线连接，进行数据通讯。</p>
 <ul>
-<li>长帧模式：高电平保持13个CK周期。</li>
-<li>短帧模式：高电平保持1个CK周期。</li>
+<li>功能
+<ul>
+<li>可编程的地址检测</li>
+<li>停止位检测</li>
 </ul>
-<h3 id="奈奎斯特采样定理">奈奎斯特采样定理</h3>
-<h3 id="pcm-脉冲编码调制">PCM（脉冲编码调制）</h3>
+</li>
+<li>地址 <br />
+有的器件地址在出厂时地址就设定好了，用户不可以更改,比如 <code>OV7670</code> 的地址为 <code>0x42</code> 。有的器件例如 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#eeprom" rel="">EEPROM</a> ，前四个地址已经确定为 <code>1010</code> ，后三个地址是由硬件链接确定的，所以一条 <a href="#i2c" rel="">I2C</a> 总线最多能连 8 个 <a href="https://bohonghuang.github.io/posts/notes/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/#eeprom" rel="">EEPROM</a> 芯片。</li>
+</ul>
+</li>
+<li>
+<p>上拉电阻 <br />
+保证数据的稳定性，减少干扰， <code>SCL</code> 和 <code>SDA</code> 都需要接上拉电阻（一般在 3.3K-10K 之间）。使得在总线空闲状态时， <code>SCL</code> 和 <code>SDA</code> 被上拉电阻拉高，使 <code>SDA</code> 和 <code>SCL</code> 线都保持高电平。</p>
+</li>
+<li>
+<p>高阻态 <br />
+漏极开路 (Open Drain) 即高阻状态，适用于输入/输出，其可独立输入/输出低电平和高阻状态，若需要产生高电平，则需使用外部上拉电阻。</p>
+<ul>
+<li>高阻状态 <br />
+高阻状态是<a href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/#三态门" rel="">三态门</a>电路的一种状态，电路分析时高阻态可做开路理解。</li>
+</ul>
+<p><a href="#i2c" rel="">I2C</a> 的所有设备是接在一根总线上的，那么我们进行通信的时候往往只是几个设备进行通信，如果其余的空闲设备如果自身具备电压输出能力就可能会受到总线干扰或者干扰总线。</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-22-45_20200407160606180.png"/>
+        </figure>
+
+<p>为了避免总线信号的混乱，<a href="#i2c" rel="">I2C</a> 的空闲状态只能有外部上拉， 而此时空闲设备被拉到了高阻态，也就是相当于断路，整个 <a href="#i2c" rel="">I2C</a> 总线只有开启了的设备才会正常进行通信，而不会干扰到其他设备。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>协议 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-33-16_20180514184751564.png"/>
+    </figure>
+
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-35-00_20200411104137162.png"/>
+    </figure>
+
+<ul>
+<li>
+<p>数据有效性 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-36-54_20200407162837546.png"/>
+        </figure>
+
+<p><a href="#i2c" rel="">I2C</a> 信号在 <strong>数据传输</strong> 过程中，当 <code>SCL</code> 为高电平时，数据线 <code>SDA</code> 必须保持稳定状态，不允许有电平跳变，只有在时钟线上的信号为低电平期间，数据线上的高电平或低电平状态才允许变化。如果 <code>SDL</code> 处于高电平时，
+<code>SDA</code> 发生跳变，就不会被识别为数据传输，而是开始信号或结束信号</p>
+</li>
+<li>
+<p>开始信号 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-34-17_20200411104124610.png"/>
+        </figure>
+
+<p><code>SCL</code> 为高电平时， <code>SDA</code> 由高电平向低电平跳变，开始传送数据。</p>
+</li>
+<li>
+<p>结束信号 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-34-34_20200407161528542.png"/>
+        </figure>
+
+<p><code>SCL</code> 为高电平时， <code>SDA</code> 由低电平向高电平跳变，结束传送数据。</p>
+</li>
+<li>
+<p>应答信号 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-55-54_20200407171913110.png"/>
+        </figure>
+
+<p>每当主机向从机发送完 1 个字节的数据，主机总是需要等待从机给出一个应答信号（在 <code>SCL</code> 处于低电平期间拉低 <code>SDA</code> ），以确认从机是否成功接收到了数据：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-57-03_20200411104200168.png"/>
+        </figure>
+
+</li>
+<li>
+<p>数据传输</p>
+<ul>
+<li>
+<p>写数据 (Master Out Slave In) <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_14-59-27_aHR0cDovL3d3dy5lbWJlZGRlZGxpbnV4Lm9yZy5jbi91cGxvYWRzL2FsbGltZy8xMzAzMTcvMTIxOTQ1My5wbmc.png"/>
+            </figure>
+
+<p>多数从设备的地址为 7 位或者 10 位（一般都用 7 位，即 8 位设备地址为 7 位从机地址并置读/写位）。</p>
+<ul>
+<li>
+<p>数据帧 <br />
+<a href="#i2c" rel="">I2C</a> 的每一帧数据由 9 位组成。</p>
+<ul>
+<li>
+<p>设备地址 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_15-04-41_20200411151616581.png"/>
+                    </figure>
+
+<p>如果是发送数据，且为设备地址数据，则 8 位数据包含 7 位设备地址和 1 位方向数据传输方向：</p>
+<ul>
+<li><code>0</code> ：表示主设备向从设备 <strong>写</strong> 数据</li>
+<li><code>1</code> ：表示主设备向从设备 <strong>读</strong> 数据</li>
+</ul>
+</li>
+</ul>
+<p>最后 1 位是应答位。</p>
+</li>
+<li>
+<p>流程 <br /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flowchart TB
+</span></span><span class="line"><span class="cl">   S0[主机产生起始信号]--&gt;S1[主机发送一个从机设备地址]
+</span></span><span class="line"><span class="cl">   S1--&gt;S2[主机等待从机应答]
+</span></span><span class="line"><span class="cl">   S2--&gt;S4[主机发送访问从机的寄存器地址]
+</span></span><span class="line"><span class="cl">   S4--&gt;S5[主机等待从机应答]
+</span></span><span class="line"><span class="cl">   S5--&gt;S6[主机发送 1 个字节的数据]
+</span></span><span class="line"><span class="cl">   S6--&gt;S7[主机等待从机应答]
+</span></span><span class="line"><span class="cl">   S7--&gt;C0{是否传输完成}
+</span></span><span class="line"><span class="cl">   C0--是--&gt;S8[主机产生停止信号]
+</span></span><span class="line"><span class="cl">   C0--否--&gt;S6
+</span></span><span class="line"><span class="cl">   S8--&gt;S9[结束传输]
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>读数据 (Master In Slave Out)</p>
+<ul>
+<li>流程 <br />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flowchart TB
+</span></span><span class="line"><span class="cl">   subgraph 主机写命令
+</span></span><span class="line"><span class="cl">       S0[主机产生起始信号]--&gt;S1[主机发送一个从机设备写地址]
+</span></span><span class="line"><span class="cl">       S1--&gt;S2[主机等待从机应答]
+</span></span><span class="line"><span class="cl">       S2--&gt;S3[主机发送访问从机的寄存器地址]
+</span></span><span class="line"><span class="cl">       S3--&gt;S4[主机等待从机应答]
+</span></span><span class="line"><span class="cl">   end
+</span></span><span class="line"><span class="cl">   subgraph 主机切换模式
+</span></span><span class="line"><span class="cl">       S4--&gt;S5[主机重新发送起始信号]
+</span></span><span class="line"><span class="cl">       S5--&gt;S6[主机发送一个从机设备读地址]
+</span></span><span class="line"><span class="cl">       S6--&gt;S7[主机等待从机应答]
+</span></span><span class="line"><span class="cl">   end
+</span></span><span class="line"><span class="cl">   subgraph 主机接收数据
+</span></span><span class="line"><span class="cl">       S7--&gt;S8[从机发送 1 个字节的数据]
+</span></span><span class="line"><span class="cl">       S8--&gt;C0{是否传输完成}
+</span></span><span class="line"><span class="cl">       C0--是--&gt;S9[主机发送应答信号]
+</span></span><span class="line"><span class="cl">       C0--否--&gt;S12[主机发送非应答信号]
+</span></span><span class="line"><span class="cl">       S12--&gt;S8
+</span></span><span class="line"><span class="cl">       S9--&gt;S10[主机产生停止信号]
+</span></span><span class="line"><span class="cl">       S10--&gt;S11[结束传输]
+</span></span><span class="line"><span class="cl">   end
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>也就是在IIC传输数据的过程中，SCL时钟线会频繁的转换电平，以保证数据的传输</p>
+<h2 id="spi">SPI</h2>
+<ul>
+<li><a href="https://blog.csdn.net/as480133937/article/details/105764119" target="_blank" rel="noopener noreffer">https://blog.csdn.net/as480133937/article/details/105764119</a></li>
+</ul>
+<p><a href="#spi" rel="">SPI</a> (Serial Peripheral Interface) 是串行外围设备接口。是 Motorola 摩托罗拉公司定义的，是一种高速（没有定义速度限制，因此取决于芯片上限）、全双工、同步的通信总线，并且在芯片的管脚上只占用四根线。</p>
+<ul>
+<li>
+<p>主从设备 <br />
+<a href="#spi" rel="">SPI</a> 设备分为主、从两种模式，有且仅有一个主设备，可以有多个从设备。</p>
+<ul>
+<li>主设备 (Master) <br />
+提供时钟信号和发起读写操作。当存在多个从设备时，通过各自的片选信号进行管理。</li>
+<li>从设备 (Slave) <br />
+接收时钟的信号。</li>
+</ul>
+</li>
+<li>
+<p>连接 <br />
+单设备：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_15-43-10_20200429141530267.png"/>
+    </figure>
+
+<p>多设备：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_15-43-35_20200429141618139.png"/>
+    </figure>
+
+<ul>
+<li><code>MISO</code> ：主机输入、从机输出引脚</li>
+<li><code>MOSI</code> ：主机输出、从机输入引脚</li>
+<li><code>SCLK</code> ：由主设备产生的串行时钟信号</li>
+<li><code>CS</code> / <code>SS</code> ：由主设备控制的设备片选信号</li>
+</ul>
+</li>
+<li>
+<p>协议 <br />
+<a href="#spi" rel="">SPI</a> 主机和从机都有一个串行<a href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/#移位寄存器" rel="">移位寄存器</a>，主机通过向从机的 <a href="#spi" rel="">SPI</a> 串行寄存器写入一个字节来发起一次传输。</p>
+<ol>
+<li>主机首先拉低对应 <code>SS</code> 信号线，表示与该设备进行通信。</li>
+<li>主机通过发送 <code>SCLK</code> 时钟信号（时钟信号可能是低电平有效，也可能是高电平有效，取决于不同的 <a href="#spi" rel="">SPI</a> 模式），告诉从机写数据或者读数据。</li>
+<li>主机将要发送的数据写到发送数据缓存区，使用串行<a href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/#移位寄存器" rel="">移位寄存器</a>通过 <code>MOSI</code> 信号线将移位输出给从机，同时 <code>MISO</code> 接口接收到的数据将经过<a href="https://bohonghuang.github.io/posts/notes/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/#移位寄存器" rel="">移位寄存器</a>移位接收到接收缓存区。</li>
+<li>从机在主机的时钟信号下同时重复主机的操作，这样两个设备就完成了发送/接收缓冲区的交换。</li>
+</ol>
+</li>
+<li>
+<p>工作模式 <br />
+<a href="#spi" rel="">SPI</a> 由以下 2 种不同配置排列组合后形成 4 种模式：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_16-00-43_20200428214324195.png"/>
+    </figure>
+
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_16-00-51_20200429211904985.png"/>
+    </figure>
+
+<table>
+<thead>
+<tr>
+<th><a href="#spi" rel="">SPI</a> 模式</th>
+<th><code>CPOL</code></th>
+<th><code>CPHA</code></th>
+<th>空闲时 <code>SCK</code> 时钟</th>
+<th>采样时刻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>低电平</td>
+<td>上升沿</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>低电平</td>
+<td>下降沿</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>高电平</td>
+<td>上升沿</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>高电平</td>
+<td>下降沿</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>时钟极性 (<code>CPOL</code>) <br />
+即时钟线 <code>SCLK</code> 的空闲电平：
+<ul>
+<li><code>CPOL=0</code> <br />
+表示当 <code>SCLK=0</code> 时处于空闲态，所以有效状态就是 <code>SCLK</code> 处于高电平时。</li>
+<li><code>CPOL=1</code> <br />
+表示当 <code>SCLK=1</code> 时处于空闲态，所以有效状态就是 <code>SCLK</code> 处于低电平时。</li>
+</ul>
+</li>
+<li>时钟相位 (<code>CPHA</code>) <br />
+<ul>
+<li><code>CPHA=0</code> <br />
+在时钟的第 1 个跳变沿（上升沿或下降沿取决于时钟极性）进行数据采样（准备数据），在第 2 个边沿发送数据。</li>
+<li><code>CPHA=1</code> <br />
+在时钟的第 2 个跳变沿（上升沿或下降沿取决于时钟极性）进行数据采样（准备数据），在第 1 个边沿发送数据。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>协议 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-08_16-02-35_20200429212747322.png"/>
+    </figure>
+
+<p>主从设备必须使用相同的工作模式，如果有多个从设备并且使用了不同的工作模式，那么主设备必须在读写这些设备前需要重新修改模式。以下通信协议常见的内容 <a href="#spi" rel="">SPI</a> 没有规定：</p>
+<ul>
+<li>最大传输速率</li>
+<li>没有读写寄存器地址方案</li>
+<li>通信应答机制</li>
+<li>流控制规则</li>
+</ul>
+<p>因此 <a href="#spi" rel="">SPI</a> 优点是，只要四根信号线连接正确、模式相同，即可实现同时全双工的通信，具体规范由设备自己定义。</p>
+</li>
+</ul>
+<h2 id="i2s">I2S</h2>
+<h3 id="接口">接口</h3>
+<ul>
+<li><code>SD</code> (Serial Data)：串行数据线，用于发送或接收两个时分复用的数据通道上的数据（仅半双工模式），如果是全双工模式，该信号仅用于发送数据。</li>
+<li><code>WS</code> (Word Select)：字段选择线，也称帧时钟（LRC）线，表明当前传输数据的声道，不同标准有不同的定义。WS线的频率等于采样频率(FS)。</li>
+<li><code>CK</code> (Serial Clock)：串行时钟线，也称位时钟(BCLK)，数字音频的每一位数据都对应有一个CK脉冲，它的频率为：2*采样频率*量化位数，2代表左右两个通道数据。</li>
+<li><code>ext_SD</code> (extend Serial Data)：扩展串行数据线，用于全双工传输的数据接收。</li>
+</ul>
+<h3 id="时序图">时序图</h3>
+<ul>
+<li>
+<p>Philips 标准 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-30_08-57-15_896704-20160825110521272-1566197347.png"/>
+    </figure>
+
+<ul>
+<li>有效位：MSB（高位在前）</li>
+<li>发送 <br />
+在 <code>SCK</code> 的下降沿改变 <code>SD</code> 或 <code>WS</code> 的值</li>
+<li>接收 <br />
+在 <code>SCK</code> 的上升沿读取 <code>SD</code> 或 <code>WS</code> 的值</li>
+<li>声道 <br />
+一个WS线周期包括发送左声道和右声道数据</li>
+<li>填充 <br />
+24 位信号放入 32 位的帧中需要向左对齐，后面多余的 8 位置零，该信号从当前通道数据的 <strong>第一个位（MSB）之前的一个时钟</strong> 开始有效。
+<ul>
+<li><code>WS</code> 为 <code>0</code> ：左声道</li>
+<li><code>WS</code> 为 <code>1</code> ：右声道</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>左对齐标准 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-30_08-57-32_896704-20160825110522866-384498530.png"/>
+    </figure>
+
+<p><code>WS</code> 为 1 时，传输的是左声道数据，这刚好与 Philips 标准相反。在 <code>WS</code> 电平改变的那一刻便开始传输。</p>
+</li>
+<li>
+<p>右对齐标准 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2021-07-30_08-56-24_896704-20160825110523991-1294081593.png"/>
+    </figure>
+
+</li>
+<li>
+<p><a href="#%e8%84%89%e5%86%b2%e7%bc%96%e7%a0%81%e8%b0%83%e5%88%b6" rel="">PCM</a> 标准 <br /></p>
+<p><img
+        class="lazyload"
+        data-src="https://bohonghuang.github.io/ox-hugo/2021-07-30_09-02-07_896704-20160825110524632-443621874.png"
+        data-srcset="https://bohonghuang.github.io/ox-hugo/2021-07-30_09-02-07_896704-20160825110524632-443621874.png, https://bohonghuang.github.io/ox-hugo/2021-07-30_09-02-07_896704-20160825110524632-443621874.png 1.5x, https://bohonghuang.github.io/ox-hugo/2021-07-30_09-02-07_896704-20160825110524632-443621874.png 2x"
+        data-sizes="auto"
+        alt="/ox-hugo/2021-07-30_09-02-07_896704-20160825110524632-443621874.png"
+        title="/ox-hugo/2021-07-30_09-02-07_896704-20160825110524632-443621874.png"
+    />
+<code>WS</code> 不再作为声道数据选择（左声道的数据紧跟着右声道的数据），而是以高电平保持时间为判别依据作为两种模式的选择：</p>
+<ul>
+<li>长帧模式：高电平保持 13 个 <code>CK</code> 周期</li>
+<li>短帧模式：高电平保持 1 个 <code>CK</code> 周期</li>
+</ul>
+</li>
+</ul>
+<h3 id="脉冲编码调制">脉冲编码调制</h3>
+<h2 id="rs-232">RS-232</h2>
+<ul>
+<li>
+<p>特性</p>
+<ul>
+<li>最远距离是 50 英尺</li>
+<li>双向传输，全双工通讯</li>
+<li>最高传输速率 20kbps</li>
+</ul>
+</li>
+<li>
+<p>引脚 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-10_19-47-17_rs232_9_pin_male_definition.jpg"/>
+    </figure>
+
+<p>逻辑电平是低电平有效：</p>
+<table>
+<thead>
+<tr>
+<th><a href="#rs-232" rel="">RS-232</a> 引脚编号</th>
+<th>引脚名缩写</th>
+<th>引脚名全称</th>
+<th>信号传输方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>DCD</code></td>
+<td>数据载波侦测 (Data Carrier Detect)</td>
+<td><code>&lt;-</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>RXD</code></td>
+<td>数据接收 (Receive Data)</td>
+<td><code>&lt;-</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>TXD</code></td>
+<td>数据发送 (Transmit Data)</td>
+<td><code>-&gt;</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>DTR</code></td>
+<td>数据终端准备 (Data Terminal Ready)</td>
+<td><code>-&gt;</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>GND</code></td>
+<td>接地 (Ground)</td>
+<td><code>--</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>DSR</code></td>
+<td>数据准备好 (Data Set Ready)</td>
+<td><code>&lt;-</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>RTS</code></td>
+<td>请求发送 (Request To Send)</td>
+<td><code>-&gt;</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>CTS</code></td>
+<td>清除发送 (Clear To Send)</td>
+<td><code>&lt;-</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>RI</code></td>
+<td>响铃指示 (Ring Indicator)</td>
+<td><code>&lt;-</code></td>
+</tr>
+</tbody>
+</table>
+<p>不考虑流控制（握手协议），直接数据线和接地，只用到：</p>
+<ul>
+<li>引脚 3 (<code>TXD</code>)： 发送数据</li>
+<li>引脚 2 (<code>RXD</code>)： 接受数据</li>
+<li>引脚 5 (<code>GND</code>)： 接地</li>
+</ul>
+</li>
+</ul>
+<h3 id="硬件流量控制">硬件流量控制</h3>
+<ul>
+<li>
+<p><code>DTR</code> / <code>DSR</code> 流控制 <br />
+用于建立连接。</p>
+<ul>
+<li><code>DTR</code> <br />
+数据终端设备（计算机）告诉数据通讯设备已经准备通信。</li>
+<li><code>DSR</code> <br />
+数据通讯设备用于应答。</li>
+</ul>
+</li>
+<li>
+<p><code>RTS</code> / <code>CTS</code> 流控制 <br /></p>
+<ul>
+<li><code>RTS</code> <br />
+数据终端设备（如计算机）使用 <code>RTS</code> 来起始调制解调器或其它数据通讯设备的数据流，当数据终端设备可以接收数据时， <code>RTS</code> 有效。</li>
+<li><code>CTS</code> <br />
+数据通讯设备（如调制解调器）则用 <code>CTS</code> 来起动和暂停来自计算机的数据流。当数据终端设备接收数据时， <code>CTS</code> 有效。</li>
+</ul>
+<p>A 每发送一次数据给 B 之前，都继续重复以下步骤：</p>
+<ol>
+<li>A 先设置 <code>RTS</code> 为 1，表示要发数据给B</li>
+<li>B 检测到了 <code>RTS</code> 为 1，准备接收数据，准备完毕后将 <code>CTS</code> 设置为 1 。</li>
+<li>A 发现 <code>CTS</code> 为 1 后开始发送数据。</li>
+</ol>
+</li>
+</ul>
+<h2 id="rs-485">RS-485</h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/382439846" target="_blank" rel="noopener noreffer">https://zhuanlan.zhihu.com/p/382439846</a></li>
+<li><a href="https://www.cuidevices.com/blog/rs-485-serial-interface-explained" target="_blank" rel="noopener noreffer">https://www.cuidevices.com/blog/rs-485-serial-interface-explained</a></li>
+</ul>
+<p>采用差模传输方式：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-13_11-14-57_v2-e0979af54fbe2ec0a1e7942b6a3108f4.jpg"/>
+</figure>
+
+<p>对比共模传输方式：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-13_11-14-28_v2-ac629acc746d0619a68ed751f53271cb.jpg"/>
+</figure>
+
+<p>差模方式可以有效抵消共模干扰。</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_10-46-35_screenshot.png"/>
+</figure>
+
+<ul>
+<li>
+<p>特性</p>
+<ul>
+<li>
+<p>共模电压范围为（-7 至 +12V）</p>
+</li>
+<li>
+<p>可支持 32 个多点拓扑连接</p>
+</li>
+<li>
+<p>传输速率</p>
+<ul>
+<li>使用 40 英尺线缆时，传输速率可达到 10Mbps</li>
+<li>使用 4000 英尺线缆时， 传输速率可达到 100kbps</li>
+</ul>
+</li>
+<li>
+<p>半双工通信</p>
+</li>
+<li>
+<p>最小差分电压容限为 200mV <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_10-50-04_screenshot.png"/>
+        </figure>
+
+<p>即：</p>
+<ul>
+<li>A 线的绝对电压值比 B 线的至少大 200mV 才会被识别为逻辑 1</li>
+<li>A 线的绝对电压值比 B 线的至少小 200mV 才会被识别为逻辑 0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>控制芯片 <br />
+以 <code>MAX485</code> 为例，有以下引脚：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_10-39-49_7.svg"/>
+    </figure>
+
+<ul>
+<li><code>A</code> / <code>B</code> <br />
+双绞线接口，一个芯片的 <code>A</code> / <code>B</code> 接口对应于另一个芯片的 <code>B</code> / <code>A</code> 接口。</li>
+<li><code>DE</code> <br />
+驱动（发送）使能，高电平有效。</li>
+<li><code>RE</code> <br />
+接收器使能，低电平有效。有效电平与 <code>DE</code> 相反，这样可以使用一个引脚控制发送与接收。</li>
+</ul>
+</li>
+<li>
+<p>驱动能力 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_10-50-59_screenshot.png"/>
+    </figure>
+
+<p>由于接收电路具有输入阻抗（标准为\(12\text{k}\Omega\)），在多点网络拓扑结构下，可最大驱动 32 个站点。</p>
+</li>
+</ul>
+<h3 id="半双工通信">半双工通信</h3>
+<p>设备在同一时刻要么处于收数据状态，要么处于发数据状态。</p>
+<h2 id="uart">UART</h2>
+<p>通用异步收发传输器 (Universal Asynchronous Receiver/Transmitter) 是一种串行异步收发协议，应用十分广泛（<a href="#rs-232" rel="">RS-232</a>、<a href="#rs-485" rel="">RS-485</a> 都使用 <a href="#uart" rel="">UART</a>）。信号线上为正逻辑，两个设备使用 <a href="#uart" rel="">UART</a> 串口通讯时，必须先约定好传输速率和一些数据位。</p>
+<ul>
+<li>
+<p>接线 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_11-46-29_20181225114440688.jpg"/>
+    </figure>
+
+<ul>
+<li><code>TX</code> ：发送数据端，要接另一个设备的 <code>RX</code></li>
+<li><code>RX</code> ：接收数据端，要接对面设备的 <code>TX</code></li>
+<li><code>GND</code> ：两设备需要共地</li>
+</ul>
+</li>
+<li>
+<p>协议 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_12-05-16_20181226094646598.png"/>
+    </figure>
+
+<ul>
+<li>空闲位 <br />
+<a href="#uart" rel="">UART</a> 协议规定，当总线处于空闲状态时信号线的状态为 <code>1</code> 。</li>
+<li>起始位 <br />
+开始进行数据传输时发送方要先发出一个 <code>0</code> 来表示传输字符的开始（从空闲状态的 <code>1</code> 退出）。</li>
+<li>数据位 <br />
+起始位之后的数据位可以有 5-9 位。一般为 8 位，低位 (LSB) 在前。</li>
+<li>奇偶校验位 <br />
+奇偶校验有以下几种方式：
+<ul>
+<li>无校验 (No Parity)</li>
+<li>奇校验 (Odd Parity) <br />
+若 <code>1</code> 的个数为奇数，校验位为 <code>0</code> ，否则为 <code>1</code> 。</li>
+<li>偶校验 (Even Parity) <br />
+若 <code>1</code> 的个数为偶数，校验位为 <code>0</code> ，否则为 <code>1</code> 。</li>
+<li>Mark Parity <br />
+校验位始终为 <code>1</code> 。</li>
+<li>Space Parity <br />
+校验位始终为 <code>0</code> 。</li>
+</ul>
+</li>
+<li>停止位 <br />
+数据结束标志，可以是 1 位、1.5 位、2 位的 <code>1</code> 。</li>
+</ul>
+</li>
+<li>
+<p>波特率 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_12-21-08_20181226092824461.jpg"/>
+    </figure>
+
+<p>数据传输速率使用波特率（单位为 bps (Bits Per Second)）来表示，波特率的倒数就是传输一个位需要的时间，常见的波特率有：</p>
+<ul>
+<li>9600</li>
+<li>115200</li>
+</ul>
+<p>其他标准的波特率有：</p>
+<ul>
+<li>1200</li>
+<li>2400</li>
+<li>4800</li>
+<li>19200</li>
+<li>38400</li>
+<li>57600</li>
+</ul>
+</li>
+</ul>
+<h2 id="can">CAN</h2>
+<ul>
+<li><a href="https://blog.51cto.com/u_15169172/2710661" target="_blank" rel="noopener noreffer">https://blog.51cto.com/u_15169172/2710661</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32262127" target="_blank" rel="noopener noreffer">https://zhuanlan.zhihu.com/p/32262127</a></li>
+</ul>
+<p>控制器局域网 (Controller Area Network)，是一种能够实现分布式实时控制的串行通信网络。</p>
+<ul>
+<li>
+<p>接线 <br />
+<a href="#can" rel="">CAN</a> 使用的是两条差分信号线，使用复杂的协议，对数据或操作命令进行打包。</p>
+</li>
+<li>
+<p>特点</p>
+<ul>
+<li>传输速度最高到 1Mbps <br />
+消息的发送不必遵从任何预先设定的时序，通信是事件驱动的，只有当有新的信息传递时，总线才处于忙碌的状态，因此节点接入总线速度非常快，
+<a href="#can" rel="">CAN</a> 总线理论最高数据传输速率为 1Mbps，对于异步事件反应迅速（毫秒级）。</li>
+<li>通信距离最远到 10km</li>
+<li>多主机 <br />
+安全敏感的应用（如汽车）对通信系统的可靠性要求很高，让单一节点决定总线能否正常工作是非常危险的，合理的方案是对总线接入的去中心化，即每个节点都有接入总线的能力，这也是 <a href="#can" rel="">CAN</a> 总线采用多主控 (Multi-Master) 线性拓扑结构的原因。在总线上，每个节点都有往总线上发送消息的能力。</li>
+</ul>
+</li>
+<li>
+<p>报文</p>
+<ul>
+<li>
+<p>过滤 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_13-20-06_v2-0ca55eba0f3810257980a86377635012.jpg"/>
+        </figure>
+
+<p><a href="#can" rel="">CAN</a> 控制器大多具有根据 ID 过滤报文的功能。节点对接收到的报文进行过滤时，会比较消息 ID 与选择器 (Accepter) 中和接受过滤相关位是否相同。</p>
+</li>
+<li>
+<p>类型 <br />
+<a href="#can" rel="">CAN</a> 总线一共规定了 5 种类型的帧，即报文。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据帧 (Data Frame)</td>
+<td>发送节点向接收节点传输数据的帧</td>
+</tr>
+<tr>
+<td>遥控帧 (Remote Frame)</td>
+<td>接收节点向具有相同 ID 的发送节点请求数据的帧</td>
+</tr>
+<tr>
+<td>错误帧 (Error Frame)</td>
+<td>检测出错误是，向其他节点发出错误通知的帧</td>
+</tr>
+<tr>
+<td>过载帧 (Overload Frame)</td>
+<td>用于接收节点通知其未做好接收准备的帧</td>
+</tr>
+<tr>
+<td>帧间隔 (Inter Frame Space)</td>
+<td>用于分隔数据帧与遥控帧的帧</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>数据帧 <br />
+数据在 <a href="#can" rel="">CAN</a> 总线上传输时，原始数据段的头部会被加上传输起始标签、片选（识别）标签、控制标签；尾部会被加上 CRC 校验标签、应答标签和传输结束标签，这样的数据包就被称为 <a href="#can" rel="">CAN</a> 总线的数据帧。</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_13-35-10_v2-2431dc1693557b4732d80af1393e6c36.jpg"/>
+            </figure>
+
+<p>数据帧以一个显性位（逻辑 <code>0</code> ）开始，以 7 个连续的隐性位（逻辑 <code>1</code> ）结束，有标准格式 (Standard Format) 和扩展格式 (Extended Format) 的区分。可以分成七段：</p>
+<ul>
+<li>
+<p>帧起始 (SOF) <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_13-49-46_v2-07346f500b281dde0cce84da24212554.jpg"/>
+                </figure>
+
+<p>标识一个数据帧的开始，固定一个显性位（只有总线在空闲期间节点才能够发送）。用于同步， 总线空闲期间的任何 <strong>隐性到显性</strong> 的跳变都将引起节点进行硬同步。</p>
+</li>
+<li>
+<p>仲裁段 (Arbitration Field) <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_13-44-43_v2-d54c1ee54d44435df3a6fa00ddc0cd5c.jpg"/>
+                </figure>
+
+<p>主要为数据帧的 ID 信息，数据帧分为标准格式和扩展格式两种：</p>
+<table>
+<thead>
+<tr>
+<th>数据帧格式</th>
+<th>ID 长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标准格式</td>
+<td>11 位</td>
+</tr>
+<tr>
+<td>扩展格式</td>
+<td>29 位</td>
+</tr>
+</tbody>
+</table>
+<p>ID 决定着数据帧发送的优先级，也决定着其他设备是否会接收这个数据帧（是否被过滤）。</p>
+</li>
+<li>
+<p>控制段 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_13-50-14_v2-e1d81360a4e1e2ba8edcea1b635aa774.jpg"/>
+                </figure>
+
+<p>由 DLC (Data Length Code) 段和两个保留位（ <code>r0</code> 和 <code>r1</code> ，默认为显性位）组成。
+DLC 段使用二进制（4 位）编码表示本报文中的数据段包含多少个字节（范围为 0-8）。</p>
+</li>
+<li>
+<p>数据段 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_13-56-17_v2-dffeb6416cdcb0a7fb4731b5ca02339c.jpg"/>
+                </figure>
+
+<p>数据帧的核心内容，长度由控制段的 DLC 段决定。</p>
+</li>
+<li>
+<p>CRC 段 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_13-57-12_v2-6555d6341183088c573cfaf098c0ef41.jpg"/>
+                </figure>
+
+<p>包含了一段 15 位的 CRC 校验码，对前面所有的段进行校验：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_14-00-17_v2-e4c27c42f7f976cac2f8ff4bf30f190b.jpg"/>
+                </figure>
+
+<p>一旦接收端计算出的 CRC 码跟接收到的 CRC 码不同，就会向发送端反馈出错信息申请重新发送。
+CRC 计算与错误处理一般由 <a href="#can" rel="">CAN</a> 控制器硬件完成，由软件控制最大重发数。在 CRC 校验码之后，有一个 CRC 界定符，它为隐性位，主要作用是把 CRC 校验码与后面的 ACK 段隔开。</p>
+</li>
+<li>
+<p>ACK 段 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_14-04-03_v2-a89335b4e6e77db059f7854b548d12ac.jpg"/>
+                </figure>
+
+<p>包含确认位 ACK 和界定符 DEL (Delimiter) ，ACK 在发送节点发送时，为隐性位。当接收节点正确接收到报文时，对其用显性位覆盖。DEL 界定符同样为隐性位，用于隔开。</p>
+</li>
+<li>
+<p>帧结束段 (EOF) <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_14-04-24_v2-f241b29d06ae456f2f2516e59a246c0b.jpg"/>
+                </figure>
+
+<p>发送节点发送 7 个隐性位表示结束。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>位时序 <br />
+CAN 总线使用位同步的方式来确保通信时序，以及对总线的电平进行正确采样。时间量子 TQ (Time Quantum) 是 CAN 总线控制器工作的最小时间单位，通常对系统时钟分频得到，为了实现位同步，一个 CAN 位需要多个时间量子：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-17_21-27-06_20180416132204464.jpeg"/>
+    </figure>
+
+<p>每一位的时序分解成如下四段，这四段的长度加起来即为一个 CAN 数据位的长度，一个完整的位由 8-25 个时间量子组成。</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-17_21-28-03_2018041321110053.jpeg"/>
+    </figure>
+
+<table>
+<thead>
+<tr>
+<th>段名称</th>
+<th>时间量子数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同步段 SS (Synchronization Segment)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>传播段 PTS (Propagation Time Segment)</td>
+<td>1-8</td>
+</tr>
+<tr>
+<td>相位缓冲段 PBS1 (Phase Buffer Segment 1)</td>
+<td>1-8</td>
+</tr>
+<tr>
+<td>相位缓冲段 PBS2 (Phase Buffer Segment 2)</td>
+<td>2-8</td>
+</tr>
+</tbody>
+</table>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-17_21-15-38_20200728165747848.png"/>
+    </figure>
+
+<ul>
+<li>同步段 SS (Synchronization Segment)  <br />
+一个位的输出从同步段开始，用于多个连接在总线上的节点进行时序调整。若总线的跳变沿被包含在 SS 段的范围之内，则表示节点与总线的时序同步。节点与总线同步时，采样点采集到的总线电平即可被确定为该电平的电位。</li>
+<li>传播段 PTS (Propagation Time Segment) <br />
+用于补偿信号在网络和节点传播的物理延时时间，是总线上输入比较器延时和输出驱动器延时总和的两倍。</li>
+<li>相位缓冲段 PBS1 (Phase Buffer Segment 1) <br />
+主要用于当信号边沿不能被包含在同步段时，提供补偿边沿阶段的误差，其时间长度在重新同步时可以加长。</li>
+<li>相位缓冲段 PBS2 (Phase Buffer Segment 2) <br />
+同样用于补偿边沿阶段的误差，其时间长度在重新同步时可以缩短。</li>
+</ul>
+<p>CAN 协议的通信方法为 NRZ 方式，即各个位的开头或者结尾都没有附加同步信号。发送单元以与位时序同步的方式开始发送数据。另外，接收单元根据总线上电平的变化进行同步并进行接收工作。但是，发送单元和接收单元存在的时钟频率误差及传输路径上的（电缆/驱动器等）相位延迟会引起同步偏差，因此接收单元通过硬件同步或者再同步的方法调整时序进行接收。</p>
+<ul>
+<li>
+<p>硬同步 <br />
+在总线空闲状态，接收节点检测出帧起始（SOF 位）时，会调整当前位的同步段，调整宽度不限：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-17_21-28-25_20180414003444552.jpeg"/>
+        </figure>
+
+<p>发送节点的 SS 段接收节点的当前位中，接收节点强行将自己当前位的 SS 段拉到与 SOF 位的 SS 段同步。</p>
+</li>
+<li>
+<p>重同步 <br />
+接收节点检测出除 SOF 位以外的其他位时，进行的同步调整。重同步会通过加长 PSB1 段，或缩短 PBS2 段来调整同步，以保证采样点的准确：</p>
+<ul>
+<li>
+<p>PBS1 延长 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-17_21-42-52_20180414013402956.jpeg"/>
+            </figure>
+
+</li>
+<li>
+<p>PBS2 缩短 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-17_21-43-46_20180414020330397.jpeg"/>
+            </figure>
+
+</li>
+</ul>
+<p>同步跳转宽度 SJW (Synchronization Jump Width) 是指 PSB1 和 PSB2 再同步时允许跳转的最大宽度，其必须满足以下 2 个条件：</p>
+<ul>
+<li>SJW 必须小于 PBS1 和 PBS2 的最小值</li>
+<li>SJW 最大值不能超过 4</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>下面看一下再同步的两种情况：</p>
+<ul>
+<li>原理
+<ul>
+<li>
+<p>多路载波侦听 CSMA (Carrie Sense Multiple Access) <br />
+网络上所有节点以多点接入的方式连接在同一根总线上，且发送数据是广播式的。所有节点必须都等到总线处于空闲状态时才能往总线上发送消息。</p>
+<ul>
+<li>若网络上有数据，则等待网络空闲</li>
+<li>若网络上无数据，立即发送已经准备好的数据</li>
+</ul>
+</li>
+<li>
+<p>基于消息优先级的冲突检测 CD+AMP (Collision Detection + Arbitration on Message Priority) <br />
+节点在发送数据前，要不停的检测发送的数据，确定是否与其他节点数据发送冲突。如果多个节点往总线上发送消息时，具备最高优先级的消息获得总线（ID 数值越小，报文优先级越高），低优先级的报文发送节点在退出仲裁后将在总线再次空闲时自动重新发送报文：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_13-21-41_v2-8104ad24d159a86a97f0d94073ac1bde.jpg"/>
+        </figure>
+
+<p>但高优先级的报文不能中断低优先级的报文：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-04-14_13-21-55_v2-ad4b10d5eafa85b39beb720c0f695aac.jpg"/>
+        </figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="usb">USB</h2>
+<ul>
+<li>历史 <br />
+USB 最初由英特尔与微软倡导发起，最大的特点是尽可能的实现热插拔和即插即用。
+<ul>
+<li>USB 1.0 （1998 年 9 月） <br />
+数据传输速率为 1.5Mbps (Low-Speed)。无预测及通过检测功能，仅极少数出现在市场上。</li>
+<li>USB 2.0 （2000 年 4 月）<br />
+增加更高的数据传输速率 480Mbps (Hi-Speed)，但受限于 BOT 传输协议和 NRZI 编码方式，实际最高传输速度只有 35 MByte/s 左右。</li>
+<li>USB 3.0 （2008 年 11 月） <br />
+速度由 480Mbps 大幅提升到 5Gbps ，插座通常是蓝色的，并向下兼容 USB 2.0 。</li>
+<li>USB 3.1 （2013 年 7 月 31 日） <br />
+传输速度提升为 10Gbps ，比 USB 3.0 的 5Gbps 快上一倍，并向下兼容 USB 2.0/1.0，电力供应可高达 100W。</li>
+<li>USB 3.2 <br />
+在现有的 USB Type-C 数据在线实现双通道，使用 USB 3.2 主机连接 USB 3.2 存储设备，可以实现两条通道 10Gb/s 的传输速度，理论上也就是相当接近于 20Gbps。</li>
+<li>USB 4 <br />
+采用 Thunderbolt 3 协议规格，使 Thunderbolt 3 设备将能兼容于 USB 4 ，现有 3.2 及 2.0 也向下兼容，速度方面加倍，得到两条通道总共 40Gbps 的传输速度。</li>
+</ul>
+</li>
+<li>接线 <br />
+USB 信号使用分别标记为 D+ 和 D- 的双绞线传输，它们各自使用半双工的差分信号并协同工作，以抵消长导线的电磁干扰。</li>
+<li>识别
+<ul>
+<li>全速设备/低速设备 <br />
+在 USB 设备端有一个 1.5k 的上拉电阻，当设备上电时，有上拉电阻的那根数据线就会被拉高，
+HUB 根据 D+/D- 上的电平判断所挂载的是全速设备还是低速设备：
+<ul>
+<li>低速设备 1.5K 上拉电阻位于 D- 端</li>
+<li>全速设备 1.5K 上拉电阻位于 D+ 端</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="校验方式">校验方式</h2>
+<h3 id="奇偶校验">奇偶校验</h3>
+<p>对于二进制数据：</p>
+<ul>
+<li>奇校验 (Odd Parity) <br />
+若 <code>1</code> 的个数为奇数，校验位为 <code>0</code> ，否则为 <code>1</code> 。</li>
+<li>偶校验 (Even Parity) <br />
+若 <code>1</code> 的个数为偶数，校验位为 <code>0</code> ，否则为 <code>1</code> 。</li>
+</ul>
+<h3 id="校验和">校验和</h3>
+<p>对于字节数据，对数据中的所有字节进行相加，作为校验的字节。</p>
+<h3 id="循环冗余校验--cyclic-redundancy-check">循环冗余校验 (Cyclic Redundancy Check)</h3>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/256487370" target="_blank" rel="noopener noreffer">https://zhuanlan.zhihu.com/p/256487370</a></li>
+</ul>
+<p>CRC 校验计算速度快，检错能力强，易于用编码器等硬件电路实现。从检错的正确率与速度、成本等方面，都比奇偶校验等校验方式具有优势。因而，CRC 成为计算机信息通信领域最为普遍的校验方式。</p>
+<ul>
+<li>应用
+<ul>
+<li>以太网</li>
+<li><a href="#usb" rel="">USB</a></li>
+<li>压缩/解压</li>
+<li>视频编码</li>
+<li>图像存储</li>
+<li>磁盘读写</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-wire">1-Wire</h2>
+<p>1-Wire 使用一根信号线即可双向传输数据，有两种速率模式：</p>
+<ul>
+<li>标准模式： 16kbps</li>
+<li>驱动模式： 142kbps</li>
+</ul>
+<p>1-Wire 总线适用于单主机多从机的系统，总线要求外接一个约 \(5\text{k}\Omega\) 的上拉电阻，因此单总线的闲置状态为高电平，主机与从机应当使用开漏输出模式（即 <a href="https://bohonghuang.github.io/posts/notes/8051/" rel="">8051</a> 的 <code>P0</code> 口），不发送数据的设备应呈现高阻态释放数据总线：</p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-11-04_15-41-16_image.HRN6U1.png"/>
+</figure>
+
+<p>1-Wire 总线的寻址和数据传送具有严格的时序规范，主机访问过程必须严格遵守以下顺序：</p>
+<ol>
+<li>
+<p>初始化 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-11-04_15-33-11_image.XPCIV1.png"/>
+    </figure>
+
+<p>主机发出的复位脉冲，从机作出响应并发送应答脉冲，主机检测到应答脉冲后，即可认为有设备已准备通信。具体来说，就是：</p>
+<ol>
+<li>主机拉低单总线至少 \(480\mu\text{s}\) ，释放总线并进入接收模式，等待从机应答。</li>
+<li>从机检测到低电平后又检测到高电平，延时 \(15\mu\text{s}\sim 60\mu\text{s}\) 后，将总线拉低 \(60\mu\text{s}\sim 240\mu\text{s}\) ，产生低电平的应答脉冲。</li>
+<li>主机进入接收模式后 \(60\mu\text{s}\) 左右，检测到低电平，即可认为得到从机的应答。</li>
+</ol>
+</li>
+<li>
+<p>ROM 命令 <br />
+64 位的 ROM 是 1-Wire 设备的识别号：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="line"><span class="cl">|MSB                                                  &#34;64-Bit ROM Number&#34;                                                       LSB|
+</span></span><span class="line"><span class="cl">+----------------+------------------------------------------------------------------------------------------------+----------------+
+</span></span><span class="line"><span class="cl">|    &#34;8-Bit&#34;     |                                         &#34;48-Bit&#34;                                               |     &#34;8-Bit&#34;    |
+</span></span><span class="line"><span class="cl">|     &#34;CRC&#34;      |                                      &#34;Serial Number&#34;                                           |  &#34;Family Code&#34; |
+</span></span><span class="line"><span class="cl">|MSB          LSB|MSB                                                                                          LSB|MSB          LSB|
+</span></span><span class="line"><span class="cl">+----------------+------------------------------------------------------------------------------------------------+----------------+
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>搜索 ROM (<code>0x0F</code>) <br />
+当系统初始上电时，需要找出总线上所有从机设备及其 ROM 代码，以便主机判断从机的数目和类型。主机通过重复执行搜索 ROM 循环（过程类似二叉树的搜索），以找出总线上所有的从机设备。每次执行完搜索 ROM 循环后，主机必须重新回到初始化步骤。如果总线只有一个从机设备，则可以采用读 ROM 命令来替代搜索 ROM 命令。</li>
+<li>ROM (<code>0x33</code>) （单从机） <br />
+允许主机直接读出从机的 64 位 ROM 代码，无须执行搜索 ROM 搜索过程。如果该命令用于多从机系统，则必然发生数据冲突，因为每个从机设备都会响应该命令。</li>
+<li>匹配 ROM (<code>0x55</code>) <br />
+匹配 ROM 命令跟随 64 位 ROM 代码，从而允许主机访问多节点系统中某个指定的从机设备。仅当从机完全匹配 64 位 ROM 代码时，才会响应主机随后发出的功能命令，其它设备将处于等待复位脉冲状态，等待主机重新初始化。</li>
+<li>跳过 ROM (<code>0xCC</code>) （单从机） <br />
+主机能够采用该命令同时访问总线上的所有从机设备（该命令后直接跟随功能命令），而无须发出任何 ROM 代码信息。对于写入的功能命令，可以用于多个从机的情况，但读取的功能命令会导致总线冲突。</li>
+<li>报警搜索 (<code>0xEC</code>) （仅少数1-Wire 器件支持） <br />
+除那些设置了报警标志的从机响应外，该命令的工作方式完全等同于搜索 ROM 命令。该命令允许主机设备判断那些从机设备发生了报警（如测温器件最近的测量温度过高或过低等）。同搜索 ROM 命令一样，在完成报警搜索循环后，主机必须返回至命令序列第一步。</li>
+</ul>
+</li>
+<li>
+<p>功能命令：由从机定义的命令。</p>
+</li>
+</ol>
+<p>其中涉及的读取与写入操作如下：</p>
+<ul>
+<li>
+<p>写入 1 位 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-11-04_15-33-23_image.05H4U1.png"/>
+    </figure>
+
+<p>从机检测到总线被拉低后开始准备采样，并且最快在检测到总线被拉低的 \(15\mu\text{s}\sim 60\mu\text{s}\) 时进行采样，因此主机需要拉低总线，并于 \(15\mu\text{s}\) 内：</p>
+<ul>
+<li>若写入 <code>0</code> ，则继续保持低电平</li>
+<li>若写入 <code>1</code> ，则需要释放总线，使得总线电平被上拉电阻拉高</li>
+</ul>
+<p>主机需要保持这个电平直到总线被拉低后的 \(60\mu\text{s}\) （即从机采样的最晚时刻），之后主机需要释放总线至少 \(1\mu\text{s}\)，保证总线恢复到空闲状态（高电平）。</p>
+</li>
+<li>
+<p>读取 1 位 <br /></p>
+<figure><img src="https://bohonghuang.github.io/ox-hugo/2022-11-04_15-33-45_image.2A96U1.png"/>
+    </figure>
+
+<p>从机检测到总线被拉低后开始准备发送数据，而主机可以在总线被拉低后的 \(15\mu\text{s}\sim 60\mu\text{s}\) 内的任意时刻进行采样，因此主机拉低总线 \(1\mu\text{s}\) 后应立即释放总线（将总线的控制权转移给从机），并将 1-Wire 端口切换到输入模式，在 \(15\mu\text{s}\) 后读取该端口的电平：</p>
+<ul>
+<li>若电平为低，则读取到 <code>0</code></li>
+<li>若电平为高，则读取到 <code>1</code></li>
+</ul>
+</li>
+</ul>
 </div>
 
         <div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-03</span>
+                <span>更新于 2023-01-10</span>
             </div>
             <div class="post-info-license"></div>
         </div>
